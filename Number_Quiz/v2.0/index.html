@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Quiz</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="intro">
+        <p class="title">Number Quiz</p>
+        <div>
+            <div>4</div>
+            <div>?</div>
+            <div>3</div>
+            <div>5</div>
+        </div>
+        <button class="start-btn">Start</button>
+    </div>
+
+    <div class="stage">
+        <p class="level">Level 1</p>
+        <div class="board">
+            <div class="question">0</div>
+            <div class="hint"><img src="images/hint.png"></div>
+        </div>
+
+        <div class="input"></div>
+
+        <div class="keyboard">
+            <div data-index="0" class="key-buttons">0</div>
+            <div data-index="1" class="key-buttons">1</div>
+            <div data-index="2" class="key-buttons">2</div>
+            <div data-index="3" class="key-buttons">3</div>
+            <div data-index="4" class="key-buttons">4</div>
+            <div data-index="undo" class="undo-key"><img src="images/backspace.png"></div>
+            <div data-index="5" class="key-buttons">5</div>
+            <div data-index="6" class="key-buttons">6</div>
+            <div data-index="7" class="key-buttons">7</div>
+            <div data-index="8" class="key-buttons">8</div>
+            <div data-index="9" class="key-buttons">9</div>
+            <div data-index="check" class="check-key"><img src="images/enter.png"></div>
+        </div>
+    </div>
+
+    <div class="finish">
+        <div class="message">
+            <p>Congrats!</p>
+            <p>You Completed the Game!</p>
+        </div>
+        <img src="images/winner.png" alt="win cup image">
+        <button class="finish-btn">Play Again</button>
+    </div>
+
+    <script type="module" src="scripts/index.js"></script>
+</body>
+</html>

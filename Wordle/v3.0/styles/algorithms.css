@@ -1,0 +1,58 @@
+#availableInfo {
+    width: 15vw;
+    height: 100vh;
+    display: none;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 14vw;
+}
+    #availableInfo span {
+        height: 4vw;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        font-size: 1.5vw;
+        margin: .2vw -5vw;
+        color: #dddddd;
+        white-space: nowrap;
+        letter-spacing: .1vw;
+    }
+
+
+#algorithms {
+    width: 45vw;
+    display: none;
+    justify-content: center;
+    flex-flow: column nowrap;
+    padding: 0 4vw 0 1vw;
+}
+    #algorithms div {
+        position: relative;
+        display: none;
+        justify-content: center;
+        flex-flow: row wrap;
+        font-size: 1.5vw;
+        margin-bottom: 1vw;
+        letter-spacing: .1vw;
+    }
+        #algorithms div h3 {
+            width: 100%;
+            padding: .1vw 1vw;
+            border-bottom: .1vw solid var(--gray);
+        }
+        #algorithms div span {
+            width: 19%;
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+            #algorithms div span:last-child {
+                display: flex;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0%;
+                height: 2.5vw;
+                background-color: var(--green);
+                z-index: -1;
+            }

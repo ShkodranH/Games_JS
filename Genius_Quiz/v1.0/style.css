@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    position: relative;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 90vh;
+    background-color: black;
+    color: white;
+    font-family: Roboto;
+}
+#info {
+    display: block;
+    padding: 10%;
+}
+#info h1 {
+    font-size: 15vh;
+    font-family: 'Ma Shan Zheng', cursive;
+}
+#info button {
+    width: 25vw;
+    height: 10vh;
+    border-radius: 15px;
+    background-color: purple;
+    border: 6px solid violet;
+    font-size: 7vh;
+    color: white;
+    font-family: Roboto;
+    font-weight: bolder;
+}
+[id*=question] {
+    display: none;
+    width: 80%;
+}
+[id*=question] h3 {
+    text-align: center;
+    font-size: 4vh;
+    padding: 8vh 0 4vh 0;
+
+}
+[id*=question] button {
+    width: 20vw;
+    margin: 2vh;
+    height: 10vh;
+    border-radius: 55px 35px 15px 35px;
+    font-size: 3vh;
+    border: 4px solid lightblue;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+}
+[id*=question] button:nth-of-type(odd),
+#question25 button:first-of-type {
+    margin-left: 35vh;
+}
+[id*=question] h2 {
+    text-align: center;
+    font-size: 4vh;
+    margin-bottom: 10vh;
+}
+[id*=question] button span {
+    float: left;
+    padding-left: 1vw;
+}
+[id*=question] h3 span {
+    padding: 1vh 3vw;
+    background-color: grey;
+    border-radius: 5px 5px 30px 30px;
+}
+#question21 h3 span, #question22 h3 span, #question23 h3 span, #question24 h3 span, #question25 h3 span {
+    background-color: red;
+}
+#finish, #lost {
+    display: none;
+    font-family: Roboto;
+}
+#finish h1, #lost h1 {
+    font-size: 6vh;
+    padding: 8vh 0 4vh 0;
+}
+#finish h2, #lost h2 {
+    font-size: 5vh;
+    padding: 8vh 0 4vh 0;
+}
+#finish button, #lost button {
+    margin-top: 10vh;
+    font-size: 4vh;
+    width: 20vw;
+    height: 7vh;
+    border-radius: 15px;
+    background-color: purple;
+    border: 4px solid violet;
+    color: white;
+}
+#live {
+    display: none;
+    position: absolute;
+    bottom: 10vh;
+    right: 10vw;
+    width: 6vw;
+    height: 4vh;
+    font-size: 2.5vh;
+    border-radius: 10px;
+    background-color: purple;
+    border: 2px solid violet;
+    color: white;
+    font-weight: bold;
+}
+#question13 h3 span i {
+    visibility: hidden;
+}
+#question16 h3 span {
+    visibility: hidden;
+}
+#btn1 {
+    visibility: hidden;
+    background-color: purple;
+    border: 4px solid violet;
+    margin: 2vh;
+    animation-name: a1;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-iteration-count: 1;
+}
+@keyframes a1 {
+    0%   { visibility: hidden; }
+    50%  { visibility: visible; }
+    100% { visibility: hidden; }
+}
+@media only screen and (max-width:600px) {
+    [id*=question] button {
+        width: 50vw;
+        height: 6vh;
+        margin: 1vw;
+    }
+    #live {
+        width: 15vw;
+        bottom: 1vh;
+        right: 4vw;
+    }
+    [id*=question] h2 {
+        font-size: 4vw;
+    }
+    #finish button, #lost button {
+        width: 50vw;
+    }
+    #info h1 {
+        margin-left: 5%;
+    }
+}

@@ -1,0 +1,158 @@
+:root {
+    --white: #ffffff;
+    --green: #538d4e;
+    --yellow: #b59f3b;
+    --gray: #818384;
+    --black: #3a3a3c;
+    --bodyBg: #121213;
+}
+::-webkit-scrollbar {
+    width: 0;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Dosis', sans-serif;
+    color: var(--white);
+    font-weight: bold;
+}
+body {
+    background-color: var(--bodyBg);
+    display: flex;
+    justify-content: center;
+}
+
+#startScene {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+    #gameLogo {
+        width: 45vw;
+        display: flex;
+        justify-content: space-between;
+        font-size: 3.5vw;
+    }
+        #gameLogo div {
+            width: 6vw;
+            height: 6vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--black);
+            border-radius: .5vw;
+        }
+            #gameLogo div:nth-child(1), #gameLogo div:nth-child(5) {
+                background-color: var(--yellow);
+            }
+            #gameLogo div:nth-child(2), #gameLogo div:nth-child(4) {
+                background-color: var(--green);
+            }
+    #playDiv {
+        width: 45vw;
+        margin-top: 7vw;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+        #playDiv button {
+            cursor: pointer;
+            width: 6vw;
+            height: 6vw;
+            border: none;
+            border-radius: .2vw;
+            font-size: 3vw;
+            background-color: var(--black);
+            transition: background-color .8s;
+        }
+        #playDiv #playButton {
+            letter-spacing: .5vw;
+            width: 22vw;
+        }
+            #playDiv button:hover {
+                animation: rubberBand 1s linear;
+                background-color: var(--yellow);
+            }
+            #playDiv #playButton:hover {
+                background-color: var(--green);
+            }
+
+
+#mainScene {
+    width: 40vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+    #gameboard {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column nowrap;
+        margin-bottom: 3vw;
+    }
+        #gameboard div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: row nowrap;
+        }
+            #gameboard div span {
+                width: 4vw;
+                height: 4vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 2vw;
+                margin: .2vw;
+                border: .15vw solid var(--black);
+                border-radius: .2vw;
+                background-color: transparent;
+            }
+    #keyboard {
+        width: 35vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column nowrap;
+    }
+        #keyboard div {
+            display: flex;
+        }
+            #keyboard div span {
+                width: 3vw;
+                height: 3vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.5vw;
+                margin: .2vw;
+                border-radius: .2vw;
+                background-color: var(--gray);
+            }
+                #keyboard div .special {
+                    width: 4vw;
+                }
+#mobileDevices {
+    display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+    #startScene, #mainScene, #algorithms, #availableInfo {
+        display: none !important;
+    }
+    #mobileDevices {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 6vw;
+    }
+}

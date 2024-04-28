@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Wordle</title>
+        <meta charset="utf-8">
+        <link rel="icon" href="./images/logo.png" type="image/png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles/testing.css">
+        <link rel="stylesheet" type="text/css" href="styles/animations.css">
+        <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="selectAlgo"></div>
+
+        <div id="resultsDiv">
+            <div id="bars"></div>
+            <div id="baseNums"></div>
+        </div>
+
+        <div id="infoDiv">
+            <h2 id="avgScore">Average Score : 0</h2>
+            <div id="progress">
+                <p>0 / 2315</p>
+                <div></div>
+            </div>
+            <div id="time">
+                <span>Time : 0h : 0m : 0s</span>
+                <span>Remaining : 0h : 0m : 0s</span>
+            </div>
+            <div id="table">
+                <div></div>
+                <div></div>
+            </div>
+            <button onclick="document.location.reload()">Test another Algorithm</button>
+        </div>
+
+        <p id="mobileDevices"> Mobile Devices Not Supported! </p>
+
+        <script type="module" src="testing/testing.js"></script>
+    </body>
+</html>

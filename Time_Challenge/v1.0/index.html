@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Challenge</title>
+    <link rel="icon" href="icon.png" type="image/jpg">
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@669&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onkeydown="keyboard(event)">
+    <div id="intro">
+        <p>Time<br>Challenge</p>
+        <div id="icon"><i class="fas fa-stopwatch"></i></div>
+        <button onclick="start()">Start</button>
+    </div>
+    <div id="main">
+        <div id="player1">
+            <div id="pressbtn1"></div>
+            <div id="btnbase"></div>
+            <div id="timer1"><p>00:00</p></div>
+            <div id="base"></div>
+        </div>
+        <div id="time">00:00</div>
+        <div id="player2">
+            <div id="pressbtn2"></div>
+            <div id="btnbase"></div>
+            <div id="timer2"><p>00:00</p></div>
+            <div id="base"></div>
+        </div>
+        <span id="Akey">A</span>
+        <span id="Lkey">L</span>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

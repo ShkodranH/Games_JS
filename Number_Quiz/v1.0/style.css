@@ -1,0 +1,214 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Barlow', sans-serif;
+}
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to top, #2a2f34, #4d5667);
+}
+#intro {
+    width: 60%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+#intro p {
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-size: 4vw;
+    font-weight: bold;
+    font-family: monospace;
+}
+#intro div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: row wrap;
+    margin: 5vw;
+    width: 18vw;
+    height: 18vw;
+}
+#intro div div {
+    width: 8vw;
+    height: 8vw;
+    margin: 0;
+    font-size: 5vw;
+    font-weight: bold;
+    border-radius: 20px;
+    background-color: whitesmoke;
+}
+#intro div div:nth-child(2) {
+    transform: translate(20px, -20px) rotate(-15deg);
+    color: #ff5522;
+}
+#intro button {
+    width: 35%;
+    height: 7vh;
+    font-size: 2vw;
+    font-weight: bold;
+    letter-spacing: 5px;
+    background-color: #ff6532;
+    border: 0;
+    color: white;
+    border-radius: 200px;
+}
+#main {
+    width: 60%;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+#main #level {
+    height: 8vh;
+    font-size: 2.5vw;
+    font-weight: bold;
+    color: whitesmoke;
+}
+#main #question {
+    width: 31vw;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-flow: column nowrap;
+    padding: 0.5vw;
+    font-size: 3vw;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: whitesmoke;
+}
+#main #answer {
+    width: 35vw;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row nowrap;
+}
+#main #answer span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4vw;
+    height: 4vw;
+    border-radius: 10px;
+    margin: 0.5vw;
+    font-size: 2vw;
+    font-weight: bold;
+    background-color: #222222;
+}
+#main #numbers {
+    width: 38vw;
+    height: 20vh;
+    padding: 0 2vw;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-flow: row wrap;
+}
+#main #numbers span {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4vw;
+    height: 4vw;
+    border-radius: 10px;
+    margin: 0.5vw;
+    font-size: 2vw;
+    font-weight: bold;
+    background-color: whitesmoke;
+}
+#main #numbers #check {
+    width: 6vw;
+    background-color: #ffaa22;
+    font-size: 1.8vw;
+    color: white;
+}
+#main #numbers #redo {
+    width: 6vw;
+    background-color: #ffaa22;
+    color: white;
+}
+#win {
+    display: none;
+    flex-flow: column nowrap;
+}
+#win .congrats {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+}
+#win .congrats div {
+    width: 7vw;
+    height: 7vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5vw;
+    border-radius: 20px;
+    font-size: 4vw;
+    font-weight: bold;
+    background-color: whitesmoke;
+}
+#win .congrats div:nth-child(even) {
+    color: #ff5522;
+}
+#win .congrats div:nth-child(1) {
+    transform: rotate(-21deg);
+}
+#win .congrats div:nth-child(2) {
+    transform: rotate(-15deg) translateY(-40px);
+}
+#win .congrats div:nth-child(3) {
+    transform: rotate(-9deg) translate(-8px, -70px);
+}
+#win .congrats div:nth-child(4) {
+    transform: rotate(-3deg) translate(-20px, -85px);
+    margin-right: -19px;
+}
+#win .congrats div:nth-child(5) {
+    transform: rotate(3deg) translate(20px, -85px);
+    margin-left: -19px;
+}
+#win .congrats div:nth-child(6) {
+    transform: rotate(9deg) translate(8px, -70px);
+}
+#win .congrats div:nth-child(7) {
+    transform: rotate(15deg) translateY(-40px);
+}
+#win .congrats div:nth-child(8) {
+    transform: rotate(21deg);
+}
+#win p {
+    width: 100%;
+    font-size: 4vw;
+    margin: 0 auto 6vw auto;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+#win button {
+    margin: 0 auto;
+    width: 30%;
+    height: 7vh;
+    border: 0;
+    border-radius: 200px;
+    font-size: 1.5vw;
+    font-weight: bold;
+    color: white;
+    background-color: #ff5522;
+    text-align: center;
+}

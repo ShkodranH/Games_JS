@@ -1,0 +1,37 @@
+.finish p {
+    animation: popUp .8s ease-in-out 1s forwards;
+}
+.finish p:nth-of-type(2) {
+    animation-delay: 2s;
+}
+.finish p:nth-of-type(3) {
+    animation-delay: 3s;
+}
+.finish .result {
+    animation-delay: 5s;
+}
+.finish .btn {
+    animation: fadeIn .2s ease-in-out 6s forwards;
+}
+
+@keyframes popUp {
+    0% {
+        scale: 0;
+    }
+    50% {
+        scale: 1.5;
+    }
+    100% {
+        scale: 1;
+        visibility: visible;
+    }
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0; 
+    }
+    100% { 
+        opacity: 1; 
+        visibility: visible;
+    } 
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Test</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/media-queries.css">
+    <link rel="stylesheet" href="font-awesome/css/all.min.css">
+</head>
+<body>
+    <div class="intro">
+        <p class="title">Math Test</p>
+        <div>
+            <button class="info-btn"><i class="fas fa-info"></i></button>
+            <button class="start-btn">Start</button>
+            <button class="settings-btn"><i class="fas fa-cog"></i></button>
+        </div>
+    </div>
+
+    <div class="stage">
+        <p class="question-number">1</p>
+        <div>
+            <p class="time">Time: 15s</p>
+            <p class="score">Score: 0</p>
+        </div>
+        <p class="question">0 + 0</p>
+        <div class="options">
+            <button>0</button>
+            <button>0</button>
+            <button>0</button>
+            <button>0</button>
+        </div>
+    </div>
+
+    <div class="finish">
+        <p class="message">You Win!</p>
+        <p class="final-score">Your score: 0</p>
+        <button class="finish-btn">Play Again</button>
+    </div>
+
+    <div class="info">
+        <p>Welcome to Math Test Game</p>
+        <p>The test contains 10 (or 15) simple Math Questions</p>
+        <p>Each question have four option and only one correct answer</p>
+        <p>You have 15 (or 10) seconds to answer each questions</p>
+        <p>Note that the faster you answer, the more points you get</p>
+        <p>Good luck!</p>
+        <button class="close-info-btn">Close</button>
+    </div>
+
+    <div class="settings">
+        <p>Settings</p>
+        <p>Choose difficulty of the Game</p>
+        <div>
+            <input type="radio" id="easy" name="level" data-question="10" data-time="15" data-bonus="5" checked>
+            <label for="easy">Easy</label>
+            <p>10 questions with 15 seconds each</p>
+        </div>
+        <div>
+            <input type="radio" id="medium" name="level" data-question="15" data-time="15" data-bonus="10">
+            <label for="medium">Medium</label>
+            <p>15 questions with 15 seconds each</p>
+        </div>
+        <div>
+            <input type="radio" id="hard" name="level" data-question="10" data-time="10" data-bonus="15">
+            <label for="hard">Hard</label>
+            <p>10 questions with 10 seconds each</p>
+        </div>
+        <div>
+            <input type="radio" id="insane" name="level" data-question="15" data-time="10" data-bonus="20">
+            <label for="insane">Insane</label>
+            <p>15 questions with 10 seconds each</p>
+        </div>
+        <button class="close-settings-btn">Close</button>
+    </div>
+
+    <script src="scripts/index.js"></script>
+</body>
+</html>

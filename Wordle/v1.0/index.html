@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6a55ad4003.js" crossorigin="anonymous"></script>
+</head>
+<body onkeydown="keyboard(event)">
+    <div id="intro">
+        <div class="logo">
+            <div>W</div>
+            <div>O</div>
+            <div>R</div>
+            <div>D</div>
+            <div>L</div>
+            <div>E</div>
+        </div>
+        <div id="play">
+            <button onclick="play()">PLAY</button>
+        </div>
+    </div>
+    <div id="main">
+        <div id="board">
+            <div>
+                <span></span> <span></span> <span></span> <span></span> <span></span>
+            </div>
+            <div>
+                <span></span> <span></span> <span></span> <span></span> <span></span>
+            </div>
+            <div>
+                <span></span> <span></span> <span></span> <span></span> <span></span>
+            </div>
+            <div>
+                <span></span> <span></span> <span></span> <span></span> <span></span>
+            </div>
+            <div>
+                <span></span> <span></span> <span></span> <span></span> <span></span>
+            </div>
+            <div>
+                <span></span> <span></span> <span></span> <span></span> <span></span>
+            </div>
+        </div>
+
+        <div id="char"> 
+            <div>
+                <span onclick="key('q')">Q</span>
+                <span onclick="key('w')">W</span>
+                <span onclick="key('e')">E</span>
+                <span onclick="key('r')">R</span>
+                <span onclick="key('t')">T</span>
+                <span onclick="key('y')">Y</span>
+                <span onclick="key('u')">U</span>
+                <span onclick="key('i')">I</span>
+                <span onclick="key('o')">O</span>
+                <span onclick="key('p')">P</span>
+            </div>
+            <div>
+                <span onclick="key('a')">A</span>
+                <span onclick="key('s')">S</span>
+                <span onclick="key('d')">D</span>
+                <span onclick="key('f')">F</span>
+                <span onclick="key('g')">G</span>
+                <span onclick="key('h')">H</span>
+                <span onclick="key('j')">J</span>
+                <span onclick="key('k')">K</span>
+                <span onclick="key('l')">L</span>
+            </div>
+            <div>
+                <span class="special" onclick="remove()"><i class="fas fa-backspace"></i></span>
+                <span onclick="key('z')">Z</span>
+                <span onclick="key('x')">X</span>
+                <span onclick="key('c')">C</span>
+                <span onclick="key('v')">V</span>
+                <span onclick="key('b')">B</span>
+                <span onclick="key('n')">N</span>
+                <span onclick="key('m')">M</span>
+                <span class="special" onclick="enter()">Enter</span>
+            </div>
+         </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

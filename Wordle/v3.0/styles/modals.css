@@ -1,0 +1,167 @@
+#finalBg, #howtoPlayDiv, #settingBg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, .5);
+    opacity: 0;
+}
+
+
+#infoDiv, #settingDiv {
+    width: 30vw;
+    max-height: 90vh;
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: var(--bodyBg);
+    padding: 1vw 1vw 3vw 2vw;
+    font-size: 1.25vw;
+    transform: translateY(-1vw);
+    opacity: 0;
+    overflow-y: auto;
+}
+    #closeInfo, #closeSetting {
+        cursor: pointer;
+        width: 2vw;
+        height: 2vw;
+        align-self: flex-end;
+        text-align: center;
+    }
+        #infoTitle h3 {
+            padding: .5vw 0 1.5vw 0;
+            font-weight: normal;
+        }
+        #infoDiv ul li {
+            margin: 0 0 .5vw 1.5vw;
+            font-weight: normal;
+        }
+    #examples h3 {
+        padding: 1vw 0;
+    }
+        #exampleDiv p {
+            padding: .5vw 0 1.5vw 1vw;
+            font-weight: normal;
+        }
+        #exampleDiv div button {
+            width: 3vw;
+            height: 3vw;
+            font-size: 1.5vw;
+            margin: 0 .2vw;
+            border: 1px solid var(--black);
+            background-color: transparent;
+        }
+        #exampleDiv div:nth-child(1) button:nth-child(1) {
+            background-color: var(--green);
+            border: none;
+        }
+        #exampleDiv div:nth-child(3) button:nth-child(3) {
+            background-color: var(--yellow);
+            border: none;
+        }
+        #exampleDiv div:nth-child(5) button:nth-child(5) {
+            background-color: var(--black);
+            border: none;
+        }
+
+
+#finalScene {
+    width: 35vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    padding: 4vw 0;
+    background-color: var(--bodyBg);
+    transform: translateY(-1vw);
+    opacity: 0;
+}
+    #finalMessage {
+        font-size: 2.5vw;
+        letter-spacing: .2vw;
+        margin-bottom: 3vw;
+    }
+    #replayButton {
+        cursor: pointer;
+        width: 20vw;
+        height: 5vw;
+        font-size: 1.5vw;
+        letter-spacing: .3vw;
+        background-color: var(--green);
+        border: none;
+        transition: transform .3s, box-shadow .3s;
+    }
+        #replayButton:hover {
+            transform: translateY(-.3vw);
+            box-shadow: 0 1vw 1vw -.8vw rgba(255, 255, 255, .25);
+        }
+
+
+#chooseAlgorithms {
+    width: 26vw;
+    display: flex;
+    flex-flow: column nowrap;
+}
+    #chooseAlgorithms div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid;
+        border-image: linear-gradient(to right, var(--bodyBg) 10%, var(--gray), var(--bodyBg) 80%);
+        border-image-slice: 1;
+        margin: .6vw 0;
+    }
+    #chooseAlgorithms h2 {
+        font-weight: normal;
+        padding: 1vw 0 .5vw 0;
+    }
+    #chooseAlgorithms > p {
+        font-weight: normal;
+        text-align: justify;
+    }
+        #chooseAlgorithms div p {
+            font-weight: normal;
+            font-size: 1.6vw;
+        }
+        .toggle {
+            cursor: pointer;
+            width: 4vw;
+            height: 2vw;
+            border-radius: 2vw;
+            display: flex;
+            padding: .25vw;
+            background-color: var(--black);
+            transition: .5s;
+        }
+            .slider {
+                width: 1.5vw;
+                height: 1.5vw;
+                border-radius: 1vw;
+                background-color: var(--white);
+                transition: .5s;
+            }
+        input[type="checkbox"] {
+            width: 0;
+            height: 0;
+        }
+        input:checked + .toggle {
+            background-color: var(--green);
+        }
+            input:checked + .toggle .slider {
+                transform: translateX(2vw);
+            }
+    #chooseAlgorithms button {
+        cursor: pointer;
+        width: 100%;
+        height: 3vw;
+        border: 0;
+        font-size: 1.5vw;
+        font-weight: normal;
+        margin-top: 1vw;
+        background-color: var(--green);
+    }

@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Staatliches', cursive;
+}
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('images/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#intro {
+    width: 60%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+}
+#intro div {
+    width: 25vw;
+    height: 40vh;
+    margin: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    font-size: 5vw;
+    box-shadow: 5px 5px 20px #555555;
+    background: linear-gradient(to bottom left, hotpink, red);
+    color: pink;
+}
+#intro div:nth-child(2) {
+    background: linear-gradient(to bottom left, skyblue, blue);
+}
+#intro button {
+    width: 54vw;
+    height: 20vh;
+    font-size: 4vw;
+    font-weight: bold;
+    letter-spacing: 8px;
+    box-shadow: 5px 5px 20px #555555;
+    background: linear-gradient(to bottom left, yellowgreen, green);
+    border: 0;
+    color: pink;
+    border-radius: 25px;
+}
+#main {
+    width: 75%;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+#main #level{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    font-size: 3vw;
+}
+#main #cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-flow: row wrap;
+    height: 75vh;
+    width: 100%;
+}
+#main #cards div {
+    width: 11vw;
+    height: 35vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: #fcf7d3;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #999999;
+    margin: 0.5vw;
+}
+#main #cards div img {
+    height: 90%;
+    width: auto;
+}
+#main #score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    font-size: 1.5vw;
+}
+#win {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+#win h1 {
+    width: 30vw;
+    font-size: 5vw;
+    font-weight: normal;
+    letter-spacing: 15px;
+    padding: 1vw;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    text-shadow: 0 0 10px black;
+    background: linear-gradient(to left, orange, yellow);
+}
+#win p {
+    font-size: 2.5vw;
+    padding-top: 5vh;
+    color: orange;
+    text-shadow: 0 0 10px white;
+}
+#win button {
+    width: 30vw;
+    height: 5vw;
+    font-size: 3vw;
+    border: 0;
+    border-radius: 200px;
+    margin-top: 15vh;
+    color: white;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px black;
+    background: linear-gradient(to right, orange, yellow);
+}

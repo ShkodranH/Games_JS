@@ -1,0 +1,72 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #d7b7b7;
+}
+.main {
+    width: 50%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+    box-shadow: 0 0 20px #ccc;
+    background-color: #d7b797;
+    border-radius: 30px;
+}
+.main h1 {
+    font-size: 3.5vw;
+    padding-bottom: 1.5vw;
+}
+.main h1 span {
+    font-size: 1vw;
+}
+.main p {
+    font-size: 1.25vw;
+    padding-bottom: 1.5vw;
+}
+.main button {
+    height: 5vh;
+    width: 15vw;
+    font-size: 1vw;
+    margin-bottom: 1.5vw;
+    border-radius: 100px;
+    border: 0;
+    background-color: #b79777;
+    font-weight: bold;
+}
+.main div {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    height: 8vh;
+}
+.main div * {
+    height: 5vh;
+    width: 40%;
+    border-radius: 100px;
+    outline: none;
+    border: 0;
+    padding: 0 1vw;
+    font-size: 1vw;
+}
+#score, #prev, #win, #hint, #new {
+    display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}

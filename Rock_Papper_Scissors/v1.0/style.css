@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: cursive;
+}
+body {
+    background-color: skyblue;
+}
+#player1 {
+    width: 100%;
+    height: 100vh;
+    border-radius: 25px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+#player1 .info, #player1 .info2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+}
+#player1 .info span, #player1 .info2 span {
+    width: 33%;
+    font-size: 1.5vw;
+    text-align: center;
+}
+#player1 .info2 span {
+    color: white;
+    font-size: 2.5vw;
+}
+#player1 .info2 [id *= "fstar"] {
+    display: none;
+}
+#player1 .moves {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60vh;
+    background-color: #97d5fb;
+}
+#player1 .moves div {
+    width: 33%;
+    font-size: 10vw;
+    color: #c68642;
+    text-align: center;
+}
+#player1 .choose {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20vh;
+}
+#player1 .choose div {
+    width: 33%;
+    font-size: 1.5vw;
+    color: black;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+#player1 .choose div i{
+    font-size: 2.5vw;
+    color: #c68642;
+    padding: 1vw;
+    background-color: #dddddd;
+    border-radius: 50%;
+}
+#player1 .choose div button {
+    font-size: 1.5vw;
+    width: 8vw;
+    height: 6vh;
+    border: 5px solid white;
+    color: white;
+    background-color: #77b5db;
+    border-radius: 10px;
+}

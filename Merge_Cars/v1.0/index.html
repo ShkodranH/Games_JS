@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Cars</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="intro">
+        <div>Merge</div>
+        <div>Cars</div>
+        <button onclick="play()">Play</button>
+    </div>
+    <div id="main">
+        <div id="money">
+            <i class="fas fa-coins"></i>
+            <span>0</span>
+        </div>
+        <div id="coinRate"><span>0</span>/sec</div>
+        <div id="cars">
+            <div></div> <div></div> <div></div> <div></div> <div></div> 
+            <div></div> <div></div> <div></div> <div></div> <div></div>
+
+            <img onclick="merge(0)" src="images/car1.png">
+            <img onclick="merge(1)" src="images/car1.png">
+            <img onclick="merge(2)" src="images/car1.png">
+            <img onclick="merge(3)" src="images/car1.png">
+            <img onclick="merge(4)" src="images/car1.png">
+            <img onclick="merge(5)" src="images/car1.png">
+            <img onclick="merge(6)" src="images/car1.png">
+            <img onclick="merge(7)" src="images/car1.png">
+            <img onclick="merge(8)" src="images/car1.png">
+            <img onclick="merge(9)" src="images/car1.png">
+        </div>
+        <div id="buy" onclick="buyCar()">
+            <img src="images/car1.png">
+            <span><i class="fas fa-coins"></i> <span id="price">0</span></span>
+        </div>
+        <div id="levelup">
+            <div>
+                <h1>Level <span id="level">1</span> Car Unlocked</h1>
+                <div></div>
+                <img id="lvCar" src="images/car1.png">
+                <h2>Earning: <span id="earn">0</span>/sec</h2>
+                <button onclick="next()">Continue</button>
+            </div>
+        </div>
+    </div>
+    <div id="finish">
+        <h1>Congrats on merging all the cars through the final one</h1>
+        <button onclick="document.location.reload()">Play Again</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

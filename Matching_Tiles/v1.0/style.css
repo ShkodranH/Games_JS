@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Lobster', cursive;
+}
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2871cc;
+}
+#intro {
+    width: 70%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+.title {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+
+}
+.title div {
+    width: 50%;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    margin: 3vw;
+}
+.title div p {
+    width: 25vw;
+    border-top: 20px solid rgba(200, 200, 255, 0.2);
+    border-left: 20px solid rgba(200, 200, 255, 0.2);
+    border-right: 20px solid rgba(100, 100, 180, 0.4);
+    border-bottom: 20px solid rgba(100, 100, 180, 0.4);
+    background-color: rgba(200, 200, 255, 0.3);
+    font-size: 5vw;
+    text-align: center;
+    padding: 1vw;
+    color: #ffa300;
+    text-shadow: -2px -2px 2px white;
+}
+.title div:first-child {
+    justify-content: flex-start;
+}
+.title div:last-child {
+    justify-content: flex-end;
+}
+.play {
+    width: 80%;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.play button {
+    width: 28%;
+    height: 10vh;
+    font-size: 3vw;
+    color: white;
+    background-color: rgba(0, 0, 55, 0.2);
+    border: 0;
+}
+#main {
+    width: 50%;
+    height: 75vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+}
+#main span {
+    width: 8vw;
+    height: 8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5vw;
+    border-radius: 10px;
+    background-color: #504d4d;
+}
+#main span i {
+    font-size: 3vw;
+    color: #aaaaaa;
+    transform: rotate(-30deg);
+}
+#score {
+    font-size: 2vw;
+    display: none;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 0.5vw 2vw;
+    color: white;
+    border: 2px solid white;
+}
+#score p:first-child {
+    border-bottom: 2px solid white;
+}

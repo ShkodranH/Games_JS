@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genius Quiz</title>
+    <link rel="icon" href="icon.jpg" type="image/jpg">
+    <link href="https://fonts.googleapis.com/css?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="info">
+        <h1>Genius Quiz</h1><br><br><br><br>
+        <button onclick="start()">Start</button>
+    </div>
+
+    <div id="question1">
+        <h3><span>1</span></h3>
+        <h2>( 2 + 2 ) * 2 = ?</h2><br><br><br>
+        <button onclick="quest1('no')"><span>A.</span>4</button>
+        <button onclick="quest1('no')"><span>B.</span>6</button><br>
+        <button onclick="quest1('yes')"><span>C.</span>8</button>
+        <button onclick="quest1('no')"><span>D.</span>2</button>
+    </div>
+
+    <div id="question2">
+        <h3><span>2</span></h3>
+        <h2>Divide 20 by half and add 7</h2><br><br><br>
+        <button onclick="quest2('no')"><span>A.</span>3</button>
+        <button onclick="quest2('yes')"><span>B.</span>47</button><br>
+        <button onclick="quest2('no')"><span>C.</span>13</button>
+        <button onclick="quest2('no')"><span>D.</span>17</button>
+    </div>
+
+    <div id="question3">
+        <h3><span onclick="quest3('yes')">3</span></h3>
+        <h2>Which number do we get if we round the pi to the neares integer</h2><br><br><br>
+        <button onclick="quest3('no')"><span>A.</span>2</button>
+        <button onclick="quest3('no')"><span>B.</span>4</button><br>
+        <button onclick="quest3('no')"><span>C.</span>1</button>
+        <button onclick="quest3('no')"><span>D.</span>5</button>
+    </div>
+
+    <div id="question4">
+        <h3><span>4</span></h3>
+        <h2>Double of half of <span onclick="quest4('yes')">2</span></h2><br><br><br>
+        <button onclick="quest4('no')"><span>A.</span>1/2</button>
+        <button onclick="quest4('no')"><span>B.</span>4</button><br>
+        <button onclick="quest4('no')"><span>C.</span>1<sup>2</sup></button>
+        <button onclick="quest4('no')"><span>D.</span>2<sup>2</sup></button>
+    </div>
+
+    <div id="question5">
+        <h3><span onclick="quest5('yes')">5</span></h3>
+        <h2>A pen and a book cost 110 &euro;. <br>The book cost 100 &euro; more than pen. <br>How much dose it cost the pen</h2><br>
+        <button onclick="quest5('no')"><span>A.</span>100 &euro;</button>
+        <button onclick="quest5('no')"><span>B.</span>10 &euro;</button><br>
+        <button onclick="quest5('no')"><span>C.</span>95 &euro;</button>
+        <button onclick="quest5('no')"><span>D.</span>15 &euro;</button>
+    </div>
+
+    <div id="question6">
+        <h3><span>6</span></h3>
+        <h2>A box contains 3 red balls, 4 blue balls, 7 green balls, 2 yellow balls. <br>How many balls should take from box randomly in order to get 2 balls of the same color</h2><br><br>
+        <button onclick="quest6('yes')"><span>A.</span>5</button>
+        <button onclick="quest6('no')"><span>B.</span>13</button><br>
+        <button onclick="quest6('no')"><span>C.</span>7</button>
+        <button onclick="quest6('no')"><span>D.</span>9</button>
+    </div>
+
+    <div id="question7">
+        <h3><span>7</span></h3>
+        <h2>A box contains 3 red balls, 4 blue balls, 7 green balls, 2 yellow balls. <br>How many balls should take from box randomly in order to get 3 green balls</h2><br><br>
+        <button onclick="quest7('no')"><span>A.</span>5</button>
+        <button onclick="quest7('no')"><span>B.</span>6</button><br>
+        <button onclick="quest7('no')"><span>C.</span>9</button>
+        <button onclick="quest7('yes')"><span>D.</span>12</button>
+    </div>
+
+    <div id="question8">
+        <h3><span>8</span></h3>
+        <h2><span onclick="quest8('yes')">1</span> = 4 <br>2 = 8 <br>3 = 12 <br>4 = ? </h2>
+        <button onclick="quest8('no')"><span>A.</span>14</button>
+        <button onclick="quest8('no')"><span>B.</span>16</button><br>
+        <button onclick="quest8('no')"><span>C.</span>20</button>
+        <button onclick="quest8('no')"><span>D.</span>8</button>
+    </div>
+
+    <div id="question10">
+        <h3><span>10</span></h3>
+        <h2>Click on <span onclick="quest10('yes')">True</span></h2><br><br><br>
+        <button onclick="quest10('no')"><span>A.</span>2<sup>3</sup> = 222</button>
+        <button onclick="quest10('no')"><span>B.</span>3<sup>3</sup> = 27</button><br>
+        <button onclick="quest10('no')"><span>C.</span>24 / 3 = 9</button>
+        <button onclick="quest10('no')"><span>D.</span>4 * 5 = 21</button>
+    </div>
+
+    <div id="question11">
+        <h3><span>11</span></h3>
+        <h2>A box contains 3 red balls, 4 blue balls, 7 green balls, 2 yellow balls. <br>How many balls should take from box randomly in order to get at least 1 ball of each color</h2><br><br>
+        <button onclick="quest11('no')"><span>A.</span>4</button>
+        <button onclick="quest11('yes')"><span>B.</span>15</button><br>
+        <button onclick="quest11('no')"><span>C.</span>10</button>
+        <button onclick="quest11('no')"><span>D.</span>12</button>
+    </div>
+
+    <div id="question12">
+        <h3><span>12</span></h3>
+        <h2>You are running in a race with your friends, <br>you just passed the <span onclick="quest12('yes')">2nd</span> place. <br>In which position are you</h2><br>
+        <button onclick="quest12('no')"><span>A.</span>1st</button>
+        <button onclick="quest12('no')"><span>B.</span>3rd</button><br>
+        <button onclick="quest12('no')"><span>C.</span>last</button>
+        <button onclick="quest12('no')"><span>D.</span>4th</button>
+    </div>
+
+    <div id="question13">
+        <h3><span><i>13</i></span></h3>
+        <h2>Which is the number of this question</h2><br><br><br>
+        <button onclick="quest13('no')"><span>A.</span>15</button>
+        <button onclick="quest13('no')"><span>B.</span>12</button><br>
+        <button onclick="quest13('yes')"><span>C.</span>13</button>
+        <button onclick="quest13('no')"><span>D.</span>14</button>
+    </div>
+
+    <div id="question14">
+        <h3><span>14</span></h3>
+        <h2>How many natural satellite dose Venus has</h2><br><br><br>
+        <button onclick="quest14('yes')"><span>A.</span>0</button>
+        <button onclick="quest14('no')"><span>B.</span>8</button><br>
+        <button onclick="quest14('no')"><span>C.</span>9</button>
+        <button onclick="quest14('no')"><span>D.</span>1</button>
+    </div>
+
+    <div id="question15">
+        <h3><span>15</span></h3>
+        <h2>Which was the answer of the second question</h2><br><br><br>
+        <button onclick="quest15('no')"><span>A.</span>8</button>
+        <button onclick="quest15('no')"><span>B.</span>3</button><br>
+        <button onclick="quest15('yes')"><span>C.</span>47</button>
+        <button onclick="quest15('no')"><span>D.</span>5</button>
+    </div>
+
+    <div id="question16">
+        <h3><span>16</span></h3>
+        <h2>Mirror image of an analogue clock shown the time as 2:30. <br>What time is it</h2><br><br>
+        <button onclick="quest16('no')"><span>A.</span>4:00</button>
+        <button onclick="quest16('no')"><span>B.</span>10:30</button><br>
+        <button onclick="quest16('yes')"><span>C.</span>9:30</button>
+        <button onclick="quest16('no')"><span>D.</span>2:30</button>
+    </div>
+
+    <div id="question17">
+        <h3><span>17</span></h3>
+        <h2>Which question was skipped</h2><br><br><br>
+        <button onclick="quest17('no')"><span>A.</span>7</button>
+        <button onclick="quest17('no')"><span>B.</span>11</button><br>
+        <button onclick="quest17('no')"><span>C.</span>6</button>
+        <button onclick="quest17('yes')"><span>D.</span>9</button>
+    </div>
+
+    <div id="question18">
+        <h3><span>18</span></h3>
+        <h2>What result will you get <br>when all the numbers on telephone dial pad are multiplied</h2><br><br>
+        <button onclick="quest18('no')"><span>A.</span>45</button>
+        <button onclick="quest18('yes')"><span>B.</span>0</button><br>
+        <button onclick="quest18('no')"><span>C.</span>362,880</button>
+        <button onclick="quest18('no')"><span>D.</span>55</button>
+    </div>
+
+    <div id="question19">
+        <h3><span>19</span></h3>
+        <h2>What mathematical symbol can be put betwen 5 and 9 <br>to get a value bigger than 5 and smaller than 9</h2>
+        <button onclick="quest19('no')"><span>A.</span>+</button>
+        <button onclick="quest19('no')"><span>B.</span>-</button><br>
+        <button onclick="quest19('yes')"><span>C.</span>.</button>
+        <button onclick="quest19('no')"><span>D.</span>/</button>
+    </div>
+
+    <div id="question20">
+        <h3><span>20</span></h3>
+        <h2> 1 3 5 <br> 2 4 ? </h2><br><br>
+        <button onclick="quest20('yes')"><span>A.</span>R</button>
+        <button onclick="quest20('no')"><span>B.</span>A</button><br>
+        <button onclick="quest20('no')"><span>C.</span>8</button>
+        <button onclick="quest20('no')"><span>D.</span>6</button>
+    </div>
+    <div id="question21">
+        <h3><span>21</span></h3>
+        <h2>Which is the biggest planet in our solar system</h2><br><br><br>
+        <button onclick="quest21('no')"><span>A.</span>Neptun</button>
+        <button onclick="quest21('no')"><span>B.</span>Saturn</button><br>
+        <button onclick="quest21('no')"><span>C.</span>Sun</button>
+        <button onclick="quest21('yes')"><span>D.</span>Jupiter</button>
+    </div>
+
+    <div id="question22">
+        <h3><span>22</span></h3>
+        <h2>Which question had no number</h2><br><br><br>
+        <button onclick="quest22('no')"><span>A.</span>14</button>
+        <button onclick="quest22('no')"><span>B.</span>12</button><br>
+        <button onclick="quest22('no')"><span>C.</span>19</button>
+        <button onclick="quest22('yes')"><span>D.</span>16</button>
+    </div>
+
+    <div id="question23">
+        <h3><span>23</span></h3>
+        <h2>In a pool lies a flower, Flower doubles in size every day, <br>In 30 days it will cover the pool completely. <br>In how many days will the flower cover half of the pool</h2>
+        <button onclick="quest23('no')"><span>A.</span>2</button>
+        <button onclick="quest23('no')"><span>B.</span>15</button><br>
+        <button onclick="quest23('yes')"><span>C.</span>29</button>
+        <button onclick="quest23('no')"><span>D.</span>16</button>
+    </div>
+
+    <div id="question24">
+        <h3><span>24</span></h3>
+        <h2><span onclick="quest24('yes')">x</span> + y = 12 <br><span onclick="quest24('yes')">x</span> - y = y <br>z = 3<span onclick="quest24('yes')">x</span> / 0.75y <br> z = ? </h2>
+        <button onclick="quest24('no')"><span>A.</span>13</button>
+        <button onclick="quest24('no')"><span>B.</span>5</button><br>
+        <button onclick="quest24('no')"><span>C.</span>18</button>
+        <button onclick="quest24('no')"><span>D.</span>10</button>
+    </div>
+
+    <div id="question25">
+        <h3><span>25</span></h3>
+        <h2>Only one chance</h2><br><br><br>
+        <button id="btn1" onclick="quest25('yes')">Click</button>
+        <button id="btn2" onclick="quest25('no')">Don't click</button>
+    </div>
+
+    <div id="finish">
+        <h1>Congratulations</h1>
+        <h2>You are a Pure Genius</h2>
+        <button onclick="fin()">Restart Quiz</button>
+    </div>
+    <div id="lost">
+        <h1>You lost</h1>
+        <h2>Better luck next time</h2>
+        <button onclick="fin()">Play Again</button>
+    </div>
+    <button id="live">Lives: <span id="number"></span></button>
+
+    <script src="script.js"></script>
+</body>
+</html>

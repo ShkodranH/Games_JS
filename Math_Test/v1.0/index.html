@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Test</title>
+    <link rel="icon" href="icon.png" type="image/jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="intro">
+        <p>Math Test</p>
+        <button onclick="start(), question()">Start</button>
+    </div>
+
+    <div id="main">
+        <p id="time">Time: 10s</p>
+        <p id="score">Score: 0</p>
+        <p id="question"> Question?</p>
+        <button onclick="check(this), question()">A</button>
+        <button onclick="check(this), question()">B</button>
+        <button onclick="check(this), question()">C</button>
+        <button onclick="check(this), question()">D</button>
+        <div id="void"></div>
+    </div>
+
+    <div id="finish">
+        <h1></h1>
+        <p></p>
+        <button onclick="finish()">Play Again</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

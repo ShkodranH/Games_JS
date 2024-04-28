@@ -1,0 +1,157 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: cursive;
+}
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222222;
+}
+#intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+#intro p {
+    font-size: 5vw;
+    color: white;
+    font-weight: bold;
+}
+#intro i {
+    font-size: 25vw;
+    color: #cccccc;
+    padding-left: 5vw;
+    transform: rotate(-30deg);
+}
+#intro span {
+    cursor: default;
+    position: absolute;
+    top: 52vh;
+    left: 47vw;
+    font-size: 3vw;
+    font-weight: bold;
+}
+#main {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+#main #level {
+    height: 65vh;
+    font-size: 4vw;
+    font-weight: bold;
+    color: skyblue;
+}
+#main #iconbg {
+    position: absolute;
+    top: 25vh;
+    left: 40vw;
+    width: 20vw;
+    height: 20vw;
+}
+#main #iconbg img {
+    width: 20vw;
+    height: 20vw;
+}
+#main #iconfill {
+    position: absolute;
+    top: 25vh;
+    left: 40vw;
+    width: 20vw;
+    height: 20vw;
+    overflow: hidden;
+}
+#main #iconfill img {
+    width: 20vw;
+    height: 20vw;
+}
+#main #percent {
+    height: 15vh;
+    font-size: 2vw;
+    color: #99ccff;
+}
+#main #clickbtn {
+    cursor: pointer;
+    user-select: none;
+    width: 25vw;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5vw;
+    color: white;
+    border-radius: 20px;
+    background-color: deepskyblue;
+}
+#finish {
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+#finish p {
+    width: 0%;
+    display: flex;
+    justify-content: center;
+    font-size: 5vw;
+    color: white;
+    font-weight: bold;
+    color: greenyellow;
+    overflow: hidden;
+    animation-name: anim1;
+    animation-fill-mode: forwards;
+    animation-duration: 2s;
+    animation-delay: 1s;
+}
+#finish pre{
+    width: 0%;
+    display: flex;
+    justify-content: center;
+    flex-flow: row nowrap;
+    text-align: center;
+    font-size: 9vw;
+    color: white;
+    font-weight: bold;
+    color: gold;
+    overflow: hidden;
+    animation-name: anim1;
+    animation-fill-mode: forwards;
+    animation-duration: 2s;
+    animation-delay: 2s;
+}
+#finish button {
+    width: 20vw;
+    height: 7vh;
+    opacity: 0;
+    border: 0;
+    border-radius: 200px;
+    background-color: lightskyblue;
+    margin-top: 15vh;
+    font-size: 2vw;
+    animation-name: anim2;
+    animation-fill-mode: forwards;
+    animation-duration: 2s;
+    animation-delay: 3s;
+}
+@keyframes anim1 {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes anim2 {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

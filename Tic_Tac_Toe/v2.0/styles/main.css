@@ -1,0 +1,79 @@
+@font-face {
+    font-family: PermanentMarker;
+    src: url(../fonts/permanent-marker.ttf);
+}
+@font-face {
+    font-family: ComicNeue;
+    src: url(../fonts/comic-neue.ttf);
+}
+:root {
+    --bg-color: #222;
+    --dark-gray: #333;
+    --white-smoke: #eee;
+    --white: #fff;
+    --blue: #87ceeb;
+    --orange: #ffa500;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-family: ComicNeue, cursive;
+}
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    background-color: var(--bg-color);
+}
+
+.board {
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    gap: min(1vw, .6vh);
+    width: min(90vw, 70vh);
+    height: min(90vw, 70vh);
+    background-color: var(--white-smoke);
+
+    & .gameFields {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--dark-gray);
+        color: var(--orange);
+        font-size: min(20vw, 15vh);
+        font-family: PermanentMarker, cursive;
+    }
+}
+
+.status {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin-top: min(8vw, 4vh);
+    font-weight: bold;
+
+    & p {
+        text-align: center;
+        color: var(--white-smoke);
+        font-size: min(10vw, 7vh);
+    }
+    & button {
+        cursor: pointer;
+        width: min(90vw, 70vh);
+        height: min(10vw, 7vh);
+        background-color: var(--dark-gray);
+        color: var(--white-smoke);
+        font-size: min(6vw, 3vh);
+        border: .1vmin solid transparent;
+    }
+}
+
+.animation {
+    border-bottom-color: var(--white-smoke) !important;
+    transition: border-color .5s;
+}

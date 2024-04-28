@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Rampart One', cursive;
+}
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #9977cc;
+}
+#intro {
+    width: 50%;
+    height: 80vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: column nowrap;
+    border-radius: 60% 400px 40% 50%;
+    background-color: #fff8ea;
+}
+#intro p {
+    font-size: 5vw;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+#intro #icon {
+    position: absolute;
+    top: 21vh;
+    right: 35vw;
+    width: 12vw;
+    height: 6.5vw;
+    text-align: center;
+    overflow: hidden;
+}
+#intro #icon i {
+    font-size: 8vw;
+    color: #cc2255;
+    transform: rotate(30deg);
+}
+#intro button {
+    width: 25%;
+    height: 15vh;
+    font-size: 2.5vw;
+    color: white;
+    border: 0;
+    border-radius: 80px 60% 50% 40%;
+    background-color: #5577cc;
+}
+#main{
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: row nowrap;
+}
+#main #player1, #main #player2 {
+    position: relative;
+    width: 25vw;
+    height: 35vh;
+}
+#main #player1 #base, #main #player2 #base {
+    position: absolute;
+    bottom: 0;
+    left: 5vw;
+    width: 15vw;
+    height: 3vh;
+    border-radius: 5px;
+    background-color: #72206d;
+}
+#main #player1 #timer1, #main #player2 #timer2 {
+    position: absolute;
+    bottom: 3vh;
+    left: 3vw;
+    width: 19vw;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    border-top: 35px solid #a14a97;
+    border-bottom: 35px solid #a14a97;
+    border-left: 10px solid #a14a97;
+    border-right: 10px solid #a14a97;
+    background-color: #41515a;
+}
+#main #player1 #timer1 p, #main #player2 #timer2 p {
+    font-size: 3vw;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    animation-delay: 2s;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+@keyframes anim1 {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+#main #player1 #btnbase, #main #player2 #btnbase {
+    position: absolute;
+    bottom: 28vh;
+    left: 7vw;
+    width: 11vw;
+    height: 1vh;
+    border-radius: 10px;
+    background-color: #583d42;
+}
+#main #player1 #pressbtn1, #main #player2 #pressbtn2 {
+    position: absolute;
+    bottom: 29vh;
+    left: 8vw;
+    width: 9vw;
+    height: 4vh;
+    border-radius: 20px 20px 0 0;
+    background-color: #ff0401;
+}
+#main #player2 #pressbtn2 {
+    background-color: #1b50fe;
+}
+#main #time {
+    width: 20vw;
+    text-align: center;
+    font-size: 5vw;
+    color: white;
+    text-shadow: 0 0 15px black;
+    font-family: 'Orbitron', sans-serif;
+}
+#Akey {
+    position: absolute;
+    bottom: 10vh;
+    left: 18vw;
+    font-size: 3vw;
+    font-weight: bold;
+}
+#Lkey {
+    position: absolute;
+    bottom: 10vh;
+    right: 18vw;
+    font-size: 3vw;
+    font-weight: bold;
+}

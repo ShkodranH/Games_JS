@@ -1,0 +1,97 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/montserrat.ttf);
+}
+:root {
+    --transparent-white: #ffffff50;
+    --bg-color: #d7b7b7;
+    --bg-color-2: #d7b797;
+    --btn-color: #b79777;
+    --white: #ffffff;
+    --black: #000000;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-family: Montserrat, sans-serif;
+}
+html {
+    font-size: 14px;
+}
+body {
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+}
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+p,
+h1 span,
+.input,
+.guess,
+.reset {
+    font-size: 1.2rem;
+}
+.container {
+    max-width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    gap: 1em;
+    padding: 3em;
+    border-radius: 2em;
+    background-color: var(--bg-color-2);
+    box-shadow: 0 0 2em var(--transparent-white);
+    
+    & div {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+}
+.input,
+.guess,
+.reset {
+    cursor: pointer;
+    padding: .3em 1em;
+    min-width: 10em;
+    border: 0;
+    outline: none;
+    border-radius: 2em;
+    text-align: center;
+}
+.guess,
+.reset {
+    display: flex;
+    justify-content: center;
+    background-color: var(--btn-color);
+}
+.score,
+.guesses,
+.hint,
+.reset {
+    display: none;
+}
+.guesses {
+    flex-direction: column;
+    text-align: center;
+}
+:is(.score, .guesses) span {
+    padding-left: .5em;
+    font-weight: bold;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+}

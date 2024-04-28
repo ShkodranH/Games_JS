@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Permanent Marker', cursive;
+    font-weight: normal;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5d412;
+}
+#intro, #main, #hangman {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+}
+#hangman {
+    display: none;
+    position: relative;
+}
+#main {
+    display: none;
+}
+#intro h1 {
+    font-size: 6vw;
+    letter-spacing: 0.5vw;
+    margin-bottom: 5vw;
+}
+#intro button {
+    width: 60%;
+    height: 8vh;
+    font-size: 2vw;
+    letter-spacing: 0.5vw;
+    background-color: transparent;
+    border: 0.3vw solid black;
+    border-radius: 200px;
+}
+#head, #body, #leftArm, #rightArm, #leftLeg, #rightLeg, 
+#upper, #rope, #support, #base, 
+#mouth, #leftEye, #leftEye2, #rightEye, #rightEye2 {
+    position: absolute;
+    background-color: black;
+    display: none;
+}
+#head, #mouth {
+    background-color: transparent;
+    border-radius: 50%;
+}
+#leftLeg, #leftEye, #rightEye {
+    transform: rotate(45deg);
+}
+#rightLeg, #leftEye2, #rightEye2 {
+    transform: rotate(-45deg);
+}
+#leftEye, #leftEye2, #rightEye, #rightEye2 {
+    top: 1.5vw;
+    left: 1.5vw;
+    width: 0.2vw;
+    height: 1vw;
+}
+#rightEye, #rightEye2 {
+    left: 3.6vw;
+}
+#head, #body, #leftArm, #rightArm, #leftLeg, #rightLeg {
+    width: 0.4vw;
+    height: 6vw;
+}
+#head {
+    top: 15vw;
+    width: 6vw;
+    border: 0.4vw solid black;
+}
+#body {
+    height: 10vw;
+    left: 29.8vw;
+}
+#body, #leftArm, #rightArm {
+    top: 21vw;
+}
+#upper, #rope, #support {
+    top: 13vw;
+    left: 17.8vw;
+    width: 0.5vw;
+    height: 26vw;
+}
+#rope {
+    left: 29.9vw;
+    width: 0.2vw;
+    height: 2vw;
+}
+#upper, #base {
+    width: 15vw;
+    height: 0.5vw;
+}
+#head, #leftArm {
+    left: 27vw;
+}
+#leftLeg, #rightLeg {
+    top: 30vw;
+    left: 32vw;
+}
+#leftLeg {
+    left: 27.7vw;
+}
+#leftArm {
+    transform: rotate(65deg);
+}
+#rightArm {
+    left: 32.5vw;
+    transform: rotate(-65deg);
+}
+#base {
+    top: 39vw;
+    left: 10vw;
+}
+#mouth {
+    top: 3vw;
+    left: 1.9vw;
+    width: 1.5vw;
+    height: 1.5vw;
+    border: 0.2vw solid black;
+}
+
+#hint {
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 3vw;
+}
+#hint p {
+    font-size: 1.3vw;
+}
+#hint #keywords {
+    font-size: 2vw;
+}
+
+#word {
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 3vw;
+}
+#word span {
+    width: 3vw;
+    height: 3vw;
+    text-align: center;
+    font-size: 2.2vw;
+    border-bottom: 0.2vw solid black;
+    margin: 0.5vw;
+}
+
+#char {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+    margin-left: 3vw;
+}
+#char span {
+    cursor: pointer;
+    width: 3.5vw;
+    height: 3.5vw;
+    text-align: center;
+    font-size: 2.2vw;
+    border: 0.2vw solid black;
+    margin: 0.5vw;
+}

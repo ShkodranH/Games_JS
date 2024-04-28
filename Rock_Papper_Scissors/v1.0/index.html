@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Rock Paper Scissors</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <script src="https://kit.fontawesome.com/6a55ad4003.js" crossorigin="anonymous"></script>
+        
+</head>
+<body onkeydown="choice(event)">
+    <div id="player1">
+        <div class="info">
+            <span>Player</span>
+            <span></span>
+            <span>Computer</span>
+        </div>
+        <div class="info2">
+            <span>
+                <i id="pfstar0" class="fas fa-star"></i>
+                <i id="pfstar1" class="fas fa-star"></i>
+                <i id="pfstar2" class="fas fa-star"></i>
+                <i id="pfstar3" class="fas fa-star"></i>
+                <i id="pfstar4" class="fas fa-star"></i>
+
+                <i id="pstar0" class="far fa-star"></i>
+                <i id="pstar1" class="far fa-star"></i>
+                <i id="pstar2" class="far fa-star"></i>
+                <i id="pstar3" class="far fa-star"></i>
+                <i id="pstar4" class="far fa-star"></i>
+            </span>
+            <span></span>
+            <span>
+                <i id="cfstar0" class="fas fa-star"></i>
+                <i id="cfstar1" class="fas fa-star"></i>
+                <i id="cfstar2" class="fas fa-star"></i>
+                <i id="cfstar3" class="fas fa-star"></i>
+                <i id="cfstar4" class="fas fa-star"></i>
+
+                <i id="cstar0" class="far fa-star"></i>
+                <i id="cstar1" class="far fa-star"></i>
+                <i id="cstar2" class="far fa-star"></i>
+                <i id="cstar3" class="far fa-star"></i>
+                <i id="cstar4" class="far fa-star"></i>
+            </span>
+        </div>
+        <div class="moves">
+            <div>
+                <i id="pRock" style="transform: rotate(90deg);" class="fas fa-hand-rock"></i>
+                <i id="pPaper" style="display: none; transform: rotate(90deg);" class="fas fa-hand-paper"></i>
+                <i id="pScissor" style="display: none; transform: scaleX(-1);" class="fas fa-hand-scissors"></i>
+            </div>
+            <div style="font-size: 3vw; color: black;">
+                <p id="round">Start</p>
+                <p id="winner" style="font-size: 2vw;"></p>
+            </div>
+            <div>
+                <i id="rock" style="transform: rotate(-90deg) scaleX(-1);" class="fas fa-hand-rock"></i>
+                <i id="paper" style="display: none; transform: rotate(-90deg) scaleX(-1);" class="fas fa-hand-paper"></i>
+                <i id="scissor" style="display:none;" class="fas fa-hand-scissors"></i>
+            </div>
+        </div>
+        <div class="choose">
+            <div>
+                <span><i onclick="rock(), choose(), rounds(), winner(), stars()" style="transform: rotate(90deg);" class="far fa-hand-rock"></i><br>A</span>
+                <span><i onclick="paper(), choose(), rounds(), winner(), stars()" style="transform: rotate(90deg);" class="far fa-hand-paper"></i><br>S</span>
+                <span><i onclick="scissor(), choose(), rounds(), winner(), stars()" style="transform: scaleX(-1);" class="far fa-hand-scissors"></i><br>D</span>
+            </div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

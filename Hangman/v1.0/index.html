@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">  
+</head>
+<body onkeydown="keyboard(event)">
+    <div id="intro">
+        <h1>Hangman</h1>
+        <button onclick="play()">Play</button>
+    </div>
+
+    <div id="main">
+        <div id="hint">
+            <p>Hint : <span id="keywords"></span></p>
+        </div>
+        <div id="word"></div>
+        <div id="char">
+            <span onclick="board(this), key('a')">A</span> 
+            <span onclick="board(this), key('b')">B</span> 
+            <span onclick="board(this), key('c')">C</span> 
+            <span onclick="board(this), key('d')">D</span> 
+            <span onclick="board(this), key('e')">E</span> 
+            <span onclick="board(this), key('f')">F</span>
+            <span onclick="board(this), key('g')">G</span> 
+            <span onclick="board(this), key('h')">H</span>
+            <span onclick="board(this), key('i')">I</span> 
+            <span onclick="board(this), key('j')">J</span> 
+            <span onclick="board(this), key('k')">K</span> 
+            <span onclick="board(this), key('l')">L</span>
+            <span onclick="board(this), key('m')">M</span> 
+            <span onclick="board(this), key('n')">N</span>
+            <span onclick="board(this), key('o')">O</span> 
+            <span onclick="board(this), key('p')">P</span> 
+            <span onclick="board(this), key('q')">Q</span> 
+            <span onclick="board(this), key('r')">R</span>
+            <span onclick="board(this), key('s')">S</span> 
+            <span onclick="board(this), key('t')">T</span>
+            <span onclick="board(this), key('u')">U</span> 
+            <span onclick="board(this), key('v')">V</span> 
+            <span onclick="board(this), key('w')">W</span> 
+            <span onclick="board(this), key('x')">X</span>
+            <span onclick="board(this), key('y')">Y</span> 
+            <span onclick="board(this), key('z')">Z</span>
+         </div>
+    </div>
+
+    <div id="hangman">
+        <div id="hang">
+            <div id="upper"></div>
+            <div id="rope"></div>
+            <div id="support"></div>
+            <div id="base"></div>
+        </div>
+        <div id="man">
+            <div id="head">
+                <div id="leftEye"></div>
+                <div id="leftEye2"></div>
+                <div id="rightEye"></div>
+                <div id="rightEye2"></div>
+                <div id="mouth"></div>
+            </div>
+            <div id="body"></div>
+            <div id="leftArm"></div>
+            <div id="rightArm"></div>
+            <div id="leftLeg"></div>
+            <div id="rightLeg"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

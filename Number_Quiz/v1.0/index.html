@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Quiz</title>
+    <link rel="icon" href="icon.png" type="image/jpg">
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="intro">
+        <p>Number Quiz</p>
+        <div>
+            <div>4</div>
+            <div>?</div>
+            <div>3</div>
+            <div>5</div>
+        </div>
+        <button onclick="start()">Start</button>
+    </div>
+
+    <div id="main">
+        <h1 id="level">Level</h1>
+
+        <div id="question"></div>
+
+        <div id="answer"></div>
+
+        <div id="numbers">
+            <span onclick="numClick(this)">0</span>
+            <span onclick="numClick(this)">1</span>
+            <span onclick="numClick(this)">2</span>
+            <span onclick="numClick(this)">3</span>
+            <span onclick="numClick(this)">4</span>
+            <span id="redo" onclick="redo()"><i class="fas fa-undo"></i></span>
+            <span onclick="numClick(this)">5</span>
+            <span onclick="numClick(this)">6</span>
+            <span onclick="numClick(this)">7</span>
+            <span onclick="numClick(this)">8</span>
+            <span onclick="numClick(this)">9</span>
+            <span id="check" onclick="check()">Check</span>
+        </div>
+    </div>
+
+    <div id="win">
+        <div class="congrats">
+            <div>C</div>
+            <div>O</div>
+            <div>N</div>
+            <div>G</div>
+            <div>R</div>
+            <div>A</div>
+            <div>T</div>
+            <div>S</div>
+        </div>
+        <p>You are a Genius!</p>
+        <button onclick="finish()">Play Again</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

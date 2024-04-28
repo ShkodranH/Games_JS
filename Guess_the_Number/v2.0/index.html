@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/media-queries.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Guess the Number <span>(1&nbsp;-&nbsp;100)</span></h1>
+        <p class="score"></p>
+        <div>
+            <input type="number" class="input" min="1" max="100" autofocus>
+            <button class="guess">Guess</button>
+        </div>
+        <p class="hint"></p>
+        <p class="guesses">Previous Guess(es): <span></span></p>
+        <button class="reset">New Game</button>
+    </div>
+
+    <script src="scripts/index.js"></script>
+</body>
+</html>

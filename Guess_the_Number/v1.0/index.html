@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <link rel="icon" href="icon.png" type="image/png">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <h1>Guess the Number <span>(1 - 100)</span></h1>
+        <p id="score"></p>
+        <div>
+            <input id="inp" type="number" min="1" max="100">
+            <button id="guess" onclick="numValue()">Guess</button>
+        </div>
+        <p id="prev">Previous Guess(es): <span id="guesses"></span></p>
+        <button id="win"></button>
+        <p id="hint"></p>
+        <button onclick="reset()" id="new" style="background-color: rgb(116, 150, 19); height: 6vh;">New Game</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

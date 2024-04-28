@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: gold;
+    font-family: Iceberg;
+}
+#div {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10%;
+}
+#div1, #div2, #div3, #div4, #div5, #div6, #lastdiv {
+    height: 50vh;
+    display: none;
+    padding: 10%;
+}
+[id*=div] div {
+    display: flex;
+    justify-content: center;
+}
+table {
+    margin: auto;
+}
+td {
+    font-size: 6vh;
+    padding: 2vh 3vh;
+    text-align: center;
+    font-weight: bold;
+}
+button {
+    background-color: yellow;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 4vh;
+    padding: 1% 3%;
+    margin: 2%;
+}
+#div h1 {
+    font-size: 6vh;
+    text-align: center;
+}
+#div h2 {
+    font-size: 4.5vh;
+    text-align: center;
+    padding: 1%;
+}
+#div1 h2, #div2 h2, #div3 h2, #div4 h2, #div5 h2, #div6 h2 {
+    text-align: center;
+    margin-bottom: 2%;
+    font-size: 5vh;
+}
+#lastdiv {
+    flex-direction: column;
+}
+#final1 {
+    color: gold;
+    font-size: 7vh;
+    text-align: left;
+    margin-left: 30%;
+    animation-name: f1;
+    animation-duration: 100s;
+    animation-iteration-count: 1;
+}
+@keyframes f1 {
+    0%    { font-size: 0vh; }
+    0.5%  { font-size: 9vh; color: black; }
+    1%    { font-size: 7vh; color: black; }
+    100%  { font-size: 7vh; color: black; }
+}
+#final2 {
+    color: gold;
+    font-size: 6vh;
+    text-align: center;
+    padding: 3%;
+    animation-name: f2;
+    animation-duration: 100s;
+    animation-delay: 1s;
+    animation-iteration-count: 1;
+}
+@keyframes f2 {
+    0%    { font-size: 0vh; }
+    0.5%  { font-size: 8vh; color: black; }
+    1%    { font-size: 6vh; color: black; }
+    100%  { font-size: 6vh; color: black; }
+}
+#final3 {
+    color: gold;
+    font-size: 8vh;
+    text-align: right;
+    margin-right: 30%;
+    animation-name: f3;
+    animation-duration: 100s;
+    animation-delay: 2s; 
+    animation-iteration-count: 1;
+}
+@keyframes f3 {
+    0%    { font-size: 0vh; }
+    0.5%  { font-size: 11vh; color: black; }
+    1%    { font-size: 8vh; color: black; }
+    100%  { font-size: 8vh; color: black; }
+}
+#result {
+    color: gold;
+    font-size: 10vh;
+    text-align: center;
+    margin-bottom: 3%;
+    font-weight: bolder;
+    animation-name: f4;
+    animation-duration: 100s;
+    animation-delay: 3.5s;
+    animation-iteration-count: 1;
+}
+@keyframes f4 {
+    0%    { font-size: 0vh; }
+    0.5%  { font-size: 15vh; color: black; }
+    1%    { font-size: 10vh; color: black; }
+    100%  { font-size: 10vh; color: black; }
+}
+#lastbtn {
+    background-color: gold;
+    color: gold;
+    border-width: 0;
+    align-self: center;
+    animation-name: f5;
+    animation-duration: 100s;
+    animation-delay: 4.5s;
+    animation-iteration-count: 1;
+}
+@keyframes f5 {
+    0%    { color: gold; background-color: gold; }
+    1%    { border-width: 3px; color: black; background-color: yellow; }
+    100%  { color: black; background-color: yellow; }
+}
+
+@media only screen and (max-width:600px) {
+    #div h1, #div h2 {
+        font-size: 5vw;
+        margin-bottom: 1vh;
+    }
+    #div1 h2, #div2 h2, #div3 h2, #div4 h2, #div5 h2, #div6 h2 {
+        font-size: 5vw;
+        margin-bottom: 5vh;
+    }
+    td {
+        font-size: 4.5vw;
+        padding: 2vh 2vw;
+    }
+    #final1 {
+        margin-left: 10%;
+    } 
+    #final3 {
+        margin-right: 10%;
+    }
+}

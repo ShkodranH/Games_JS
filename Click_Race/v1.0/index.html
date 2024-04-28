@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Race</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            font-family: 'Rampart One', cursive;
+        }
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e0f4fb;
+        }
+        #intro {
+            height: 100vh;
+            width: 120vh;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-flow: column nowrap;
+            background-image: url('images/background.png');
+            background-size: 120vh 120vh;
+        }
+        #intro pre {
+            font-size: 6vw;
+            color: #204070;
+            letter-spacing: 5px;
+        }
+        #intro span {
+            cursor: default;
+            font-size: 3vw;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 1vh;
+            padding: 10vh 10vw;
+            background-color: rgba(0, 0, 0, 0.2);
+            background: radial-gradient(rgba(20, 40, 70, 0.8), rgba(0, 0, 0, 0.0) 70%);
+        }
+        #canvas {
+            display: none;
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div id="intro">
+        <pre>Click  Race</pre>
+        <span onclick="start()">Start</span>
+    </div>
+    <canvas id="canvas" width="1500" height="650"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>

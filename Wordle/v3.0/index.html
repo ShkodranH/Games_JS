@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Wordle</title>
+        <meta charset="utf-8">
+        <link rel="icon" href="./images/logo.png" type="image/png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles/main.css">
+        <link rel="stylesheet" type="text/css" href="styles/modals.css">
+        <link rel="stylesheet" type="text/css" href="styles/algorithms.css">
+        <link rel="stylesheet" type="text/css" href="styles/animations.css">
+        <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="startScene">
+            <div id="gameLogo"></div>
+            <div id="playDiv">
+                <button id="infoButton">?</button>
+                <button id="playButton">PLAY</button>
+                <button id="setting"><i class="fas fa-cog"></i></button>
+            </div>
+        </div>
+
+        <div id="howtoPlayDiv">
+            <div id="infoDiv">
+                <span id="closeInfo">&#x2715;</span>
+                <div id="infoTitle">
+                    <h1>How to Play</h1>
+                    <h3>Guess the Wordle in 6 tries</h3>
+                </div>
+                <ul>
+                    <li>Each guess must be a valid 5-letter word</li>
+                    <li>The color of the tiles will change to show how close your guess was to the word</li>
+                </ul>
+                <div id="examples">
+                    <h3>Examples</h3>
+                    <div id="exampleDiv">
+                        <div></div>
+                        <p><b>D</b> is in the word and in correct position</p>
+                        <div></div>
+                        <p><b>O</b> is in the word but in the wrong position</p>
+                        <div></div>
+                        <p><b>Y</b> is not in the word in any position</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="settingBg">
+            <div id="settingDiv">
+                <span id="closeSetting">&#x2715;</span>
+                <h1>Settings</h1>
+                <div id="chooseAlgorithms">
+                    <h2>Choose Algorithms</h2>
+                    <p>Below you can select which algorithms you want to use in solving wordle. We recommend to use <b>"Information Entropy Advance"</b> algorithm for minimal number of guesses</p>
+                    <div><p>Filter Words</p></div>
+                    <div><p>Predefine Words</p></div>
+                    <div><p>Frequency Analysis</p></div>
+                    <div><p>Frequency Analysis Advance</p></div>
+                    <div><p>Information Entropy</p></div>
+                    <div><p>Information Entropy Advance</p></div>
+                    <a href="tests.html"><button>Test Algorithms Performance</button></a>
+                </div>
+            </div>
+        </div>
+
+        <div id="availableInfo"></div>
+
+        <div id="mainScene">
+            <div id="gameboard"></div>
+            <div id="keyboard"></div>
+        </div>
+
+        <div id="algorithms">
+            <div id="filterWords"><h3>Filter Incorrect Words</h3></div>
+            <div id="predefineWords"><h3>Predefine Words</h3></div>
+            <div id="frequencyAnalysis"><h3>Frequency Analysis</h3></div>
+            <div id="frequencyAnalysisAdv"><h3>Frequency Analysis Advance</h3></div>
+            <div id="informationEntropy"><h3>Information Entropy</h3></div>
+            <div id="informationEntropyAdv"><h3>Information Entropy Advance</h3></div>
+        </div>
+
+        <div id="finalBg">
+            <div id="finalScene">
+                <h1 id="finalMessage"></h1>
+                <button id="replayButton"></button>
+            </div>
+        </div>
+
+        <p id="mobileDevices"> Mobile Devices Not Supported! </p>
+
+        <script type="module" src="scripts/index.js"></script>
+        <script type="module" src="scripts/game.js"></script>
+        <script type="module" src="scripts/filterWords.js"></script>
+        <script type="module" src="scripts/filterWordsAdv.js"></script>
+    </body>
+</html>

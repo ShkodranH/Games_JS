@@ -1,0 +1,52 @@
+@font-face {
+    font-family: Nunito;
+    src: url(../fonts/Nunito.ttf);
+}
+:root {
+    --bg-color: #222222;
+    --color: #ffffff;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-family: Nunito, sans-serif;
+}
+html {
+    font-size: 16px;
+}
+body {
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+    color: var(--color);
+}
+.title {
+    font-size: 4rem;
+}
+img {
+    margin: 0%;
+    cursor: pointer;
+}
+.btn {
+    width: 300px;
+    height: 300px;
+    background-image: url(../images/cursor.png);
+    background-size: contain;
+    clip-path: polygon(0 0, 100% 42%, 56% 56%, 42% 100%);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn p {
+    font-size: 3rem;
+    margin-bottom: 1.5em;
+    margin-right: 1em;
+}
+.stage, .finish {
+    display: none;
+}
