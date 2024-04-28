@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build the Tower</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="intro">
+        <div>
+            <p>Build the Tower</p>
+            <button onclick="start()">Start</button> 
+        </div>
+    </div>
+    <div id="main">
+        <div id="bg">
+            <div id="land"></div>
+
+            <div id="coins"><img src="images/coin.png"> 0</div>
+            <div onclick="market()" id="market">Market</div>
+
+            <div id="market2">
+                <div id="close"><span onclick="closeMarket()">X</span></div>
+                <table>
+                    <tr>
+                        <td id="percent" onclick="sellPercent(1)">0%</td>
+                        <td>Quantity</td>
+                        <td>Price</td>
+                        <td id="total">Total</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/rock.png"></td>
+                        <td id="quantity1">0</td>
+                        <td id="price1">2 coins</td>
+                        <td id="total1" onclick="sell1()">0</td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/brick.png"></td>
+                        <td id="quantity2">0</td>
+                        <td id="price2">5 coins</td>
+                        <td id="total2" onclick="sell2()">0</td>
+                    </tr>
+                </table>
+            </div>
+            <img id="anim1" src="images/rock.png">
+            <img id="anim2" src="images/rock.png">
+            <img id="anim3" src="images/rock.png">
+            <img id="anim4" src="images/brick.png">
+            <img id="anim6" src="images/brick.png">
+
+            <img id="stone" src="images/stone.png">
+            <div id="levelup" onclick="levelupStone()"><i class="fas fa-arrow-alt-up"></i></div>
+            <div id="stoneLv">
+                <div id="closeStone" onclick="closeStone()">X</div>
+                <p id="stoneLevel">Level 0</p>
+                <p id="stoneTap">Stone per Tap: 0 => 0</p>
+                <p id="stoneMiners">Miners: 0 => 0</p>
+                <p id="stonePrice">Upgrade Price: 0 coins</p>
+                <button id="btn" onclick="upgradeStone()">Upgrade</button>
+            </div>
+
+            <img id="miner" src="images/miner.png">
+            <img id="axe" src="images/axe.png">
+            <div onclick="addStone()" id="minerDiv"></div>
+
+            <div id="levelup2" onclick="levelupTransport()"><i class="fas fa-arrow-alt-up"></i></div>
+            <div id="transportLv">
+                <div id="closeTransport" onclick="closeTransport()">X</div>
+                <p id="transportLevel">Level 0</p>
+                <p id="transportCapacity">Transport Capacity: 0 => 0</p>
+                <p id="transportAmount"> Transporter Amount: 0 => 0</p>
+                <p id="transportPrice">Upgrade Price: 0 coins</p>
+                <button id="btn2" onclick="upgradeTransport()">Upgrade</button>
+            </div>
+            <img id="stonePile" src="images/rock2.png">
+            <div id="stoneCollect">0</div>
+
+            <img id="transporter" src="images/transporter.png">
+            <img id="transporter2" src="images/transporter2.png">
+            <div onclick="transportStone()" id="transporterDiv"></div>
+
+            <div id="levelup3" onclick="levelupBrick()"><i class="fas fa-arrow-alt-up"></i></div>
+            <div id="brickLv">
+                <div id="closeBrick" onclick="closeBrick()">X</div>
+                <p id="brickLevel">Level 0</p>
+                <p id="brickTime">Brick per Time: 0 => 0</p>
+                <p id="brickNumber">Number of Bricks: 0 => 0</p>
+                <p id="brickPrice">Upgrade Price: 0 coins</p>
+                <button id="btn3" onclick="upgradeBrick()">Upgrade</button>
+            </div>
+            <img id="stonePile2" src="images/rock2.png">
+            <div id="stoneCollect2">0</div>
+
+            <img onclick="makeBrick()" id="stoneCutter" src="images/cutter.png">
+            <div id="progress"></div>
+
+            <img onclick="transportBrick()" id="brickPile" src="images/brick3.png">
+            <div onclick="transportBrick()" id="brickCollect">0</div>
+
+            <div id="base"></div>
+            <div id="base2"></div>
+            <div id="win">
+                <p>You finished the tower</p>
+                <button onclick="document.location.reload()">Restart</button>
+            </div>
+            <img id="final" src="images/final.png">
+            <div id="transparent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

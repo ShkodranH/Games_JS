@@ -1,0 +1,630 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Righteous', cursive;
+    user-select: none;
+}
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#intro {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url('images/background.png');
+    background-size: cover;
+}
+#intro div {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: column nowrap;
+    backdrop-filter: blur(5px);
+    background-color: rgba(99, 153, 237, 0.3);
+}
+#intro p {
+    font-size: 6vw;
+    color: #dcc9b0;
+    letter-spacing: 5px;
+    text-shadow: 2px 2px 2px black,
+    -2px -2px 2px black,
+    2px -2px 2px black,
+    -2px 2px 2px black,
+    4px 4px 2px white,
+    -4px -4px 2px white,
+    4px -4px 2px white,
+    -4px 4px 2px white;
+}
+#intro button {
+    width: 20vw;
+    height: 10vh;
+    font-size: 2.5vw;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 1px black,
+    -1px -1px 1px black,
+    1px -1px 1px black,
+    -1px 1px 1px black;
+    color: white;
+    background-color: #da8e57;
+    border-top: 10px solid #f8e3cf;
+    border-bottom: 10px solid #f8e3cf;
+    border-left: 10px solid #6c4c39;
+    border-right: 10px solid #6c4c39;
+}
+#main {
+    width: 180vmin;
+    height: 90vmin;
+    display: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#bg {
+    position: relative;
+    width: 180vmin;
+    height: 90vmin;
+    background-color: #6399ed;
+}
+#transparent {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99990;
+}
+#win {
+    display: none;
+    position: fixed;
+    top: 30vmin;
+    left: 40vmin;
+    width: 60vmin;
+    height: 15vmin;
+    font-size: 5vmin;
+    text-align: center;
+    color: #dcc9b0;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 1px black,
+    -1px -1px 1px black,
+    1px -1px 1px black,
+    -1px 1px 1px black,
+    2px 2px 1px white,
+    -2px -2px 1px white,
+    2px -2px 1px white,
+    -2px 2px 1px white;
+    z-index: 99999;
+}
+#win button {
+    width: 20vmin;
+    height: 5vmin;
+    font-size: 3vmin;
+    background-color: #da8e57;
+    color: white;
+    border-top: 3px solid #f8e3cf;
+    border-bottom: 3px solid #f8e3cf;
+    border-left: 2px solid #6c4c39;
+    border-right: 2px solid #6c4c39;
+}
+::-webkit-scrollbar {
+    width: 0;
+}
+#land {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 180vmin;
+    height: 22vmin;
+    background-color: #77c745;
+}
+#market {
+    position: fixed;
+    top: 8vmin;
+    left: 41vmin;
+    width: 20vmin;
+    height: 7vmin;
+    background-color: #da8e57;
+    border: 3px solid #6c4c39;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vmin;
+    color: white;
+}
+#coins {
+    position: fixed;
+    top: 8vmin;
+    left: 18vmin;
+    width: 20vmin;
+    height: 7vmin;
+    background-color: #da8e57;
+    border: 3px solid #6c4c39;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1vmin;
+    font-size: 3vmin;
+    color: white;
+}
+#coins img {
+    width: 4vmin;
+    height: 4vmin;
+    position: absolute;
+    left: 1vmin;
+}
+#market2 {
+    display: none;
+    position: fixed;
+    top: 17vmin;
+    left: 18vmin;
+    width: 46vmin;
+    height: 30vmin;
+    padding-left: 1vmin;
+    z-index: 9999;
+    background-color: rgba(100, 100, 100, 0.7);
+}
+#close {
+    width: 43vmin;
+    height: 7vmin;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+#close span {
+    width: 5vmin;
+    height: 5vmin;
+    color: white;
+    background-color: #da8e57;
+    border: 3px solid #6c4c39;
+    font-size: 3vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#market2 #total1, #market2 #total2 {
+    background-color: #da8e57;
+    border: 3px solid #6c4c39;
+    width: 12vmin;
+    font-size: 2.5vmin;
+}
+#market2 #percent {
+    background-color: #da8e57;
+    border: 3px solid #6c4c39;
+    font-size: 2.5vmin;
+}
+#market2 td {
+    width: 10vmin;
+    height: 7vmin;
+    text-align: right;
+    padding-right: 1vmin;
+    color: white;
+    font-size: 2vmin;
+}
+#market2 tr:nth-child(1) td {
+    padding-right: 0;
+}
+#market2 td:nth-child(1) {
+    text-align: center;
+}
+#market2 #total {
+    padding-right: 1vmin;
+}
+#market2 img {
+    width: 5vmin;
+}
+#levelup {
+    position: absolute;
+    bottom: 40vmin;
+    left: 30vmin;
+    width: 6vmin;
+    height: 6vmin;
+    font-size: 4.5vmin;
+    color: white;
+    text-align: center;
+    background-color: #707070;
+    border: 2px solid #4c4c49;
+}
+#levelup2 {
+    position: absolute;
+    bottom: 27vmin;
+    left: 50vmin;
+    width: 6vmin;
+    height: 6vmin;
+    font-size: 4.5vmin;
+    color: white;
+    text-align: center;
+    background-color: #707070;
+    border: 2px solid #4c4c49;
+}
+#levelup3 {
+    position: absolute;
+    bottom: 20vmin;
+    left: 77vmin;
+    width: 6vmin;
+    height: 6vmin;
+    font-size: 4.5vmin;
+    color: white;
+    text-align: center;
+    background-color: #707070;
+    border: 2px solid #4c4c49;
+}
+#stone, #minerDiv {
+    position: absolute;
+    bottom: 18vmin;
+    left: 5vmin;
+    width: 35vmin;
+    height: 25vmin;
+}
+#stoneLv, #transportLv, #brickLv {
+    display: none;
+    position: absolute;
+    bottom: 37vmin;
+    left: 52vmin;
+    width: 40vmin;
+    height: 30vmin;
+    color: white;
+    font-size: 2.5vmin;
+    background-color: red;
+    background-color: rgba(100, 100, 100, 0.7);
+}
+#closeStone, #closeTransport, #closeBrick {
+    width: 5vmin;
+    height: 5vmin;
+    background-color: #da8e57;
+    border: 3px solid #6c4c39;
+    margin: 1vmin 1vmin 1vmin 34vmin;
+    font-size: 3vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#stoneLevel, #transportLevel, #brickLevel {
+    text-align: center;
+    margin: -5vmin 0 2vmin -2vmin;
+}
+#stoneMiners, #stoneTap, #stonePrice,
+#transportCapacity, #transportPrice, #transportAmount,
+#brickTime, #brickNumber, #brickPrice {
+    padding: 1vmin 0 0 2vmin;
+}
+#stoneLv button, #transportLv button, #brickLv button {
+    width: 15vmin;
+    height: 5vmin;
+    font-size: 2.5vmin;
+    color: white;
+    background-color: #606060;
+    border: 3px solid #4c4c39;
+    margin: 3vmin 0 0 12.5vmin;
+}
+#stonePile, #transporterDiv {
+    position: absolute;
+    bottom: 18vmin;
+    left: 40vmin;
+    width: 12vmin;
+    height: 9vmin;
+}
+#stoneCollect {
+    position: absolute;
+    bottom: 18vmin;
+    left: 40vmin;
+    width: 12vmin;
+    height: 3vmin;
+    text-align: center;
+    color: white;
+    font-size: 2.5vmin;
+    background-image: url('images/collect.png');
+    background-size: cover;
+}
+#transporter {
+    opacity: 0;
+    position: absolute;
+    bottom: 17vmin;
+    left: 45vmin;
+    width: 10vmin;
+}
+#transporter2 {
+    opacity: 0;
+    position: absolute;
+    bottom: 6vmin;
+    left: 60vmin;
+    width: 10vmin;
+}
+#miner {
+    opacity: 0;
+    position: absolute;
+    bottom: 25vmin;
+    left: 6vmin;
+    height: 10vmin;
+}
+#axe {
+    opacity: 0;
+    position: absolute;
+    bottom: 22vmin;
+    left: 4.5vmin;
+    height: 15vmin;
+    transform: rotate(0deg);
+}
+#stonePile2 {
+    position: absolute;
+    bottom: 5vmin;
+    left: 60vmin;
+    width: 12vmin;
+    height: 9vmin;
+}
+#stoneCollect2 {
+    position: absolute;
+    bottom: 5vmin;
+    left: 60vmin;
+    width: 12vmin;
+    height: 3vmin;
+    text-align: center;
+    color: white;
+    font-size: 2.5vmin;
+    background-image: url('images/collect.png');
+    background-size: cover;
+}
+#stoneCutter {
+    position: absolute;
+    bottom: 5vmin;
+    left: 73vmin;
+    width: 15vmin;
+    height: 12vmin;
+}
+#progress {
+    position: absolute;
+    bottom: 2vmin;
+    left: 74vmin;
+    width: 0;
+    height: 1.5vmin;
+    background-color: purple;
+}
+#brickPile {
+    position: absolute;
+    bottom: 8vmin;
+    left: 91vmin;
+    width: 10vmin;
+    height: 5vmin;
+}
+#brickCollect {
+    position: absolute;
+    bottom: 5vmin;
+    left: 90vmin;
+    width: 12vmin;
+    height: 3vmin;
+    text-align: center;
+    color: white;
+    font-size: 2.5vmin;
+    background-image: url('images/collect.png');
+    background-size: cover;
+}
+#base {
+    position: absolute;
+    bottom: 21vmin;
+    left: 95vmin;
+    width: 47vmin;
+    height: 2vmin;
+    background-color: #6f6f6f;
+}
+#final {
+    display: none;
+    position: absolute;
+    bottom: 185vmin;
+    left: 94vmin;
+    width: 49vmin;
+    z-index: 9999;
+}
+#anim1 {
+    width: 6vmin;
+    position: absolute;
+    bottom: 25vmin;
+    left: 20vmin;
+}
+#anim2 {
+    width: 6vmin;
+    position: absolute;
+    bottom: 18vmin;
+    left: 43vmin;
+}
+#anim3 {
+    width: 6vmin;
+    position: absolute;
+    bottom: 5vmin;
+    left: 63vmin;
+}
+#anim4 {
+    width: 6vmin;
+    position: absolute;
+    bottom: 5vmin;
+    left: 77vmin;
+}
+#anim6 {
+    width: 6vmin;
+    position: absolute;
+    bottom: 6vmin;
+    left: 93vmin;
+}
+.class1 {
+    animation-name: anim1;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+}
+.class2 {
+    animation-name: anim2;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+}
+.class3 {
+    animation-name: anim3;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+}
+.class4 {
+    animation-name: anim4;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+}
+.class5 {
+    animation-name: anim5;
+    animation-timing-function: linear;
+}
+.class6 {
+    animation-name: anim6;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+}
+.class7 {
+    animation-name: anim7;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+}
+.class8 {
+    animation-name: anim8;
+    animation-duration: 1s;
+    animation-delay: 1.2s;
+    animation-timing-function: linear;
+}
+.class9 {
+    animation-name: anim9;
+    animation-duration: 0.25s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes anim1 {
+    0% {
+        bottom: 25vmin;
+        left: 20vmin;
+    }
+    45% {
+        bottom: 33vmin;
+        left: 32vmin;
+    }
+    55% {
+        bottom: 33vmin;
+        left: 35vmin;
+    }
+    100% {
+        bottom: 18vmin;
+        left: 43vmin;
+    }
+}
+@keyframes anim2 {
+    0% {
+        bottom: 18vmin;
+        left: 43vmin;
+    }
+    40% {
+        bottom: 22vmin;
+        left: 50vmin;
+    }
+    100% {
+        bottom: 5vmin;
+        left: 63vmin;
+    }
+}
+@keyframes anim3 {
+    0% {
+        bottom: 5vmin;
+        left: 63vmin;
+    }
+    50% {
+        bottom: 10vmin;
+        left: 70vmin;
+    }
+    100% {
+        bottom: 6vmin;
+        left: 77vmin;
+    }
+}
+@keyframes anim4 {
+    0% {
+        bottom: 6vmin;
+        left: 77vmin;
+    }
+    50% {
+        bottom: 11vmin;
+        left: 85vmin;
+    }
+    100% {
+        bottom: 6vmin;
+        left: 93vmin;
+    }
+}
+@keyframes anim5 {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 13vmin;
+    }
+}
+@keyframes anim6 {
+    0% {
+        bottom: 6vmin;
+        left: 93vmin;
+    }
+    100% {
+        bottom: 23vmin;
+        left: 113vmin;
+    }
+}
+@keyframes anim7 {
+    0% {
+        opacity: 0;
+        bottom: 17vmin;
+        left: 45vmin;
+    }
+    10% {
+        opacity: 1;
+        bottom: 17vmin;
+        left: 45vmin;
+    }
+    90% {
+        opacity: 1;
+        bottom: 6vmin;
+        left: 60vmin;
+    }
+    100% {
+        opacity: 0;
+        bottom: 6vmin;
+        left: 60vmin;
+    }
+}
+@keyframes anim8 {
+    0% {
+        opacity: 0;
+        bottom: 6vmin;
+        left: 60vmin;
+    }
+    10% {
+        opacity: 1;
+        bottom: 6vmin;
+        left: 60vmin;
+    }
+    90% {
+        opacity: 1;
+        bottom: 17vmin;
+        left: 45vmin;
+    }
+    100% {
+        opacity: 0;
+        bottom: 17vmin;
+        left: 45vmin;
+    }
+}
+@keyframes anim9 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(45deg);
+    }
+}

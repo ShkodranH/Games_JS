@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Pictures 1 Word</title>
+    <script src="https://kit.fontawesome.com/6a55ad4003.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div id="intro">
+        <div class="logo">
+            <div>4</div>
+            <div>Pictures</div>
+            <div>1</div>
+            <div>Word</div>
+        </div>
+        <div><button onclick="play()">Play</button></div>
+    </div>
+    <div id="main">
+        <div id="pictures">
+            <img src="images/default.jpg">
+            <img src="images/default.jpg">
+            <img src="images/default.jpg">
+            <img src="images/default.jpg">
+        </div>
+
+        <div id="word"></div>
+
+        <div id="char">
+            <span onclick="press(this)"></span>
+            <span onclick="press(this)"></span>
+            <span onclick="press(this)"></span>
+            <span onclick="press(this)"></span>
+            <span onclick="press(this)"></span>
+            <span onclick="press(this)"></span>
+            <span onclick="press(this)"></span>
+            <span onclick="press(this)"></span>
+            <span onclick="press(this)"></span>
+            <span onclick="press(this)"></span>
+            <span onclick="press(this)"></span>
+            <span onclick="press(this)"></span>
+            <div onclick="undo()"><i class="fas fa-undo"></i></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
