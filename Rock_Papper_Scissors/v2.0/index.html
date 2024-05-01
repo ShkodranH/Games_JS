@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Papper Scissors</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="intro">
+        <p class="title">Rock Papper Scissors</p>
+        <div>
+            <div>Rock</div>
+            <div>Papper</div>
+            <div>Scissors</div>
+        </div>
+        <button class="start-btn">Play</button>
+    </div>
+
+    <div class="stage">
+        <div class="dashboard">
+            <h2 class="player-name">Player</h2>
+            <h2 class="computer-name">Computer</h2>
+            <div class="player-points"></div>
+            <div class="computer-points"></div>
+        </div>
+
+        <div class="game">
+            <div class="player"></div>
+            <div class="result">
+                <h2 class="round">Round 0</h2>
+                <p class="message"></p>
+            </div>
+            <div class="Computer"></div>
+        </div>
+
+        <div class="input-choices">
+            <div data-index="rock" class="inp-button">img</div>
+            <div data-index="papper" class="inp-button">img</div>
+            <div data-index="scissors" class="inp-button">img</div>
+        </div>
+    </div>
+
+    <div class="input-name">
+        <label for="name">Enter Your Name: </label>
+        <input id="name" type="text">
+        <button class="submit">OK</button>
+    </div>
+
+    <div class="finish">
+        <div>
+            <p>Congrats to the King of the game!</p>
+            <p class="display-name"></p>
+        </div>
+        <button class="finish-btn">Play Again</button>
+    </div>
+
+    <script src="scripts/index.js"></script>
+</body>
+</html>
