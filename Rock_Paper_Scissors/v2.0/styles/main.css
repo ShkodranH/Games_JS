@@ -1,16 +1,11 @@
 @font-face {
-    font-family: Barlow;
-    src: url(../fonts/barlow.ttf);
+    font-family: NewAthletic;
+    src: url(../fonts/new-athletic.ttf);
 }
 :root {
-    --bg-color: #3c3f42;
-    --question-color: #ff5522;
-    --btn-color: #ffaa22;
-    --btn-color-2: #ffff9e;
-    --correct-color: #4bb543;
-    --wrong-color: #df4759;
+    --bg-color: #f5f5f5;
+    --primary-color: #00bfff;
     --white: #ffffff;
-    --whitesmoke: #f5f5f5;
     --black: #000000;
     --darkgray: #2c2c2c;
 }
@@ -19,7 +14,7 @@
     margin: 0;
     padding: 0;
     user-select: none;
-    font-family: Barlow, sans-serif;
+    font-family: NewAthletic, sans-serif;
 }
 html {
     font-size: 14px;
@@ -32,8 +27,8 @@ body {
     background-color: var(--bg-color);
 
     & > div {
-        width: min(500px, 90%);
-        height: min(800px, 90%);
+        width: 90%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -43,27 +38,25 @@ button {
     cursor: pointer;
     border: none;
 }
-.intro {
+.stage {
     display: flex;
 }
-body > :not(.intro) {
+body > :not(.stage) {
     display: none;
 }
 
 .intro {
-    justify-content: space-between;
+    justify-content: center;
 
     & .title {
         font-size: 6rem;
-        font-weight: bold;
-        color: var(--white);
+        color: var(--primary-color);
     }
     & .start-btn {
-        width: 80%;
         font-size: 3rem;
-        padding: .2em;
+        padding: .2em 2em;
         border-radius: 10px;
-        background-color: var(--btn-color);
+        background-color: var(--primary-color);
         color: var(--white);
     }
 }
@@ -71,43 +64,50 @@ body > :not(.intro) {
 .stage {
     justify-content: space-between;
     
-    & .level {
-        font-size: 3rem;
-        color: var(--white);
-    }
-    & .board {
-        position: relative;
+    & .dashboard {
+        background-color: red;
         width: 100%;
-        height: 6em;
-        font-size: 3.5rem;
+        font-size: 2rem;
         text-align: center;
-        align-content: center;
-        border-radius: 10px;
-        background-color: var(--whitesmoke);
-        
-        
+        display: flex;
+        justify-content: space-between;
+    }
+    & .game {
+        width: 100%;
+        display: grid;
+        grid-template: 1fr / 1fr 2fr 1fr;
+    }
+    & .input-choices {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
     }
 }
 
 .finish {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: max(50%, 350px);
+    height: auto;
     justify-content: space-between;
 
     & div {
-        font-size: 2.5rem;
+        font-size: 3rem;
         text-align: center;
         color: var(--white);
 
-        & p:first-of-type {
-            font-size: 6rem;
+        & p:last-of-type {
+            font-size: 5rem;
+            letter-spacing: 5px;
             margin-bottom: .5em;
         }
     }
     & .finish-btn {
-        width: 80%;
         font-size: 3rem;
-        padding: .2em;
+        padding: .2em 2em;
         border-radius: 10px;
-        background-color: var(--btn-color);
-        color: var(--white);
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
     }
 }
