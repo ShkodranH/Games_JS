@@ -2,12 +2,7 @@ import { questionData } from "./data.js";
 
 const startBtn = document.querySelector('.start-btn');
 const levelElem = document.querySelector('.level');
-const questionElem = document.querySelector('.question');
-const hintElem = document.querySelector('.hint');
-const answerDiv = document.querySelector('.input');
 const keyboardElems = document.querySelectorAll('.key-buttons');
-const undoKey = document.querySelector('.undo-key');
-const checkKey = document.querySelector('.check-key');
 const finishBtn = document.querySelector('.finish-btn');
 
 let level = 1;
