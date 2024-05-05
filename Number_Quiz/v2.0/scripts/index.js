@@ -28,6 +28,8 @@ function generateAnswerField(answer) {
         answerDiv.innerHTML += "<div></div>";
     }
 }
+
+// Show/hide hint for the current question
 function enableHint() {
     let icon = hintElem.querySelector('img');
     if(isHintShown) {
@@ -60,6 +62,8 @@ function displayQuestion() {
     questionElem.innerHTML = currentQuestion.question;
     generateAnswerField(currentQuestion.answer);
 }
+
+// Check if user inputs the correct number as an answer
 async function checkAnswer(answer) {
     let input = answerDiv.querySelectorAll('div');
     for(let i = 0; i < answer.length; i++) {
@@ -74,6 +78,7 @@ async function checkAnswer(answer) {
     return true;
 }
 
+// Display the number which user choose on the answer field
 function drawNumber(clickedKey) {
     let answerFields = answerDiv.querySelectorAll('div');
     for(let item of answerFields) {
@@ -84,12 +89,16 @@ function drawNumber(clickedKey) {
         }
     }
 }
+
+// Erase the answer number which user input before
 function undoFunction() {
     answerDiv.querySelectorAll('div').forEach(elem => {
         elem.innerHTML = "";
         elem.classList.remove('input-color');
     });
 }
+
+// Check the answer and display the next question or finish scene if the answer is correct
 async function checkFunction() {
     if(await checkAnswer(currentQuestion.answer)) {
         if(level < questionData.length) {
@@ -106,6 +115,7 @@ async function checkFunction() {
     }
 }
 
+// Display number on the answer field even if user press them on physical keyboard
 function keyPress(event) {
     if(event.key == 'Enter' && !isHintShown) {
         checkFunction();

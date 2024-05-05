@@ -91,6 +91,8 @@ export const questionData = [
     },
 ]
 
+// Replacing newlines(\n) with <br> tag 
+// Replacing spaces with no breakable spaces(&nbsp;)
 questionData.forEach(item => {
     item.question = item.question.replace("?", "<span>?</span>");
     item.question = item.question.replace(/\n/g, "<br>");

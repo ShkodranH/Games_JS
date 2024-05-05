@@ -42,6 +42,7 @@ body {
 button {
     cursor: pointer;
     border: none;
+    -webkit-tap-highlight-color: transparent;
 }
 .intro {
     display: flex;
@@ -54,20 +55,20 @@ body > :not(.intro) {
     justify-content: space-between;
 
     & .title {
-        font-size: 6rem;
+        font-size: 4rem;
         font-weight: bold;
         color: var(--white);
     }
     & > div {
-        width: 60%;
+        width: 75%;
         display: grid;
         grid-template: repeat(2, 1fr) / repeat(2, 1fr);
-        gap: 2em;
+        gap: 1.5em;
         
         & div {
             width: 100%;
             aspect-ratio: 1 / 1;
-            font-size: 5rem;
+            font-size: 4rem;
             text-align: center;
             align-content: center;
             border-radius: 15px;
@@ -82,8 +83,8 @@ body > :not(.intro) {
     }
     & .start-btn {
         width: 80%;
-        font-size: 3rem;
-        padding: .2em;
+        font-size: 2.5rem;
+        padding: .3em;
         border-radius: 10px;
         background-color: var(--btn-color);
         color: var(--white);
@@ -94,21 +95,20 @@ body > :not(.intro) {
     justify-content: space-between;
     
     & .level {
-        font-size: 3rem;
+        font-size: 2.5rem;
         color: var(--white);
     }
     & .board {
         position: relative;
         width: 100%;
         height: 6em;
-        font-size: 3.5rem;
+        font-size: 3rem;
         text-align: center;
         align-content: center;
         border-radius: 10px;
         background-color: var(--whitesmoke);
         
         & .question {
-
             & span {
                 color: var(--question-color);
             }
@@ -124,7 +124,8 @@ body > :not(.intro) {
             
             & img {
                 cursor: pointer;
-                width: 3rem;
+                width: 2.5rem;
+                -webkit-tap-highlight-color: transparent;
             }
         }
     }
@@ -133,7 +134,7 @@ body > :not(.intro) {
         gap: .75em;
 
         & div {
-            font-size: 2.25rem;
+            font-size: 2rem;
             text-align: center;
             align-content: center;
             width: 2em;
@@ -147,16 +148,17 @@ body > :not(.intro) {
         width: 100%;
         display: grid;
         grid-template: repeat(2, 2fr) / repeat(5, 2fr) 3fr;
-        gap: 1em;
+        gap: .5em;
         
         & div {
             cursor: pointer;
-            font-size: 2.25rem;
+            font-size: 2rem;
             text-align: center;
             align-content: center;
             height: 2em;
             border-radius: 5px;
-            background-color: var(--whitesmoke);   
+            background-color: var(--whitesmoke);
+            -webkit-tap-highlight-color: transparent;   
         }
         & .undo-key, .check-key {
             background-color: var(--btn-color);
@@ -164,7 +166,7 @@ body > :not(.intro) {
             align-content: flex-end;
             
             & img {
-                width: 3.5rem;
+                width: 2.75rem;
             }
         }
     }
@@ -174,23 +176,23 @@ body > :not(.intro) {
     justify-content: space-between;
 
     & .message {
-        font-size: 2.5rem;
+        font-size: 2rem;
         text-align: center;
         color: var(--white);
 
         & p:first-of-type {
-            font-size: 6rem;
+            font-size: 4rem;
             margin-bottom: .5em;
         }
     }
     & img {
-        width: 20em;
+        width: 18em;
         filter: hue-rotate(180deg) grayscale(40%);
     }
     & .finish-btn {
         width: 80%;
-        font-size: 3rem;
-        padding: .2em;
+        font-size: 2.5rem;
+        padding: .3em;
         border-radius: 10px;
         background-color: var(--btn-color);
         color: var(--white);
