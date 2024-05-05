@@ -4,9 +4,9 @@
 }
 :root {
     --transparent-white: #ffffff50;
-    --bg-color: #d7b7b7;
-    --bg-color-2: #d7b797;
-    --btn-color: #b79777;
+    --bg-color: #f7d095;
+    --bg-color-2: #f7c273;
+    --btn-color: #c28a5b;
     --white: #ffffff;
     --black: #000000;
 }
@@ -66,6 +66,7 @@ h1 span,
     outline: none;
     border-radius: 2em;
     text-align: center;
+    -webkit-tap-highlight-color: transparent;
 }
 .guess,
 .reset {

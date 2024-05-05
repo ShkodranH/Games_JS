@@ -15,8 +15,9 @@ let messages = {
     high: 'Number was too high!',
 }
 
-// Play music in background
 const bgLoopAudio = new Audio("./sound-effects/bg-loop.mp3");
+
+// Play music in background
 document.addEventListener('click', () => {
     bgLoopAudio.volume = 0.05;
     bgLoopAudio.loop = true;
@@ -41,6 +42,7 @@ function nextTry() {
     score--;
 }
 
+// Display score and disable input if game ended
 function gameEnd(message) {
     scoreElem.style.display = 'flex';
     scoreElem.innerHTML = `Your Score:<span>${score}</span>`;
