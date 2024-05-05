@@ -1,17 +1,16 @@
+const resetButton = document.querySelector(".status button");
+const gameFieldsElem = document.querySelectorAll(".gameFields");
+const message = document.querySelector(".status p");
+
 let gameActive = true;
 let currentPlayer = "X";
 let gameState = new Array(9).fill("");
 let winResults = ["012", "345", "678", "036", "147", "258", "048", "246"];
 
-let resetButton = document.querySelector(".status button");
-let gameFieldsElem = document.querySelectorAll(".gameFields");
-let message = document.querySelector(".status p");
-
-
 const drawAudio = new Audio("./sound-effects/draw.wav");
 const winAudio = new Audio("./sound-effects/win.wav");
 
-//draw symbol X or O in the current cell
+// Draw symbol X or O in the current cell which is clicked
 function drawSymbol(clickedCell, cellIndex) {
     gameState[cellIndex] = currentPlayer;
     colorSymbol = (currentPlayer === "X") ? "#87ceeb" : "#ffa500";
@@ -25,7 +24,7 @@ function changePlayer() {
     message.innerHTML = "It's " + currentPlayer + "'s turn";
 }
 
-//Check winning conditions or if game is a draw
+// Check winning conditions or if game is a draw
 function winConditions() {
     for(let i = 0; i < winResults.length; i++) {
         let a = gameState[winResults[i][0]];
@@ -36,7 +35,7 @@ function winConditions() {
             message.innerHTML = currentPlayer + " wins";
             resetButton.classList.add("animation");
             gameActive = false;
-            setTimeout(function() {
+            setTimeout(() => {
                 winAudio.volume = 0.15;
                 winAudio.play();
             }, 300);

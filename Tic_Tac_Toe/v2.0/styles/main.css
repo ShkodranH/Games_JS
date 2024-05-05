@@ -7,10 +7,10 @@
     src: url(../fonts/comic-neue.ttf);
 }
 :root {
-    --bg-color: #222;
-    --dark-gray: #333;
-    --white-smoke: #eee;
-    --white: #fff;
+    --bg-color: #222222;
+    --dark-gray: #333333;
+    --white-smoke: #eeeeee;
+    --white: #ffffff;
     --blue: #87ceeb;
     --orange: #ffa500;
 }
@@ -47,6 +47,7 @@ body {
         color: var(--orange);
         font-size: min(20vw, 15vh);
         font-family: PermanentMarker, cursive;
+        -webkit-tap-highlight-color: transparent;
     }
 }
 
@@ -70,6 +71,7 @@ body {
         color: var(--white-smoke);
         font-size: min(6vw, 3vh);
         border: .1vmin solid transparent;
+        -webkit-tap-highlight-color: transparent;
     }
 }
 
