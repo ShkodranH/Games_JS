@@ -28,7 +28,7 @@ body {
 
     & > div {
         width: 90%;
-        height: 50em;
+        height: min(50em, 90%);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -40,6 +40,7 @@ body {
 button {
     cursor: pointer;
     border: none;
+    -webkit-tap-highlight-color: transparent;
 }
 .intro {
     display: flex;
@@ -182,6 +183,7 @@ body > :not(.intro) {
             margin-top: .5em;
             color: var(--white);
             background-color: var(--btn-color-2);
+            -webkit-tap-highlight-color: transparent;
         }
         & input:checked + label {
             outline: 5px solid var(--btn-color-1);
