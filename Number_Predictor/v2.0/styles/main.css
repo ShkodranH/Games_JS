@@ -3,7 +3,8 @@
     src: url(../fonts/iceberg.ttf);
 }
 :root {
-    --bg-color: #fff500;
+    --bg-color: #fde88d;
+    --black: #000000;
 }
 * {
     box-sizing: border-box;
@@ -27,7 +28,7 @@ body {
         justify-content: center;
         align-items: center;
         flex-flow: column nowrap;
-        gap: 3em;
+        gap: 2em;
     }
 }
 p {
@@ -40,8 +41,9 @@ button {
     font-size: 2rem;
     width: 5em;
     padding: .2em 0;
-    border: 2px solid black;
+    border: 2px solid var(--black);
     background-color: transparent;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .info {

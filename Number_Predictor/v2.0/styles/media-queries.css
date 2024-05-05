@@ -4,6 +4,7 @@
     }
     body > div {
         width: 80%;
+        gap: 3em;
     }
     .finish {
         width: 70%;

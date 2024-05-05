@@ -14,7 +14,7 @@ let result = 0;
 let stagePoints = 0;
 let stageCount = 0;
 let stageMessage = [
-    'Do you see your number below?',
+    'Do you see your number?',
     'How about there?',
     'And there?',
     'Make sure if it\'s there.',
@@ -24,6 +24,7 @@ let stageMessage = [
 
 const clickAudio = new Audio("./sound-effects/click.mp3");
 const winAudio = new Audio("./sound-effects/win.mp3");
+
 
 //Initializing variables and arrays based on user selection (0-31 or 0-63)
 function initVariables(value) {
@@ -79,16 +80,16 @@ function changeStage() {
 }
 
 startBtns.forEach(elem => {
-    elem.addEventListener('click', event => {
-        initVariables(event.target.id);
+    elem.addEventListener('click', () => {
+        initVariables(elem.getAttribute('data-value'));
         changeScene('.info', '.stage');
         changeStage();
     });
 })
 
 stageBtns.forEach(elem => {
-    elem.addEventListener('click', event => {
-        if(event.target.id === 'yes') {
+    elem.addEventListener('click', () => {
+        if(elem.getAttribute('data-value') === 'yes') {
             result += stagePoints;
         }
         if(stageCount === numberLength) {
