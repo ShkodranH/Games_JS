@@ -1,60 +1,43 @@
-import { questionData } from "./data.js";
-
 const startBtn = document.querySelector('.start-btn');
 const levelElem = document.querySelector('.level');
 const keyboardElems = document.querySelectorAll('.key-buttons');
 const finishBtn = document.querySelector('.finish-btn');
 
-let level = 1;
-let currentQuestion = questionData[level - 1];
-let isHintShown = true;
+let listOfChoices = ['rock', 'paper', 'scissors'];
+let playerPoints = 0;
+let computerPoints = 0;
+let playerChoice;
+let computerChoice;
 
-const correctAudio = new Audio("./sound-effects/correct.mp3");
-const wrongAudio = new Audio("./sound-effects/wrong.mp3");
-const winAudio = new Audio("./sound-effects/win.mp3");
+// const correctAudio = new Audio("./sound-effects/correct.mp3");
+// const wrongAudio = new Audio("./sound-effects/wrong.mp3");
+// const winAudio = new Audio("./sound-effects/win.mp3");
 
 function changeScene(prev, next) {
     document.querySelector(prev).style.display = 'none';
     document.querySelector(next).style.display = 'flex';
 }
-function generateAnswerField(answer) {
-    answerDiv.innerHTML = "";
-    for(let i of answer) {
-        answerDiv.innerHTML += "<div></div>";
-    }
+function popUpScene(name, action) {
+    document.querySelector('.bg').style.display = action;
+    document.querySelector(name).style.display = action;
 }
-function enableHint() {
-    let icon = hintElem.querySelector('img');
-    if(isHintShown) {
-        isHintShown = false;
-        icon.setAttribute("src", "images/hint.png");
-        questionElem.innerHTML = currentQuestion.question;
-        questionElem.style.color = "#000000";
-        checkKey.addEventListener('click', checkFunction);
-    }
-    else {
-        isHintShown = true;
-        icon.setAttribute("src", "images/close.png");
-        questionElem.innerHTML = currentQuestion.hint;
-        questionElem.style.color = "#ff5522";
-        checkKey.removeEventListener('click', checkFunction);
-    }
-}
-async function resultColor(element, color) {
-    element.forEach(e => e.classList.add(color));
-    await new Promise(resolve => setTimeout(resolve, 700));
-    element.forEach(e => e.classList.remove(color));
+function generateChoices(elem) {
+    computerChoice = listOfChoices[Math.floor(Math.random() * listOfChoices.length)];
+    playerChoice = elem.getAttribute('data-choice');
 }
 
-function levelUp() {
-    level++;
-    levelElem.innerHTML = "Level " + level;
-}
+// async function resultColor(element, color) {
+//     element.forEach(e => e.classList.add(color));
+//     await new Promise(resolve => setTimeout(resolve, 700));
+//     element.forEach(e => e.classList.remove(color));
+// }
+
 function displayQuestion() {
     currentQuestion = questionData[level - 1];
     questionElem.innerHTML = currentQuestion.question;
     generateAnswerField(currentQuestion.answer);
 }
+
 async function checkAnswer(answer) {
     let input = answerDiv.querySelectorAll('div');
     for(let i = 0; i < answer.length; i++) {
@@ -69,22 +52,6 @@ async function checkAnswer(answer) {
     return true;
 }
 
-function drawNumber(clickedKey) {
-    let answerFields = answerDiv.querySelectorAll('div');
-    for(let item of answerFields) {
-        if(item.innerHTML == "") {
-            item.innerHTML = clickedKey;
-            item.classList.add('input-color');
-            break;
-        }
-    }
-}
-function undoFunction() {
-    answerDiv.querySelectorAll('div').forEach(elem => {
-        elem.innerHTML = "";
-        elem.classList.remove('input-color');
-    });
-}
 async function checkFunction() {
     if(await checkAnswer(currentQuestion.answer)) {
         if(level < questionData.length) {
@@ -127,6 +94,3 @@ keyboardElems.forEach(elem => elem.addEventListener('click', (e) => {
     drawNumber(clickedKey);
 }));
 document.addEventListener('keydown', keyPress);
-undoKey.addEventListener('click', undoFunction);
-hintElem.addEventListener("click", enableHint);
-enableHint();
