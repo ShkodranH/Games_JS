@@ -13,6 +13,7 @@ const finishBtn = document.querySelector('.finish-btn');
 let level = 1;
 let currentQuestion = questionData[level - 1];
 let isHintShown = true;
+let areEventsActive = true;
 
 const correctAudio = new Audio("./sound-effects/correct.mp3");
 const wrongAudio = new Audio("./sound-effects/wrong.mp3");
@@ -74,7 +75,11 @@ async function checkAnswer(answer) {
         }
     }
     correctAudio.play();
+    // checkKey.removeEventListener('click', checkFunction);
+    // document.removeEventListener('keydown', keyPress);
     await resultColor(input, 'correct');
+    // checkKey.addEventListener('click', checkFunction);
+    // document.addEventListener('keydown', keyPress);
     return true;
 }
 

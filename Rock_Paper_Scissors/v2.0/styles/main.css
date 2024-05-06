@@ -47,6 +47,7 @@ body > :not(.stage) {
 
 .intro {
     justify-content: center;
+    gap: 2em;
 
     & .title {
         font-size: 6rem;
@@ -59,7 +60,11 @@ body > :not(.stage) {
         background-color: var(--primary-color);
         color: var(--white);
     }
+    & img {
+        width: 30em;
+    }
 }
+
 
 .stage {
     justify-content: space-between;
