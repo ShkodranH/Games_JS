@@ -70,12 +70,16 @@ body > :not(.stage) {
     justify-content: space-between;
     
     & .dashboard {
-        background-color: red;
+        border-bottom: 5px solid red;
         width: 100%;
         font-size: 2rem;
         text-align: center;
         display: flex;
         justify-content: space-between;
+
+        & i {
+            font-size: 3rem;
+        }
     }
     & .game {
         width: 100%;

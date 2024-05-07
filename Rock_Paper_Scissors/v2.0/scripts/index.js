@@ -1,14 +1,19 @@
-const startBtn = document.querySelector('.start-btn');
-const levelElem = document.querySelector('.level');
-const keyboardElems = document.querySelectorAll('.key-buttons');
+const playBtn = document.querySelector('.start-btn');
+const playerPointsElem = document.querySelector('.player-points');
+const computerPointsElem = document.querySelector('.computer-points');
 const finishBtn = document.querySelector('.finish-btn');
 
 let listOfChoices = ['rock', 'paper', 'scissors'];
-let playerPoints = 0;
-let computerPoints = 0;
+let playerPoints = 2;
+let computerPoints = 4;
 let playerChoice;
 let computerChoice;
+let totalPoints = 5;
 
+for(let i = 0; i < totalPoints; i++) {
+    playerPointsElem.innerHTML += '<i class="far fa-star"></i>';
+    computerPointsElem.innerHTML += '<i class="far fa-star"></i>';
+}
 // const correctAudio = new Audio("./sound-effects/correct.mp3");
 // const wrongAudio = new Audio("./sound-effects/wrong.mp3");
 // const winAudio = new Audio("./sound-effects/win.mp3");
@@ -24,6 +29,10 @@ function popUpScene(name, action) {
 function generateChoices(elem) {
     computerChoice = listOfChoices[Math.floor(Math.random() * listOfChoices.length)];
     playerChoice = elem.getAttribute('data-choice');
+}
+function drawPoints(winner, winnerElem) {
+    for(let i = 0; i < winner; i++)
+        winnerElem.querySelectorAll('i')[i].classList.replace('far', 'fas');
 }
 
 // async function resultColor(element, color) {
@@ -68,29 +77,14 @@ async function checkFunction() {
     }
 }
 
-function keyPress(event) {
-    if(event.key == 'Enter' && !isHintShown) {
-        checkFunction();
-    }
-    else if(event.key == 'Backspace') {
-        undoFunction();
-    }
-    else if("0123456789".includes(event.key)) {  
-        drawNumber(event.key);
-    }
-}
 
-startBtn.addEventListener('click', () => {
+playBtn.addEventListener('click', () => {
     changeScene('.intro', '.stage');
-    displayQuestion();
 });
 finishBtn.addEventListener('click', () => {
     changeScene('.finish', '.intro');
-    level = 1;
-    levelElem.innerHTML = "Level " + level;
 });
-keyboardElems.forEach(elem => elem.addEventListener('click', (e) => {
-    let clickedKey = e.target.getAttribute('data-index');
-    drawNumber(clickedKey);
-}));
-document.addEventListener('keydown', keyPress);
+// keyboardElems.forEach(elem => elem.addEventListener('click', (e) => {
+//     let clickedKey = e.target.getAttribute('data-index');
+//     drawNumber(clickedKey);
+// }));
