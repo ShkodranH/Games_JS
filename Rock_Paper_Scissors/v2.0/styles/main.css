@@ -5,9 +5,11 @@
 :root {
     --bg-color: #f5f5f5;
     --primary-color: #00bfff;
+    --secondary-color: #ddefff;
     --white: #ffffff;
     --black: #000000;
     --darkgray: #2c2c2c;
+    --gold: #ffd700;
 }
 * {
     box-sizing: border-box;
@@ -70,26 +72,71 @@ body > :not(.stage) {
     justify-content: space-between;
     
     & .dashboard {
-        border-bottom: 5px solid red;
         width: 100%;
-        font-size: 2rem;
-        text-align: center;
         display: flex;
         justify-content: space-between;
+        font-size: 2rem;
+        text-align: center;
+        border-bottom: 5px solid var(--primary-color);
 
+        & div {
+            margin: .5em 0;
+
+            & h2 {
+                letter-spacing: 3px;
+            }
+        }
         & i {
-            font-size: 3rem;
+            font-size: 3.5rem;
+            color: var(--gold);
         }
     }
     & .game {
         width: 100%;
         display: grid;
-        grid-template: 1fr / 1fr 2fr 1fr;
+        grid-template: 1fr / 2fr 3fr 2fr;
+    
+        & .result {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            & h2 {
+                font-size: 4rem;
+            }
+            & p {
+                font-size: 2rem;
+                color: var(--primary-color);
+            }
+        }
+        & img {
+            /* background-color: red; */
+            width: 100%;
+        }
     }
     & .input-choices {
         width: 100%;
         display: flex;
         justify-content: flex-start;
+        gap: 1.5em;
+        border-top: 5px solid var(--primary-color);
+
+        & .inp-button {
+            cursor: pointer;
+            width: 10em;
+            height: 8em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5em 0;
+            border-radius: 10px;
+            background-color: var(--secondary-color);
+
+            & img {
+                width: 80%;
+            }
+        }
     }
 }
 
