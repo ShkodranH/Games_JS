@@ -1,10 +1,17 @@
 const playBtn = document.querySelector('.start-btn');
+const finishBtn = document.querySelector('.finish-btn');
+const submitBtn = document.querySelector('.submit');
+const inputElem = document.querySelector('input');
+const displayNameElem = document.querySelector('.display-name');
+const playerNameElem = document.querySelector('.player-name');
 const playerPointsElem = document.querySelector('.player-points');
 const computerPointsElem = document.querySelector('.computer-points');
-const finishBtn = document.querySelector('.finish-btn');
+const inputChoiceElems = document.querySelectorAll('.inp-button');
+const roundNumberElem = document.querySelector('.round');
+const messageElem = document.querySelector('.message');
 
 let listOfChoices = ['rock', 'paper', 'scissors'];
-console.log(3 % 3)
+
 //rock vs rock          >> draw >> 0 - 0 = 0  (+3)  (mod 3) = 0
 //rock vs paper         >> lose >> 0 - 1 = -1 (+3)  (mod 3) = 2
 //rock vs scissors      >> win  >> 0 - 2 = -2 (+3)  (mod 3) = 1
@@ -17,9 +24,8 @@ console.log(3 % 3)
 //scissors vs rock      >> lose >> 2 - 0 = 2  (+3)  (mod 3) = 2
 //scissors vs paper     >> win  >> 2 - 1 = 1  (+3)  (mod 3) = 1
 
-
-let playerPoints = 2;
-let computerPoints = 4;
+let playerPoints = 0;
+let computerPoints = 0;
 let playerChoice;
 let computerChoice;
 let totalPoints = 5;
@@ -48,8 +54,6 @@ function drawPoints(winner, winnerElem) {
     for(let i = 0; i < winner; i++)
         winnerElem.querySelectorAll('i')[i].classList.replace('far', 'fas');
 }
-drawPoints(playerPoints, playerPointsElem);
-drawPoints(computerPoints, computerPointsElem);
 
 // async function resultColor(element, color) {
 //     element.forEach(e => e.classList.add(color));
@@ -93,10 +97,14 @@ async function checkFunction() {
     }
 }
 
-
 playBtn.addEventListener('click', () => {
     changeScene('.intro', '.stage');
     popUpScene('.input-name', 'flex');
+    inputElem.focus();
+});
+submitBtn.addEventListener('click', () => {
+    popUpScene('.input-name', 'none');
+    playerNameElem.innerHTML = (!inputElem.value) ? 'Player' : inputElem.value;
 });
 finishBtn.addEventListener('click', () => {
     popUpScene('.finish', 'none');
