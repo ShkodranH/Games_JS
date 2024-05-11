@@ -3,13 +3,12 @@
     src: url(../fonts/new-athletic.ttf);
 }
 :root {
-    --bg-color: #f5f5f5;
-    --primary-color: #00bfff;
-    --secondary-color: #ddefff;
+    --bg-color: #cde8e5;
+    --primary-color: #4d869c;
+    --secondary-color: #7ab2b2;
     --white: #ffffff;
-    --black: #000000;
-    --darkgray: #2c2c2c;
-    --gold: #ffd700;
+    --transparent-white: #ffffff80;
+    --transparent-black: #00000080;
 }
 * {
     box-sizing: border-box;
@@ -25,13 +24,10 @@ body {
     height: 100dvh;
     display: flex;
     justify-content: center;
-    align-items: center;
     background-color: var(--bg-color);
 
     & > div {
-        width: 90%;
-        height: 100%;
-        display: flex;
+        width: 100%;
         flex-direction: column;
         align-items: center;
     }
@@ -39,6 +35,13 @@ body {
 button {
     cursor: pointer;
     border: none;
+    font-size: 3rem;
+    padding: .2em 2em;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    letter-spacing: 3px;
+    -webkit-tap-highlight-color: transparent;
 }
 .intro {
     display: flex;
@@ -55,13 +58,6 @@ body > :not(.intro) {
         font-size: 6rem;
         color: var(--primary-color);
     }
-    & .start-btn {
-        font-size: 3rem;
-        padding: .2em 2em;
-        border-radius: 10px;
-        background-color: var(--primary-color);
-        color: var(--white);
-    }
     & img {
         width: 30em;
     }
@@ -71,30 +67,30 @@ body > :not(.intro) {
 .stage {
     justify-content: space-between;
     
-    & .dashboard {
+    & > div {
         width: 100%;
+    }
+    & .dashboard {
         display: flex;
         justify-content: space-between;
-        font-size: 2rem;
+        font-size: 1.8rem;
         text-align: center;
-        border-bottom: 5px solid var(--primary-color);
+        letter-spacing: 3px;
+        padding: 0 1em;
 
         & div {
             margin: .5em 0;
-
-            & h2 {
-                letter-spacing: 3px;
+            
+            & i {
+                font-size: 3rem;
+                color: var(--primary-color);
             }
-        }
-        & i {
-            font-size: 3.5rem;
-            color: var(--gold);
         }
     }
     & .game {
-        width: 100%;
         display: grid;
         grid-template: 1fr / 2fr 3fr 2fr;
+        background-color: var(--transparent-white);
     
         & .result {
             display: flex;
@@ -111,30 +107,23 @@ body > :not(.intro) {
             }
         }
         & img {
-            /* background-color: red; */
             width: 100%;
         }
     }
     & .input-choices {
-        width: 100%;
         display: flex;
-        justify-content: flex-start;
-        gap: 1.5em;
-        border-top: 5px solid var(--primary-color);
+        justify-content: center;
+        gap: 1em;
 
-        & .inp-button {
+        & .inp-button img {
             cursor: pointer;
             width: 10em;
-            height: 8em;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 1.5em 0;
-            border-radius: 10px;
-            background-color: var(--secondary-color);
 
-            & img {
-                width: 80%;
+            &:hover {
+                filter: drop-shadow(5px 0 0 var(--secondary-color)) 
+                    drop-shadow(0 5px 0 var(--secondary-color))
+                    drop-shadow(-5px 0 0 var(--secondary-color)) 
+                    drop-shadow(0 -5px 0 var(--secondary-color));
             }
         }
     }
@@ -142,13 +131,15 @@ body > :not(.intro) {
 
 .bg {
     display: flex !important;
-    background-color: #00000080;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     width: 100%;
     height: 100dvh;
-    justify-content: center;
-    align-items: center;
+    background-color: var(--transparent-black);
+    backdrop-filter: blur(2px);
+    /* transition: backdrop-filter 5s 1s; */
 
     & > div {
         display: none;

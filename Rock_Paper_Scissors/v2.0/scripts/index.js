@@ -4,6 +4,20 @@ const computerPointsElem = document.querySelector('.computer-points');
 const finishBtn = document.querySelector('.finish-btn');
 
 let listOfChoices = ['rock', 'paper', 'scissors'];
+console.log(3 % 3)
+//rock vs rock          >> draw >> 0 - 0 = 0  (+3)  (mod 3) = 0
+//rock vs paper         >> lose >> 0 - 1 = -1 (+3)  (mod 3) = 2
+//rock vs scissors      >> win  >> 0 - 2 = -2 (+3)  (mod 3) = 1
+
+//paper vs paper        >> draw >> 1 - 1 = 0  (+3)  (mod 3) = 0
+//paper vs scissors     >> lose >> 1 - 2 = -1 (+3)  (mod 3) = 2
+//paper vs rock         >> win  >> 2 - 1 = 1  (+3)  (mod 3) = 1
+
+//scissors vs scissors  >> draw >> 2 - 2 = 0  (+3)  (mod 3) = 0
+//scissors vs rock      >> lose >> 2 - 0 = 2  (+3)  (mod 3) = 2
+//scissors vs paper     >> win  >> 2 - 1 = 1  (+3)  (mod 3) = 1
+
+
 let playerPoints = 2;
 let computerPoints = 4;
 let playerChoice;
@@ -23,8 +37,8 @@ function changeScene(prev, next) {
     document.querySelector(next).style.display = 'flex';
 }
 function popUpScene(name, action) {
-    document.querySelector('.bg').style.display = action;
     document.querySelector(name).style.display = action;
+    document.querySelector('.bg').style.display = action;
 }
 function generateChoices(elem) {
     computerChoice = listOfChoices[Math.floor(Math.random() * listOfChoices.length)];
@@ -34,6 +48,8 @@ function drawPoints(winner, winnerElem) {
     for(let i = 0; i < winner; i++)
         winnerElem.querySelectorAll('i')[i].classList.replace('far', 'fas');
 }
+drawPoints(playerPoints, playerPointsElem);
+drawPoints(computerPoints, computerPointsElem);
 
 // async function resultColor(element, color) {
 //     element.forEach(e => e.classList.add(color));
@@ -80,9 +96,11 @@ async function checkFunction() {
 
 playBtn.addEventListener('click', () => {
     changeScene('.intro', '.stage');
+    popUpScene('.input-name', 'flex');
 });
 finishBtn.addEventListener('click', () => {
-    changeScene('.finish', '.intro');
+    popUpScene('.finish', 'none');
+    changeScene('.stage', '.intro');
 });
 // keyboardElems.forEach(elem => elem.addEventListener('click', (e) => {
 //     let clickedKey = e.target.getAttribute('data-index');
