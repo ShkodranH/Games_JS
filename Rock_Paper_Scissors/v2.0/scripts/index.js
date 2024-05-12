@@ -6,29 +6,25 @@ const displayNameElem = document.querySelector('.display-name');
 const playerNameElem = document.querySelector('.player-name');
 const playerPointsElem = document.querySelector('.player-points');
 const computerPointsElem = document.querySelector('.computer-points');
+const playerHandImg = document.querySelector('.player img');
+const computerHandImg = document.querySelector('.computer img');
 const inputChoiceElems = document.querySelectorAll('.inp-button');
 const roundNumberElem = document.querySelector('.round');
 const messageElem = document.querySelector('.message');
 
 let listOfChoices = ['rock', 'paper', 'scissors'];
-
-//rock vs rock          >> draw >> 0 - 0 = 0  (+3)  (mod 3) = 0
-//rock vs paper         >> lose >> 0 - 1 = -1 (+3)  (mod 3) = 2
-//rock vs scissors      >> win  >> 0 - 2 = -2 (+3)  (mod 3) = 1
-
-//paper vs paper        >> draw >> 1 - 1 = 0  (+3)  (mod 3) = 0
-//paper vs scissors     >> lose >> 1 - 2 = -1 (+3)  (mod 3) = 2
-//paper vs rock         >> win  >> 2 - 1 = 1  (+3)  (mod 3) = 1
-
-//scissors vs scissors  >> draw >> 2 - 2 = 0  (+3)  (mod 3) = 0
-//scissors vs rock      >> lose >> 2 - 0 = 2  (+3)  (mod 3) = 2
-//scissors vs paper     >> win  >> 2 - 1 = 1  (+3)  (mod 3) = 1
-
 let playerPoints = 0;
 let computerPoints = 0;
 let playerChoice;
 let computerChoice;
+let playerName = "Player";
+let roundNumber = 0;
 let totalPoints = 5;
+const messages = {
+    draw: `This round it's a draw!`,
+    win: `${playerName} wins this round`,
+    lose: `Computer wins this round`,
+};
 
 for(let i = 0; i < totalPoints; i++) {
     playerPointsElem.innerHTML += '<i class="far fa-star"></i>';
@@ -47,53 +43,47 @@ function popUpScene(name, action) {
     document.querySelector('.bg').style.display = action;
 }
 function generateChoices(elem) {
+    playerChoice = elem.currentTarget.getAttribute('data-choice');
     computerChoice = listOfChoices[Math.floor(Math.random() * listOfChoices.length)];
-    playerChoice = elem.getAttribute('data-choice');
+    playerHandImg.setAttribute('src', `images/${playerChoice}.png`);
+    computerHandImg.setAttribute('src', `images/${computerChoice}2.png`);
 }
 function drawPoints(winner, winnerElem) {
     for(let i = 0; i < winner; i++)
         winnerElem.querySelectorAll('i')[i].classList.replace('far', 'fas');
 }
 
-// async function resultColor(element, color) {
-//     element.forEach(e => e.classList.add(color));
-//     await new Promise(resolve => setTimeout(resolve, 700));
-//     element.forEach(e => e.classList.remove(color));
-// }
-
-function displayQuestion() {
-    currentQuestion = questionData[level - 1];
-    questionElem.innerHTML = currentQuestion.question;
-    generateAnswerField(currentQuestion.answer);
+function nextRound() {
+    roundNumber++;
+    roundNumberElem.innerHTML = `Round ${roundNumber}`;
 }
+function checkResult() {
+    let playerIndex = listOfChoices.indexOf(playerChoice);
+    let computerIndex = listOfChoices.indexOf(computerChoice);
+    let result = (playerIndex - computerIndex + 3) % 3;
 
-async function checkAnswer(answer) {
-    let input = answerDiv.querySelectorAll('div');
-    for(let i = 0; i < answer.length; i++) {
-        if(input[i].innerText != currentQuestion.answer[i]) {
-            wrongAudio.play();
-            await resultColor(input, 'wrong');
-            return false;
-        }
+    if(result === 1) {
+        playerPoints++;
+        messageElem.innerHTML = messages.win;
+        drawPoints(playerPoints, playerPointsElem);
     }
-    correctAudio.play();
-    await resultColor(input, 'correct');
-    return true;
-}
-
-async function checkFunction() {
-    if(await checkAnswer(currentQuestion.answer)) {
-        if(level < questionData.length) {
-            levelUp();
-            displayQuestion();
-        }
-        else {
-            changeScene('.stage', '.finish');
-            winAudio.play();
-        }
+    else if(result === 2) {
+        computerPoints++;
+        messageElem.innerHTML = messages.lose;
+        drawPoints(computerPoints, computerPointsElem);
     }
     else {
-        undoFunction();
+        messageElem.innerHTML = messages.draw;
+    }
+}
+function checkWinner() {
+    if(playerPoints === totalPoints) {
+        popUpScene('.finish', 'flex');
+        displayNameElem.innerHTML = playerName;
+    }
+    else if(computerPoints === totalPoints) {
+        popUpScene('.finish', 'flex');
+        displayNameElem.innerText = "Computer";
     }
 }
 
@@ -104,13 +94,16 @@ playBtn.addEventListener('click', () => {
 });
 submitBtn.addEventListener('click', () => {
     popUpScene('.input-name', 'none');
-    playerNameElem.innerHTML = (!inputElem.value) ? 'Player' : inputElem.value;
+    playerName = inputElem.value.trim() || "Player";
+    playerNameElem.innerHTML = playerName;
 });
 finishBtn.addEventListener('click', () => {
     popUpScene('.finish', 'none');
     changeScene('.stage', '.intro');
 });
-// keyboardElems.forEach(elem => elem.addEventListener('click', (e) => {
-//     let clickedKey = e.target.getAttribute('data-index');
-//     drawNumber(clickedKey);
-// }));
+inputChoiceElems.forEach(elem => elem.addEventListener('click', (e) => {
+    generateChoices(e);
+    checkResult();
+    checkWinner();
+    nextRound();
+}));
