@@ -20,11 +20,6 @@ let computerChoice;
 let playerName = "Player";
 let roundNumber = 0;
 let totalPoints = 5;
-const messages = {
-    draw: `This round it's a draw!`,
-    win: `${playerName} wins this round`,
-    lose: `Computer wins this round`,
-};
 
 for(let i = 0; i < totalPoints; i++) {
     playerPointsElem.innerHTML += '<i class="far fa-star"></i>';
@@ -64,16 +59,16 @@ function checkResult() {
 
     if(result === 1) {
         playerPoints++;
-        messageElem.innerHTML = messages.win;
+        messageElem.innerHTML = `${playerName} wins!`;
         drawPoints(playerPoints, playerPointsElem);
     }
     else if(result === 2) {
         computerPoints++;
-        messageElem.innerHTML = messages.lose;
+        messageElem.innerHTML = `Computer wins!`;
         drawPoints(computerPoints, computerPointsElem);
     }
     else {
-        messageElem.innerHTML = messages.draw;
+        messageElem.innerHTML = `It's a draw!`;
     }
 }
 function checkWinner() {
@@ -86,6 +81,19 @@ function checkWinner() {
         displayNameElem.innerText = "Computer";
     }
 }
+
+// function resetGame() {
+//     playerPoints = computerPoints = 0;
+//     playerName = "Player";
+//     roundNumber = 0;
+
+//     playerPointsElem.innerHTML = computerPointsElem.innerHTML = '';
+//     for(let i = 0; i < totalPoints; i++) {
+//         playerPointsElem.innerHTML += '<i class="far fa-star"></i>';
+//         computerPointsElem.innerHTML += '<i class="far fa-star"></i>';
+//     }
+// }
+
 
 playBtn.addEventListener('click', () => {
     changeScene('.intro', '.stage');
@@ -100,6 +108,7 @@ submitBtn.addEventListener('click', () => {
 finishBtn.addEventListener('click', () => {
     popUpScene('.finish', 'none');
     changeScene('.stage', '.intro');
+    // resetGame();
 });
 inputChoiceElems.forEach(elem => elem.addEventListener('click', (e) => {
     generateChoices(e);

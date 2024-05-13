@@ -76,7 +76,7 @@ body > :not(.intro) {
         font-size: 1.8rem;
         text-align: center;
         letter-spacing: 3px;
-        padding: 0 1em;
+        padding: 0 2em;
 
         & div {
             margin: .5em 0;
@@ -100,6 +100,7 @@ body > :not(.intro) {
 
             & h2 {
                 font-size: 4rem;
+                font-weight: normal;
             }
             & p {
                 font-size: 2rem;
