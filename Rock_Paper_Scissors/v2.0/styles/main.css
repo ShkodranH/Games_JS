@@ -107,8 +107,12 @@ body > :not(.intro) {
                 color: var(--primary-color);
             }
         }
-        & img {
-            width: 100%;
+        & .player, .computer{
+            overflow: hidden;
+            
+            & img {
+                width: 100%;
+            }
         }
     }
     & .input-choices {

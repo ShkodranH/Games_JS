@@ -37,49 +37,61 @@ function popUpScene(name, action) {
     document.querySelector(name).style.display = action;
     document.querySelector('.bg').style.display = action;
 }
-function generateChoices(elem) {
+
+async function generateChoices(elem) {
     playerChoice = elem.currentTarget.getAttribute('data-choice');
     computerChoice = listOfChoices[Math.floor(Math.random() * listOfChoices.length)];
+
+    playerHandImg.classList.add("player-hand");
+    computerHandImg.classList.add("computer-hand");
+    await new Promise(resolve => setTimeout(resolve, 1800));
+    playerHandImg.classList.remove("player-hand");
+    computerHandImg.classList.remove("computer-hand");
+    
     playerHandImg.setAttribute('src', `images/${playerChoice}.png`);
     computerHandImg.setAttribute('src', `images/${computerChoice}2.png`);
-}
-function drawPoints(winner, winnerElem) {
-    for(let i = 0; i < winner; i++)
-        winnerElem.querySelectorAll('i')[i].classList.replace('far', 'fas');
+    checkResult();
+    checkWinner();
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    playerHandImg.setAttribute('src', `images/rock.png`);
+    computerHandImg.setAttribute('src', `images/rock2.png`);
+    nextRound();
 }
 
 function nextRound() {
     roundNumber++;
     roundNumberElem.innerHTML = `Round ${roundNumber}`;
 }
+
+function drawPoints(winner, winnerElem, winnerName) {
+    winner++;
+    messageElem.innerHTML = `${winnerName} wins!`;
+    for(let i = 0; i < winner; i++)
+        winnerElem.querySelectorAll('i')[i].classList.replace('far', 'fas');
+}
 function checkResult() {
     let playerIndex = listOfChoices.indexOf(playerChoice);
     let computerIndex = listOfChoices.indexOf(computerChoice);
     let result = (playerIndex - computerIndex + 3) % 3;
 
-    if(result === 1) {
-        playerPoints++;
-        messageElem.innerHTML = `${playerName} wins!`;
-        drawPoints(playerPoints, playerPointsElem);
-    }
-    else if(result === 2) {
-        computerPoints++;
-        messageElem.innerHTML = `Computer wins!`;
-        drawPoints(computerPoints, computerPointsElem);
-    }
-    else {
+    if(result === 1)
+        drawPoints(playerPoints, playerPointsElem, playerName);
+    else if(result === 2)
+        drawPoints(computerPoints, computerPointsElem, 'Computer');
+    else
         messageElem.innerHTML = `It's a draw!`;
-    }
+}
+
+function winMessage(name) {
+    popUpScene('.finish', 'flex');
+    displayNameElem.innerHTML = name;
 }
 function checkWinner() {
-    if(playerPoints === totalPoints) {
-        popUpScene('.finish', 'flex');
-        displayNameElem.innerHTML = playerName;
-    }
-    else if(computerPoints === totalPoints) {
-        popUpScene('.finish', 'flex');
-        displayNameElem.innerText = "Computer";
-    }
+    if(playerPoints === totalPoints)
+        winMessage(playerName);
+    else if(computerPoints === totalPoints) 
+        winMessage('Computer');
 }
 
 // function resetGame() {
@@ -110,9 +122,4 @@ finishBtn.addEventListener('click', () => {
     changeScene('.stage', '.intro');
     // resetGame();
 });
-inputChoiceElems.forEach(elem => elem.addEventListener('click', (e) => {
-    generateChoices(e);
-    checkResult();
-    checkWinner();
-    nextRound();
-}));
+inputChoiceElems.forEach(elem => elem.addEventListener('click', generateChoices));
