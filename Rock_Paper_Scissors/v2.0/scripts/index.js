@@ -18,7 +18,7 @@ let computerPoints = 0;
 let playerChoice;
 let computerChoice;
 let playerName = "Player";
-let roundNumber = 0;
+let roundNumber = 1;
 let totalPoints = 5;
 
 for(let i = 0; i < totalPoints; i++) {
@@ -38,24 +38,28 @@ function popUpScene(name, action) {
     document.querySelector('.bg').style.display = action;
 }
 
-async function generateChoices(elem) {
+function generateChoices(elem) {
     playerChoice = elem.currentTarget.getAttribute('data-choice');
     computerChoice = listOfChoices[Math.floor(Math.random() * listOfChoices.length)];
-
-    playerHandImg.classList.add("player-hand");
-    computerHandImg.classList.add("computer-hand");
+}
+function setHandImg(player, computer) {
+    playerHandImg.setAttribute('src', `images/${player}.png`);
+    computerHandImg.setAttribute('src', `images/${computer}2.png`);
+}
+function toggleAnimClasses() {
+    playerHandImg.classList.toggle("player-hand");
+    computerHandImg.classList.toggle("computer-hand");
+}
+async function playGame(elem) {
+    generateChoices(elem);
+    toggleAnimClasses();
     await new Promise(resolve => setTimeout(resolve, 1800));
-    playerHandImg.classList.remove("player-hand");
-    computerHandImg.classList.remove("computer-hand");
-    
-    playerHandImg.setAttribute('src', `images/${playerChoice}.png`);
-    computerHandImg.setAttribute('src', `images/${computerChoice}2.png`);
+    toggleAnimClasses();
+    setHandImg(playerChoice, computerChoice);
     checkResult();
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setHandImg('rock', 'rock');
     checkWinner();
-
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    playerHandImg.setAttribute('src', `images/rock.png`);
-    computerHandImg.setAttribute('src', `images/rock2.png`);
     nextRound();
 }
 
@@ -65,7 +69,6 @@ function nextRound() {
 }
 
 function drawPoints(winner, winnerElem, winnerName) {
-    winner++;
     messageElem.innerHTML = `${winnerName} wins!`;
     for(let i = 0; i < winner; i++)
         winnerElem.querySelectorAll('i')[i].classList.replace('far', 'fas');
@@ -76,9 +79,9 @@ function checkResult() {
     let result = (playerIndex - computerIndex + 3) % 3;
 
     if(result === 1)
-        drawPoints(playerPoints, playerPointsElem, playerName);
+        drawPoints(++playerPoints, playerPointsElem, playerName);
     else if(result === 2)
-        drawPoints(computerPoints, computerPointsElem, 'Computer');
+        drawPoints(++computerPoints, computerPointsElem, 'Computer');
     else
         messageElem.innerHTML = `It's a draw!`;
 }
@@ -122,4 +125,4 @@ finishBtn.addEventListener('click', () => {
     changeScene('.stage', '.intro');
     // resetGame();
 });
-inputChoiceElems.forEach(elem => elem.addEventListener('click', generateChoices));
+inputChoiceElems.forEach(elem => elem.addEventListener('click', playGame));
