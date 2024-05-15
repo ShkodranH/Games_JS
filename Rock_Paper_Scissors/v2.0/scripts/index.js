@@ -52,13 +52,19 @@ function toggleAnimClasses() {
 }
 async function playGame(elem) {
     generateChoices(elem);
+    inputChoiceElems.forEach(elem => elem.removeEventListener('click', playGame));
+
     toggleAnimClasses();
     await new Promise(resolve => setTimeout(resolve, 1800));
     toggleAnimClasses();
-    setHandImg(playerChoice, computerChoice);
+
     checkResult();
+
+    setHandImg(playerChoice, computerChoice);
     await new Promise(resolve => setTimeout(resolve, 1500));
     setHandImg('rock', 'rock');
+
+    inputChoiceElems.forEach(elem => elem.addEventListener('click', playGame));
     checkWinner();
     nextRound();
 }
@@ -97,22 +103,25 @@ function checkWinner() {
         winMessage('Computer');
 }
 
-// function resetGame() {
-//     playerPoints = computerPoints = 0;
-//     playerName = "Player";
-//     roundNumber = 0;
+function resetGame() {
+    playerPoints = computerPoints = 0;
+    playerNameElem.innerHTML = playerName = "Player";
+    messageElem.innerHTML = `Start`;
+    roundNumber = 0;
+    nextRound();
 
-//     playerPointsElem.innerHTML = computerPointsElem.innerHTML = '';
-//     for(let i = 0; i < totalPoints; i++) {
-//         playerPointsElem.innerHTML += '<i class="far fa-star"></i>';
-//         computerPointsElem.innerHTML += '<i class="far fa-star"></i>';
-//     }
-// }
+    playerPointsElem.innerHTML = computerPointsElem.innerHTML = '';
+    for(let i = 0; i < totalPoints; i++) {
+        playerPointsElem.innerHTML += '<i class="far fa-star"></i>';
+        computerPointsElem.innerHTML += '<i class="far fa-star"></i>';
+    }
+}
 
 
 playBtn.addEventListener('click', () => {
     changeScene('.intro', '.stage');
     popUpScene('.input-name', 'flex');
+    inputElem.value = "";
     inputElem.focus();
 });
 submitBtn.addEventListener('click', () => {
@@ -123,6 +132,6 @@ submitBtn.addEventListener('click', () => {
 finishBtn.addEventListener('click', () => {
     popUpScene('.finish', 'none');
     changeScene('.stage', '.intro');
-    // resetGame();
+    resetGame();
 });
 inputChoiceElems.forEach(elem => elem.addEventListener('click', playGame));
