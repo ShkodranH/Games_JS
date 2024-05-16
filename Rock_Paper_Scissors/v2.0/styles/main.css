@@ -18,7 +18,7 @@
     font-family: NewAthletic, sans-serif;
 }
 html {
-    font-size: 14px;
+    font-size: 16px;
 }
 body {
     height: 100dvh;
@@ -35,7 +35,7 @@ body {
 button {
     cursor: pointer;
     border: none;
-    font-size: 3rem;
+    font-size: 2.5rem;
     padding: .2em 2em;
     border-radius: 10px;
     background-color: var(--primary-color);
@@ -55,11 +55,12 @@ body > :not(.intro) {
     gap: 2em;
 
     & .title {
-        font-size: 6rem;
+        font-size: 5rem;
+        text-align: center;
         color: var(--primary-color);
     }
     & img {
-        width: 30em;
+        width: 25em;
     }
 }
 
@@ -73,7 +74,7 @@ body > :not(.intro) {
     & .dashboard {
         display: flex;
         justify-content: space-between;
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         text-align: center;
         letter-spacing: 3px;
         padding: 0 2em;
@@ -82,7 +83,7 @@ body > :not(.intro) {
             margin: .5em 0;
             
             & i {
-                font-size: 3rem;
+                font-size: 2.75rem;
                 color: var(--primary-color);
             }
         }
@@ -90,6 +91,7 @@ body > :not(.intro) {
     & .game {
         display: grid;
         grid-template: 1fr / 2fr 3fr 2fr;
+        height: 100%;
         background-color: var(--transparent-white);
     
         & .result {
@@ -99,16 +101,17 @@ body > :not(.intro) {
             flex-direction: column;
 
             & h2 {
-                font-size: 4rem;
+                font-size: 3.5rem;
                 font-weight: normal;
             }
             & p {
-                font-size: 2rem;
+                font-size: 1.75rem;
                 color: var(--primary-color);
             }
         }
         & .player, .computer{
             overflow: hidden;
+            align-content: center;
             
             & img {
                 width: 100%;
@@ -122,7 +125,7 @@ body > :not(.intro) {
 
         & .inp-button img {
             cursor: pointer;
-            width: 10em;
+            width: 9em;
 
             &:hover {
                 filter: drop-shadow(5px 0 0 var(--secondary-color)) 
@@ -153,18 +156,18 @@ body > :not(.intro) {
         background-color: var(--secondary-color);
         
         & p, label {
-            font-size: 2.5rem;
+            font-size: 2rem;
             text-align: center;
             color: var(--white);
         }
         & .display-name {
-            font-size: 5rem;
+            font-size: 4.5rem;
             margin: .2em 0;
             letter-spacing: 5px;
         }
         & input {
-            width: 70%;
-            font-size: 4rem;
+            width: max(70%, 300px);
+            font-size: 3.5rem;
             text-align: center;
             margin: .5em 0;
             padding: .2em;
