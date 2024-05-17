@@ -25,9 +25,9 @@ for(let i = 0; i < totalPoints; i++) {
     playerPointsElem.innerHTML += '<i class="far fa-star"></i>';
     computerPointsElem.innerHTML += '<i class="far fa-star"></i>';
 }
-// const correctAudio = new Audio("./sound-effects/correct.mp3");
-// const wrongAudio = new Audio("./sound-effects/wrong.mp3");
-// const winAudio = new Audio("./sound-effects/win.mp3");
+
+const playAudio = new Audio("./sound-effects/play.wav");
+const winAudio = new Audio("./sound-effects/win.mp3");
 
 function changeScene(prev, next) {
     document.querySelector(prev).style.display = 'none';
@@ -50,9 +50,12 @@ function toggleAnimClasses() {
     playerHandImg.classList.toggle("player-hand");
     computerHandImg.classList.toggle("computer-hand");
 }
+
 async function playGame(elem) {
     generateChoices(elem);
     inputChoiceElems.forEach(elem => elem.removeEventListener('click', playGame));
+    playAudio.playbackRate = 1.5;
+    playAudio.play();
 
     toggleAnimClasses();
     await new Promise(resolve => setTimeout(resolve, 1800));
@@ -95,6 +98,7 @@ function checkResult() {
 function winMessage(name) {
     popUpScene('.finish', 'flex');
     displayNameElem.innerHTML = name;
+    winAudio.play();
 }
 function checkWinner() {
     if(playerPoints === totalPoints)
@@ -116,7 +120,6 @@ function resetGame() {
         computerPointsElem.innerHTML += '<i class="far fa-star"></i>';
     }
 }
-
 
 playBtn.addEventListener('click', () => {
     changeScene('.intro', '.stage');

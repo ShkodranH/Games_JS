@@ -26,7 +26,7 @@ let gamesData = [
     },
     {
         name: "Rock Paper Scissors",
-        link: "../Rock_Paper_Scissors/v1.0/index.html",
+        link: "../Rock_Paper_Scissors/v2.0/index.html",
         image: "../Rock_Paper_Scissors/v2.0/images/icon.png"
     },
     {
