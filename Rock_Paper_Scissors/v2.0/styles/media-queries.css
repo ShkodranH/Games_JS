@@ -1,22 +1,29 @@
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 900px) {
     html {
-        font-size: 14px;
+        font-size: 16px;
     }
     .stage {
-
         & .dashboard {
-
+            padding: 0 2em;
+            flex-direction: row;
         }
         & .game {
-            grid-template: 1fr 2fr / 1fr 1fr;
+            grid-template: 1fr / 2fr 3fr 2fr;
             
             & .result {
-                order: -1;
-                grid-column: 1 / span 2;
+                order: 0;
+                grid-column: 2 / span 1;
             }
         }
         & .input-choices .inp-button img {
-            width: 7em;
+            width: 9em;
+
+            &:hover {
+                filter: drop-shadow(5px 0 0 var(--secondary-color)) 
+                    drop-shadow(0 5px 0 var(--secondary-color))
+                    drop-shadow(-5px 0 0 var(--secondary-color)) 
+                    drop-shadow(0 -5px 0 var(--secondary-color));
+            }
         }
     }
 
