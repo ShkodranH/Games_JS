@@ -21,6 +21,7 @@ let playerName = "Player";
 let roundNumber = 1;
 let totalPoints = 5;
 
+// Drawing star icons for each player points
 for(let i = 0; i < totalPoints; i++) {
     playerPointsElem.innerHTML += '<i class="far fa-star"></i>';
     computerPointsElem.innerHTML += '<i class="far fa-star"></i>';
@@ -29,6 +30,7 @@ for(let i = 0; i < totalPoints; i++) {
 const playAudio = new Audio("./sound-effects/play.wav");
 const winAudio = new Audio("./sound-effects/win.mp3");
 
+// Setting up functions to change bettwen scenes/modals
 function changeScene(prev, next) {
     document.querySelector(prev).style.display = 'none';
     document.querySelector(next).style.display = 'flex';
@@ -38,19 +40,23 @@ function popUpScene(name, action) {
     document.querySelector('.bg').style.display = action;
 }
 
+// Generating player and computer choices for a round
 function generateChoices(elem) {
     playerChoice = elem.currentTarget.getAttribute('data-choice');
     computerChoice = listOfChoices[Math.floor(Math.random() * listOfChoices.length)];
 }
+// Displaying the current hand image depending the choice
 function setHandImg(player, computer) {
     playerHandImg.setAttribute('src', `images/${player}.png`);
     computerHandImg.setAttribute('src', `images/${computer}2.png`);
 }
+// Adding an animation to the hand
 function toggleAnimClasses() {
     playerHandImg.classList.toggle("player-hand");
     computerHandImg.classList.toggle("computer-hand");
 }
 
+// Calling all the other functions needed during each round of play
 async function playGame(elem) {
     generateChoices(elem);
     inputChoiceElems.forEach(elem => elem.removeEventListener('click', playGame));
@@ -76,12 +82,13 @@ function nextRound() {
     roundNumber++;
     roundNumberElem.innerHTML = `Round ${roundNumber}`;
 }
-
+// Changing star icon indicating player and computer points
 function drawPoints(winner, winnerElem, winnerName) {
     messageElem.innerHTML = `${winnerName} wins!`;
     for(let i = 0; i < winner; i++)
         winnerElem.querySelectorAll('i')[i].classList.replace('far', 'fas');
 }
+// Check who won the round and display a message
 function checkResult() {
     let playerIndex = listOfChoices.indexOf(playerChoice);
     let computerIndex = listOfChoices.indexOf(computerChoice);
@@ -100,6 +107,7 @@ function winMessage(name) {
     displayNameElem.innerHTML = name;
     winAudio.play();
 }
+// Check if the player or computer won the game and display a message
 function checkWinner() {
     if(playerPoints === totalPoints)
         winMessage(playerName);
@@ -107,6 +115,7 @@ function checkWinner() {
         winMessage('Computer');
 }
 
+// Reseting the game parameters and starting a new one
 function resetGame() {
     playerPoints = computerPoints = 0;
     playerNameElem.innerHTML = playerName = "Player";
@@ -137,4 +146,5 @@ finishBtn.addEventListener('click', () => {
     changeScene('.stage', '.intro');
     resetGame();
 });
+
 inputChoiceElems.forEach(elem => elem.addEventListener('click', playGame));
