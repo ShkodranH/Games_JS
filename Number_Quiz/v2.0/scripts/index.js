@@ -3,7 +3,7 @@ import { questionData } from "./data.js";
 const startBtn = document.querySelector('.start-btn');
 const levelElem = document.querySelector('.level');
 const questionElem = document.querySelector('.question');
-const hintElem = document.querySelector('.hint');
+const hintElem = document.querySelector('.hint img');
 const answerDiv = document.querySelector('.input');
 const keyboardElems = document.querySelectorAll('.key-buttons');
 const undoKey = document.querySelector('.undo-key');
@@ -12,7 +12,6 @@ const finishBtn = document.querySelector('.finish-btn');
 
 let level = 1;
 let currentQuestion = questionData[level - 1];
-let isHintShown = true;
 let areEventsActive = true;
 
 const correctAudio = new Audio("./sound-effects/correct.mp3");
@@ -29,29 +28,34 @@ function generateAnswerField(answer) {
         answerDiv.innerHTML += "<div></div>";
     }
 }
+// Add/remove events from clickable elements
+function togglePointerEvents(value) {
+    areEventsActive = !areEventsActive;
+    keyboardElems.forEach(elem => elem.style.pointerEvents = value);
+    undoKey.style.pointerEvents = value;
+    checkKey.style.pointerEvents = value;
+}
 
 // Show/hide hint for the current question
-function enableHint() {
-    let icon = hintElem.querySelector('img');
-    if(isHintShown) {
-        isHintShown = false;
-        icon.setAttribute("src", "images/hint.png");
-        questionElem.innerHTML = currentQuestion.question;
-        questionElem.style.color = "#000000";
-        checkKey.addEventListener('click', checkFunction);
-    }
-    else {
-        isHintShown = true;
-        icon.setAttribute("src", "images/close.png");
-        questionElem.innerHTML = currentQuestion.hint;
-        questionElem.style.color = "#ff5522";
-        checkKey.removeEventListener('click', checkFunction);
-    }
+function hintFunction(hintImg, textDisplay, color, eventValue) {
+    hintElem.setAttribute("src", `images/${hintImg}.png`);
+    questionElem.innerHTML = textDisplay;
+    questionElem.style.color = color;
+    togglePointerEvents(eventValue);
 }
+function enableHint() {
+    if(areEventsActive)
+        hintFunction('close', currentQuestion.hint, "#ff5522", "none");
+    else
+        hintFunction('hint', currentQuestion.question, "#000000", "auto");
+}
+
 async function resultColor(element, color) {
     element.forEach(e => e.classList.add(color));
+    togglePointerEvents("none");
     await new Promise(resolve => setTimeout(resolve, 700));
     element.forEach(e => e.classList.remove(color));
+    togglePointerEvents("auto");
 }
 
 function levelUp() {
@@ -75,11 +79,7 @@ async function checkAnswer(answer) {
         }
     }
     correctAudio.play();
-    // checkKey.removeEventListener('click', checkFunction);
-    // document.removeEventListener('keydown', keyPress);
     await resultColor(input, 'correct');
-    // checkKey.addEventListener('click', checkFunction);
-    // document.addEventListener('keydown', keyPress);
     return true;
 }
 
@@ -122,14 +122,13 @@ async function checkFunction() {
 
 // Display number on the answer field even if user press them on physical keyboard
 function keyPress(event) {
-    if(event.key == 'Enter' && !isHintShown) {
-        checkFunction();
-    }
-    else if(event.key == 'Backspace') {
-        undoFunction();
-    }
-    else if("0123456789".includes(event.key)) {  
-        drawNumber(event.key);
+    if(areEventsActive) {
+        if(event.key == 'Enter')
+            checkFunction();
+        else if(event.key == 'Backspace')
+            undoFunction();
+        else if("0123456789".includes(event.key)) 
+            drawNumber(event.key);
     }
 }
 
@@ -148,5 +147,5 @@ keyboardElems.forEach(elem => elem.addEventListener('click', (e) => {
 }));
 document.addEventListener('keydown', keyPress);
 undoKey.addEventListener('click', undoFunction);
+checkKey.addEventListener('click', checkFunction);
 hintElem.addEventListener("click", enableHint);
-enableHint();
