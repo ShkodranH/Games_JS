@@ -51,8 +51,8 @@ function enableHint() {
 }
 
 async function resultColor(element, color) {
-    element.forEach(e => e.classList.add(color));
     togglePointerEvents("none");
+    element.forEach(e => e.classList.add(color));
     await new Promise(resolve => setTimeout(resolve, 700));
     element.forEach(e => e.classList.remove(color));
     togglePointerEvents("auto");
