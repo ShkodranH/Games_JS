@@ -4,31 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Furious Click</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
     <link rel="stylesheet" href="styles/main.css">
+    <!-- <link rel="stylesheet" href="styles/media-queries.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="font-awesome/css/all.min.css"> -->
 </head>
 <body>
     <div class="intro">
         <p class="title">Furious Click</p>
-        <div class="btn"><p>Start</p></div>
+        <div class="start-btn">Play</div>
     </div>
 
     <div class="stage">
-        <p class="level"></p>
+        <p class="level">Level 1</p>
         <div class="image">
-            <img class="original" src="images/colorful/cherry.png" alt="">
-            <img class="silhouette" src="images/sihoulette/cherry.png" alt="">
+            <img class="original" src="images/cherry.png" alt="">
+            <img class="silhouette" src="images/cherry.png" alt="">
         </div>
+        <h2 class="name"></h2>
         <p class="percentage"></p>
-        <button class="btn" id="click"></button>
+        <button class="click-btn">Click</button>
     </div>
 
     <div class="finish">
         <p>Congratulations, Master!</p>
-        <p>Your furious clicks have triumphed in every level of "Furious Click". 
-            With lightning speed and precision, you've conquered the game. 
+        <p>Your furious clicks have triumphed in every level of the game.  
             Cheers to your victory! With this unmatched talent of yours, 
             great triumph awaits you on your journey!"</p>
-        <button class="btn" id="reset">Play Again</button>
+        <button class="finish-btn">Finish</button>
     </div>
+
+    <script src="scripts/index.js"></script>
 </body>
 </html>

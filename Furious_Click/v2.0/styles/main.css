@@ -1,10 +1,14 @@
 @font-face {
     font-family: Nunito;
-    src: url(../fonts/Nunito.ttf);
+    src: url(../fonts/nunito.ttf);
 }
 :root {
-    --bg-color: #222222;
-    --color: #ffffff;
+    --bg-color: #cde8e5;
+    --primary-color: #4d869c;
+    --secondary-color: #7ab2b2;
+    --white: #ffffff;
+    --transparent-white: #ffffff80;
+    --transparent-black: #00000020;
 }
 * {
     box-sizing: border-box;
@@ -14,39 +18,78 @@
     font-family: Nunito, sans-serif;
 }
 html {
-    font-size: 16px;
+    font-size: 14px;
 }
 body {
     height: 100dvh;
     display: flex;
     justify-content: center;
-    align-items: center;
     background-color: var(--bg-color);
-    color: var(--color);
+
+    & > div {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
 }
-.title {
-    font-size: 4rem;
-}
-img {
-    margin: 0%;
+button {
     cursor: pointer;
+    border: none;
+    font-size: 2.5rem;
+    padding: .2em 2em;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    -webkit-tap-highlight-color: transparent;
 }
-.btn {
-    width: 300px;
-    height: 300px;
-    background-image: url(../images/cursor.png);
-    background-size: contain;
-    clip-path: polygon(0 0, 100% 42%, 56% 56%, 42% 100%);
-    cursor: pointer;
+.stage {
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
-.btn p {
-    font-size: 3rem;
-    margin-bottom: 1.5em;
-    margin-right: 1em;
-}
-.stage, .finish {
+body > :not(.stage) {
     display: none;
+}
+.silhouette {
+    filter: contrast(0%) brightness(50%);
+}
+
+.intro {
+    justify-content: center;
+    gap: 2em;
+
+    & .title {
+        font-size: 5rem;
+        text-align: center;
+        color: var(--primary-color);
+    }
+    & div {
+        overflow: hidden;
+        
+        & img {
+            width: 25em;
+        }
+    }
+}
+
+
+.stage {
+    justify-content: space-between;
+    
+    & > div {
+        width: 100%;
+    }
+    & .game {
+        display: grid;
+        grid-template: 1fr 2fr / 1fr 1fr;
+        height: 100%;
+        background-color: var(--transparent-white);
+    
+        & .player, .computer{
+            overflow: hidden;
+            align-content: center;
+            
+            & img {
+                width: 100%;
+            }
+        }
+    }
 }

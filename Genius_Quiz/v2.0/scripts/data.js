@@ -43,12 +43,12 @@ export const questionData = [
     },
     {
         number: "8",
-        question: "You are running in a race with your friends and you just passed the 2nd place. <br>In which position are you?",
+        question: "You are running in a race with your friends and you just passed the 2nd place.\nIn which position are you?",
         options: ["1st", "3rd", "last", "unknown"],
         answer: "2nd"
     },
     {
-        number: "9",
+        number: "",
         question: "Which is the number of this question?",
         options: ["7", "10", "8", "9"],
         answer: "9"
