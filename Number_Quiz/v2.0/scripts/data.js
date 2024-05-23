@@ -88,7 +88,7 @@ export const questionData = [
         question: "4       \n6  2   \n9  ?  1",
         hint: "No help there!",
         answer: "3"
-    },
+    }
 ]
 
 // Replacing newlines(\n) with <br> tag 
