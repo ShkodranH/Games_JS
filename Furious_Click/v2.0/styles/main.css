@@ -3,12 +3,9 @@
     src: url(../fonts/nunito.ttf);
 }
 :root {
-    --bg-color: #cde8e5;
-    --primary-color: #4d869c;
-    --secondary-color: #7ab2b2;
-    --white: #ffffff;
-    --transparent-white: #ffffff80;
-    --transparent-black: #00000020;
+    --bg-color: #0b0b0b;
+    --primary-color: #d3a121;
+    --secondary-color: #faf4e4;
 }
 * {
     box-sizing: border-box;
@@ -16,6 +13,7 @@
     padding: 0;
     user-select: none;
     font-family: Nunito, sans-serif;
+    font-weight: bold;
 }
 html {
     font-size: 14px;
@@ -35,11 +33,12 @@ body {
 button {
     cursor: pointer;
     border: none;
+    width: min(90%, 350px);
     font-size: 2.5rem;
-    padding: .2em 2em;
+    padding: .5em 2em;
     border-radius: 10px;
     background-color: var(--primary-color);
-    color: var(--white);
+    color: var(--secondary-color);
     -webkit-tap-highlight-color: transparent;
 }
 .stage {
@@ -54,7 +53,7 @@ body > :not(.stage) {
 
 .intro {
     justify-content: center;
-    gap: 2em;
+    gap: 3em;
 
     & .title {
         font-size: 5rem;
@@ -62,33 +61,40 @@ body > :not(.stage) {
         color: var(--primary-color);
     }
     & div {
-        overflow: hidden;
-        
-        & img {
-            width: 25em;
-        }
+        width: 8em;
+        height: 8em;
+        background-image: url("../images/cursor.png");
+        background-size: contain;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        font-size: 2rem;
+        color: var(--bg-color);
     }
 }
 
-
 .stage {
-    justify-content: space-between;
-    
-    & > div {
-        width: 100%;
+    justify-content: space-around;
+
+    & .level, .percentage {
+        font-size: 3rem;
+        color: var(--secondary-color);
     }
-    & .game {
-        display: grid;
-        grid-template: 1fr 2fr / 1fr 1fr;
-        height: 100%;
-        background-color: var(--transparent-white);
-    
-        & .player, .computer{
-            overflow: hidden;
-            align-content: center;
-            
-            & img {
-                width: 100%;
+    & h2 {
+        display: none;
+    }
+    & .image {
+        position: relative;
+        width: 90%;
+        background-color: red;
+
+        & img {
+            width: 100%;
+        
+            &.silhouette {
+                position: absolute;
+                top: 0;
+                left: 0;
             }
         }
     }
