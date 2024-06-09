@@ -1,62 +1,62 @@
 export const questionData = [
     {
         level: 1,
-        name: "Star",
-        image: "./images/star.png",
+        name: "Apple",
+        image: "./images/apple.png",
         speed: 0
     },
     {
         level: 2,
-        name: "Envelope",
-        image: "./images/envelope.png",
+        name: "Stars",
+        image: "./images/stars.png",
         speed: 1
     },
     {
         level: 3,
-        name: "Lightbulb",
-        image: "./images/lightbulb.png",
+        name: "Cake",
+        image: "./images/cake.png",
         speed: 3
     },
     {
         level: 4,
-        name: "Paperplane",
-        image: "./images/paperplane.png",
+        name: "Presents",
+        image: "./images/presents.png",
         speed: 7
     },
     {
         level: 5,
-        name: "Cherry",
-        image: "./images/cherry.png",
+        name: "Tree",
+        image: "./images/tree.png",
         speed: 13
     },
     {
         level: 6,
-        name: "Cake",
-        image: "./images/cake.png",
+        name: "Butterfly",
+        image: "./images/butterfly.png",
         speed: 22
     },
     {
         level: 7,
-        name: "Rocket",
-        image: "./images/rocket.png",
+        name: "Factory",
+        image: "./images/factory.png",
         speed: 35
     },
     {
         level: 8,
-        name: "House",
-        image: "./images/house.png",
+        name: "Rocket",
+        image: "./images/rocket.png",
         speed: 50
     },
     {
         level: 9,
-        name: "Bus",
-        image: "./images/bus.png",
+        name: "Diamond",
+        image: "./images/diamond.png",
         speed: 70
     },
     {
         level: 10,
-        name: "Atom",
-        image: "./images/atom.png",
+        name: "Planet",
+        image: "./images/planet.png",
         speed: 100
     }
 ]
