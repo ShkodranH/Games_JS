@@ -47,8 +47,8 @@ button {
 body > :not(.stage) {
     display: none;
 }
-.silhouette {
-    filter: contrast(0%) brightness(50%);
+.silhouette img {
+    filter: contrast(0%) brightness(50%) !important;
 }
 
 .intro {
@@ -85,18 +85,19 @@ body > :not(.stage) {
     }
     & .image {
         position: relative;
-        width: 90%;
-        background-color: red;
+        width: 90dvw;
+        aspect-ratio: 1 / 1;
 
         & img {
-            width: 100%;
-        
-            &.silhouette {
-                position: absolute;
-                top: 0;
-                left: 0;
-                overflow: hidden;
-            }
+            width: 90dvw;
+            object-fit: cover;
+        }
+        & .original {
+            width: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
         }
     }
 }
