@@ -1,4 +1,4 @@
-export const questionData = [
+export const levelsData = [
     {
         level: 1,
         name: "Apple",
