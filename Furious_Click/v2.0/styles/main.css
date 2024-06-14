@@ -90,13 +90,11 @@ body > :not(.stage) {
 
         & img {
             width: 90dvw;
-            object-fit: cover;
         }
         & .original {
-            width: 50%;
+            width: 0%;
             position: absolute;
             top: 0;
-            left: 0;
             overflow: hidden;
         }
     }

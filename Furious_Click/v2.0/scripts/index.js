@@ -24,16 +24,9 @@ function levelUp() {
 
 startBtn.addEventListener('click', () => {
     changeScene('.intro', '.stage');
-    difficulty();
     displayQuestion();
-    timeCounter();
-    timeElem.innerHTML = "Time: " + timer + "s";
-    questionNumElem.innerHTML = questionNum;
-    scoreElem.innerHTML = "Score: " + score;
 });
 finishBtn.addEventListener('click', () => {
     changeScene('.finish', '.intro');
-    timer = parseInt(levelSelected.getAttribute('data-time'));
-    score = 0;
-    questionNum = 1;
+    level = 1;
 });
