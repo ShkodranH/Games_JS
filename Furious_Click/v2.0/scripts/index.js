@@ -9,7 +9,8 @@ const nameElem = document.querySelector('.name');
 const clickBtn = document.querySelector('.click-btn');
 const finishBtn = document.querySelector('.finish-btn');
 
-let currentLevel = levelsData[0];
+let level = 1;
+let currentLevel = levelsData[level - 1];
 let percentage = 0;
 
 // const clickAudio = new Audio("./sound-effects/click.mp3");
@@ -22,34 +23,26 @@ function changeScene(prev, next) {
 }
 
 function levelUp() {
-    currentLevel++;
+    level++;
     levelElem.innerHTML = currentLevel;
 }
 
-function displayProgress() {
+function handleProgress(value) {
+    percentage += value;
+    percentage = (percentage > 100) ? 100 : (percentage < 0) ? 0 : percentage;
     percentageElem.innerHTML = parseInt(percentage) + "%";
     originalImg.style.width = percentage + "%";
 }
-function clickHandler() {
-    percentage += 10;
-    boundaryHandler();
-    displayProgress();
-}
-
-function boundaryHandler() {
-    percentage = (percentage > 100) ? 100 : (percentage < 0) ? 0 : percentage;
-}
-setInterval(() => {
-    percentage -= 1;
-    boundaryHandler();
-    displayProgress();
+let eraseProgress = setInterval(() => {
+    handleProgress(-1);
 }, 50);
 
-clickBtn.addEventListener('click', clickHandler);
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter')
-        clickHandler();
+clickBtn.addEventListener('click', () => {
+    handleProgress(10)
+    if(percentage == 100) 
+        clearInterval(eraseProgress);
 });
+
 startBtn.addEventListener('click', () => {
     changeScene('.intro', '.stage');
     displayQuestion();
