@@ -24,7 +24,7 @@ function changeScene(prev, next) {
 
 function levelUp() {
     level++;
-    levelElem.innerHTML = currentLevel;
+    levelElem.innerHTML = currentLevel.level;
 }
 
 function handleProgress(value) {
@@ -34,7 +34,7 @@ function handleProgress(value) {
     originalImg.style.width = percentage + "%";
 }
 let eraseProgress = setInterval(() => {
-    handleProgress(-1);
+    handleProgress(-currentLevel.speed);
 }, 50);
 
 clickBtn.addEventListener('click', () => {
