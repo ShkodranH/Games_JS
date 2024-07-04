@@ -19,9 +19,10 @@ function initVariables(levelValue) {
     level = levelValue;
     currentLevel = levelsData[levelValue - 1];
     percentage = 0;
-    eraseProgress = setInterval(() => {
-        handleProgress(-currentLevel.speed);
-    }, 50);
+    eraseProgress = setInterval(() => handleProgress(-currentLevel.speed), 50);
+
+    levelElem.innerHTML = `Level ${currentLevel.level}`;
+    [originalImg, silhouetteImg].forEach(e => e.setAttribute('src', currentLevel.image));
 }
 initVariables(1);
 
@@ -32,12 +33,6 @@ initVariables(1);
 function changeScene(prev, next) {
     document.querySelector(prev).style.display = 'none';
     document.querySelector(next).style.display = 'flex';
-}
-
-function levelUp() {
-    initVariables(++level);
-    levelElem.innerHTML = `Level ${currentLevel.level}`;
-    [originalImg, silhouetteImg].forEach(e => e.setAttribute('src', currentLevel.image));
 }
 
 function handleProgress(value) {
@@ -51,8 +46,11 @@ clickBtn.addEventListener('click', () => {
     handleProgress(10)
     if(percentage == 100) {
         clearInterval(eraseProgress);
-        nameElem.innerHTML = currentLevel.name;
-        levelUp();
+        percentageElem.classList.add('fadeInOut');
+        setTimeout(() => {
+            percentageElem.innerHTML = `${currentLevel.name}`;
+            clickBtn.innerHTML = 'Next';
+        }, 500);
     }
 });
 

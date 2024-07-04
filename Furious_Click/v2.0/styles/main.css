@@ -80,9 +80,6 @@ body > :not(.stage) {
         font-size: 3rem;
         color: var(--secondary-color);
     }
-    & h2 {
-        display: none;
-    }
     & .image {
         position: relative;
         width: 90dvw;
