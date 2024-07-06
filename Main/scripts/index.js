@@ -86,7 +86,7 @@ let gamesData = [
     },
     {
         name: "Furious Click",
-        link: "../Furious_Click/v1.0/index.html",
+        link: "../Furious_Click/v2.0/index.html",
         image: "../Furious_Click/v2.0/images/icon.png"
     },
     {
