@@ -44,7 +44,7 @@ function handleProgress(value) {
 }
 
 clickBtn.addEventListener('click', async() => {
-    handleProgress(40);
+    handleProgress(10);
     if(percentage == 100) {
         clearInterval(eraseProgress);
         percentageElem.classList.add('fadeInOut');
@@ -63,14 +63,12 @@ nextBtn.addEventListener('click', () => {
         changeScene('.stage', '.finish');
     else
         initVariables(++level);
-
     changeScene('.next-btn', '.click-btn');
     percentageElem.classList.remove('fadeInOut');
 });
 
 startBtn.addEventListener('click', () => {
     changeScene('.intro', '.stage');
-    displayQuestion();
 });
 finishBtn.addEventListener('click', () => {
     changeScene('.finish', '.intro');
