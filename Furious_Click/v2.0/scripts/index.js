@@ -6,8 +6,8 @@ const iconElem = document.querySelector('.original');
 const originalImg = document.querySelector('.original img');
 const silhouetteImg = document.querySelector('.silhouette img');
 const percentageElem = document.querySelector('.percentage');
-const nameElem = document.querySelector('.name');
 const clickBtn = document.querySelector('.click-btn');
+const nextBtn = document.querySelector('.next-btn');
 const finishBtn = document.querySelector('.finish-btn');
 
 let level;
@@ -42,16 +42,29 @@ function handleProgress(value) {
     iconElem.style.width = percentage + "%";
 }
 
-clickBtn.addEventListener('click', () => {
-    handleProgress(10)
+clickBtn.addEventListener('click', async() => {
+    handleProgress(40);
     if(percentage == 100) {
         clearInterval(eraseProgress);
         percentageElem.classList.add('fadeInOut');
-        setTimeout(() => {
-            percentageElem.innerHTML = `${currentLevel.name}`;
-            clickBtn.innerHTML = 'Next';
-        }, 500);
+
+        clickBtn.style.pointerEvents = 'none';
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        clickBtn.style.pointerEvents = 'auto';
+        
+        percentageElem.innerHTML = `${currentLevel.name}`;
+        changeScene('.click-btn', '.next-btn');
     }
+});
+
+nextBtn.addEventListener('click', () => {
+    if(level == 10)
+        changeScene('.stage', '.finish');
+    else
+        initVariables(++level);
+
+    changeScene('.next-btn', '.click-btn');
+    percentageElem.classList.remove('fadeInOut');
 });
 
 startBtn.addEventListener('click', () => {
@@ -60,5 +73,5 @@ startBtn.addEventListener('click', () => {
 });
 finishBtn.addEventListener('click', () => {
     changeScene('.finish', '.intro');
-    level = 1;
+    initVariables(1);
 });

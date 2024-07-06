@@ -34,6 +34,7 @@ button {
     cursor: pointer;
     border: none;
     width: min(90%, 350px);
+    justify-content: center;
     font-size: 2.5rem;
     padding: .5em 2em;
     border-radius: 10px;
@@ -41,10 +42,10 @@ button {
     color: var(--secondary-color);
     -webkit-tap-highlight-color: transparent;
 }
-.stage {
+.intro {
     display: flex;
 }
-body > :not(.stage) {
+body > :not(.intro) {
     display: none;
 }
 .silhouette img {
@@ -85,14 +86,17 @@ body > :not(.stage) {
         width: 90dvw;
         aspect-ratio: 1 / 1;
 
-        & img {
-            width: 90dvw;
-        }
         & .original {
             width: 0%;
             position: absolute;
             top: 0;
             overflow: hidden;
         }
+        & img {
+            width: 90dvw;
+        }
+    }
+    & .next-btn {
+        display: none;
     }
 }
