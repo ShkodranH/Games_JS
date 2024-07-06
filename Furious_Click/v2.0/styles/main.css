@@ -83,7 +83,7 @@ body > :not(.intro) {
     }
     & .image {
         position: relative;
-        width: 90dvw;
+        width: min(90dvw, 400px);
         aspect-ratio: 1 / 1;
 
         & .original {
@@ -93,7 +93,7 @@ body > :not(.intro) {
             overflow: hidden;
         }
         & img {
-            width: 90dvw;
+            width: min(90dvw, 400px);
         }
     }
     & .next-btn {

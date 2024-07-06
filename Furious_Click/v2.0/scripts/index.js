@@ -21,6 +21,7 @@ function initVariables(levelValue) {
     percentage = 0;
     eraseProgress = setInterval(() => handleProgress(-currentLevel.speed), 50);
 
+    iconElem.style.width = percentage + "%";
     levelElem.innerHTML = `Level ${currentLevel.level}`;
     [originalImg, silhouetteImg].forEach(e => e.setAttribute('src', currentLevel.image));
 }
