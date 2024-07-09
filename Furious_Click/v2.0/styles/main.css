@@ -3,9 +3,9 @@
     src: url(../fonts/nunito.ttf);
 }
 :root {
-    --bg-color: #1a1a1a;
-    --primary-color: #d3a121;
-    --secondary-color: #faf4e4;
+    --bg-color: #fdfdd2;
+    --primary-color: #ffb448;
+    --secondary-color: #4f3933;
 }
 * {
     box-sizing: border-box;
@@ -39,7 +39,7 @@ button {
     padding: .5em 2em;
     border-radius: 10px;
     background-color: var(--primary-color);
-    color: var(--secondary-color);
+    color: var(--bg-color);
     -webkit-tap-highlight-color: transparent;
 }
 .intro {
@@ -49,7 +49,7 @@ body > :not(.intro) {
     display: none;
 }
 .silhouette img {
-    filter: contrast(0%) brightness(50%) !important;
+    filter: invert(50%) sepia(100%) saturate(150%) brightness(130%);
 }
 
 .intro {
@@ -62,14 +62,15 @@ body > :not(.intro) {
         color: var(--primary-color);
     }
     & div {
-        width: 8em;
-        height: 8em;
+        width: 6em;
+        height: 6em;
         background-image: url("../images/cursor.png");
         background-size: contain;
         display: grid;
         place-items: center;
         cursor: pointer;
-        font-size: 2rem;
+        font-size: 3rem;
+        letter-spacing: 2px;
         color: var(--bg-color);
     }
 }
@@ -98,5 +99,22 @@ body > :not(.intro) {
     }
     & .next-btn {
         display: none;
+    }
+}
+
+.finish {
+    justify-content: space-around;
+
+    & p {
+        width: min(90dvw, 400px);
+        font-size: 1.6rem;
+        color: var(--secondary-color);
+        text-align: center;
+        line-height: 2;
+        letter-spacing: 2px;
+    }
+    & .title {
+        font-size: 3rem;
+        line-height: 1.5;
     }
 }
