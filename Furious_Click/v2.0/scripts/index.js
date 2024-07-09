@@ -27,9 +27,8 @@ function initVariables(levelValue) {
 }
 initVariables(1);
 
-// const clickAudio = new Audio("./sound-effects/click.mp3");
-// const winAudio = new Audio("./sound-effects/win.wav");
-// const loseAudio = new Audio("./sound-effects/lose.wav");
+const levelupAudio = new Audio("./sound-effects/levelup.mp3");
+const winAudio = new Audio("./sound-effects/win.mp3");
 
 function changeScene(prev, next) {
     document.querySelector(prev).style.display = 'none';
@@ -44,14 +43,18 @@ function handleProgress(value) {
 }
 
 clickBtn.addEventListener('click', async() => {
+    const clickAudio = new Audio("./sound-effects/click.mp3");
     handleProgress(10);
+    clickAudio.play();
+
     if(percentage == 100) {
         clearInterval(eraseProgress);
         percentageElem.classList.add('fadeInOut');
-
+        
         clickBtn.style.pointerEvents = 'none';
         await new Promise(resolve => setTimeout(resolve, 1500));
         clickBtn.style.pointerEvents = 'auto';
+        levelupAudio.play();
         
         percentageElem.innerHTML = `${currentLevel.name}`;
         changeScene('.click-btn', '.next-btn');
@@ -59,10 +62,13 @@ clickBtn.addEventListener('click', async() => {
 });
 
 nextBtn.addEventListener('click', () => {
-    if(level == 10)
+    if(level == 10) {
         changeScene('.stage', '.finish');
-    else
+        winAudio.play();
+    }
+    else {
         initVariables(++level);
+    }
     changeScene('.next-btn', '.click-btn');
     percentageElem.classList.remove('fadeInOut');
 });
