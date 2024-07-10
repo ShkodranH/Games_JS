@@ -10,10 +10,18 @@ const clickBtn = document.querySelector('.click-btn');
 const nextBtn = document.querySelector('.next-btn');
 const finishBtn = document.querySelector('.finish-btn');
 
+const levelupAudio = new Audio("./sound-effects/levelup.mp3");
+const winAudio = new Audio("./sound-effects/win.mp3");
+
 let level;
 let currentLevel;
 let percentage;
 let eraseProgress;
+
+function changeScene(prev, next) {
+    document.querySelector(prev).style.display = 'none';
+    document.querySelector(next).style.display = 'flex';
+}
 
 function initVariables(levelValue) {
     level = levelValue;
@@ -26,14 +34,6 @@ function initVariables(levelValue) {
     [originalImg, silhouetteImg].forEach(e => e.setAttribute('src', currentLevel.image));
 }
 initVariables(1);
-
-const levelupAudio = new Audio("./sound-effects/levelup.mp3");
-const winAudio = new Audio("./sound-effects/win.mp3");
-
-function changeScene(prev, next) {
-    document.querySelector(prev).style.display = 'none';
-    document.querySelector(next).style.display = 'flex';
-}
 
 function handleProgress(value) {
     percentage += value;

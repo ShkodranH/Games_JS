@@ -13,7 +13,7 @@
     padding: 0;
     user-select: none;
     font-family: Nunito, cursive;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 html {
     font-size: 14px;
