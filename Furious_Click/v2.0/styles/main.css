@@ -12,9 +12,7 @@
     margin: 0;
     padding: 0;
     user-select: none;
-    /* font-family: Nunito, sans-serif; */
-    font-family: "Nunito", sans-serif;
-    /* font-weight: bold; */
+    font-family: Nunito, sans-serif;
 }
 html {
     font-size: 14px;
