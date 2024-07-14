@@ -10,6 +10,7 @@ const clickBtn = document.querySelector('.click-btn');
 const nextBtn = document.querySelector('.next-btn');
 const finishBtn = document.querySelector('.finish-btn');
 
+// Loading the audio files (except clicking audio)
 const levelupAudio = new Audio("./sound-effects/levelup.mp3");
 const winAudio = new Audio("./sound-effects/win.mp3");
 
@@ -23,6 +24,7 @@ function changeScene(prev, next) {
     document.querySelector(next).style.display = 'flex';
 }
 
+// Initialize functionality whenever we start the game or level up
 function initVariables(levelValue) {
     level = levelValue;
     currentLevel = levelsData[levelValue - 1];
@@ -35,6 +37,7 @@ function initVariables(levelValue) {
 }
 initVariables(1);
 
+// Handling the percentage progress throughtout the level
 function handleProgress(value) {
     percentage += value;
     percentage = (percentage > 100) ? 100 : (percentage < 0) ? 0 : percentage;
@@ -42,6 +45,8 @@ function handleProgress(value) {
     iconElem.style.width = percentage + "%";
 }
 
+// Adding the functionality when user clicks the button during the gameplay
+// Instantiating the audio file inside the event listener in order to play the audio multiple times
 clickBtn.addEventListener('click', async() => {
     const clickAudio = new Audio("./sound-effects/click.mp3");
     handleProgress(10);
@@ -61,6 +66,7 @@ clickBtn.addEventListener('click', async() => {
     }
 });
 
+// Adding the functionality when user clicks the button to go to the next level
 nextBtn.addEventListener('click', () => {
     if(level == 10) {
         changeScene('.stage', '.finish');
