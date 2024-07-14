@@ -3,34 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Test</title>
+    <title>Wordle</title>
     <link rel="icon" href="images/icon.png" type="image/png">
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/media-queries.css">
+    <link rel="stylesheet" href="styles/animations.css">
     <link rel="stylesheet" href="font-awesome/css/all.min.css">
 </head>
 <body>
     <div class="intro">
-        <p class="title">Math Test</p>
+        <div class="title">
+            <div>W</div>
+            <div>O</div>
+            <div>R</div>
+            <div>D</div>
+            <div>L</div>
+            <div>E</div>
+        </div>
         <div>
             <button class="info-btn"><i class="fas fa-info"></i></button>
-            <button class="start-btn">Start</button>
+            <button class="play-btn">Play</button>
             <button class="settings-btn"><i class="fas fa-cog"></i></button>
         </div>
     </div>
 
     <div class="stage">
-        <p class="question-number">1</p>
-        <div>
-            <p class="time">Time: 15s</p>
-            <p class="score">Score: 0</p>
+        <div class="gameboard">
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
-        <p class="question">0 + 0</p>
-        <div class="options">
-            <button>0</button>
-            <button>0</button>
-            <button>0</button>
-            <button>0</button>
+        <div class="keyboard">
+            <div>
+                <div data-item="q">Q</div>
+                <div data-item="w">W</div>
+                <div data-item="e">E</div>
+                <div data-item="r">R</div>
+                <div data-item="t">T</div>
+                <div data-item="y">Y</div>
+                <div data-item="u">U</div>
+                <div data-item="i">I</div>
+                <div data-item="o">O</div>
+                <div data-item="p">P</div>
+            </div>
+            <div>
+                <div data-item="a">A</div>
+                <div data-item="s">S</div>
+                <div data-item="d">D</div>
+                <div data-item="f">F</div>
+                <div data-item="g">G</div>
+                <div data-item="h">H</div>
+                <div data-item="j">J</div>
+                <div data-item="k">K</div>
+                <div data-item="l">L</div>
+            </div>
+            <div>
+                <div data-item="backspace"><img src="images/backspace.png" alt="backspace"></div>
+                <div data-item="z">Z</div>
+                <div data-item="x">X</div>
+                <div data-item="c">C</div>
+                <div data-item="v">V</div>
+                <div data-item="b">B</div>
+                <div data-item="n">N</div>
+                <div data-item="m">M</div>
+                <div data-item="enter"><img src="images/enter.png" alt="enter"></div>
+            </div>
         </div>
     </div>
 
@@ -80,6 +155,6 @@
         <button class="close-settings-btn">Close</button>
     </div>
 
-    <script src="scripts/index.js"></script>
+    <script type="module" src="scripts/index.js"></script>
 </body>
 </html>

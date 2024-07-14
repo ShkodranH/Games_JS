@@ -106,7 +106,7 @@ let gamesData = [
     },
     {
         name: "Wordle",
-        link: "../Wordle/v1.0/index.html",
+        link: "../Wordle/v2.0/index.html",
         image: "../Wordle/v2.0/images/icon.png"
     }
 ];
