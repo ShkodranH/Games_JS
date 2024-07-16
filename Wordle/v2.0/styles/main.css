@@ -1,23 +1,24 @@
 @font-face {
-    font-family: Acme;
-    src: url(../fonts/acme.ttf);
+    font-family: Dosis;
+    src: url(../fonts/dosis.ttf);
 }
 :root {
-    --bg-color: #ffaf42;
-    --btn-color-1: #ff5522;
-    --btn-color-2: #ff7942;
-    --white: #ffffff;
-    --black: #000000;
+    --bg-color: #121213;
+    --green-color: #538d4e;
+    --yellow-color: #b59f3b;
+    --black-color: #3a3a3c;
+    --keyboard-color: #818384;
+    --white-color: #ffffff;
 }
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     user-select: none;
-    font-family: Acme, sans-serif;
+    font-family: Dosis, sans-serif;
 }
 html {
-    font-size: 14px;
+    font-size: 16px;
 }
 body {
     height: 100dvh;
@@ -27,14 +28,11 @@ body {
     background-color: var(--bg-color);
 
     & > div {
-        width: 90%;
-        height: min(50em, 90%);
+        /* width: min(1000px, 90%);
+        height: min(1000px, 90%); */
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        background-color: var(--white);
-        padding: 3em;
     }
 }
 button {
@@ -42,71 +40,86 @@ button {
     border: none;
     -webkit-tap-highlight-color: transparent;
 }
-.intro {
+.stage {
     display: flex;
 }
-body > :not(.intro) {
+body > :not(.stage) {
     display: none;
 }
-.title,
-.message {
-    font-size: 6rem;
-    font-weight: bold;
-    text-align: center;
-}
 
-.intro div {
-    display: grid;
-    grid-template: 1fr 1fr / 1fr 1fr;
-    width: 100%;
-    gap: 1em;
-    margin-top: 10em;
+.intro {
+    justify-content: center;
+    gap: 5rem;
 
-    & button {
-        width: 100%;
-        font-size: 2.5rem;
-        padding: .2em 0;
-        color: var(--white);
-        background-color: var(--btn-color-1);
+    & .title {
+        font-size: 4rem;
+        font-weight: bold;
+        display: grid;
+        grid-template: 1.5em / repeat(6, 1.5em);
+        gap: .5em;
+        color: var(--white-color);
+
+        & div {
+            display: grid;
+            place-items: center;
+            border-radius: .5rem;
+            background-color: var(--black-color);
+            
+            &:nth-of-type(1),
+            &:nth-of-type(5) {
+                background-color: var(--yellow-color);
+            }
+            &:nth-of-type(2),
+            &:nth-of-type(4) {
+                background-color: var(--green-color);
+            }
+        }
     }
-    & .start-btn  {
-        grid-column: 1 / 3;
-        order: -1;
+    & > div:last-of-type {
+        font-size: 3rem;
+        display: grid;
+        grid-template: 2em / 2em 8em 2em;
+        gap: .75em;
+
+        & button {
+            font-size: 3rem;
+            font-weight: bold;
+            border-radius: .25rem;
+            color: var(--white-color);
+            background-color: var(--black-color);
+            transition: background-color .8s;
+            
+            &:hover {
+                background-color: var(--yellow-color);
+            }
+            &.play-btn {
+                text-transform: uppercase;
+                letter-spacing: .5rem;
+
+                &:hover {
+                    background-color: var(--green-color);
+                }
+            }
+        }
+        /* & .play-btn  {
+            grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+            grid-column: 1 / 3;
+            order: -1;
+            } */
     }
 }
 
 .stage {
-    position: relative;
     justify-content: space-between;
     
-    & .question-number {
-        position: absolute;
-        top: -.6em;
-        width: 2em;
-        font-size: 3rem;
-        text-align: center;
-        color: var(--white);
-        background-color: var(--bg-color);
-    }
-    & div {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
+    & .gameboard {
 
-        & .time, .score {
-            font-size: 1.8rem;
-            width: 50%;
-        }
-        & .score {
-            text-align: right;
+        & > div {
+            display: flex;
         }
     }
-    & .question {
-        font-size: 3rem;
-    }
-    & .options {
-        display: grid;
-        grid-template: repeat(4, 1fr) / 1fr;
+    & .keyboard {
+        display: flex;
         gap: 1em;
         
         & button {
