@@ -1,16 +1,21 @@
-const startBtn = document.querySelector('.start-btn');
-const timeElem = document.querySelector('.time');
-const questionNumElem = document.querySelector('.question-number');
-const scoreElem = document.querySelector('.score');
-const questionElem = document.querySelector('.question');
-const optionsElem = document.querySelectorAll('.options button');
-const messageElem = document.querySelector('.message');
-const finalScoreElem = document.querySelector('.final-score');
-const finishBtn = document.querySelector('.finish-btn');
+import { possibleWords } from "./words-data.js";
+import { possibleAnswers } from "./answers-data.js";
+
+const gameboard = document.querySelector('.gameboard');
+const keyboard = document.querySelector('.keyboard');
+const playBtn = document.querySelector('.play-btn');
 const infoBtn = document.querySelector('.info-btn');
-const closeInfoBtn = document.querySelector('.close-info-btn');
 const settingsBtn = document.querySelector('.settings-btn');
-const closeSettingsBtn = document.querySelector('.close-settings-btn');
+const closeInfo = document.querySelector('.close-info');
+const closeSettings = document.querySelector('.close-settings');
+const finishBtn = document.querySelector('.finish-btn');
+
+// document.querySelector(':root').style.setProperty('--primary', '#333');
+
+// Choose a random word as answer
+const randomSelect = Math.floor(Math.random() * possibleAnswers.length);
+const answer = possibleAnswers[randomSelect];
+
 
 
 function changeScene(prev, next) {
@@ -18,7 +23,7 @@ function changeScene(prev, next) {
     document.querySelector(next).style.display = 'flex';
 }
 
-startBtn.addEventListener('click', () => {
+playBtn.addEventListener('click', () => {
     changeScene('.intro', '.stage');
 });
 finishBtn.addEventListener('click', () => {
@@ -28,12 +33,12 @@ finishBtn.addEventListener('click', () => {
 infoBtn.addEventListener('click', () => {
     changeScene('.intro', '.info');
 });
-closeInfoBtn.addEventListener('click', () => {
+closeInfo.addEventListener('click', () => {
     changeScene('.info', '.intro');
 });
 settingsBtn.addEventListener('click', () => {
     changeScene('.intro', '.settings');
 });
-closeSettingsBtn.addEventListener('click', () => {
+closeSettings.addEventListener('click', () => {
     changeScene('.settings', '.intro');
 });

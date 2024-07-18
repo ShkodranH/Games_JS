@@ -7,7 +7,6 @@
     <link rel="icon" href="images/icon.png" type="image/png">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/animations.css">
-    <link rel="stylesheet" href="font-awesome/css/all.min.css">
 </head>
 <body>
     <div class="intro">
@@ -29,11 +28,11 @@
     <div class="stage">
         <div class="gameboard">
             <div class="row">
-                <div>S</div>
-                <div>O</div>
-                <div>A</div>
-                <div>R</div>
-                <div>E</div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
             <div class="row">
                 <div></div>
@@ -116,45 +115,65 @@
     </div>
 
     <div class="info">
-        <p>Welcome to Math Test Game</p>
-        <p>The test contains 10 (or 15) simple Math Questions</p>
-        <p>Each question have four option and only one correct answer</p>
-        <p>You have 15 (or 10) seconds to answer each questions</p>
-        <p>Note that the faster you answer, the more points you get</p>
-        <p>Good luck!</p>
-        <button class="close-info-btn">Close</button>
+        <span class="close-info">&#x2715;</span>
+        <h1>How to Play</h1>
+        <h3>Guess the Wordle in 6 tries</h3>
+        <ul>
+            <li>Each guess must be a valid 5-letter word</li>
+            <li>The color of the tiles will change to show how close your guess was to the word</li>
+        </ul>
+
+        <h3>Examples</h3>
+        <div>
+            <div>D</div>
+            <div>A</div>
+            <div>I</div>
+            <div>L</div>
+            <div>Y</div>
+        </div>
+        <p><b>D</b> is in the word and in correct position</p>
+        <div>
+            <div>S</div>
+            <div>C</div>
+            <div>O</div>
+            <div>R</div>
+            <div>E</div>
+        </div>
+        <p><b>O</b> is in the word but in the wrong position</p>
+        <div>
+            <div>F</div>
+            <div>U</div>
+            <div>N</div>
+            <div>N</div>
+            <div>Y</div>
+        </div>
+        <p><b>Y</b> is not in the word in any position</p>
     </div>
 
     <div class="settings">
+        <span class="close-settings">#x2715</span>
         <p>Settings</p>
-        <p>Choose difficulty of the Game</p>
+        <p>Choose color theme</p>
         <div>
-            <input type="radio" id="easy" name="level" 
-            data-question="10" data-time="15" data-bonus="5" checked>
+            <input type="radio" id="easy" name="theme" data-bonus="5" checked>
             <label for="easy">Easy</label>
-            <p>10 questions with 15 seconds each</p>
         </div>
         <div>
-            <input type="radio" id="medium" name="level" 
-            data-question="15" data-time="15" data-bonus="10">
+            <input type="radio" id="medium" name="theme" data-bonus="10">
             <label for="medium">Medium</label>
-            <p>15 questions with 15 seconds each</p>
         </div>
         <div>
-            <input type="radio" id="hard" name="level" 
-            data-question="10" data-time="10" data-bonus="15">
+            <input type="radio" id="hard" name="theme" data-bonus="15">
             <label for="hard">Hard</label>
-            <p>10 questions with 10 seconds each</p>
         </div>
         <div>
-            <input type="radio" id="insane" name="level" 
-            data-question="15" data-time="10" data-bonus="20">
+            <input type="radio" id="insane" name="theme" data-bonus="20">
             <label for="insane">Insane</label>
-            <p>15 questions with 10 seconds each</p>
         </div>
-        <button class="close-settings-btn">Close</button>
     </div>
 
+    <div class="bg"></div>
+    
     <script type="module" src="scripts/index.js"></script>
 </body>
 </html>
