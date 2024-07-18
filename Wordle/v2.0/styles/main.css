@@ -82,6 +82,9 @@ body > :not(.stage) {
         gap: .75em;
 
         & button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-size: 3rem;
             font-weight: bold;
             border-radius: .25rem;
@@ -90,6 +93,7 @@ body > :not(.stage) {
             transition: background-color .8s;
             
             &:hover {
+                animation: rubberBand 1s;
                 background-color: var(--yellow-color);
             }
             &.play-btn {
@@ -99,6 +103,9 @@ body > :not(.stage) {
                 &:hover {
                     background-color: var(--green-color);
                 }
+            }
+            & img {
+                width: 50%;
             }
         }
         /* & .play-btn  {
