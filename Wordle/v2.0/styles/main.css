@@ -17,6 +17,8 @@
     padding: 0;
     user-select: none;
     font-family: Dosis, sans-serif;
+    font-weight: bold;
+    color: var(--white-color);
 }
 html {
     font-size: 16px;
@@ -41,6 +43,18 @@ button {
     border: none;
     -webkit-tap-highlight-color: transparent;
 }
+.green-mark {
+    border: none;
+    background-color: var(--green-color);
+}
+.yellow-mark {
+    border: none;
+    background-color: var(--yellow-color);
+}
+.gray-mark {
+    border: none;
+    background-color: var(--black-color);
+}
 .intro {
     display: flex;
 }
@@ -54,11 +68,9 @@ body > :not(.intro) {
 
     & .title {
         font-size: 4rem;
-        font-weight: bold;
         display: grid;
         grid-template: 1.5em / repeat(6, 1.5em);
         gap: .5em;
-        color: var(--white-color);
 
         & div {
             display: grid;
@@ -87,9 +99,7 @@ body > :not(.intro) {
             justify-content: center;
             align-items: center;
             font-size: 3rem;
-            font-weight: bold;
             border-radius: .25rem;
-            color: var(--white-color);
             background-color: var(--black-color);
             transition: background-color .8s;
             
@@ -122,11 +132,9 @@ body > :not(.intro) {
     
     & .gameboard {
         font-size: 2rem;
-        font-weight: bold;
         display: flex;
         flex-direction: column;
         gap: .25em;
-        color: var(--white-color);
 
         & .row {
             display: flex;
@@ -138,18 +146,16 @@ body > :not(.intro) {
                 width: 2em;
                 height: 2em;
                 border-radius: 2px;
-                border: 2px solid var(--black-color);
+                border: 1px solid var(--black-color);
             }
         }
     }
     & .keyboard {
         cursor: pointer;
         font-size: 1.5rem;
-        font-weight: bold;
         display: flex;
         flex-direction: column;
         gap: .25em;
-        color: var(--white-color);
         
         & .row {
             display: flex;
@@ -201,45 +207,63 @@ body > :not(.intro) {
     background-color: var(--transparent-black);
 }
 .info {
-    display: flex !important;
+    font-size: 1.25rem;
+    gap: .5em;
+    width: min(90%, 450px);
     position: fixed;
     align-items: flex-start;
-    color: var(--white-color);
     background-color: var(--bg-color);
-    padding: 2em;
+    padding: 1.5em;
     z-index: 1;
     
     & .close-info {
-        font-size: 1.5rem;
+        position: absolute;
         align-self: flex-end;
     }
-    & h1 {
-        font-size: 3rem;
-    }
-    & h3 {
-        font-size: 1.5rem;
+    & p {
         font-weight: normal;
+        margin-bottom: .5em;
+
+        &.sub-title {
+            font-size: 1.5rem;
+        }
     }
+    
     & ul {
-        list-style-position: inside;
-        font-size: 1.2rem;
+        margin-left: 1em;
+
+        & li {
+            margin-bottom: .5em;
+            font-weight: normal;
+        }
     }
     & > div {
         display: flex;
-        gap: 1em;
+        gap: .25em;
 
         & > div {
             display: grid;
             place-items: center;
-            width: 2em;
-            height: 2em;
+            width: 2.5em;
+            height: 2.5em;
             border-radius: 2px;
-            border: 2px solid var(--black-color);
+            border: 1px solid var(--black-color);
         }
     }
 }
 
 .settings {
+    
+    font-size: 1.25rem;
+    gap: .5em;
+    width: min(90%, 450px);
+    position: fixed;
+    align-items: flex-start;
+    background-color: var(--bg-color);
+    padding: 1.5em;
+    z-index: 1;
+    display: flex !important;
+
     & > p:first-of-type {
         font-size: 2.5rem;
     }

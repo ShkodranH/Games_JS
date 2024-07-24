@@ -117,7 +117,7 @@
     <div class="info">
         <span class="close-info">&#x2715;</span>
         <h1>How to Play</h1>
-        <h3>Guess the Wordle in 6 tries</h3>
+        <p class="sub-title">Guess the Wordle in 6 tries</p>
         <ul>
             <li>Each guess must be a valid 5-letter word</li>
             <li>The color of the tiles will change to show how close your guess was to the word</li>
@@ -125,7 +125,7 @@
 
         <h3>Examples</h3>
         <div>
-            <div>D</div>
+            <div class="green-mark">D</div>
             <div>A</div>
             <div>I</div>
             <div>L</div>
@@ -135,7 +135,7 @@
         <div>
             <div>S</div>
             <div>C</div>
-            <div>O</div>
+            <div class="yellow-mark">O</div>
             <div>R</div>
             <div>E</div>
         </div>
@@ -145,30 +145,30 @@
             <div>U</div>
             <div>N</div>
             <div>N</div>
-            <div>Y</div>
+            <div class="gray-mark">Y</div>
         </div>
         <p><b>Y</b> is not in the word in any position</p>
     </div>
 
     <div class="settings">
-        <span class="close-settings">#x2715</span>
-        <p>Settings</p>
-        <p>Choose color theme</p>
+        <span class="close-settings">&#x2715;</span>
+        <h1>Settings</h1>
+        <p class="sub-title">Choose color theme</p>
         <div>
-            <input type="radio" id="easy" name="theme" data-bonus="5" checked>
-            <label for="easy">Easy</label>
+            <input type="radio" id="dark" name="theme" data-value="1" checked>
+            <label for="dark">Dark Theme</label>
         </div>
         <div>
-            <input type="radio" id="medium" name="theme" data-bonus="10">
-            <label for="medium">Medium</label>
+            <input type="radio" id="light" name="theme" data-value="2">
+            <label for="light">Light Theme</label>
         </div>
         <div>
-            <input type="radio" id="hard" name="theme" data-bonus="15">
-            <label for="hard">Hard</label>
+            <input type="radio" id="high-contrast" name="theme" data-value="3">
+            <label for="high-contrast">High Contrast</label>
         </div>
         <div>
-            <input type="radio" id="insane" name="theme" data-bonus="20">
-            <label for="insane">Insane</label>
+            <input type="radio" id="palestine" name="theme" data-value="4">
+            <label for="palestine">Palestine Theme</label>
         </div>
     </div>
 
