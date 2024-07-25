@@ -197,7 +197,7 @@ body > :not(.intro) {
 } */
 
 .bg {
-    display: flex !important;
+    /* display: flex !important; */
     position: fixed;
     top: 0;
     left: 0;
@@ -253,7 +253,7 @@ body > :not(.intro) {
 }
 
 .settings {
-    
+    /* display: flex !important; */
     font-size: 1.25rem;
     gap: .5em;
     width: min(90%, 450px);
@@ -262,7 +262,6 @@ body > :not(.intro) {
     background-color: var(--bg-color);
     padding: 1.5em;
     z-index: 1;
-    display: flex !important;
 
     & > p:first-of-type {
         font-size: 2.5rem;
