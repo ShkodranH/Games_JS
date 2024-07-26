@@ -44,15 +44,15 @@ button {
     -webkit-tap-highlight-color: transparent;
 }
 .green-mark {
-    border: none;
+    border: none !important;
     background-color: var(--green-color);
 }
 .yellow-mark {
-    border: none;
+    border: none !important;
     background-color: var(--yellow-color);
 }
 .gray-mark {
-    border: none;
+    border: none !important;
     background-color: var(--black-color);
 }
 .intro {

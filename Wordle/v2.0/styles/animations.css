@@ -1,10 +1,10 @@
 .typing {
-    animation: pulse 0.1s linear;
+    animation: .05s pulse 2 alternate;
+    border-color: var(--keyboard-color) !important;
 } 
 @keyframes pulse {
     0%   { transform: scale(1)   }
-    50%  { transform: scale(1.2) }
-    100% { transform: scale(1)   }
+    100%  { transform: scale(1.2) }
 }
 
 
