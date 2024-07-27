@@ -6,17 +6,19 @@
     <title>Wordle</title>
     <link rel="icon" href="images/icon.png" type="image/png">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/modals.css">
+    <link rel="stylesheet" href="styles/media-queries.css">
     <link rel="stylesheet" href="styles/animations.css">
 </head>
 <body>
     <div class="intro">
         <div class="title">
-            <div>W</div>
-            <div>O</div>
+            <div class="yellow-mark">W</div>
+            <div class="green-mark">O</div>
             <div>R</div>
-            <div>D</div>
+            <div class="green-mark">D</div>
             <div>L</div>
-            <div>E</div>
+            <div class="yellow-mark">E</div>
         </div>
         <div>
             <button class="info-btn rubber-band"><img src="images/info.png" alt="info"></button>
@@ -108,13 +110,7 @@
         </div>
     </div>
 
-    <div class="finish">
-        <p class="message">You Win!</p>
-        <p class="final-score">Your score: 0</p>
-        <button class="finish-btn">Play Again</button>
-    </div>
-
-    <div class="info">
+    <div class="modal info fade-in-down">
         <span class="close-info">&#x2715;</span>
         <h1>How to Play</h1>
         <p class="sub-title">Guess the Wordle in 6 tries</p>
@@ -150,29 +146,54 @@
         <p><b>Y</b> is not in the word in any position</p>
     </div>
 
-    <div class="settings">
+    <div class="modal settings fade-in-down">
         <span class="close-settings">&#x2715;</span>
         <h1>Settings</h1>
         <p class="sub-title">Choose color theme</p>
         <div>
             <input type="radio" id="dark" name="theme" data-value="1" checked>
-            <label for="dark">Dark Theme</label>
+            <label for="dark">
+                <div class="palette">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <p>Dark Theme</p>
+            </label>
         </div>
         <div>
             <input type="radio" id="light" name="theme" data-value="2">
-            <label for="light">Light Theme</label>
-        </div>
-        <div>
-            <input type="radio" id="high-contrast" name="theme" data-value="3">
-            <label for="high-contrast">High Contrast</label>
+            <label for="light">
+                <div class="palette">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <p>Light Theme</p>
+            </label>
         </div>
         <div>
             <input type="radio" id="palestine" name="theme" data-value="4">
-            <label for="palestine">Palestine Theme</label>
+            <label for="palestine">
+                <div class="palette">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <p>Palestine Theme</p>
+            </label>
         </div>
     </div>
 
-    <div class="bg"></div>
+    <div class="modal finish fade-in-down">
+        <p class="message"></p>
+        <button class="finish-btn">Play Again</button>
+    </div>
+
+    <div class="bg fade-in"></div>
     
     <script type="module" src="scripts/index.js"></script>
 </body>
