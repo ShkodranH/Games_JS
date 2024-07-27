@@ -1,13 +1,14 @@
-.green-mark {
+[class*="mark"] {
     border: none !important;
+    color: var(--absolute-white) !important;
+}
+.green-mark {
     background-color: var(--green-color) !important;
 }
 .yellow-mark {
-    border: none !important;
     background-color: var(--yellow-color) !important;
 }
 .gray-mark {
-    border: none !important;
     background-color: var(--black-color) !important;
 }
 
@@ -21,18 +22,36 @@
     background-color: var(--transparent-black);
 }
 .modal {
+    font-size: 1.25rem;
+    gap: .5em;
+    width: min(90%, 450px);
+    position: fixed;
+    align-items: flex-start;
+    background-color: var(--bg-color);
+    padding: 1.5em;
+    z-index: 1;
+    opacity: 0;
 
+    & .close-info, 
+    & .close-settings {
+        cursor: pointer;
+        position: absolute;
+        align-self: flex-end;
+    }
+
+    & .sub-title, 
+    & label {
+        font-size: 1.5rem;
+        font-weight: normal;
+        margin-bottom: .5em;
+    }
 }
 
 .finish {
     font-size: 2.5rem;
     gap: 1em;
-    width: min(90%, 450px);
-    position: fixed;
-    background-color: var(--bg-color);
     padding: .75em;
-    z-index: 1;
-    opacity: 0;
+    align-items: center;
 
     & .message {
         line-height: 1.5;
@@ -43,36 +62,18 @@
     & .finish-btn {
         font-size: 2rem;
         width: 100%;
-        padding: .5em 0;
+        padding: .5em;
         background-color: var(--green-color);
+        color: var(--absolute-white);
         text-transform: uppercase;
         letter-spacing: .5rem;
     }
 }
 
 .info {
-    font-size: 1.25rem;
-    gap: .5em;
-    width: min(90%, 450px);
-    position: fixed;
-    align-items: flex-start;
-    background-color: var(--bg-color);
-    padding: 1.5em;
-    z-index: 1;
-    opacity: 0;
-    
-    & .close-info {
-        cursor: pointer;
-        position: absolute;
-        align-self: flex-end;
-    }
     & p {
         font-weight: normal;
         margin-bottom: .5em;
-
-        &.sub-title {
-            font-size: 1.5rem;
-        }
     }
     
     & ul {
@@ -93,32 +94,12 @@
             width: 2.5em;
             height: 2.5em;
             border-radius: 2px;
-            border: 1px solid var(--black-color);
+            border: 1px solid color-mix(in srgb, var(--white-color) 20%, var(--bg-color));
         }
     }
 }
 
 .settings {
-    font-size: 1.25rem;
-    gap: .5em;
-    width: min(90%, 450px);
-    position: fixed;
-    align-items: flex-start;
-    background-color: var(--bg-color);
-    padding: 1.5em;
-    z-index: 1;
-    opacity: 0;
-
-    & .close-settings {
-        cursor: pointer;
-        position: absolute;
-        align-self: flex-end;
-    }
-    & .sub-title {
-        font-size: 1.5rem;
-        font-weight: normal;
-        margin-bottom: .5em;
-    }
     & div {
         display: flex;
         flex-direction: column;
@@ -129,45 +110,40 @@
             height: 0;
         }
         & label {
-            font-size: 1.5rem;
-            font-weight: normal;
-            /* margin-bottom: .5em; */
-            
             cursor: pointer;
+            padding: .5em;
+            margin: 0;
             text-align: center;
             -webkit-tap-highlight-color: transparent;
-
-            & .palette {
-                display: flex;
-                flex-direction: row;
-                padding: 1em;
-
-                & > div {
-                    width: 100%;
-                    aspect-ratio: 1 / 1;
-                }
-                :nth-of-type(1) {
-                    background-color: var(--green-color);
-                }
-                :nth-of-type(2) {
-                    background-color: var(--yellow-color);
-                }
-                :nth-of-type(3) {
-                    background-color: var(--black-color);
-                }
-                :nth-of-type(4) {
-                    background-color: var(--bg-color);
-                }
-            }
         }
         & input:checked + label {
-            background-color: var(--transparent-black);
+            background-color: color-mix(in srgb, var(--transparent-black) 50%, var(--bg-color))
+        }
+    }
+    & .palette {
+        display: flex;
+        flex-direction: row;
+        margin: 1em 0;
+
+        & > div {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            
+            &:nth-of-type(1) {
+                background-color: var(--green-color);
+            }
+            &:nth-of-type(2) {
+                background-color: var(--yellow-color);
+            }
+            &:nth-of-type(3) {
+                background-color: var(--black-color);
+            }
+            &:nth-of-type(4) {
+                background-color: var(--bg-color);
+            }
+            &:nth-of-type(5) {
+                background-color: var(--white-color);
+            }
         }
     }
 }
-
-
-/* bc000d
-000000
-ffffff
-008525 */

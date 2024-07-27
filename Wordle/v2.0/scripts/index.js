@@ -15,51 +15,21 @@ const closeSettings = document.querySelector('.close-settings');
 const finishPopup = document.querySelector('.finish');
 const messageElem = document.querySelector('.message');
 const finishBtn = document.querySelector('.finish-btn');
+const themeRadioBtns = document.querySelectorAll('input[data-theme]');
 const bgElem = document.querySelector('.bg');
 
-
 const colorPalettes = {
-    names: [
-        '--transparent-black',
-        '--bg-color',
-        '--green-color',
-        '--yellow-color',
-        '--black-color',
-        '--keyboard-color',
-        '--white-color'
-    ],
-    dark: [
-        '#00000080',
-        '#121213',
-        '#538d4e',
-        '#b59f3b',
-        '#3a3a3c',
-        '#818384',
-        '#ffffff'
-    ],
-    light: [
-        '#ffffff80',
-        '#ffffff',
-        '#538d4e',
-        '#b59f3b',
-        '#3a3a3c',
-        '#818384',
-        '#121213'
-    ],
-    palestine: [
-        '#00000080',
-        '#121213',
-        '#008525',
-        '#bc000d',
-        '#000000',
-        '#818384',
-        '#ffffff'
-    ]
+    names:     [ '--green-color', '--yellow-color', '--black-color', '--bg-color', '--white-color'],
+    dark:      [   '#538d4e',       '#b59f3b',        '#3a3a3c',       '#121213',    '#ffffff'    ],
+    light:     [   '#379727',       '#e4ac14',        '#45474B',       '#f5f7f8',    '#000000'    ],
+    palestine: [   '#008525',       '#bc000d',        '#000000',       '#121213',    '#ffffff'    ]
 }
-for(let i = 0; i < colorPalettes.names.length; i++) {
-    document.querySelector(':root').style.setProperty(colorPalettes.names[i], colorPalettes.dark[i]);
+function changeColorTheme() {
+    let selectedTheme = document.querySelector('.settings input:checked').dataset.theme;
+    for(let i = 0; i < colorPalettes.names.length; i++)
+        document.querySelector(':root').style.setProperty(colorPalettes.names[i], colorPalettes[selectedTheme][i]);
 }
-// document.querySelector(':root').style.setProperty('--color-scheme', 'light');
+
 const wordsLength = 5;
 const numberOfTries = 6;
 let randomSelect = Math.floor(Math.random() * possibleAnswers.length);
@@ -228,3 +198,4 @@ closeSettings.addEventListener('click', async () => {
     toggleClass(settingsModal);
     popUpScene('.settings', 'none');
 });
+themeRadioBtns.forEach(e => e.addEventListener('click', () => changeColorTheme()));
