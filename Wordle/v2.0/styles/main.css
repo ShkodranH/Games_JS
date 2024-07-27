@@ -22,6 +22,7 @@
     font-family: Dosis, sans-serif;
     font-weight: bold;
     color: var(--white-color);
+    -webkit-tap-highlight-color: transparent;
 }
 html {
     font-size: 14px;
@@ -42,7 +43,6 @@ body {
 button {
     cursor: pointer;
     border: none;
-    -webkit-tap-highlight-color: transparent;
 }
 .intro {
     display: flex;
@@ -132,7 +132,6 @@ body > :not(.intro) {
         display: flex;
         flex-direction: column;
         gap: .25em;
-        -webkit-tap-highlight-color: transparent;
         
         & .row {
             display: flex;

@@ -16,6 +16,7 @@
     padding: 0;
     user-select: none;
     font-family: NewAthletic, sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 html {
     font-size: 14px;
@@ -41,7 +42,6 @@ button {
     background-color: var(--primary-color);
     color: var(--white);
     letter-spacing: 3px;
-    -webkit-tap-highlight-color: transparent;
 }
 .intro {
     display: flex;
@@ -67,7 +67,6 @@ body > :not(.intro) {
         }
     }
 }
-
 
 .stage {
     justify-content: space-between;
@@ -135,7 +134,6 @@ body > :not(.intro) {
         & .inp-button img {
             cursor: pointer;
             width: 7em;
-            -webkit-tap-highlight-color: transparent;
 
             &:hover {
                 filter: none;

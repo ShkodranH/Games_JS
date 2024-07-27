@@ -81,7 +81,7 @@ function changeStage() {
 
 startBtns.forEach(elem => {
     elem.addEventListener('click', () => {
-        initVariables(elem.getAttribute('data-value'));
+        initVariables(elem.dataset.value);
         changeScene('.info', '.stage');
         changeStage();
     });
@@ -89,7 +89,7 @@ startBtns.forEach(elem => {
 
 stageBtns.forEach(elem => {
     elem.addEventListener('click', () => {
-        if(elem.getAttribute('data-value') === 'yes') {
+        if(elem.dataset.value === 'yes') {
             result += stagePoints;
         }
         if(stageCount === numberLength) {

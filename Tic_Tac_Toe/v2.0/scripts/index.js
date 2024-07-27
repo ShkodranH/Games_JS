@@ -53,7 +53,7 @@ function winConditions() {
 
 function playGame(element) {
     let clickedCell = element.target;
-    let cellIndex = parseInt(clickedCell.getAttribute("data-index"));
+    let cellIndex = clickedCell.dataset.index;
 
     if(gameState[cellIndex] !== "" || !gameActive) 
         return;

@@ -42,7 +42,7 @@ function popUpScene(name, action) {
 
 // Generating player and computer choices for a round
 function generateChoices(elem) {
-    playerChoice = elem.currentTarget.getAttribute('data-choice');
+    playerChoice = elem.currentTarget.dataset.choice;
     computerChoice = listOfChoices[Math.floor(Math.random() * listOfChoices.length)];
 }
 // Displaying the current hand image depending the choice

@@ -15,6 +15,7 @@
     padding: 0;
     user-select: none;
     font-family: Acme, sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 html {
     font-size: 14px;
@@ -40,7 +41,6 @@ body {
 button {
     cursor: pointer;
     border: none;
-    -webkit-tap-highlight-color: transparent;
 }
 .intro {
     display: flex;
@@ -183,7 +183,6 @@ body > :not(.intro) {
             margin-top: .5em;
             color: var(--white);
             background-color: var(--btn-color-2);
-            -webkit-tap-highlight-color: transparent;
         }
         & input:checked + label {
             outline: 5px solid var(--btn-color-1);

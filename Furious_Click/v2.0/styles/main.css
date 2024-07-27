@@ -13,6 +13,7 @@
     padding: 0;
     user-select: none;
     font-family: Nunito, sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 html {
     font-size: 14px;
@@ -39,7 +40,6 @@ button {
     border-radius: 10px;
     background-color: var(--primary-color);
     color: var(--bg-color);
-    -webkit-tap-highlight-color: transparent;
 }
 .intro {
     display: flex;

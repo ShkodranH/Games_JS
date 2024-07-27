@@ -12,6 +12,7 @@
     padding: 0;
     user-select: none;
     font-family: Iceberg, monospace;
+    -webkit-tap-highlight-color: transparent;
 }
 html {
     font-size: 14px;
@@ -43,7 +44,6 @@ button {
     padding: .2em 0;
     border: 2px solid var(--black);
     background-color: transparent;
-    -webkit-tap-highlight-color: transparent;
 }
 
 .info {

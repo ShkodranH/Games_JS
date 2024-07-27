@@ -20,6 +20,7 @@
     padding: 0;
     user-select: none;
     font-family: Barlow, sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 html {
     font-size: 14px;
@@ -42,7 +43,6 @@ body {
 button {
     cursor: pointer;
     border: none;
-    -webkit-tap-highlight-color: transparent;
 }
 .intro {
     display: flex;
@@ -125,7 +125,6 @@ body > :not(.intro) {
             & img {
                 cursor: pointer;
                 width: 2.5rem;
-                -webkit-tap-highlight-color: transparent;
             }
         }
     }
@@ -158,7 +157,6 @@ body > :not(.intro) {
             height: 2em;
             border-radius: 5px;
             background-color: var(--whitesmoke);
-            -webkit-tap-highlight-color: transparent;   
         }
         & .undo-key, .check-key {
             background-color: var(--btn-color);

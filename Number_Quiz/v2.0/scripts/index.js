@@ -142,7 +142,7 @@ finishBtn.addEventListener('click', () => {
     levelElem.innerHTML = "Level " + level;
 });
 keyboardElems.forEach(elem => elem.addEventListener('click', (e) => {
-    let clickedKey = e.target.getAttribute('data-index');
+    let clickedKey = e.target.dataset.index;
     drawNumber(clickedKey);
 }));
 document.addEventListener('keydown', keyPress);

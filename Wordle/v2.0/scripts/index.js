@@ -48,6 +48,12 @@ function initVariables() {
     keyboardElem.querySelectorAll('[data-item]').forEach(key => key.className = '');
 }
 
+const clickAudio = new Audio("./sound-effects/click.wav");
+const wrongAudio = new Audio("./sound-effects/wrong.mp3");
+const revealAudio = new Audio("./sound-effects/reveal.wav");
+const winAudio = new Audio("./sound-effects/win.wav");
+const loseAudio = new Audio("./sound-effects/lose.wav");
+
 function enableInputs() {
     document.addEventListener('keydown', keyPress);
     keyboardElem.addEventListener('click', mouseClick);
@@ -93,6 +99,7 @@ function writeLetter(letter) {
     if(currentCol < wordsLength) {
         gameboardCells[currentRow][currentCol].classList.add('typing');
         updateGameGrid(currentRow, currentCol++, letter);
+        clickAudio.play();
     }
 }
 // Remove the last letter of the current guess if it has any
@@ -100,6 +107,7 @@ function deleteLetter() {
     if(currentCol > 0) {
         updateGameGrid(currentRow, --currentCol, '');
         gameboardCells[currentRow][currentCol].classList.remove('typing');
+        clickAudio.play();
     }
 }
 // Check if the current guess is in the word list and mark the letter accordingly
@@ -108,6 +116,7 @@ async function checkGuess() {
     
     if(possibleWords.includes(currentGuess)) {
         disabledinputs();
+        revealAudio.play();
         for(let i = 0; i < wordsLength; i++){
             gameboardCells[currentRow][i].classList.add('reveal');
             await new Promise(resolve => setTimeout(resolve, 300));
@@ -124,6 +133,7 @@ async function checkGuess() {
         checkWinLose(currentGuess);
     }
     else {
+        wrongAudio.play();
         gameboardRows[currentRow].classList.add('wrong');
         await new Promise(resolve => setTimeout(resolve, 500));
         gameboardRows[currentRow].classList.remove('wrong');
@@ -135,6 +145,7 @@ async function checkWinLose(guess) {
     await new Promise(resolve => setTimeout(resolve, 500));
     if(guess === answer) {
         disabledinputs();
+        winAudio.play();
         for(const i of gameboardCells[currentRow]) {
             i.classList.add('correct');
             await new Promise(resolve => setTimeout(resolve, 100));
@@ -143,6 +154,7 @@ async function checkWinLose(guess) {
     }
     else if(++currentRow === numberOfTries) {
         disabledinputs();
+        loseAudio.play();
         finishModal(false);
     }
     currentCol = 0;

@@ -20,6 +20,7 @@
     padding: 0;
     user-select: none;
     font-family: ComicNeue, cursive;
+    -webkit-tap-highlight-color: transparent;
 }
 body {
     height: 100vh;
@@ -47,7 +48,6 @@ body {
         color: var(--orange);
         font-size: min(20vw, 15vh);
         font-family: PermanentMarker, cursive;
-        -webkit-tap-highlight-color: transparent;
     }
 }
 
@@ -71,7 +71,6 @@ body {
         color: var(--white-smoke);
         font-size: min(6vw, 3vh);
         border: .1vmin solid transparent;
-        -webkit-tap-highlight-color: transparent;
     }
 }
 
