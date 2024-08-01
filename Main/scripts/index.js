@@ -41,7 +41,7 @@ let gamesData = [
     },
     {
         name: "4 Pictures 1 Word",
-        link: "../4_Pictures_1_Word/v1.0/index.html",
+        link: "../4_Pictures_1_Word/v2.0/index.html",
         image: "../4_Pictures_1_Word/v2.0/images/icon.png"
     },
     {
