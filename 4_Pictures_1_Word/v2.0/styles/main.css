@@ -35,7 +35,7 @@ body {
         justify-content: space-evenly;
     }
 }
-.stage {
+.intro {
     display: flex;
 }
 body > :not(.stage) {
@@ -83,12 +83,12 @@ body > :not(.stage) {
         & > div img {
             width: 100%;
             height: 100%;
-            border: .5em solid var(--secondary-color);
+            border: .5rem solid var(--secondary-color);
             object-fit: cover;
         }
     }
     & .word {
-        font-size: 2rem;
+        font-size: 1.75rem;
         display: flex;
         justify-content: center;
         gap: .25em;
@@ -107,8 +107,8 @@ body > :not(.stage) {
         font-size: 1.5rem;
         display: grid;
         grid-template: repeat(2, 1fr) / repeat(7, 1fr);
-        gap: .25em;
-        padding: .25em;
+        gap: .1em;
+        padding: .5rem;
         background-color: var(--secondary-color);
         
         & > div {
