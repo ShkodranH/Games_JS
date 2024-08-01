@@ -52,7 +52,6 @@ body > :not(.stage) {
             aspect-ratio: 1 / 1;
             display: grid;
             place-items: center;
-            background-color: violet;
 
             &:nth-child(odd) {
                 font-size: 6rem;
@@ -93,7 +92,6 @@ body > :not(.stage) {
         justify-content: center;
         gap: .25em;
         text-transform: uppercase;
-        box-shadow: 0 0 0 10px var(--white-color);
         
         & > div {
             display: grid;
