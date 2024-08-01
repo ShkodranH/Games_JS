@@ -1,5 +1,4 @@
 import { possibleWords } from "./words-data.js";
-import { possibleAnswers } from "./answers-data.js";
 
 const gameboardElem = document.querySelector('.gameboard');
 const gameboardRows = [...gameboardElem.children];
@@ -18,17 +17,6 @@ const finishBtn = document.querySelector('.finish-btn');
 const themeRadioBtns = document.querySelectorAll('input[data-theme]');
 const bgElem = document.querySelector('.bg');
 
-const colorPalettes = {
-    names:     [ '--green-color', '--yellow-color', '--black-color', '--bg-color', '--white-color'],
-    dark:      [   '#538d4e',       '#b59f3b',        '#3a3a3c',       '#121213',    '#ffffff'    ],
-    light:     [   '#379727',       '#e4ac14',        '#45474B',       '#f5f7f8',    '#000000'    ],
-    palestine: [   '#008525',       '#bc000d',        '#000000',       '#121213',    '#ffffff'    ]
-}
-function changeColorTheme() {
-    let selectedTheme = document.querySelector('.settings input:checked').dataset.theme;
-    for(let i = 0; i < colorPalettes.names.length; i++)
-        document.querySelector(':root').style.setProperty(colorPalettes.names[i], colorPalettes[selectedTheme][i]);
-}
 
 const wordsLength = 5;
 const numberOfTries = 6;

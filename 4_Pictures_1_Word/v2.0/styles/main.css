@@ -1,6 +1,6 @@
 @font-face {
-    font-family: Dosis;
-    src: url(../fonts/dosis.ttf);
+    font-family: Poppins;
+    src: url(../fonts/poppins.ttf);
 }
 :root {
     --white-color: #ffffff;
@@ -14,7 +14,7 @@
     margin: 0;
     padding: 0;
     user-select: none;
-    font-family: Dosis, sans-serif;
+    font-family: Poppins, sans-serif;
     font-weight: bold;
     color: var(--white-color);
     -webkit-tap-highlight-color: transparent;
@@ -35,36 +35,45 @@ body {
         justify-content: space-evenly;
     }
 }
+& button {
+    cursor: pointer;
+    border: none;
+    font-size: 3rem;
+    padding: .25em 0;
+    border-radius: .2em;
+    letter-spacing: .1em;
+    background-color: var(--secondary-color);
+    transition: background-color 400ms;
+    
+    &:hover {
+        background-color: color-mix(in srgb, var(--primary-color) 60%, var(--secondary-color));
+    }
+}
 .intro {
     display: flex;
 }
-body > :not(.stage) {
+body > :not(.intro) {
     display: none;
 }
 
 .intro {
     & .title {
-        font-size: 3rem;
+        font-size: 2.5rem;
         display: grid;
         grid-template: repeat(2, 1fr) / repeat(2, 1fr);
         gap: .4em;
 
         & > div {
-            aspect-ratio: 1 / 1;
             display: grid;
             place-items: center;
+            aspect-ratio: 1 / 1;
+            border-radius: .5rem;
+            background-color: var(--primary-color);
+            rotate: -10deg;
 
             &:nth-child(odd) {
-                font-size: 6rem;
+                font-size: 5.5rem;
             }
-        }
-    }
-    & .play-btn {
-        font-size: 3.5rem;
-        background-color: var(--purple-color-2);
-        
-        &:hover {
-            background-color: var(--purple-color-4);
         }
     }
 }
@@ -83,8 +92,9 @@ body > :not(.stage) {
         & > div img {
             width: 100%;
             height: 100%;
-            border: .5rem solid var(--secondary-color);
+            border: .4rem solid var(--secondary-color);
             object-fit: cover;
+            border-radius: .5em;
         }
     }
     & .word {
@@ -99,6 +109,7 @@ body > :not(.stage) {
             place-items: center;
             width: 2em;
             height: 2em;
+            border-radius: .25em;
             background-color: color-mix(in srgb, var(--primary-color) 60%, var(--secondary-color));
         }
     }
@@ -107,17 +118,19 @@ body > :not(.stage) {
         font-size: 1.5rem;
         display: grid;
         grid-template: repeat(2, 1fr) / repeat(7, 1fr);
-        gap: .1em;
-        padding: .5rem;
+        gap: .25em;
+        padding: .25em;
+        border-radius: .25em;
         background-color: var(--secondary-color);
         
         & > div {
             display: grid;
             place-items: center;
             aspect-ratio: 1 / 1;
+            border-radius: .2em;
             text-transform: uppercase;
             background-color: var(--primary-color);
-
+            
             &:has(img) {
                 grid-row: span 2;
                 aspect-ratio: auto;
@@ -127,5 +140,32 @@ body > :not(.stage) {
                 width: 50%;
             }
         }
+    }
+}
+
+.finish {
+    & * {
+        color: var(--secondary-color);
+        text-align: center;
+    }
+    & .title h1 {
+        font-size: min(5rem, 17vw);
+    }
+    & .title h3 {
+        font-size: min(1.8rem, 6vw);
+    }
+    & .message p {
+        font-size: min(1.4rem, 5vw);
+        text-align: justify;
+        margin-bottom: .5em;
+        font-weight: normal;
+    }
+    & .message b {
+        font-size: min(1.5rem, 5.5vw);
+        text-align: center;
+    }
+    & .finish-btn {
+        font-size: 2.5rem;
+        color: var(--white-color);
     }
 }
