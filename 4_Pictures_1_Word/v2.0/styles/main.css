@@ -3,16 +3,10 @@
     src: url(../fonts/dosis.ttf);
 }
 :root {
-    --transparent-black: #00000080;
-    --absolute-white: #ffffff;
-    --keyboard-color: #818384;
-
-    --green-color: #538d4e;
-    --yellow-color: #b59f3b;
-    --black-color: #3a3a3c;
-
-    --bg-color: #121213;
     --white-color: #ffffff;
+    --bg-color: #ffcfb4;
+    --primary-color: #f564a3;
+    --secondary-color: #af0843;
 }
 * {
     box-sizing: border-box;
@@ -31,128 +25,106 @@ body {
     height: 100dvh;
     display: flex;
     justify-content: center;
-    align-items: center;
     background-color: var(--bg-color);
 
     & > div {
+        width: min(90%, 400px);
         display: flex;
         flex-direction: column;
-        align-items: center;
+        justify-content: space-evenly;
     }
 }
-button {
-    cursor: pointer;
-    border: none;
-}
-.intro {
+.stage {
     display: flex;
 }
-body > :not(.intro) {
+body > :not(.stage) {
     display: none;
 }
 
 .intro {
-    gap: 5rem;
-
     & .title {
-        font-size: 4rem;
-        display: grid;
-        grid-template: repeat(2, 1.5em) / repeat(3, 1.5em);
-        gap: .25em;
-
-        & div {
-            display: grid;
-            place-items: center;
-            border-radius: .5rem;
-        }
-    }
-    & > div:last-of-type {
         font-size: 3rem;
         display: grid;
-        grid-template: repeat(2, 2em) / repeat(2, 1fr);
+        grid-template: repeat(2, 1fr) / repeat(2, 1fr);
         gap: .4em;
 
-        & button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 3rem;
-            border-radius: .25rem;
-            background-color: var(--black-color);
-            color: var(--absolute-white);
-            transition: background-color .8s;
-            
-            &:hover {
-                animation: rubberBand 1s;
-                background-color: var(--yellow-color);
-            }
-            &.play-btn {
-                grid-column: 1 / 3;
-                order: -1;
-                text-transform: uppercase;
-                letter-spacing: .5rem;
+        & > div {
+            aspect-ratio: 1 / 1;
+            display: grid;
+            place-items: center;
+            background-color: violet;
 
-                &:hover {
-                    background-color: var(--green-color);
-                }
+            &:nth-child(odd) {
+                font-size: 6rem;
             }
-            & img {
-                width: 40%;
-            }
+        }
+    }
+    & .play-btn {
+        font-size: 3.5rem;
+        background-color: var(--purple-color-2);
+        
+        &:hover {
+            background-color: var(--purple-color-4);
         }
     }
 }
 
 .stage {
-    gap: 2rem;
-    
-    & .gameboard {
-        font-size: 1.8rem;
+    & .level {
+        align-self: center;
+        font-size: 2.5rem;
+        color: var(--secondary-color);
+    }
+    & .pictures {
+        display: grid;
+        grid-template: repeat(2, auto) / repeat(2, 1fr);
+        gap: 1em;
+
+        & > div img {
+            width: 100%;
+            height: 100%;
+            border: .5em solid var(--primary-color);
+            object-fit: cover;
+        }
+    }
+    & .word {
+        font-size: 2rem;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         gap: .25em;
-
-        & .row {
-            display: flex;
-            gap: .25em;
-
-            & > div {
-                display: grid;
-                place-items: center;
-                width: 2em;
-                height: 2em;
-                border-radius: 2px;
-                border: 1px solid color-mix(in srgb, var(--white-color) 20%, var(--bg-color));
-            }
+        text-transform: uppercase;
+        box-shadow: 0 0 0 10px var(--white-color);
+        
+        & > div {
+            display: grid;
+            place-items: center;
+            width: 2em;
+            height: 2em;
+            background-color: var(--secondary-color);
         }
     }
     & .keyboard {
         cursor: pointer;
         font-size: 1.5rem;
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template: repeat(2, 1fr) / repeat(7, 1fr);
         gap: .25em;
+        padding: .25em;
+        background-color: var(--primary-color);
         
-        & .row {
-            display: flex;
-            justify-content: center;
-            gap: .25em;
+        & > div {
+            display: grid;
+            place-items: center;
+            aspect-ratio: 1 / 1;
+            text-transform: uppercase;
+            background-color: var(--secondary-color);
 
-            & > div {
-                display: grid;
-                place-items: center;
-                width: 1.4em;
-                height: 2em;
-                border-radius: 4px;
-                background-color: var(--keyboard-color);
-                color: var(--absolute-white);
-
-                &:has(img) {
-                    width: 2em;
-                }
-                & img {
-                    width: 60%;
-                }
+            &:has(img) {
+                grid-row: span 2;
+                aspect-ratio: auto;
+            }
+            & img {
+                width: 50%;
             }
         }
     }
