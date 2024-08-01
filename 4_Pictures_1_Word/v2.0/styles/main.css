@@ -1,0 +1,159 @@
+@font-face {
+    font-family: Dosis;
+    src: url(../fonts/dosis.ttf);
+}
+:root {
+    --transparent-black: #00000080;
+    --absolute-white: #ffffff;
+    --keyboard-color: #818384;
+
+    --green-color: #538d4e;
+    --yellow-color: #b59f3b;
+    --black-color: #3a3a3c;
+
+    --bg-color: #121213;
+    --white-color: #ffffff;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-family: Dosis, sans-serif;
+    font-weight: bold;
+    color: var(--white-color);
+    -webkit-tap-highlight-color: transparent;
+}
+html {
+    font-size: 14px;
+}
+body {
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+
+    & > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+button {
+    cursor: pointer;
+    border: none;
+}
+.intro {
+    display: flex;
+}
+body > :not(.intro) {
+    display: none;
+}
+
+.intro {
+    gap: 5rem;
+
+    & .title {
+        font-size: 4rem;
+        display: grid;
+        grid-template: repeat(2, 1.5em) / repeat(3, 1.5em);
+        gap: .25em;
+
+        & div {
+            display: grid;
+            place-items: center;
+            border-radius: .5rem;
+        }
+    }
+    & > div:last-of-type {
+        font-size: 3rem;
+        display: grid;
+        grid-template: repeat(2, 2em) / repeat(2, 1fr);
+        gap: .4em;
+
+        & button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            border-radius: .25rem;
+            background-color: var(--black-color);
+            color: var(--absolute-white);
+            transition: background-color .8s;
+            
+            &:hover {
+                animation: rubberBand 1s;
+                background-color: var(--yellow-color);
+            }
+            &.play-btn {
+                grid-column: 1 / 3;
+                order: -1;
+                text-transform: uppercase;
+                letter-spacing: .5rem;
+
+                &:hover {
+                    background-color: var(--green-color);
+                }
+            }
+            & img {
+                width: 40%;
+            }
+        }
+    }
+}
+
+.stage {
+    gap: 2rem;
+    
+    & .gameboard {
+        font-size: 1.8rem;
+        display: flex;
+        flex-direction: column;
+        gap: .25em;
+
+        & .row {
+            display: flex;
+            gap: .25em;
+
+            & > div {
+                display: grid;
+                place-items: center;
+                width: 2em;
+                height: 2em;
+                border-radius: 2px;
+                border: 1px solid color-mix(in srgb, var(--white-color) 20%, var(--bg-color));
+            }
+        }
+    }
+    & .keyboard {
+        cursor: pointer;
+        font-size: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: .25em;
+        
+        & .row {
+            display: flex;
+            justify-content: center;
+            gap: .25em;
+
+            & > div {
+                display: grid;
+                place-items: center;
+                width: 1.4em;
+                height: 2em;
+                border-radius: 4px;
+                background-color: var(--keyboard-color);
+                color: var(--absolute-white);
+
+                &:has(img) {
+                    width: 2em;
+                }
+                & img {
+                    width: 60%;
+                }
+            }
+        }
+    }
+}
