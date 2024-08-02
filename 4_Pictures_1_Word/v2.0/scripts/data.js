@@ -5,7 +5,8 @@ export const levelsData = [
         answer: "ball"
     },
     {
-        
+        level: 2,
+        pictures: ['book-1.png', 'book-2.png', 'book-3.png', 'bpp']
     }
 ];
 // "./images/apple.png"
