@@ -49,6 +49,10 @@ body {
         background-color: color-mix(in srgb, var(--primary-color) 60%, var(--secondary-color));
     }
 }
+.hidden-key {
+    pointer-events: none;
+    visibility: hidden;
+}
 .intro {
     display: flex;
 }
