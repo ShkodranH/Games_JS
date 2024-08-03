@@ -91,7 +91,6 @@ function deleteGuess() {
 // Check if the current guess is correct or not
 async function checkGuess() {
     keyboard.removeEventListener('click', mouseClick);
-    gameFinish();
     await new Promise(resolve => setTimeout(resolve, 200));
 
     if(currentGuess.join('') == currentAnswer) {
@@ -102,7 +101,7 @@ async function checkGuess() {
         }
         await new Promise(resolve => setTimeout(resolve, 700));
         wordElem.childNodes.forEach(e => e.classList.remove('correct'));
-        levelUp(levelIndex++);
+        gameFinish();
     }
     else {
         wrongAudio.play();
@@ -115,8 +114,9 @@ async function checkGuess() {
 }
 // Check if the player has finished all the levels
 async function gameFinish() {
-    if(levelIndex == levelsData.length) {
-        await new Promise(resolve => setTimeout(resolve, 1000));
+    if(levelIndex < levelsData.length) 
+        levelUp(levelIndex++);
+    else {
         changeScene('.stage', '.finish');
         winAudio.play();
     }
@@ -129,6 +129,5 @@ finishBtn.addEventListener('click', () => {
     changeScene('.finish', '.intro');
     levelIndex = 0;
     levelUp(levelIndex++);
-
 });
 keyboard.addEventListener('click', mouseClick);
