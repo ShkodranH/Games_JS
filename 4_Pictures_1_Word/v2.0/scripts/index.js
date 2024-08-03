@@ -55,9 +55,11 @@ function generateKeyboardKeys() {
 function addPictures() {
     pictureElems.forEach((e, i) => {
         e.src = currentLevelData.pictures[i];
-        e.onerror = () => e.src = '../v1.0/images/default.jpg';
+        e.onerror = () => {
+            e.src = '../v1.0/images/default.jpg';
+            e.onerror = null;
+        }
     });
-    
 }
 // Handling player click inputs
 function mouseClick(e) {
