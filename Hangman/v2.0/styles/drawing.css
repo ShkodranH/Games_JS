@@ -1,0 +1,124 @@
+.hangman-drawing {
+    font-size: 1rem;
+    position: relative;
+    aspect-ratio: 1 / 1;
+    
+    & * {
+        position: absolute;
+        border-radius: .5rem;
+        
+        &:not(:has(*)) {
+            background-color: #008b8b;
+        }
+    }
+
+    & .hang {
+        width: 100%;
+        height: 100%;
+
+        & * {
+            left: 20%;
+            width: .75em;
+            height: .75em;
+            background-color: #002b59;
+        }
+        & .base {
+            bottom: 5%;
+            left: 5%;
+            width: 90%;
+        }
+        & .post {
+            top: 10%;
+            height: 85%;
+        }
+        & .beam {
+            top: 10%;
+            width: 50%;
+        }
+        & .support {
+            top: calc(10% + (30% * sin(45deg)));
+            width: 30%;
+            rotate: -45deg;
+            transform-origin: top left;
+        }
+    }
+
+    & .man {
+        width: 25%;
+        height: 100%;
+        left: 50%;
+        display: flex;
+        justify-content: center;
+
+        & :not(.head) {
+            width: .5em;
+        }
+        & .rope {
+            top: calc(10% - .5em);
+            height: calc(15% + 1em);
+        }
+        & .head {
+            top: 25%;
+            width: 65%;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            border: .5em solid #008b8b;
+
+            & [class*='eye'] {
+                top: 45%;
+                width: 30%;
+                height: .2em;
+            }
+            & .left-eye {
+                left: 20%;
+            }
+            & .right-eye {
+                left: 60%;
+            }
+            & :nth-of-type(odd) {
+                rotate: 45deg;
+            }
+            & :nth-of-type(even) {
+                rotate: -45deg;
+            }
+            & .mouth {
+                top: 75%;
+                left: 35%;
+                width: 40%;
+                height: .3em;
+                rotate: -10deg;
+            }
+        }
+        & .body {
+            top: 40%;
+            height: 20%;
+        }
+        & [class*='arm'] {
+            top: 35%;
+            height: 12%;
+            transform-origin: bottom;
+        }
+        & .left-arm {
+            rotate: -60deg;
+        }
+        & .right-arm {
+            rotate: 60deg;
+        }
+        & [class*='leg'] {
+            top: calc(60% - .5em);
+            height: 18%;
+            transform-origin: top;
+        }
+        & .left-leg {
+            rotate: 30deg;
+        }
+        & .right-leg {
+            rotate: -30deg;
+        }
+    }
+}
+
+
+.hidden {
+    display: none;
+}

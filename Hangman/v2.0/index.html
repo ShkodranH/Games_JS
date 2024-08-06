@@ -6,24 +6,54 @@
     <title>Hangman</title>
     <link rel="icon" href="images/icon.png" type="image/png">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/drawing.css">
     <!-- <link rel="stylesheet" href="styles/animations.css"> -->
 </head>
 <body>
     <div class="intro">
-        <div class="title">
-            <h1>Hangman</h1>
-        </div>
+        <h1 class="title">Hangman</h1>
         <button class="play-btn">Play</button>
     </div>
 
     <div class="stage">
-        <!-- <div class="level">Steak 1</div> -->
-
-        <div class="picture">
-            <img src="" alt="">
+        <div class="score">
+            <p>Streak: <span class="streak">0</span></p>
+            <p><span class="points">0</span> :Points</p>
         </div>
 
-        <div class="word"></div>
+        <div class="hangman-drawing">
+            <div class="hang">
+                <div class="post"></div>
+                <div class="beam"></div>
+                <div class="support"></div>
+                <div class="base"></div>
+            </div>
+            <div class="man">
+                <div class="rope"></div>
+                <div class="head">
+                    <div class="left-eye"></div>
+                    <div class="left-eye"></div>
+                    <div class="right-eye"></div>
+                    <div class="right-eye"></div>
+                    <div class="mouth"></div>
+                </div>
+                <div class="body"></div>
+                <div class="left-arm"></div>
+                <div class="right-arm"></div>
+                <div class="left-leg"></div>
+                <div class="right-leg"></div>
+            </div>
+        </div>
+
+        <div class="word">
+            <div>a</div>
+            <div>c</div>
+            <div>c</div>
+            <div>c</div>
+            <div></div>
+            <div></div>
+            <div>e</div>
+        </div>
         
         <div class="keyboard">
             <div data-item="a">A</div>

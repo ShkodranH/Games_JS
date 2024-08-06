@@ -1,21 +1,21 @@
 @font-face {
-    font-family: Poppins;
-    src: url(../fonts/poppins.ttf);
+    font-family: ShadowsIntoLight;
+    src: url(../fonts/shadows-into-light.ttf);
 }
 :root {
     --black-color: #000000;
     --bg-color: #ffee8c;
     --transparent-black: #00000010;
-    --primary-color: #e56b6f;
-    --secondary-color: #af0843;
 }
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     user-select: none;
-    font-family: Poppins, sans-serif;
+    font-family: ShadowsIntoLight, monospace;
     font-weight: bold;
+    letter-spacing: .1em;
+    text-transform: uppercase;
     color: var(--black-color);
     -webkit-tap-highlight-color: transparent;
 }
@@ -30,6 +30,7 @@ body {
     background-image:  linear-gradient(var(--transparent-black) .25em, transparent .25em), 
         linear-gradient(to right, var(--transparent-black) .25em, transparent .25em);
     background-size: 2em 2em;
+    background-position: center;
 
     & > div {
         width: min(90%, 400px);
@@ -40,68 +41,42 @@ body {
 }
 & button {
     cursor: pointer;
-    border: none;
     font-size: 3rem;
     padding: .25em 0;
-    border-radius: .2em;
-    letter-spacing: .1em;
-    background-color: var(--secondary-color);
-    transition: background-color 400ms;
-    
-    &:hover {
-        background-color: color-mix(in srgb, var(--primary-color) 60%, var(--secondary-color));
-    }
+    background-color: transparent;
+    border: .25em solid var(--black-color);
+    border-radius: 90% .25em / .25em 90%;
 }
-.hidden-key {
+/* .hidden-key {
     pointer-events: none;
     visibility: hidden;
-}
-.intro {
+} */
+.stage {
     display: flex;
 }
-body > :not(.intro) {
+body > :not(.stage) {
     display: none;
 }
 
 .intro {
     & .title {
-        font-size: 2.5rem;
-        display: grid;
-        grid-template: repeat(2, 1fr) / repeat(2, 1fr);
-        gap: .4em;
-
-        & > div {
-            display: grid;
-            place-items: center;
-            aspect-ratio: 1 / 1;
-            border-radius: .5rem;
-            background-color: var(--primary-color);
-            rotate: -10deg;
-
-            &:nth-child(odd) {
-                font-size: 5.5rem;
-            }
-        }
+        font-size: 5.5rem;
+        text-align: center;
     }
 }
 
 .stage {
-    & .level {
-        align-self: center;
-        font-size: 2.5rem;
-        color: var(--secondary-color);
-    }
-    & .pictures {
-        display: grid;
-        grid-template: repeat(2, auto) / repeat(2, 1fr);
-        gap: 1em;
+    & .score {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.5rem;
 
-        & > div img {
-            width: 100%;
-            height: 100%;
-            border: .4rem solid var(--secondary-color);
-            object-fit: cover;
-            border-radius: .5em;
+        & p {
+            text-transform: lowercase;
+
+            & span {
+                font-size: 1.5em;
+            }
         }
     }
     & .word {
@@ -109,15 +84,14 @@ body > :not(.intro) {
         display: flex;
         justify-content: center;
         gap: .25em;
-        text-transform: uppercase;
         
         & > div {
             display: grid;
             place-items: center;
             width: 2em;
             height: 2em;
-            border-radius: .25em;
-            background-color: color-mix(in srgb, var(--primary-color) 60%, var(--secondary-color));
+            border-bottom: .1em solid var(--black-color);
+            border-radius: 0% 0% .5em 85% / 0% 0% .1em .1em;
         }
     }
     & .keyboard {
