@@ -7,7 +7,7 @@
     <link rel="icon" href="images/icon.png" type="image/png">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/drawing.css">
-    <!-- <link rel="stylesheet" href="styles/animations.css"> -->
+    <link rel="stylesheet" href="styles/media-queries.css">
 </head>
 <body>
     <div class="intro">
@@ -17,8 +17,18 @@
 
     <div class="stage">
         <div class="score">
-            <p>Streak: <span class="streak">0</span></p>
-            <p><span class="points">0</span> :Points</p>
+            <div class="streak">
+                <img src="images/fire.png" alt="fire icon">
+                <span>0</span>
+            </div>
+            <div class="hint-cost">
+                <img src="images/hint.png" alt="hint icon">
+                <span>10</span>
+            </div>
+            <div class="points">
+                <span>30</span>
+                <img src="images/gem.png" alt="gem icon">
+            </div>
         </div>
 
         <div class="hangman-drawing">
@@ -48,9 +58,6 @@
         <div class="word">
             <div>a</div>
             <div>c</div>
-            <div>c</div>
-            <div>c</div>
-            <div></div>
             <div></div>
             <div>e</div>
         </div>
@@ -86,15 +93,11 @@
     </div>
 
     <div class="finish">
-        <div class="title">
-            <h1>Congrats!</h1>
-            <h3>You have cleared all the levels</h3>
-        </div>
-        <div class="message">
-            <p>Your journey has been spectacular, but don't rest just yet!</p>
-            <p>We're working hard to create exciting new levels, filled with fresh challenges and surprises, 
-                so stay tuned for updates, and get ready to embark on your new journey soon!</p>
-            <b>Thank you for playing, and see you in the future levels!</b>
+        <h1 class="title">Congrats!</h1>
+        <div>
+            <p>You have guessed</p>
+            <p class="final-score">12</p>
+            <p>words in a row</p>
         </div>
         <button class="finish-btn">Play Again</button>
     </div>

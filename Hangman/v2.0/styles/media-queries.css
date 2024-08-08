@@ -1,0 +1,25 @@
+@media screen and (min-width: 600px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .stage {
+        width: min(90%, 1200px);
+        display: grid;
+        grid-template: 2fr 1fr 2fr / repeat(2, 1fr);
+        align-items: center;
+        gap: 5em;
+
+        & .score {
+            align-self: flex-end;
+        }
+        & .hangman-drawing {
+            grid-row: span 3;
+        }
+        & .keyboard {
+            align-self: flex-start;
+        }
+    }
+}

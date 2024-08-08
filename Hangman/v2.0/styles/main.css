@@ -1,19 +1,20 @@
 @font-face {
-    font-family: ShadowsIntoLight;
-    src: url(../fonts/shadows-into-light.ttf);
-}
+    font-family: PermanentMarker;
+    src: url(../fonts/permanent-marker.ttf);
+    }
 :root {
     --black-color: #000000;
     --bg-color: #ffee8c;
     --transparent-black: #00000010;
 }
 * {
+    cursor: url('../images/feather.png'), auto;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     user-select: none;
-    font-family: ShadowsIntoLight, monospace;
-    font-weight: bold;
+    font-family: PermanentMarker, monospace;
+    font-weight: normal;
     letter-spacing: .1em;
     text-transform: uppercase;
     color: var(--black-color);
@@ -40,8 +41,7 @@ body {
     }
 }
 & button {
-    cursor: pointer;
-    font-size: 3rem;
+    font-size: 2.5rem;
     padding: .25em 0;
     background-color: transparent;
     border: .25em solid var(--black-color);
@@ -60,7 +60,7 @@ body > :not(.stage) {
 
 .intro {
     & .title {
-        font-size: 5.5rem;
+        font-size: 3.75rem;
         text-align: center;
     }
 }
@@ -69,16 +69,30 @@ body > :not(.stage) {
     & .score {
         display: flex;
         justify-content: space-between;
-        font-size: 1.5rem;
 
-        & p {
-            text-transform: lowercase;
+        & div {
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: .25em;
 
-            & span {
-                font-size: 1.5em;
+            & img {
+                height: 1.75em;
+            }
+        &.hint-cost {
+            flex-direction: column;
+            gap: 0em;
+
+            & img {
+                height: 2em;
+            }
+            & span::before {
+                content: 'cost: ';
+                font-size: .5em;
             }
         }
     }
+}
     & .word {
         font-size: 1.75rem;
         display: flex;
@@ -90,12 +104,11 @@ body > :not(.stage) {
             place-items: center;
             width: 2em;
             height: 2em;
-            border-bottom: .1em solid var(--black-color);
-            border-radius: 0% 0% .5em 85% / 0% 0% .1em .1em;
+            border-bottom: .2em solid var(--black-color);
+            border-radius: 0% 0% 15% 85% / 0% 0% .25em .25em;
         }
     }
     & .keyboard {
-        cursor: pointer;
         font-size: 1.5rem;
         display: grid;
         grid-template: auto / repeat(9, 1fr);
@@ -109,28 +122,16 @@ body > :not(.stage) {
 }
 
 .finish {
-    & * {
-        color: var(--secondary-color);
-        text-align: center;
+    text-align: center;
+
+    & .title {
+        font-size: 3.5rem;
     }
-    & .title h1 {
-        font-size: min(5rem, 17vw);
-    }
-    & .title h3 {
-        font-size: min(1.8rem, 6vw);
-    }
-    & .message p {
-        font-size: min(1.4rem, 5vw);
-        text-align: justify;
-        margin-bottom: .5em;
-        font-weight: normal;
-    }
-    & .message b {
-        font-size: min(1.5rem, 5.5vw);
-        text-align: center;
-    }
-    & .finish-btn {
-        font-size: 2.5rem;
-        color: var(--white-color);
+    & p {
+        font-size: 1.75rem;
+
+        &.final-score {
+            font-size: 8rem;
+        }
     }
 }
