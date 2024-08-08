@@ -36,7 +36,7 @@ let gamesData = [
     },
     {
         name: "Hangman",
-        link: "../Hangman/v1.0/index.html",
+        link: "../Hangman/v2.0/index.html",
         image: "../Hangman/v2.0/images/icon.png"
     },
     {
