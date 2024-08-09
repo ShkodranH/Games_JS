@@ -1,76 +1,78 @@
 import { wordList } from "./data.js";
 
-const levelElem = document.querySelector('.level');
-const pictureElems = document.querySelectorAll('.pictures img');
+const streakElem = document.querySelector('.streak span');
+const pointsElem = document.querySelector('.points span');
+const hintBtn = document.querySelector('.hint-cost img');
 const wordElem = document.querySelector('.word');
-const keyboard = document.querySelector('.keyboard');
-const keyboardKeyElems = keyboard.querySelectorAll('[data-key]');
+const keyboardElem = document.querySelector('.keyboard');
+const keyboardKeyElems = keyboardElem.querySelectorAll('[data-item]');
+const finalScoreElem = document.querySelector('.final-score');
 const playBtn = document.querySelector('.play-btn');
 const finishBtn = document.querySelector('.finish-btn');
+const hangmanElemsArray = [
+    document.querySelectorAll('.rope'),
+    document.querySelectorAll('.head'),
+    document.querySelectorAll('.body'),
+    document.querySelectorAll('.left-arm'),
+    document.querySelectorAll('.right-arm'),
+    document.querySelectorAll('.left-leg'),
+    document.querySelectorAll('.right-leg'),
+    document.querySelectorAll('.head *')
+];
 
-const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-let levelIndex = 0;
-let currentLevelData = levelsData[levelIndex];
-let currentAnswer = currentLevelData.answer;
-let keyboardKeys = [];
-let currentGuess = [];
-let letterCounter = 0;
+const hintCost = 10;
+let streak = 0;
+let points = 30;
+let answer, mistakes, currentGuess;
 
-// Reseting variables for new level
-function levelUp(levelNum) {
-    currentLevelData = levelsData[levelNum];
-    currentAnswer = currentLevelData.answer;
-    levelElem.innerText = `Level ${currentLevelData.level}`;
-    letterCounter = 0;
+// Reseting variables for new game
+function initVariables(value, number) {
+    streak = value;
+    points = number
+    answer = wordList[Math.floor(Math.random() * wordList.length)];
+    mistakes = 0;
+    currentGuess = [];
     generateWordField();
-    generateKeyboardKeys();
-    addPictures();
+    keyboardKeyElems.forEach(key => key.className = '');
+    hangmanElemsArray.forEach(arr => arr.forEach(e => e.classList.remove('reveal-item')));
+    streakElem.innerText = streak;
+    pointsElem.innerText = points;
 }
-levelUp(levelIndex++);
+initVariables(streak, points);
 
-const clickAudio = new Audio("./sound-effects/click.mp3");
-const correctAudio = new Audio("./sound-effects/correct.wav");
-const wrongAudio = new Audio("./sound-effects/wrong.mp3");
-const winAudio = new Audio("./sound-effects/win.mp3");
+const clickAudio = new Audio("./sound-effects/click.ogg");
+const correctAudio = new Audio("./sound-effects/correct.ogg");
+const wrongAudio = new Audio("./sound-effects/wrong.ogg");
+const loseAudio = new Audio("./sound-effects/lose.ogg");
+const winAudio = new Audio("./sound-effects/win.ogg");
 
-function changeScene(prev, next) {
+function changeScene(prev, next, action) {
     document.querySelector(prev).style.display = 'none';
-    document.querySelector(next).style.display = 'flex';
+    document.querySelector(next).style.display = action;
+}
+function enableInputs() {
+    document.addEventListener('keydown', keyPress);
+    keyboardElem.addEventListener('click', mouseClick);
+}
+function disabledinputs() {
+    document.removeEventListener('keydown', keyPress);
+    keyboardElem.removeEventListener('click', mouseClick);
+}
+enableInputs();
+
+// Handling player inputs
+function keyPress(e) {
+    if(e.key.match(/^[a-z]$/i))
+        checkLetter(e.key.toLowerCase()); 
+}
+function mouseClick(e) {
+    if(e.target.closest('[data-item]'))
+        checkLetter(e.target.dataset.item);
 }
 // Generate HTML elements for the word guess container
 function generateWordField() {
     wordElem.innerHTML = "";
-    for(let i of currentAnswer)
-        wordElem.innerHTML += "<div></div>";
-}
-// Generate an array with 12 random characters for the keyboar 
-// But should contain the letters for the current answer
-function generateKeyboardKeys() {
-    keyboardKeys = Array.from({ length: 12 }, (_, i) => i < currentAnswer.length 
-        ? currentAnswer[i] : alphabet[Math.floor(Math.random() * alphabet.length)])
-        .sort(() => Math.random() - 0.5);
-    keyboardKeyElems.forEach((e, i) => e.innerText = keyboardKeys[i]);
-}
-// Add the file path for the pictures
-function addPictures() {
-    pictureElems.forEach((e, i) => {
-        e.src = currentLevelData.pictures[i];
-        e.onerror = () => {
-            e.src = '../v1.0/images/default.jpg';
-            e.onerror = null;
-        }
-    });
-    
-}
-// Handling player click inputs
-function mouseClick(e) {
-    if(e.target.closest('[data-key]')) {
-        addLetter(e.target.innerText);
-        e.target.classList.add('hidden-key');
-        clickAudio.play();
-    }
-    else if(e.target.closest('[data-undo]'))
-        deleteGuess();
+    [...answer].forEach(() => wordElem.innerHTML += "<div></div>");
 }
 
 // Update the words current letter and the corresponding HTML element
@@ -78,59 +80,73 @@ function updateWordGuess(index, value) {
     currentGuess[index] = value.toLowerCase();
     wordElem.childNodes[index].innerText = value;
 }
-// Add the letter clicked to the current guess
-function addLetter(letter) {
-    updateWordGuess(letterCounter++, letter);
-    if(letterCounter == currentAnswer.length)
-        checkGuess();
-}
-// Remove all the letters from the guess (undo)
-function deleteGuess() {
-    wordElem.childNodes.forEach(e => e.innerText = '');
-    keyboardKeyElems.forEach(e => e.classList.remove('hidden-key'));
-    currentGuess.length = letterCounter = 0;
-}
-
-// Check if the current guess is correct or not
-async function checkGuess() {
-    keyboard.removeEventListener('click', mouseClick);
-    await new Promise(resolve => setTimeout(resolve, 200));
-
-    if(currentGuess.join('') == currentAnswer) {
-        correctAudio.play();
-        for(let i of wordElem.childNodes) {
-            i.classList.add('correct');
-            await new Promise(resolve => setTimeout(resolve, 100));
+// Check if the letter is correctly guessed only if the letter was not used before
+function checkLetter(letter) {
+    const currentKey = keyboardElem.querySelector(`[data-item="${letter}"]`);
+    if(currentKey.classList.contains('hidden-key')) return;
+    currentKey.classList.add('hidden-key');
+    
+    if(!answer.includes(letter)) {
+        drawHangman();
+        return;
+    }
+    for(let i = 0; i < answer.length; i++) {
+        if(letter === answer[i]) {
+            updateWordGuess(i, letter);
+            checkGuess();
+            correctAudio.play();
         }
-        await new Promise(resolve => setTimeout(resolve, 700));
-        wordElem.childNodes.forEach(e => e.classList.remove('correct'));
-        gameFinish();
-    }
-    else {
-        wrongAudio.play();
-        wordElem.classList.add('wrong');
-        await new Promise(resolve => setTimeout(resolve, 700));
-        wordElem.classList.remove('wrong');
-    }
-    deleteGuess();
-    keyboard.addEventListener('click', mouseClick);
-}
-// Check if the player has finished all the levels
-async function gameFinish() {
-    if(levelIndex < levelsData.length) 
-        levelUp(levelIndex++);
-    else {
-        changeScene('.stage', '.finish');
-        winAudio.play();
     }
 }
 
+// Check if the player has successfully guessed the word
+async function checkGuess() {
+    if(currentGuess.join('') == answer) {
+        disabledinputs();
+        await new Promise(resolve => setTimeout(resolve, 700));
+        winAudio.play();
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        initVariables(++streak, points += 5);
+        enableInputs();
+    }
+}
+// Draw the hangman if the player guessed a wrong letter
+function drawHangman() {
+    wrongAudio.play();
+    hangmanElemsArray[mistakes++].forEach(e => e.classList.add('reveal-item'));
+    if(mistakes === hangmanElemsArray.length) 
+        gameFinish();
+}
+// Check if the player has lost the game
+async function gameFinish() {
+    disabledinputs();
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    loseAudio.play();
+    finalScoreElem.innerText = streak;
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    changeScene('.stage', '.finish', 'flex');
+}
+// Add a letter to the current guess for 10 points
+function generateHint() {
+    if(points < hintCost) return;
+    points -= hintCost;
+    pointsElem.innerText = points;
+    let availableLetters = [...answer].filter(letter =>!currentGuess.includes(letter));
+    let selectedLetter = availableLetters[Math.floor(Math.random() * availableLetters.length)];
+    checkLetter(selectedLetter);
+}
+
+hintBtn.addEventListener('click', () => {
+    generateHint();
+    clickAudio.play();
+});
 playBtn.addEventListener('click', () => {
-    changeScene('.intro', '.stage');
+    changeScene('.intro', '.stage', 'grid');
+    enableInputs();
+    clickAudio.play();
 });
 finishBtn.addEventListener('click', () => {
-    changeScene('.finish', '.intro');
-    levelIndex = 0;
-    levelUp(levelIndex++);
+    changeScene('.finish', '.intro', 'flex');
+    clickAudio.play();
+    initVariables(0, 30);
 });
-keyboard.addEventListener('click', mouseClick);

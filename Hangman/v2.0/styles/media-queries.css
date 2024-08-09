@@ -5,12 +5,21 @@
 }
 
 @media screen and (min-width: 1000px) {
-    .stage {
+    & button {
+        width: 500px;
+        align-self: center;
+    }
+    body > div {
         width: min(90%, 1200px);
-        display: grid;
+
+        & .title.title {
+            font-size: 5rem;
+        }
+    }
+    .stage {
         grid-template: 2fr 1fr 2fr / repeat(2, 1fr);
+        gap: 3em 5em;
         align-items: center;
-        gap: 5em;
 
         & .score {
             align-self: flex-end;
