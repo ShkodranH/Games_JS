@@ -1,4 +1,4 @@
-import { levelsData } from "./data.js";
+import { imagesArray } from "./data.js";
 
 const levelElem = document.querySelector('.level');
 const pictureElems = document.querySelectorAll('.pictures img');

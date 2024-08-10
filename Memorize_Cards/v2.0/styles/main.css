@@ -1,22 +1,23 @@
 @font-face {
-    font-family: Poppins;
-    src: url(../fonts/poppins.ttf);
+    font-family: Staatliches;
+    src: url(../fonts/staatliches.ttf);
 }
 :root {
-    --white-color: #ffffff;
-    --bg-color: #ffcfb4;
-    --bg-color: #eaac8b;
-    --primary-color: #e56b6f;
-    --secondary-color: #af0843;
+    --white-color: #fcf7d3;
+    --lighter-color: #f8cf99;
+    --light-color: #f1ac8c;
+    --medium-color: #e98d78;
+    --dark-color: #d56868;
+    --darker-color: #592d2d;
 }
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     user-select: none;
-    font-family: Poppins, sans-serif;
-    font-weight: bold;
-    color: var(--white-color);
+    font-family: Staatliches, sans-serif;
+    font-weight: normal;
+    color: var(--darker-color);
     -webkit-tap-highlight-color: transparent;
 }
 html {
@@ -26,57 +27,71 @@ body {
     height: 100dvh;
     display: flex;
     justify-content: center;
-    background-color: var(--bg-color);
+    background-image: radial-gradient(circle, var(--lighter-color) 30%, var(--light-color), var(--dark-color));
 
     & > div {
-        width: min(90%, 400px);
+        width: min(90%, 1200px);
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+        align-items: center;
     }
 }
 & button {
     cursor: pointer;
     border: none;
     font-size: 3rem;
+    width: min(100%, 500px);
     padding: .25em 0;
     border-radius: .2em;
-    letter-spacing: .1em;
-    background-color: var(--secondary-color);
-    transition: background-color 400ms;
-    
-    &:hover {
-        background-color: color-mix(in srgb, var(--primary-color) 60%, var(--secondary-color));
-    }
+    background-color: var(--white-color);
+    box-shadow: 0 0 .25em var(--medium-color);
 }
-.hidden-key {
-    pointer-events: none;
-    visibility: hidden;
-}
-.intro {
+.stage {
     display: flex;
 }
-body > :not(.intro) {
+body > :not(.stage) {
     display: none;
 }
 
 .intro {
+    justify-content: space-evenly;
+
     & .title {
-        font-size: 2.5rem;
-        display: grid;
-        grid-template: repeat(2, 1fr) / repeat(2, 1fr);
-        gap: .4em;
+        position: relative;
+        width: 100%;
+        height: 30em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         & > div {
-            display: grid;
-            place-items: center;
-            aspect-ratio: 1 / 1;
-            border-radius: .5rem;
-            background-color: var(--primary-color);
-            rotate: -10deg;
+            position: absolute;
+            z-index: -1;
+            background-color: var(--medium-color);
+            box-shadow: 0 0 .75em var(--darker-color);
+            width: 18em;
+            aspect-ratio: 3 / 4;
+            border-radius: 1em;
+            
+            &:first-of-type {
+                background-color: var(--dark-color);
+                rotate: 10deg;
+                transform-origin: bottom left;
+            }
+        }
+        & h1 {
+            font-size: 7rem;
+            text-align: right;
+            color: var(--white-color);
+            text-shadow: .2rem .2rem .2rem var(--darker-color);
+            margin-left: 2rem;
 
-            &:nth-child(odd) {
-                font-size: 5.5rem;
+            &::first-line {
+                font-size: 5rem;
+            }
+            &::first-letter {
+                margin-left: -8rem;
             }
         }
     }
@@ -88,88 +103,36 @@ body > :not(.intro) {
         font-size: 2.5rem;
         color: var(--secondary-color);
     }
-    & .pictures {
+    & .cards-container {
         display: grid;
-        grid-template: repeat(2, auto) / repeat(2, 1fr);
-        gap: 1em;
+        grid-template: auto / repeat(4, 1fr);
+        gap: .75em;
 
-        & > div img {
-            width: 100%;
-            height: 100%;
-            border: .4rem solid var(--secondary-color);
-            object-fit: cover;
+        & > div {
+            background-color: var(--white-color);
             border-radius: .5em;
-        }
-    }
-    & .word {
-        font-size: 1.75rem;
-        display: flex;
-        justify-content: center;
-        gap: .25em;
-        text-transform: uppercase;
-        
-        & > div {
-            display: grid;
-            place-items: center;
-            width: 2em;
-            height: 2em;
-            border-radius: .25em;
-            background-color: color-mix(in srgb, var(--primary-color) 60%, var(--secondary-color));
-        }
-    }
-    & .keyboard {
-        cursor: pointer;
-        font-size: 1.5rem;
-        display: grid;
-        grid-template: repeat(2, 1fr) / repeat(7, 1fr);
-        gap: .25em;
-        padding: .25em;
-        border-radius: .25em;
-        background-color: var(--secondary-color);
-        
-        & > div {
-            display: grid;
-            place-items: center;
-            aspect-ratio: 1 / 1;
-            border-radius: .2em;
-            text-transform: uppercase;
-            background-color: var(--primary-color);
-            
-            &:has(img) {
-                grid-row: span 2;
-                aspect-ratio: auto;
-                background-color: color-mix(in srgb, var(--primary-color) 60%, var(--secondary-color));
-            }
+            /* aspect-ratio: 1 / 1; */
+
             & img {
-                width: 50%;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: top;
             }
         }
     }
 }
 
 .finish {
-    & * {
-        color: var(--secondary-color);
-        text-align: center;
+    text-align: center;
+
+    & h1 {
+        font-size: 5rem;
     }
-    & .title h1 {
-        font-size: min(5rem, 17vw);
+    & h3 {
+        font-size: 2rem
     }
-    & .title h3 {
-        font-size: min(1.8rem, 6vw);
-    }
-    & .message p {
-        font-size: min(1.4rem, 5vw);
-        text-align: justify;
-        margin-bottom: .5em;
-        font-weight: normal;
-    }
-    & .message b {
-        font-size: min(1.5rem, 5.5vw);
-        text-align: center;
-    }
-    & .finish-btn {
-        font-size: 2.5rem;
-        color: var(--white-color);
+    & p {
+        font-size: 8rem;
     }
 }
