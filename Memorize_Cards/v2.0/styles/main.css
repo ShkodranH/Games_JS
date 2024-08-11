@@ -105,13 +105,13 @@ body > :not(.stage) {
     }
     & .cards-container {
         display: grid;
-        grid-template: auto / repeat(4, 1fr);
+        grid-template: repeat(4, 1fr) / repeat(3, 1fr);
         gap: .75em;
 
         & > div {
             background-color: var(--white-color);
             border-radius: .5em;
-            /* aspect-ratio: 1 / 1; */
+            aspect-ratio: 1 / 1;
 
             & img {
                 width: 100%;
