@@ -30,7 +30,7 @@ body {
     background-image: radial-gradient(circle, var(--lighter-color) 30%, var(--light-color), var(--dark-color));
 
     & > div {
-        width: min(90%, 1200px);
+        width: min(90%, 1000px);
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -69,7 +69,7 @@ body > :not(.stage) {
             position: absolute;
             z-index: -1;
             background-color: var(--medium-color);
-            box-shadow: 0 0 .75em var(--darker-color);
+            box-shadow: 0 0 0 .5em var(--white-color);
             width: 18em;
             aspect-ratio: 3 / 4;
             border-radius: 1em;
@@ -78,6 +78,7 @@ body > :not(.stage) {
                 background-color: var(--dark-color);
                 rotate: 10deg;
                 transform-origin: bottom left;
+                transition: rotate 400ms;
             }
         }
         & h1 {
@@ -98,21 +99,31 @@ body > :not(.stage) {
 }
 
 .stage {
-    & .level {
-        align-self: center;
-        font-size: 2.5rem;
-        color: var(--secondary-color);
+    & .progress {
+        font-size: 2rem;
+        text-align: center;
+
+        & .level {
+            margin-bottom: .25em;
+        }
     }
     & .cards-container {
         display: grid;
-        grid-template: repeat(4, 1fr) / repeat(3, 1fr);
+        max-width: 100%;
         gap: .75em;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        
 
         & > div {
             background-color: var(--white-color);
-            border-radius: .5em;
+            border: .25em solid var(--white-color);
+            border-radius: .25em;
+            display: flex;
             aspect-ratio: 1 / 1;
 
+            &:empty {
+                display: none;
+            }
             & img {
                 width: 100%;
                 height: 100%;

@@ -1,0 +1,18 @@
+@media screen and (min-width: 480px) {
+    .stage .cards-container > div {
+        aspect-ratio: unset;
+    }
+}
+@media screen and (min-width: 600px) {
+    html {
+        font-size: 16px;
+    }
+    .stage .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+    }   
+}
+@media screen and (min-width: 1000px) {
+    .stage .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+}
