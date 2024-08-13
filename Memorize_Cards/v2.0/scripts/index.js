@@ -3,7 +3,6 @@ import { imagesArray } from "./data.js";
 const levelElem = document.querySelector('.level');
 const currentProgressElem = document.querySelector('.current');
 const overallProgressElem = document.querySelector('.overall');
-// const cardContainerElem = document.querySelector('.card-container');
 const cardElems = document.querySelectorAll('.card');
 const playBtn = document.querySelector('.play-btn');
 const finishBtn = document.querySelector('.finish-btn');
@@ -19,13 +18,14 @@ function levelUp(value) {
     generateCurrentProgress(0);
     generateOverallProgress(level + 2);
     generatelevelImages();
+    currentGuesses = [];
 }
-levelUp(10);
+levelUp(1); 
 
-const clickAudio = new Audio("./sound-effects/click.mp3");
-const correctAudio = new Audio("./sound-effects/correct.wav");
-const loseAudio = new Audio("./sound-effects/lose.mp3");
-const winAudio = new Audio("./sound-effects/win.mp3");
+const clickAudio = new Audio("./sound-effects/click.ogg");
+const levelupAudio = new Audio("./sound-effects/levelup.wav");
+const loseAudio = new Audio("./sound-effects/lose.ogg");
+const winAudio = new Audio("./sound-effects/win.ogg");
 
 function changeScene(prev, next) {
     document.querySelector(prev).style.display = 'none';
@@ -40,71 +40,75 @@ function generateOverallProgress(value) {
     overallProgressElem.innerText = overallProgress;
 }
 
-// Generate HTML elements for the word guess container
+// Generate images elements for the level
 function generatelevelImages() {
+    cardElems.forEach(e => e.innerHTML = '');
     levelImages = imagesArray.sort(() => Math.random() - 0.5).slice(0, overallProgress);
+    displayCards();
+}
+function displayCards() {
     for(let i = 0; i < levelImages.length; i++)
         cardElems[i].innerHTML = `<img src="${levelImages[i]}">`;
-    console.log(levelImages);
 }
 
-// Handling player click inputs
+// Handling player card clicks
 function mouseClick(e) {
-    addLetter(e.target.src);
-    clickAudio.play();
-}
-
-// Update the words current letter and the corresponding HTML element
-function updateWordGuess(value) {
-    currentGuesses[index] = value.toLowerCase();
-    wordElem.childNodes[index].innerText = value;
-}
-// Add the letter clicked to the current guess
-function addLetter(letter) {
-    updateWordGuess(letterCounter++, letter);
-    if(letterCounter == currentAnswer.length)
-        checkGuess();
+    checkGuess(e.target.getAttribute('src'));
 }
 
 // Check if the current guess is correct or not
-async function checkGuess() {
-    keyboard.removeEventListener('click', mouseClick);
-    await new Promise(resolve => setTimeout(resolve, 200));
+async function checkGuess(imageSrc) {
+    cardElems.forEach(e => e.removeEventListener('click', mouseClick));
 
-    if(currentGuess.join('') == currentAnswer) {
-        correctAudio.play();
-        for(let i of wordElem.childNodes) {
-            i.classList.add('correct');
-            await new Promise(resolve => setTimeout(resolve, 100));
-        }
-        await new Promise(resolve => setTimeout(resolve, 700));
-        wordElem.childNodes.forEach(e => e.classList.remove('correct'));
-        gameFinish();
+    if(!currentGuesses.includes(imageSrc)) {
+        clickAudio.play();
+        await newRound(imageSrc);
+        
+        if(currentGuesses.length === levelImages.length)
+            await gameFinish();
     }
     else {
-        loseAudio.play();
-        wordElem.classList.add('wrong');
-        await new Promise(resolve => setTimeout(resolve, 700));
-        wordElem.classList.remove('wrong');
+        await new Promise(resolve => setTimeout(resolve, 500));
+        await displayEnding(loseAudio);
     }
-    deleteGuess();
-    keyboard.addEventListener('click', mouseClick);
+    cardElems.forEach(e => e.addEventListener('click', mouseClick));
+}
+// Shuffle the cards for the new round
+async function newRound(image) {
+    currentGuesses.push(image);
+    generateCurrentProgress(++progressCount);
+
+    cardElems.forEach(e => e.classList.add('card-flip'));
+    await new Promise(resolve => setTimeout(resolve, 300));
+    shuffleImages();
+    await new Promise(resolve => setTimeout(resolve, 700));
+    cardElems.forEach(e => e.classList.remove('card-flip'));
+}
+function shuffleImages() {
+    levelImages.sort(() => Math.random() - 0.5);
+    displayCards();
 }
 // Check if the player has finished all the levels
 async function gameFinish() {
+    await new Promise(resolve => setTimeout(resolve, 500));
     if(level < 10) 
-        levelUp(level++);
-    else {
-        changeScene('.stage', '.finish');
-        winAudio.play();
-    }
+        levelUp(++level);
+    else
+        displayEnding(winAudio);
+}
+function displayEnding(audio) {
+    changeScene('.stage', '.finish');
+    finalScoreElem.innerText = (level === 1) ? 0 : level + 1;
+    audio.play();
 }
 
 playBtn.addEventListener('click', () => {
     changeScene('.intro', '.stage');
+    clickAudio.play();
 });
 finishBtn.addEventListener('click', () => {
     changeScene('.finish', '.intro');
+    clickAudio.play();
     levelUp(1);
 });
 cardElems.forEach(e => e.addEventListener('click', mouseClick));

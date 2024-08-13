@@ -30,7 +30,7 @@ body {
     background-image: radial-gradient(circle, var(--lighter-color) 30%, var(--light-color), var(--dark-color));
 
     & > div {
-        width: min(90%, 1000px);
+        width: min(90%, 800px);
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -47,10 +47,10 @@ body {
     background-color: var(--white-color);
     box-shadow: 0 0 .25em var(--medium-color);
 }
-.stage {
+.intro {
     display: flex;
 }
-body > :not(.stage) {
+body > :not(.intro) {
     display: none;
 }
 
@@ -76,9 +76,8 @@ body > :not(.stage) {
             
             &:first-of-type {
                 background-color: var(--dark-color);
-                rotate: 10deg;
                 transform-origin: bottom left;
-                transition: rotate 400ms;
+                animation: tiltCard 500ms forwards;
             }
         }
         & h1 {
@@ -108,17 +107,19 @@ body > :not(.stage) {
         }
     }
     & .cards-container {
-        display: grid;
-        max-width: 100%;
-        gap: .75em;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-flow: row wrap;
+        gap: .5em;
+        perspective: 500px;
 
         & > div {
+            display: flex;
+            width: min(calc((100% - 1em) / 3), 10em);
             background-color: var(--white-color);
             border: .25em solid var(--white-color);
             border-radius: .25em;
-            display: flex;
             aspect-ratio: 1 / 1;
 
             &:empty {

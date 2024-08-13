@@ -1,26 +1,18 @@
-.wrong {
-    animation: 500ms shake;
-}
-.correct {
-    animation: 500ms bounce;
+.card-flip {
+    animation: 1000ms flipCard;
+    transform-style: preserve-3d;
+    
+    & img {
+        backface-visibility: hidden;
+    }
 }
 
-@keyframes shake {
-    0%  { transform: translateX(0)   }
-    8%  { transform: translateX(1%)  }
-    24% { transform: translateX(-2%) }
-    40% { transform: translateX(2%)  }
-    56% { transform: translateX(-2%) }
-    72% { transform: translateX(1%)  }
-    88% { transform: translateX(-1%) }
-    96% { transform: translateX(0)   }
+@keyframes flipCard {
+    0%   { rotate: y 0deg   }
+    100% { rotate: y 360deg }
 }
-@keyframes bounce {
-    0%   { transform: translateY(0)    }
-    20%  { transform: translateY(-50%) }
-    40%  { transform: translateY(5%)   }
-    60%  { transform: translateY(-25%) }
-    80%  { transform: translateY(2.5%) }
-    90%  { transform: translateY(-5%)  }
-    100% { transform: translateY(0)    }
+
+@keyframes tiltCard {
+    0%   { rotate: 0deg  }
+    100% { rotate: 10deg }
 }
