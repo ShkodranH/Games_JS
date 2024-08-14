@@ -81,7 +81,7 @@ let gamesData = [
     },
     {
         name: "Memorize Cards",
-        link: "../Memorize_Cards/v1.0/index.html",
+        link: "../Memorize_Cards/v2.0/index.html",
         image: "../Memorize_Cards/v2.0/images/icon.png"
     },
     {
