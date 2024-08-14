@@ -12,15 +12,16 @@ let level, progressCount, overallProgress;
 let levelImages = [], currentGuesses = [];
 
 // Reseting variables for new level
-function levelUp(value) {
+function levelUp(value, playAudio) {
     level = value;
     levelElem.innerText = `Level ${level}`;
     generateCurrentProgress(0);
     generateOverallProgress(level + 2);
     generatelevelImages();
     currentGuesses = [];
+    playAudio && levelupAudio.play();
 }
-levelUp(1); 
+levelUp(1, false); 
 
 const clickAudio = new Audio("./sound-effects/click.ogg");
 const levelupAudio = new Audio("./sound-effects/levelup.wav");
@@ -69,7 +70,7 @@ async function checkGuess(imageSrc) {
     }
     else {
         await new Promise(resolve => setTimeout(resolve, 500));
-        await displayEnding(loseAudio);
+        await displayEnding(loseAudio, false);
     }
     cardElems.forEach(e => e.addEventListener('click', mouseClick));
 }
@@ -92,13 +93,13 @@ function shuffleImages() {
 async function gameFinish() {
     await new Promise(resolve => setTimeout(resolve, 500));
     if(level < 10) 
-        levelUp(++level);
+        levelUp(++level, true);
     else
-        displayEnding(winAudio);
+        displayEnding(winAudio, true);
 }
-function displayEnding(audio) {
+function displayEnding(audio, hasWin) {
     changeScene('.stage', '.finish');
-    finalScoreElem.innerText = (level === 1) ? 0 : level + 1;
+    finalScoreElem.innerText = (level === 1) ? 0 : (hasWin) ? 12 : level + 1;
     audio.play();
 }
 
@@ -109,6 +110,6 @@ playBtn.addEventListener('click', () => {
 finishBtn.addEventListener('click', () => {
     changeScene('.finish', '.intro');
     clickAudio.play();
-    levelUp(1);
+    levelUp(1, false);
 });
 cardElems.forEach(e => e.addEventListener('click', mouseClick));
