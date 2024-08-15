@@ -1,0 +1,153 @@
+@font-face {
+    font-family: Lato;
+    src: url(../fonts/lato.ttf);
+}
+@font-face {
+    font-family: MaShanZheng;
+    src: url(../fonts/ma-shan-zheng.ttf);
+}
+:root {
+    --deep-magenta: #cc007a;
+    --light-gold: #f5d59a;
+    --white: #f4ece1;
+    --gray: #575757;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-family: Lato, sans-serif;
+    color: var(--gray);
+    -webkit-tap-highlight-color: transparent;
+}
+html {
+    font-size: 14px;
+}
+body {
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+
+    & > div {
+        width: 90%;
+        height: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+button {
+    width: min(500px, 90%);
+    cursor: pointer;
+    border: none;
+    font-size: 3rem;
+    border-radius: 3em;
+    padding: .1em 0;
+    color: var(--white);
+    background-color: var(--deep-magenta);
+}
+.finish {
+    display: flex;
+}
+body > :not(.finish) {
+    display: none;
+}
+
+.intro {
+    gap: 4em;
+
+    & .title {
+        font-family: MaShanZheng, sans-serif;
+        font-size: 6rem;
+        font-weight: normal;
+        text-align: center;
+    }
+}
+
+.stage {
+    justify-content: space-between;
+    
+    & .question-number {
+        height: 2.5rem;
+        font-size: 2rem;
+        text-align: center;
+    }
+    & .question {
+        font-size: 2.5rem;
+    }
+    & .options {
+        width: 100%;
+        display: grid;
+        grid-template: repeat(4, 1fr) / 1fr;
+        gap: 1em;
+        
+        & button {
+            width: 100%;
+            font-size: 1.8rem;
+            padding: .5em 0;
+        }
+    }
+    & .lives {
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: .5em;
+        
+        & img {
+            width: 2.5rem;
+        }
+    }
+}
+
+.finish {
+    gap: 2em;
+
+    & h1 {
+        font-family: MaShanZheng, sans-serif;
+        font-size: 6rem;
+        font-weight: normal;
+        text-align: center;
+    }
+    & .medal {
+        position: relative;
+        margin-top: 4rem;
+        width: 18rem;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background-color: #FFEA54;
+        box-shadow: inset 0 0 0 2rem #FFCB3C,
+                    inset 0 0 0 2.5rem #FEAA2B;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            top: -4rem;
+            width: 4rem;
+            height: 6rem;
+            transform: skewX(30deg);
+            transform-origin: bottom;
+            z-index: -1;
+            background-color: #8b0000;
+        }
+        &::after {
+            transform: skewX(-30deg);
+            background-color: #f54040;
+        }
+
+        & span {
+            font-size: 5rem;
+            font-weight: bold;
+            color: #FEAA2B;
+        }
+    }
+    & p {
+        font-size: 1.5rem;
+    }
+}

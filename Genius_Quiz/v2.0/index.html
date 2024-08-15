@@ -10,24 +10,36 @@
 </head>
 <body>
     <div class="intro">
-        <p class="title">Genius Quiz</p>
+        <h1 class="title">Genius Quiz</h1>
         <button class="start-btn">Start</button>
     </div>
 
     <div class="stage">
-        <p class="question-number"></p>
-        <p class="question"></p>
-        <div class="options"></div>
-        <button class="lives"></button>
+        <p class="question-number">1</p>
+        <p class="question">what is: 2 x 2 + 2?</p>
+        <div class="options">
+            <button>0</button>
+            <button>0</button>
+            <button>0</button>
+            <button>0</button>
+        </div>
+        <p class="lives">
+            Lives:
+            <img src="images/brain.png" alt="brain icon">
+            <img src="images/brain.png" alt="brain icon">
+            <img src="images/brain.png" alt="brain icon">
+        </p>
     </div>
 
     <div class="finish">
-        <p class="title"></p>
-        <p class="message"></p>
+        <h1 class="title">Congrats!</h1>
+        <p>We have got a medal for you:</p>
+        <div class="medal">
+            <span>Nerd</span>
+        </div>
         <button class="finish-btn">Play Again</button>
     </div>
 
-    <script type="module" src="scripts/data.js"></script>
     <script type="module" src="scripts/index.js"></script>
 </body>
 </html>
