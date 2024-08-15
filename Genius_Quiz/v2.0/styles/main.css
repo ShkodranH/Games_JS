@@ -8,9 +8,10 @@
 }
 :root {
     --deep-magenta: #cc007a;
-    --light-gold: #f5d59a;
     --white: #f4ece1;
     --gray: #575757;
+    --red: #f72c2c;
+    --gold: #ffd700;
 }
 * {
     box-sizing: border-box;
@@ -41,12 +42,12 @@ body {
     }
 }
 button {
-    width: min(500px, 90%);
+    width: min(400px, 90%);
     cursor: pointer;
     border: none;
-    font-size: 3rem;
+    font-size: 2.5rem;
     border-radius: 3em;
-    padding: .1em 0;
+    padding: .25em 0;
     color: var(--white);
     background-color: var(--deep-magenta);
 }
@@ -120,9 +121,9 @@ body > :not(.finish) {
         border-radius: 50%;
         display: grid;
         place-items: center;
-        background-color: #FFEA54;
-        box-shadow: inset 0 0 0 2rem #FFCB3C,
-                    inset 0 0 0 2.5rem #FEAA2B;
+        background-color: var(--gold);
+        box-shadow: inset 0 0 0 2rem color-mix(in srgb, var(--gold) 85%, var(--red)),
+                    inset 0 0 0 2.5rem color-mix(in srgb, var(--gold) 75%, var(--red));
 
         &::before,
         &::after {
@@ -134,17 +135,17 @@ body > :not(.finish) {
             transform: skewX(30deg);
             transform-origin: bottom;
             z-index: -1;
-            background-color: #8b0000;
+            background-color: color-mix(in srgb, var(--red) 60%, var(--gray));
         }
         &::after {
             transform: skewX(-30deg);
-            background-color: #f54040;
+            background-color: var(--red);
         }
 
         & span {
-            font-size: 5rem;
+            font-size: 4.5rem;
             font-weight: bold;
-            color: #FEAA2B;
+            color: color-mix(in srgb, var(--gold) 60%, var(--red));
         }
     }
     & p {
