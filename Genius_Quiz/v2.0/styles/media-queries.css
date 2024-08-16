@@ -4,7 +4,17 @@
     }
 }
 @media screen and (min-width: 900px) {
-    .stage .options {
-        grid-template: 1fr 1fr / 1fr 1fr;
+    .intro .title {
+        font-size: 8rem;
+    }
+    .stage {
+        height: min(500px, 90%);
+
+        & .options {
+            grid-template: 1fr 1fr / 1fr 1fr;
+        }
+        & .lives {
+            align-self: flex-end;
+        }
     }
 }
