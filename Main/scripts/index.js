@@ -6,7 +6,7 @@ let gamesData = [
     },
     {
         name: "Genius Quiz",
-        link: "../Genius_Quiz/v1.0/index.html",
+        link: "../Genius_Quiz/v2.0/index.html",
         image: "../Genius_Quiz/v2.0/images/icon.png"
     },
     {
