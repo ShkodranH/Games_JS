@@ -7,8 +7,8 @@ const optionsElem = document.querySelectorAll('.options button');
 const livesElems = document.querySelectorAll('.lives img');
 const finishTitleElem = document.querySelector('.finish .title');
 const finishMessageElem = document.querySelector('.finish p');
-const medalElem = document.querySelector('.medal');
 const finishBtn = document.querySelector('.finish-btn');
+const medalElem = document.querySelector('.medal');
 
 const finishPhrases = {
     winTitle: 'Congrats!',
@@ -16,24 +16,25 @@ const finishPhrases = {
     loseTitle: 'Game Over!',
     loseMessage: 'You have run out of lives'
 };
-
 let lives = 3;
-let dataIndex, currentData, questionNumber, question, answer;
-let options = [];
+let dataIndex, currentData, questionNumber, question, options, answer;
 
 // Reseting variables for new question
 function nextQuestion(value, hasAudio) {
-    currentData = questionData[value];
+    dataIndex = value;
+    currentData = questionData[dataIndex];
     ({ number: questionNumber, question, options, answer } = currentData);
     
     questionNumElem.innerText = questionNumber;
     questionElem.innerHTML = question;
     optionsElem.forEach((e, i) => e.innerText = options[i]);
     hasAudio && levelupAudio.play();
+    applyAnimation(questionNumber);
 }
 nextQuestion(0, false);
 
 const clickAudio = new Audio("./sound-effects/click.ogg");
+const wrongAudio = new Audio("./sound-effects/wrong.mp3");
 const levelupAudio = new Audio("./sound-effects/levelup.wav");
 const loseAudio = new Audio("./sound-effects/lose.ogg");
 const winAudio = new Audio("./sound-effects/win.ogg");
@@ -42,39 +43,29 @@ function changeScene(prev, next) {
     document.querySelector(prev).style.display = 'none';
     document.querySelector(next).style.display = 'flex';
 }
+function applyAnimation(value) {
+    optionsElem[1].className = (value === "20") ? 'pop-in-out' : '';
+}
 
 // Handling player card clicks
 function mouseClick(e) {
-    if(e.target.closest('.options'))
-        console.log(e.target.innerText);
-    else if(e.target.closest('.question-number'))
-        console.log(e.target.innerHTML);
-    else if(e.target.closest('.question span'))
-        console.log(e.target.innerHTML);
-    // checkGuess(e.target.innerText);
+    if(e.target.closest('.options, .question-number, .question span'))
+        checkGuess(e.target.innerText);
 }
 
 // Check if the current guess is correct or not
 async function checkGuess(value) {
     document.removeEventListener('click', mouseClick);
-
-    if(!currentGuesses.includes(imageSrc)) {
-        clickAudio.play();
-        await newRound(imageSrc);
-        
-        if(currentGuesses.length === levelImages.length)
-            await gameFinish();
-    }
-    else {
-        await new Promise(resolve => setTimeout(resolve, 500));
-        await displayEnding(loseAudio, false);
-    }
+    if(answer === value)
+        await gameFinish();
+    else
+        await loseLives();
     document.addEventListener('click', mouseClick);
 }
 
 // Check the state of the lives remaining
 async function loseLives() {
-    livesElems[--lives].style.display = 'none';
+    livesElems[--lives].style.visibility = 'hidden';
     wrongAudio.play();
     await new Promise(resolve => setTimeout(resolve, 500));
     if(lives === 0)
@@ -83,25 +74,29 @@ async function loseLives() {
 // Check if the player has finished all the questions
 async function gameFinish() {
     await new Promise(resolve => setTimeout(resolve, 500));
-    if(questionNumber < 10)
-        levelUp(++dataIndex, true);
-    else
+    if(questionNumber === "20")
         displayEnding(true);
+    else
+        nextQuestion(++dataIndex, true);
 }
+// Display the correct ending scene
 function displayEnding(isWin) {
     finishTitleElem.innerText = (isWin) ? finishPhrases.winTitle : finishPhrases.loseTitle;
     finishMessageElem.innerText = (isWin) ? finishPhrases.winMessage : finishPhrases.loseMessage;
-    medalElem.style.display = (isWin) ? 'block' : 'none';
+    medalElem.style.display = (isWin) ? 'grid' : 'none';
+    (isWin) ? winAudio.play() : loseAudio.play();
     changeScene('.stage', '.finish');
 }
 
 startBtn.addEventListener('click', () => {
     changeScene('.intro', '.stage');
+    clickAudio.play();
 });
 finishBtn.addEventListener('click', () => {
     changeScene('.finish', '.intro');
+    clickAudio.play();
     nextQuestion(0, false);
     lives = 3;
-    livesElems.forEach(e => e.style.display = 'inline');
+    livesElems.forEach(e => e.style.visibility = 'visible');
 });
 document.addEventListener('click', mouseClick);

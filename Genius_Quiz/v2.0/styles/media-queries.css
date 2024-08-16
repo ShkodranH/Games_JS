@@ -11,7 +11,7 @@
         height: min(500px, 90%);
 
         & .options {
-            grid-template: 1fr 1fr / 1fr 1fr;
+            grid-template: auto / 1fr 1fr;
         }
         & .lives {
             align-self: flex-end;

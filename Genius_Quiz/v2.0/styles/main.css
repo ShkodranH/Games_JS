@@ -17,7 +17,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* user-select: none; */
+    user-select: none;
     font-family: Lato, sans-serif;
     color: var(--gray);
     -webkit-tap-highlight-color: transparent;
@@ -75,23 +75,27 @@ body > :not(.intro) {
     
     & .question-number {
         height: 3rem;
-        font-size: 2.5rem;
+        font-size: 2.25rem;
         text-align: center;
     }
     & .question {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
         text-align: center;
     }
     & .options {
         width: 100%;
         display: grid;
-        grid-template: repeat(4, 1fr) / 1fr;
+        grid-template: auto / 1fr;
         gap: 1em;
         
         & button {
             width: 100%;
             font-size: 1.8rem;
             padding: .5em 0;
+
+            &:empty {
+                display: none;
+            }
         }
     }
     & .lives {

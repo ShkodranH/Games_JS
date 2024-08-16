@@ -1,0 +1,8 @@
+.pop-in-out {
+    visibility: hidden;
+    animation: 1000ms popInOut 1500ms;
+}
+@keyframes popInOut {
+    0%   { visibility: visible }
+    100% { visibility: hidden  }
+}
