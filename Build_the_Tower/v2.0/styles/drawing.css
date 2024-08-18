@@ -1,0 +1,23 @@
+.stage {
+    background-image: var(--sky-gradient);
+    position: relative;
+    width: 75rem;
+    height: 120rem;
+
+    & * { position: absolute }
+
+    & .grass {
+        bottom: 0;
+        background-color: var(--grass-color);
+        box-shadow: 0 50vw 0 50vw var(--grass-color);
+        width: 100%;
+        height: 12rem;
+    }
+    & .quarry {
+        bottom: 10rem;
+        left: 5rem;
+        width: 20rem;
+        border-radius: 50% 50% 0 0 / 90% 90% 0 0;
+    }
+    
+}

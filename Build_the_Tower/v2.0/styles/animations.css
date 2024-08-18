@@ -1,0 +1,18 @@
+.card-flip {
+    animation: 1000ms flipCard;
+    transform-style: preserve-3d;
+    
+    & img {
+        backface-visibility: hidden;
+    }
+}
+
+@keyframes flipCard {
+    0%   { rotate: y 0deg   }
+    100% { rotate: y 360deg }
+}
+
+@keyframes tiltCard {
+    0%   { rotate: 0deg  }
+    100% { rotate: 10deg }
+}

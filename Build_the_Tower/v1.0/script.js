@@ -10,7 +10,7 @@ var transportAmount = 0;
 var transportPrice = 15;
 var transportLevel = 0;
 
-var bricks = 0;
+var bricks = 100000000;
 var brickRate = 1;
 var brickTime = 15.00;
 var brickPrice = 40;
