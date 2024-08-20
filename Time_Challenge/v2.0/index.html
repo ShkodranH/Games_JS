@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Challenge</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/media-queries.css">
+    <link rel="stylesheet" href="styles/drawing.css">
+</head>
+<body>
+    <div class="intro">
+        <h1 class="title">Time Challenge</h1>
+        <button class="play-btn">Play</button>
+        <button class="settings-btn"></button>
+    </div>
+
+    <div class="choose-players">
+        <button data-player="1"></button>
+        <button data-player="2"></button>
+        <button data-player="3"></button>
+        <button data-player="4"></button>
+    </div>
+    <div class="stage">
+        <div class="time">15:75</div>
+        <div class="red-player">
+            <button class="red"></button>
+            <div class="clock">
+                <div class="button red"></div>
+                <div class="btn-frame"></div>
+                <div class="body">12:23</div>
+                <div class="base"></div>
+            </div>
+        </div>
+        <div class="yellow-player">
+            <button class="yellow"></button>
+            <div class="clock">
+                <div class="button yellow"></div>
+                <div class="btn-frame"></div>
+                <div class="body">12:23</div>
+                <div class="base"></div>
+            </div>
+        </div>
+        <div class="green-player">
+            <button class="green"></button>
+            <div class="clock">
+                <div class="button green"></div>
+                <div class="btn-frame"></div>
+                <div class="body">12:23</div>
+                <div class="base"></div>
+            </div>
+        </div>
+        <div class="blue-player">
+            <button class="blue"></button>
+            <div class="clock">
+                <div class="button blue"></div>
+                <div class="btn-frame"></div>
+                <div class="body">12:23</div>
+                <div class="base"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="finish">
+        <h1>Red Wins!</h1>
+        <div class="dashboard">
+            <div class="head">
+                <p>Player</p>
+                <p>Time</p>
+                <p>Result</p>
+                <p>Margin</p>
+            </div>
+            <div class="player-info">
+                <p class="name">Red</p>
+                <p class="time"></p>
+                <p class="result"></p>
+                <p class="margin"></p>
+            </div>
+            <div class="player-info">
+                <p class="name">Blue</p>
+                <p class="time"></p>
+                <p class="result"></p>
+                <p class="margin"></p>
+            </div>
+            <div class="player-info">
+                <p class="name">Green</p>
+                <p class="time"></p>
+                <p class="result"></p>
+                <p class="margin"></p>
+            </div>
+            <div class="player-info">
+                <p class="name">Yellow</p>
+                <p class="time"></p>
+                <p class="result"></p>
+                <p class="margin"></p>
+            </div>
+        </div>
+        <button class="finish-btn">Play Again</button>
+    </div>
+
+    <div class="settings">
+        <div class="interaction">
+            <h3>Interaction</h3>
+            <label for="touchscreen"></label>
+            <input type="radio" name="interaction" id="touchscreen" data-value="touchscreen">
+            <label for="keyboard"></label>
+            <input type="radio" name="interaction" id="Keyboard" data-value="keyboard">
+        </div>
+        <div class="keyboard">
+            <h3>Keyboard Keys</h3>
+            <input type="text" name="keyboard" value="">
+            <input type="text" name="keyboard" value="">
+            <input type="text" name="keyboard" value="">
+            <input type="text" name="keyboard" value="">
+        </div>
+        <div class="touchscreen">
+            <h3>Orientation</h3>
+            <label for="one-way"></label>
+            <input type="radio" name="orientation" id="one-way" data-value="oneWay">
+            <label for="rotate"></label>
+            <input type="radio" name="oriemtation" id="rotate" data-value="rotate">
+        </div>
+    </div>
+    
+    <script src="scripts/index.js"></script>
+</body>
+</html>

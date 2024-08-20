@@ -1,0 +1,108 @@
+@font-face {
+    font-family: Orbitron;
+    src: url(../fonts/orbitron.ttf);
+}
+:root {
+    --bg-color: #342a3b;
+    --white-color: #f1faee;
+    --gray-color: #777777;
+    --red-color: #ff3b30;
+    --blue-color: #007aff;
+    --green-color: #34c759;
+    --yellow-color: #ffcc00;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-family: Orbitron, sans-serif;
+    font-weight: bold;
+    letter-spacing: .5rem;
+    color: var(--white-color);
+    -webkit-tap-highlight-color: transparent;
+}
+html {
+    font-size: 14px;
+}
+body {
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-color);
+
+    & > div {
+        width: min(100%, 1200px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+}
+& button {
+    cursor: pointer;
+    border: none;
+    font-size: 3rem;
+    padding: .25em;
+    border-radius: 0;
+}
+.red { background-color: var(--red-color) }
+.blue { background-color: var(--blue-color) }
+.green { background-color: var(--green-color) }
+.yellow { background-color: var(--yellow-color) }
+.flip { rotate: 180deg }
+
+.intro {
+    display: flex;
+}
+body > :not(.stage) {
+    display: none;
+}
+
+.intro {
+    align-self: center;
+    aspect-ratio: 4 / 2;
+    background-color: var(--white-color);
+
+    & .title {
+        color: var(--bg-color);
+    }
+}
+
+.stage {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+
+    & > div {
+        position: relative;
+        height: 100%;
+        display: grid;
+        place-items: center;
+
+        &.time {
+            height: auto;
+            position: fixed;
+            justify-self: center;
+            font-size: min(12vw, 4rem);
+    
+            &::before {
+                content: '';
+                rotate: 180deg;
+            }
+        }
+    }
+}
+
+.finish {
+    text-align: center;
+
+    & h1 {
+        font-size: 5rem;
+    }
+    & h3 {
+        font-size: 2rem
+    }
+    & p {
+        font-size: 8rem;
+    }
+}
