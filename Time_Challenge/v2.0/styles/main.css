@@ -29,7 +29,21 @@ body {
     height: 100dvh;
     display: flex;
     justify-content: center;
-    background-color: var(--bg-color);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        top: -50%;
+        left: -50%;
+        z-index: -1;
+        background: url('../images/stopwatch.png') var(--bg-color);
+        transform: rotate(30deg);
+
+    }
 
     & > div {
         width: min(100%, 1200px);
@@ -55,17 +69,15 @@ body {
 .intro {
     display: flex;
 }
-body > :not(.stage) {
+body > :not(.intro) {
     display: none;
 }
 
 .intro {
-    align-self: center;
-    aspect-ratio: 4 / 2;
-    background-color: var(--white-color);
-
+    width: 100%;
+    background-color: color-mix(in srgb, var(--bg-color) 90%, transparent);
     & .title {
-        color: var(--bg-color);
+        color: var(--white-color);
     }
 }
 
