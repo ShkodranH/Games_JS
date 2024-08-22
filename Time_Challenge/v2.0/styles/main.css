@@ -29,21 +29,7 @@ body {
     height: 100dvh;
     display: flex;
     justify-content: center;
-    position: relative;
-    overflow: hidden;
-
-    &::before {
-        content: "";
-        position: absolute;
-        width: 200%;
-        height: 200%;
-        top: -50%;
-        left: -50%;
-        z-index: -1;
-        background: url('../images/stopwatch.png') var(--bg-color);
-        transform: rotate(30deg);
-
-    }
+    background-color: var(--bg-color);
 
     & > div {
         width: min(100%, 1200px);
@@ -56,9 +42,10 @@ body {
 & button {
     cursor: pointer;
     border: none;
-    font-size: 3rem;
-    padding: .25em;
-    border-radius: 0;
+    font-size: min(10vw, 3rem);
+    padding: .5em .75em;
+    border-radius: .25em;
+    color: var(--bg-color);
 }
 .red { background-color: var(--red-color) }
 .blue { background-color: var(--blue-color) }
@@ -74,10 +61,25 @@ body > :not(.intro) {
 }
 
 .intro {
-    width: 100%;
-    background-color: color-mix(in srgb, var(--bg-color) 90%, transparent);
-    & .title {
-        color: var(--white-color);
+    .title {
+        font-size: min(12vw, 4rem);
+        text-align: center;
+        padding: .25em;
+        border-radius: .25em;
+        background-image:  linear-gradient(var(--red-color) 50%, var(--green-color) 50%), 
+            linear-gradient(var(--yellow-color) 50%, var(--blue-color) 50%);
+        background-size: 50% 100%;
+        background-position: left, right;
+        background-repeat: no-repeat;
+    }
+    & div {
+        display: flex;
+        gap: 1em;
+
+        & img {
+            display: block;
+            width: min(12vw, 3.5rem);
+        }
     }
 }
 
