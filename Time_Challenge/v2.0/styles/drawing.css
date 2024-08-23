@@ -12,7 +12,9 @@
             position: absolute;
             width: 5rem;
             aspect-ratio: 1 / 1;
-            border-radius: 1rem;
+            padding: 0;
+            color: var(--white-color);
+            color: transparent;
         }
         & .clock {
             display: grid;
@@ -52,6 +54,28 @@
                 border-top: 0;
                 border-bottom: 1rem solid var(--gray-color);
             }
+        }
+    }
+}
+
+.settings {
+    & .num-of-players label {
+        background-image: linear-gradient(var(--red-color) 50%, var(--green-color) 50%), 
+            linear-gradient(var(--yellow-color) 50%, var(--blue-color) 50%);
+        background-size: 50% 100%;
+        background-position: left, right;
+        background-repeat: no-repeat;
+        
+        &:nth-of-type(1) {
+            background: red;
+        }
+        &:nth-of-type(2) {
+            background-image: linear-gradient(var(--red-color) 50%, var(--blue-color) 50%);
+            background-size: 100%;
+        }
+        &:nth-of-type(3) {
+            background-image: linear-gradient(var(--red-color) 50%, var(--blue-color) 50%), 
+                linear-gradient(var(--yellow-color) 50%, var(--blue-color) 50%);
         }
     }
 }

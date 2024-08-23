@@ -56,7 +56,7 @@ body {
 .intro {
     display: flex;
 }
-body > :not(.intro) {
+body > :not(.finish) {
     display: none;
 }
 
@@ -108,15 +108,49 @@ body > :not(.intro) {
 }
 
 .finish {
-    text-align: center;
+    
+}
 
-    & h1 {
-        font-size: 5rem;
+.settings {
+    & .title {
+        font-size: 4rem;
     }
-    & h3 {
-        font-size: 2rem
+    & > div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem .5rem;
+        text-align: center;
+        
+        & h3 {
+            width: 100%;
+            font-size: min(6vw, 2rem);
+        }
+        & input {
+            width: 0;
+            height: 0;
+        }
+        & label {
+            cursor: pointer;
+            font-size: 3rem;
+            width: min(20vw, 7rem);
+            background-color: var(--gray-color);
+        }
+        & input:checked + label {
+            outline: .25rem solid var(--white-color);
+        }
     }
-    & p {
-        font-size: 8rem;
+    & .interaction {
+        & label {
+            width: min(40vw, 12rem);
+
+            & img {
+                width: min(20vw, 6rem);
+            }
+        }
+    }
+    & .close-settings {
+        font-size: min(8vw, 2.5rem);
+        padding: .5em 2em;
     }
 }
