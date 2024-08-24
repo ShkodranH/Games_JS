@@ -56,7 +56,7 @@ body {
 .intro {
     display: flex;
 }
-body > :not(.finish) {
+body > :not(.intro) {
     display: none;
 }
 
@@ -108,7 +108,35 @@ body > :not(.finish) {
 }
 
 .finish {
-    
+    & h1 {
+        font-size: min(12vw, 4rem);
+    }
+    & .dashboard {
+        width: min(90%, 600px);
+        background-color: var(--white-color);
+        border-radius: .5em;
+
+        & > div {
+            display: flex;
+            border-bottom: 1px solid var(--bg-color);
+            
+            & p {
+                font-size: min(4vw, 1.5rem);
+                padding: .25em 0;
+                letter-spacing: 0;
+                color: var(--bg-color);
+                flex: 1 1 20%;
+
+                &:first-of-type {
+                    flex: 1 1 10%;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    & .finish-btn {
+        font-size: min(8vw, 2.5rem);
+    }
 }
 
 .settings {

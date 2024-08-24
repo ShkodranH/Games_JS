@@ -1,60 +1,67 @@
-import { imagesArray } from "./data.js";
-
-const levelElem = document.querySelector('.level');
-const currentProgressElem = document.querySelector('.current');
-const overallProgressElem = document.querySelector('.overall');
-const cardElems = document.querySelectorAll('.card');
+const timeElem = document.querySelector('.time');
+const playerElems = document.querySelectorAll('.stage [class*="player"]');
+const playerTimerElems = Array.from(playerElems, e => e.querySelector('.body'));
+const playerBtns = Array.from(playerElems, e => e.querySelector('button'));
 const playBtn = document.querySelector('.play-btn');
+const settingsBtn = document.querySelector('.settings-btn');
+const closeSettingsBtn = document.querySelector('.close-settings');
 const finishBtn = document.querySelector('.finish-btn');
-const finalScoreElem = document.querySelector('.final-score');
+let numOfPlayer;
+let interaction;
 
-let level, progressCount, overallProgress;
-let levelImages = [], currentGuesses = [];
+let players = [
+    { name: 'red', result: 0, stopedTimer: false },
+    { name: 'blue', result: 0, stopedTimer: false },
+    { name: 'yellow', result: 0, stopedTimer: false },
+    { name: 'green', result: 0, stopedTimer: false }
+];
+let time = Math.ceil(Math.random() * 2000 + 500);
+time -= time % 25;
 
-// Reseting variables for new level
-function levelUp(value, playAudio) {
-    level = value;
-    levelElem.innerText = `Level ${level}`;
-    generateCurrentProgress(0);
-    generateOverallProgress(level + 2);
-    generatelevelImages();
-    currentGuesses = [];
-    playAudio && levelupAudio.play();
+let startTimer = setInterval(updatePlayerTimer, 10);
+
+// Reseting variables for new game
+function restartGame() {
+    displayTime(time, timeElem);
 }
-levelUp(1, false); 
+restartGame();
 
 const clickAudio = new Audio("./sound-effects/click.ogg");
 const levelupAudio = new Audio("./sound-effects/levelup.wav");
 const loseAudio = new Audio("./sound-effects/lose.ogg");
 const winAudio = new Audio("./sound-effects/win.ogg");
 
-function changeScene(prev, next) {
+function changeScene(prev, next, action) {
     document.querySelector(prev).style.display = 'none';
-    document.querySelector(next).style.display = 'flex';
+    document.querySelector(next).style.display = action;
 }
-function generateCurrentProgress(value) {
-    progressCount = value;
-    currentProgressElem.innerText = progressCount;
+function getUserSettings() {
+    numOfPlayer = document.querySelector('.num-of-players input:checked').value;
+    interaction = document.querySelector('.interaction input:checked').value;
 }
-function generateOverallProgress(value) {
-    overallProgress = value;
-    overallProgressElem.innerText = overallProgress;
+function updatePlayerTimer() {
+    for(let i = 0; i < players.length; i++) {
+        if(!players[i].stopedTimer)
+            displayTime(++players[i].result, playerTimerElems[i]);
+    }
 }
 
-// Generate images elements for the level
-function generatelevelImages() {
-    cardElems.forEach(e => e.innerHTML = '');
-    levelImages = imagesArray.sort(() => Math.random() - 0.5).slice(0, overallProgress);
-    displayCards();
-}
-function displayCards() {
-    for(let i = 0; i < levelImages.length; i++)
-        cardElems[i].innerHTML = `<img src="${levelImages[i]}">`;
+function displayTime(timeVal, elem) {
+    let sec = Math.floor(timeVal / 100).toString().padStart(2, '0');
+    let micro = (timeVal % 100).toString().padStart(2, '0');
+    elem.innerText = `${sec}:${micro}`;
 }
 
 // Handling player card clicks
-function mouseClick(e) {
+function touchInputS(e) {
     checkGuess(e.target.getAttribute('src'));
+}
+function keyboardInputs(e) {
+    if(e.key === 'Enter')
+        checkGuess(document.querySelector('.selected').getAttribute('src'));
+}
+function handleInputs() {
+
 }
 
 // Check if the current guess is correct or not
@@ -104,12 +111,15 @@ function displayEnding(audio, hasWin) {
 }
 
 playBtn.addEventListener('click', () => {
-    changeScene('.intro', '.stage');
-    clickAudio.play();
+    changeScene('.intro', '.stage', 'grid');
+});
+settingsBtn.addEventListener('click', () => {
+    changeScene('.intro', '.settings', 'flex');
+});
+closeSettingsBtn.addEventListener('click', () => {
+    changeScene('.settings', '.intro', 'flex');
 });
 finishBtn.addEventListener('click', () => {
-    changeScene('.finish', '.intro');
-    clickAudio.play();
-    levelUp(1, false);
+    changeScene('.finish', '.intro', 'flex');
+    resetGame();
 });
-cardElems.forEach(e => e.addEventListener('click', mouseClick));

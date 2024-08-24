@@ -42,6 +42,7 @@
                 display: grid;
                 place-items: center;
                 font-size: min(8vw, 3.5rem);
+                font-variant-numeric: tabular-nums;
                 border-radius: 1rem;
                 border: 1rem solid var(--white-color);
                 border-width: 1rem 0;
