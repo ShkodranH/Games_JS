@@ -6,8 +6,9 @@
     <title>Time Challenge</title>
     <link rel="icon" href="images/icon.png" type="image/png">
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/media-queries.css">
     <link rel="stylesheet" href="styles/drawing.css">
+    <link rel="stylesheet" href="styles/media-queries.css">
+    <link rel="stylesheet" href="styles/animations.css">
 </head>
 <body>
     <div class="intro">
@@ -19,40 +20,43 @@
     </div>
 
     <div class="stage">
-        <div class="time">00:00</div>
-        <div class="red-player">
-            <button class="red">Q</button>
-            <div class="clock">
-                <div class="button red"></div>
-                <div class="btn-frame"></div>
-                <div class="body"></div>
-                <div class="base"></div>
-            </div>
-        </div>
-        <div class="yellow-player">
-            <button class="yellow">P</button>
-            <div class="clock">
-                <div class="button yellow"></div>
-                <div class="btn-frame"></div>
-                <div class="body"></div>
-                <div class="base"></div>
-            </div>
+        <div class="time">
+            <p>00:00</p>
+            <p>00:00</p>
         </div>
         <div class="green-player">
-            <button class="green">X</button>
+            <button class="green">Q</button>
             <div class="clock">
                 <div class="button green"></div>
                 <div class="btn-frame"></div>
-                <div class="body"></div>
+                <div class="body fade-in"></div>
                 <div class="base"></div>
             </div>
         </div>
         <div class="blue-player">
-            <button class="blue">M</button>
+            <button class="blue">P</button>
             <div class="clock">
                 <div class="button blue"></div>
                 <div class="btn-frame"></div>
-                <div class="body"></div>
+                <div class="body fade-in"></div>
+                <div class="base"></div>
+            </div>
+        </div>
+        <div class="red-player">
+            <button class="red">X</button>
+            <div class="clock">
+                <div class="button red"></div>
+                <div class="btn-frame"></div>
+                <div class="body fade-in"></div>
+                <div class="base"></div>
+            </div>
+        </div>
+        <div class="yellow-player">
+            <button class="yellow">M</button>
+            <div class="clock">
+                <div class="button yellow"></div>
+                <div class="btn-frame"></div>
+                <div class="body fade-in"></div>
                 <div class="base"></div>
             </div>
         </div>
@@ -104,8 +108,6 @@
         <h1 class="title">Settings</h1>
         <div class="num-of-players">
             <h3>Number of Players</h3>
-            <input type="radio" name="players" id="one" value="1">
-            <label for="one">1</label>
             <input type="radio" name="players" id="two" value="2" checked>
             <label for="two">2</label>
             <input type="radio" name="players" id="three" value="3">

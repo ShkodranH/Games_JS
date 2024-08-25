@@ -51,7 +51,6 @@ body {
 .blue { background-color: var(--blue-color) }
 .green { background-color: var(--green-color) }
 .yellow { background-color: var(--yellow-color) }
-.flip { rotate: 180deg }
 
 .intro {
     display: flex;
@@ -66,8 +65,8 @@ body > :not(.intro) {
         text-align: center;
         padding: .25em;
         border-radius: .25em;
-        background-image:  linear-gradient(var(--red-color) 50%, var(--green-color) 50%), 
-            linear-gradient(var(--yellow-color) 50%, var(--blue-color) 50%);
+        background-image: linear-gradient(var(--green-color) 50%, var(--red-color) 50%), 
+            linear-gradient(var(--blue-color) 50%, var(--yellow-color) 50%);
         background-size: 50% 100%;
         background-position: left, right;
         background-repeat: no-repeat;
@@ -99,8 +98,8 @@ body > :not(.intro) {
             justify-self: center;
             font-size: min(12vw, 4rem);
     
-            &::before {
-                content: '';
+            & p:first-of-type {
+                display: none;
                 rotate: 180deg;
             }
         }
@@ -110,6 +109,7 @@ body > :not(.intro) {
 .finish {
     & h1 {
         font-size: min(12vw, 4rem);
+        text-transform: capitalize;
     }
     & .dashboard {
         width: min(90%, 600px);
@@ -161,7 +161,7 @@ body > :not(.intro) {
         & label {
             cursor: pointer;
             font-size: 3rem;
-            width: min(20vw, 7rem);
+            width: min(25vw, 8rem);
             background-color: var(--gray-color);
         }
         & input:checked + label {

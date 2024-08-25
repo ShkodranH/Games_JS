@@ -1,18 +1,16 @@
-.card-flip {
-    animation: 1000ms flipCard;
-    transform-style: preserve-3d;
-    
-    & img {
-        backface-visibility: hidden;
-    }
+.fade-out {
+    animation: 1000ms fadeOut 2000ms linear forwards;
+}
+.fade-in {
+    animation: fadeIn 1000ms linear forwards;
 }
 
-@keyframes flipCard {
-    0%   { rotate: y 0deg   }
-    100% { rotate: y 360deg }
+@keyframes fadeOut {
+    0%   { color: var(--white-color) }
+    100% { color: transparent        }
 }
 
-@keyframes tiltCard {
-    0%   { rotate: 0deg  }
-    100% { rotate: 10deg }
+@keyframes fadeIn {
+    0%   { color: transparent        }
+    100% { color: var(--white-color) }
 }
