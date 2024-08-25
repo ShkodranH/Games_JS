@@ -76,7 +76,7 @@ let gamesData = [
     },
     {
         name: "Time Challenge",
-        link: "../Time_Challenge/v1.0/index.html",
+        link: "../Time_Challenge/v2.0/index.html",
         image: "../Time_Challenge/v2.0/images/icon.png"
     },
     {
