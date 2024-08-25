@@ -13,6 +13,7 @@ const dashboardNameElem = document.querySelectorAll('.player-info .name');
 const dashboardTimeElem = document.querySelectorAll('.player-info .time');
 const dashboardResultElem = document.querySelectorAll('.player-info .result');
 const dashboardMarginElem = document.querySelectorAll('.player-info .margin');
+const clickableElems = document.querySelectorAll('button, [type="radio"]');
 
 let numOfPlayer, interaction, setTimer, time, players;
 
@@ -23,8 +24,6 @@ function restartGame() {
         { name: 'red', result: 0, margin: 0, stopedTimer: false, key: 'x' },
         { name: 'yellow', result: 0, margin: 0, stopedTimer: false, key: 'm' },
     ];
-    [dashboardNameElem, dashboardTimeElem, dashboardResultElem, dashboardMarginElem]
-        .forEach(e => e.forEach(i => i.innerText = ''));
     // Generate a random time between 5 and 25 seconds and round to 1/4 of a seconds
     time = Math.ceil(Math.random() * 2000 + 500);
     time -= time % 25;
@@ -32,14 +31,15 @@ function restartGame() {
     // Resetting players data
     playerClockBtns.forEach(e => e.classList.remove('pressed'));
     playerTimerElems.forEach(e => displayTime(0, e));
+    [dashboardNameElem, dashboardTimeElem, dashboardResultElem, dashboardMarginElem]
+        .forEach(e => e.forEach(i => i.innerText = ''));
     setNumOfPlayers();
     setUserInteraction();
 }
 restartGame();
 
 const clickAudio = new Audio("./sound-effects/click.ogg");
-const levelupAudio = new Audio("./sound-effects/levelup.wav");
-const loseAudio = new Audio("./sound-effects/lose.ogg");
+const revealAudio = new Audio("./sound-effects/reveal.wav");
 const winAudio = new Audio("./sound-effects/win.ogg");
 
 function changeScene(prev, next, action) {
@@ -122,7 +122,6 @@ async function startGame() {
         updatePlayerTimer();
         stopGame();
     }, 10);
-    
 }
 // Stop the game if every player has pressed the button
 async function stopGame() {
@@ -131,7 +130,9 @@ async function stopGame() {
         disableInputs();
         playerTimerElems.forEach(e => e.classList.replace('fade-out' ,'fade-in'));
         drawScore();
+        revealAudio.play();
         await new Promise(resolve => setTimeout(resolve, 2000));
+        winAudio.play();
         changeScene('.stage', '.finish', 'flex');
     }
 }
@@ -174,3 +175,4 @@ finishBtn.addEventListener('click', () => {
     changeScene('.finish', '.intro', 'flex');
     restartGame();
 });
+clickableElems.forEach(e => e.addEventListener('click', () => clickAudio.play()));
