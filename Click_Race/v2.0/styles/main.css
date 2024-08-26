@@ -55,7 +55,7 @@ body {
 .intro {
     display: flex;
 }
-body > :not(.intro) {
+body > :not(.stage) {
     display: none;
 }
 
@@ -83,6 +83,9 @@ body > :not(.intro) {
 }
 
 .stage {
+    width: 100%;
+    background: url('../images/road.png') center no-repeat #ffd88e;
+    background-size: contain;
     display: grid;
     grid-template: repeat(2, 1fr) / repeat(2, 1fr);
 
