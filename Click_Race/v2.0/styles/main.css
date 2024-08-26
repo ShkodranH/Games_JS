@@ -1,0 +1,185 @@
+@font-face {
+    font-family: RampartOne;
+    src: url(../fonts/rampart-one.ttf);
+}
+:root {
+    --bg-color: #342a3b;
+    --white-color: #f1faee;
+    --gray-color: #777777;
+    --red-color: #e64c3c;
+    --blue-color: #3498db;
+    --green-color: #27ae60;
+    --yellow-color: #f1c40f;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-family: RampartOne, sans-serif;
+    font-weight: bold;
+    letter-spacing: .5rem;
+    color: var(--white-color);
+    -webkit-tap-highlight-color: transparent;
+}
+html {
+    font-size: 14px;
+}
+body {
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-color);
+
+    & > div {
+        width: min(100%, 1200px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+}
+& button {
+    cursor: pointer;
+    border: none;
+    font-size: min(10vw, 3rem);
+    padding: .5em .75em;
+    border-radius: .25em;
+    color: var(--bg-color);
+}
+.red { background-color: var(--red-color) }
+.blue { background-color: var(--blue-color) }
+.green { background-color: var(--green-color) }
+.yellow { background-color: var(--yellow-color) }
+
+.intro {
+    display: flex;
+}
+body > :not(.intro) {
+    display: none;
+}
+
+.intro {
+    .title {
+        font-size: min(12vw, 4rem);
+        text-align: center;
+        padding: .25em;
+        border-radius: .25em;
+        background-image: linear-gradient(var(--green-color) 50%, var(--red-color) 50%), 
+            linear-gradient(var(--blue-color) 50%, var(--yellow-color) 50%);
+        background-size: 50% 100%;
+        background-position: left, right;
+        background-repeat: no-repeat;
+    }
+    & div {
+        display: flex;
+        gap: 1em;
+
+        & img {
+            display: block;
+            width: min(12vw, 3.5rem);
+        }
+    }
+}
+
+.stage {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+
+    & > div {
+        position: relative;
+        height: 100%;
+        display: grid;
+        place-items: center;
+
+        &.time {
+            height: auto;
+            position: fixed;
+            justify-self: center;
+            font-size: min(12vw, 4rem);
+    
+            & p:first-of-type {
+                display: none;
+                rotate: 180deg;
+            }
+        }
+    }
+}
+
+.finish {
+    & h1 {
+        font-size: min(12vw, 4rem);
+        text-transform: capitalize;
+    }
+    & .dashboard {
+        width: min(90%, 600px);
+        background-color: var(--white-color);
+        border-radius: .5em;
+
+        & > div {
+            display: flex;
+            border-bottom: 1px solid var(--bg-color);
+            
+            & p {
+                font-size: min(4vw, 1.5rem);
+                text-transform: capitalize;
+                padding: .25em 0;
+                letter-spacing: 0;
+                color: var(--bg-color);
+                flex: 1 1 20%;
+
+                &:first-of-type {
+                    flex: 1 1 10%;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    & .finish-btn {
+        font-size: min(8vw, 2.5rem);
+    }
+}
+
+.settings {
+    & .title {
+        font-size: 4rem;
+    }
+    & > div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem .5rem;
+        text-align: center;
+        
+        & h3 {
+            width: 100%;
+            font-size: min(6vw, 2rem);
+        }
+        & input {
+            width: 0;
+            height: 0;
+        }
+        & label {
+            cursor: pointer;
+            font-size: 3rem;
+            width: min(25vw, 8rem);
+            background-color: var(--gray-color);
+        }
+        & input:checked + label {
+            outline: .25rem solid var(--white-color);
+        }
+    }
+    & .interaction {
+        & label {
+            width: min(40vw, 12rem);
+
+            & img {
+                width: min(20vw, 6rem);
+            }
+        }
+    }
+    & .close-settings {
+        font-size: min(8vw, 2.5rem);
+        padding: .5em 2em;
+    }
+}

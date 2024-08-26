@@ -1,0 +1,16 @@
+.fade-out {
+    animation: 1000ms fadeOut 2000ms linear forwards;
+}
+.fade-in {
+    animation: fadeIn 1000ms linear forwards;
+}
+
+@keyframes fadeOut {
+    0%   { color: var(--white-color) }
+    100% { color: transparent        }
+}
+
+@keyframes fadeIn {
+    0%   { color: transparent        }
+    100% { color: var(--white-color) }
+}
