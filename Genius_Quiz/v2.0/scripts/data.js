@@ -79,7 +79,7 @@ export const questionData = [
     },
     {
         number: "15",
-        question: "What result will you get, when all the nubers on telephone dial-pad are multiplied?",
+        question: "What result will you get, when all the numbers on telephone dial-pad are multiplied?",
         options: ["0", "45", "55", "362880"],
         answer: "0"
     },
