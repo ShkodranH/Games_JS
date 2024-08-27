@@ -108,7 +108,7 @@ body > :not(.intro) {
 
 .finish {
     & h1 {
-        font-size: min(12vw, 4rem);
+        font-size: min(10vw, 4rem);
         text-transform: capitalize;
     }
     & .dashboard {
