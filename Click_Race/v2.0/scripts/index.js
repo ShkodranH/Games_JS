@@ -48,19 +48,19 @@ function changeScene(prev, next, action) {
 }
 // Get player interaction type (touchscreen or keyboard) and adapt the game
 function interactionSettings(displayVal, colorVal, rotateDeg) {
-    timeElem[0].style.display = displayVal;
-    playerBtns.forEach(e => e.style.color = colorVal);
-    [playerClockElems[0], playerClockElems[1]].forEach(e => e.style.rotate = rotateDeg);
+    // timeElem[0].style.display = displayVal;
+    // playerBtns.forEach(e => e.style.color = colorVal);
+    // [playerClockElems[0], playerClockElems[1]].forEach(e => e.style.rotate = rotateDeg);
 }
 function setUserInteraction() {
-    interaction = document.querySelector('.interaction input:checked').value;
-    if(interaction === 'touchscreen') interactionSettings('block', 'transparent', '180deg');
-    else interactionSettings('none', 'unset', '0deg');
+    // interaction = document.querySelector('.interaction input:checked').value;
+    // if(interaction === 'touchscreen') interactionSettings('block', 'transparent', '180deg');
+    // else interactionSettings('none', 'unset', '0deg');
 }
 // Get the number of players and display their assets
 function hidePlayer(index) {
-    playerElems[index].style.visibility = 'hidden';
-    players[index].stopedTimer = true;
+    // playerElems[index].style.visibility = 'hidden';
+    // players[index].stopedTimer = true;
 }
 function setNumOfPlayers() {
     playerElems.forEach(e => e.style.visibility = 'visible');
