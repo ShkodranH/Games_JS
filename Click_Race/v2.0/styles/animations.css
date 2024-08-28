@@ -1,16 +1,12 @@
-.fade-out {
-    animation: 1000ms fadeOut 2000ms linear forwards;
+.pop-in {
+    animation: popIn 1000ms forwards;
 }
-.fade-in {
-    animation: fadeIn 1000ms linear forwards;
-}
+.pop-in:nth-of-type(2) { animation-delay: 1000ms }
+.pop-in:nth-of-type(3) { animation-delay: 2000ms }
+.pop-in:nth-of-type(4) { animation-delay: 3000ms }
 
-@keyframes fadeOut {
-    0%   { color: var(--white-color) }
-    100% { color: transparent        }
-}
-
-@keyframes fadeIn {
-    0%   { color: transparent        }
-    100% { color: var(--white-color) }
+@keyframes popIn {
+    40% { font-size: 15rem }
+    60% { font-size: 10rem }
+    80% { font-size: 10rem }
 }

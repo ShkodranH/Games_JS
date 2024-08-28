@@ -5,8 +5,8 @@
 :root {
     --bg-color: #ffd88e;
     --text-color: #342a3b;
-    --white-color: #f1faee;
-    --gray-color: #777777;
+    --white-color: #ffffff;
+    --transparent-black: #00000080;
     --red-color: #e64c3c;
     --blue-color: #3498db;
     --green-color: #27ae60;
@@ -82,7 +82,7 @@ body > :not(.stage) {
         place-items: center;
         & img { width: 100% }
     }
-    & .players-btn {
+    & .players-btn, .bg {
         position: fixed;
         width: 100%;
         height: 100%;
@@ -109,10 +109,17 @@ body > :not(.stage) {
         & img {
             width: 8%;
             margin-left: 6%;
-
-            &:nth-of-type(1) {
-                margin-left: 74%;
-            }
+        }
+    }
+    & .bg {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--transparent-black);
+        
+        & p {
+            font-size: 0rem;
+            color: var(--white-color);
         }
     }
 }
