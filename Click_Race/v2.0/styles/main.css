@@ -55,7 +55,7 @@ body {
 .intro {
     display: flex;
 }
-body > :not(.stage) {
+body > :not(.intro) {
     display: none;
 }
 
@@ -112,7 +112,7 @@ body > :not(.stage) {
         }
     }
     & .bg {
-        display: none;
+        display: flex;
         justify-content: center;
         align-items: center;
         background-color: var(--transparent-black);
