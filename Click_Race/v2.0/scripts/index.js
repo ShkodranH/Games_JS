@@ -10,23 +10,22 @@ const dashboardResultElem = document.querySelectorAll('.player-info .result');
 const clickableElems = document.querySelectorAll(':not(.players-btn) > button, [type="radio"]');
 
 const startPos = 6, finishPos = 73;
-let numOfPlayer, interaction, startTime, players;
+let numOfPlayer, interaction, startTime, players, carAnimation;
 
 // Resetting players data for new game
 function restartGame() {
     players = [
-        { name: 'green', distance: startPos, time: 0, finished: false, key: 'q' },
-        { name: 'blue', distance: startPos, time: 0, finished: false, key: 'p' },
-        { name: 'red', distance: startPos, time: 0, finished: false, key: 'x' },
-        { name: 'yellow', distance: startPos, time: 0, finished: false, key: 'm' },
+        { name: 'green', distance: startPos, speed: 0, time: 0, finished: false, key: 'q' },
+        { name: 'blue', distance: startPos, speed: 0, time: 0, finished: false, key: 'p' },
+        { name: 'red', distance: startPos, speed: 0, time: 0, finished: false, key: 'x' },
+        { name: 'yellow', distance: startPos, speed: 0, time: 0, finished: false, key: 'm' },
     ];
-    startTime = Date.now();
+    startTime = 0;
     [dashboardNameElem, dashboardResultElem].forEach(e => e.forEach(i => i.innerText = ''));
     setNumOfPlayers();
     setUserInteraction();
 }
 restartGame();
-// setInterval(() => console.log(((Date.now()-startTime)/1000).toFixed(2)), 1000)
 
 const clickAudio = new Audio("./sound-effects/click.ogg");
 const countdownAudio = new Audio('./sound-effects/countdown.wav');
@@ -68,6 +67,7 @@ function touchInputs(e) {
     }
 }
 function keyboardInputs(e) {
+    if(e.repeat) return;
     for(let i = 0; i < players.length; i++) {
         if(e.key.toLowerCase() === players[i].key) {
             pushCar(i);
@@ -85,64 +85,61 @@ function disableInputs() {
     document.removeEventListener('keydown', keyboardInputs);
 }
 
-// Format time from numeric value to ss:SS format
-// function displayTime(timeVal, elem) {
-//     let sec = Math.floor(timeVal / 100).toString().padStart(2, '0');
-//     let micro = (timeVal % 100).toString().padStart(2, '0');
-//     elem.innerText = `${sec}:${micro}`;
-// }
 // Each player who has not pressed the button, increases their time by 1ms
-// function updatePlayerTimer() {
-//     for(let i = 0; i < players.length; i++) {
-//         if(!players[i].finished)
-//             displayTime(++players[i].time, playerTimerElems[i]);
-//     }
-// }
+function updatePlayerPosition() {
+    for(let i = 0; i < players.length; i++) {
+        if(!players[i].finished) {
+            players[i].distance += players[i].speed;
+            playerCars[i].style.marginLeft = `${players[i].distance}%`;
+        }
+    }
+}
 
-// Start the game by starting the stopwatches and enabling the inputs
+// Start the game and let player race
 async function startGame() {
     countdownAudio.play();
     await new Promise(resolve => setTimeout(resolve, 4000));
     changeScene('.bg', '.stage', 'flex');
     enableInputs();
-    // setTimer = setInterval(() => {
-    //     updatePlayerTimer();
-    //     stopGame();
-    // }, 10);
+    carAnimation = setInterval(() => {
+        updatePlayerPosition();
+        players.forEach(e => e.speed *= 0.97);
+        startTime += 2;
+        stopGame();
+        console.log(players)
+    }, 20);
 }
 // Stop the game if every player has pressed the button
 async function stopGame() {
-    if(players.every(e => e.stopedTimer) || startTime == 3000) {
-        // clearInterval(setTimer);
+    if(players.every(e => e.finished) || startTime == 3000) {
+        clearInterval(carAnimation);
         disableInputs();
         drawScore();
-        revealAudio.play();
+        // revealAudio.play();
         await new Promise(resolve => setTimeout(resolve, 2000));
         winAudio.play();
         changeScene('.stage', '.finish');
     }
 }
 function pushCar(index) {
-    players[index].distance += 3;
-    playerCars[index].style.marginLeft = `${players[index].distance}%`;
+    players[index].speed += 0.05;
+    players[index].speed *= 1.1;
 }
 
 // Calculate the margin and display the winner and the dashboard!
-function calculateMargin() {
-    players.sort((a, b) => a.time - b.time);
-}
 function showWinner() {
+    players.sort((a, b) => a.time - b.time);
+
     if(players[0].time == players[1].time)
         winnerElem.innerText = `It's draw`;
     else
-        winnerElem.innerText = `${players[0].name} wins`
+        winnerElem.innerText = `${players[0].name} wins`;
 }
 function drawScore() {
-    calculateMargin();
     showWinner();
     for(let i = 0; i < numOfPlayer; i++) {
         dashboardNameElem[i].innerText = players[i].name;
-        displayTime(players[i].time, dashboardResultElem[i]);
+        dashboardResultElem[i].innerText = `${players[i].time / 100}`;
     }
 }
 playBtn.addEventListener('click', () => {
