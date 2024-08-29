@@ -60,8 +60,7 @@ function setUserInteraction() {
 // Get the number of players and display their assets
 function hidePlayer(index) {
     playerElems[index].style.visibility = 'hidden';
-    players[index].stopedTimer = true;
-    players[index].margin = 3000;
+    players[index] = { ...players[index], stopedTimer: true, margin: 3000 };
 }
 function setNumOfPlayers() {
     playerElems.forEach(e => e.style.visibility = 'visible');
@@ -143,7 +142,6 @@ function calculateMargin() {
     for(let i of players)
         i.margin += Math.abs(i.result - time);
     players.sort((a, b) => a.margin - b.margin);
-    console.log(players)
 }
 function showWinner() {
     if(players[0].margin == players[1].margin)
