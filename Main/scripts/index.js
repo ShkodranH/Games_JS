@@ -91,7 +91,7 @@ let gamesData = [
     },
     {
         name: "Click Race",
-        link: "../Click_Race/v1.0/index.html",
+        link: "../Click_Race/v2.0/index.html",
         image: "../Click_Race/v2.0/images/icon.png"
     },
     {
