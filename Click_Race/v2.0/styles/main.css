@@ -78,7 +78,7 @@ body > :not(.intro) {
     width: 100%;
 
     & .road {
-        width: 100vmax;
+        width: 100dvmax;
         display: grid;
         place-items: center;
         & img { width: 100% }
@@ -100,16 +100,16 @@ body > :not(.intro) {
     }
     & .players-car {
         position: fixed;
-        width: 100vmax;
+        width: 100dvmax;
         aspect-ratio: 10 / 3;
-        padding: .5vmax 0;
+        padding: .5dvmax 0;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
 
         & img {
-            width: 8vmax;
-            margin-left: 6vmax;
+            width: 8dvmax;
+            margin-left: 6dvmax;
         }
     }
     & .bg {

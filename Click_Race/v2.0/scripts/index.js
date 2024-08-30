@@ -30,7 +30,6 @@ restartGame();
 
 const clickAudio = new Audio("./sound-effects/click.ogg");
 const countdownAudio = new Audio('./sound-effects/countdown.wav');
-const finishAudio = new Audio("./sound-effects/finish.wav");
 const winAudio = new Audio("./sound-effects/win.ogg");
 
 function changeScene(prev, next) {
@@ -91,6 +90,7 @@ function disableInputs() {
 // Check if player has reached the finish line
 function checkPlayerDistance(index) {
     if(players[index].distance >= finishPos) {
+        const finishAudio = new Audio("./sound-effects/finish.wav");
         finishAudio.play();
         players[index] = { ...players[index], finished: true, time: startTime };
     }
