@@ -6,7 +6,7 @@
 .pop-in:nth-of-type(4) { animation-delay: 3000ms }
 
 @keyframes popIn {
-    40% { font-size: 15rem }
-    60% { font-size: 10rem }
-    80% { font-size: 10rem }
+    40% { font-size: min(30vw, 15rem) }
+    60% { font-size: min(20vw, 10rem) }
+    80% { font-size: min(20vw, 10rem) }
 }

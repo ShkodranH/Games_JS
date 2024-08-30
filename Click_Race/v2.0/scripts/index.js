@@ -24,6 +24,7 @@ function restartGame() {
     [dashboardNameElem, dashboardResultElem].forEach(e => e.forEach(i => i.innerText = ''));
     setNumOfPlayers();
     setUserInteraction();
+    updatePlayerPosition();
 }
 restartGame();
 
@@ -47,7 +48,7 @@ function setUserInteraction() {
 // Get the number of players and display their assets
 function hidePlayer(index) {
     [playerBtns, playerCars].forEach(e => e[index].style.visibility = 'hidden');
-    players[index] = { ...players[index], finished: true, time: 3000 };
+    players[index] = { ...players[index], finished: true, time: 5000 };
 }
 function setNumOfPlayers() {
     [playerBtns, playerCars].forEach(e => e.forEach(i => i.style.visibility = 'visible'));
@@ -87,6 +88,13 @@ function disableInputs() {
     document.removeEventListener('keydown', keyboardInputs);
 }
 
+// Check if player has reached the finish line
+function checkPlayerDistance(index) {
+    if(players[index].distance >= finishPos) {
+        finishAudio.play();
+        players[index] = { ...players[index], finished: true, time: startTime };
+    }
+}
 // Each player who has not pressed the button, increases their time by 1ms
 function updatePlayerPosition() {
     for(let i = 0; i < players.length; i++) {
@@ -95,19 +103,12 @@ function updatePlayerPosition() {
         players[i].speed *= 0.97;
     }
 }
-// Check if player has reached the finish line
-function checkPlayerDistance(index) {
-    if(players[index].distance >= finishPos) {
-        finishAudio.play();
-        players[index] = { ...players[index], finished: true, time: startTime };
-    }
-}
 
 // Start the game and let player race
 async function startGame() {
     countdownAudio.play();
     await new Promise(resolve => setTimeout(resolve, 4000));
-    changeScene('.bg', '.stage', 'flex');
+    changeScene('.bg', '.stage');
     enableInputs();
     carAnimation = setInterval(() => {
         updatePlayerPosition();
@@ -115,10 +116,11 @@ async function startGame() {
         startTime += 2;
     }, 20);
 }
-// Stop the game if every player has pressed the button
+// Stop the game if every player has arrived at the finish line or the time is up
 async function stopGame() {
-    if(players.every(e => e.finished) || startTime == 3000) {
+    if(players.every(e => e.finished) || startTime === 3000) {
         disableInputs();
+        players.forEach(e => e.time = (e.time === 0) ? 3000 : e.time);
         await new Promise(resolve => setTimeout(resolve, 2000));
         clearInterval(carAnimation);
         drawScore();
@@ -127,7 +129,7 @@ async function stopGame() {
     }
 }
 
-// Calculate the margin and display the winner and the dashboard!
+// Calculate the score and display it on the dashboard
 function showWinner() {
     players.sort((a, b) => a.time - b.time);
 
@@ -141,9 +143,11 @@ function drawScore() {
     for(let i = 0; i < numOfPlayer; i++) {
         dashboardNameElem[i].innerText = players[i].name;
         dashboardResultElem[i].innerText = `${(players[i].time / 100).toFixed(2)}`;
+        if(!players[i].finished) dashboardResultElem[i].innerText = 'DNF';
     }
 }
 playBtn.addEventListener('click', () => {
+    changeScene('.intro', '.bg');
     changeScene('.intro', '.stage');
     startGame();
 });
