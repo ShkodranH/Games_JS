@@ -1,0 +1,8 @@
+@media screen and (max-aspect-ratio: 1 / 1) {
+    .stage {
+        & .road, & .players-car {
+            rotate: -90deg;
+        }
+    }
+    
+}

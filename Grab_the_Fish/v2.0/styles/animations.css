@@ -1,0 +1,12 @@
+.pop-in {
+    animation: popIn 1000ms forwards;
+}
+.pop-in:nth-of-type(2) { animation-delay: 1000ms }
+.pop-in:nth-of-type(3) { animation-delay: 2000ms }
+.pop-in:nth-of-type(4) { animation-delay: 3000ms }
+
+@keyframes popIn {
+    40% { font-size: min(30vw, 15rem) }
+    60% { font-size: min(20vw, 10rem) }
+    80% { font-size: min(20vw, 10rem) }
+}

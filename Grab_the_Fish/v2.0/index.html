@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grab the Fish</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/media-queries.css">
+    <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body>
+    <div class="intro">
+        <h1 class="title">Grab the Fish</h1>
+        <div>
+            <button class="play-btn">Play</button>
+            <button class="settings-btn"><img src="images/settings.png" alt="settings icon"></button>
+        </div>
+    </div>
+
+    <div class="stage">
+        <div class="road">
+            <img src="images/road.png" alt="road image">
+        </div>
+        <div class="players-btn">
+            <button class="green">Q</button>
+            <button class="blue">P</button>
+            <button class="red">X</button>
+            <button class="yellow">M</button>
+        </div>
+        <div class="players-paw">
+            <img class="green-paw" src="images/green-car.png" alt="green car">
+            <img class="blue-paw" src="images/blue-car.png" alt="blue car">
+            <img class="red-paw" src="images/red-car.png" alt="red car">
+            <img class="yellow-paw" src="images/yellow-car.png" alt="yellow car">
+        </div>
+    </div>
+
+    <div class="finish">
+        <h1>Finish</h1>
+        <div class="dashboard">
+            <div class="head">
+                <p></p>
+                <p>Player</p>
+                <p>Result</p>
+            </div>
+            <div class="player-info">
+                <p>1</p>
+                <p class="name"></p>
+                <p class="result"></p>
+            </div>
+            <div class="player-info">
+                <p>2</p>
+                <p class="name"></p>
+                <p class="result"></p>
+            </div>
+            <div class="player-info">
+                <p>3</p>
+                <p class="name"></p>
+                <p class="result"></p>
+            </div>
+            <div class="player-info">
+                <p>4</p>
+                <p class="name"></p>
+                <p class="result"></p>
+            </div>
+        </div>
+        <button class="finish-btn">Play Again</button>
+    </div>
+
+    <div class="settings">
+        <h1 class="title">Settings</h1>
+        <div class="num-of-players">
+            <h3>Number of Players</h3>
+            <input type="radio" name="players" id="two" value="2" checked>
+            <label for="two">2</label>
+            <input type="radio" name="players" id="three" value="3">
+            <label for="three">3</label>
+            <input type="radio" name="players" id="four" value="4">
+            <label for="four">4</label>
+        </div>
+        <div class="interaction">
+            <h3>Interaction</h3>
+            <input type="radio" name="interaction" id="touchscreen" value="touchscreen" checked>
+            <label for="touchscreen"><img src="images/touchscreen.png" alt="touchscreen icon"></label>
+            <input type="radio" name="interaction" id="keyboard" value="keyboard">
+            <label for="keyboard"><img src="images/keyboard.png" alt="keyboard icon"></label>
+        </div>
+        <button class="close-settings">Ok</button>
+    </div>
+    
+    <script src="scripts/index.js"></script>
+</body>
+</html>
