@@ -1,7 +1,11 @@
 @media screen and (max-aspect-ratio: 1 / 1) {
-    .stage {
-        & .road, & .players-car {
-            rotate: -90deg;
+    .stage .players-controls {
+        grid-template: repeat(2, min(20vw, 6rem)) / repeat(2, min(40vw, 12.5rem));
+
+        & div {
+            flex-direction: row;
+            &:nth-of-type(n) span { order: 0 }
+            &:nth-of-type(odd) span { order: 1 }
         }
     }
     
