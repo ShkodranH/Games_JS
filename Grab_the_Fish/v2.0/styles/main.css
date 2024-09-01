@@ -1,9 +1,10 @@
 @font-face {
-    font-family: RampartOne;
-    src: url(../fonts/rampart-one.ttf);
+    font-family: PoetsenOne;
+    src: url(../fonts/poetsen-one.ttf);
 }
 :root {
-    --bg-color: #fff9c4;
+    --bg-color: #ffd592;
+    --tile-color: #fff9c4;
     --text-color: #342a3b;
     --white-color: #ffffff;
     --transparent-black: #00000080;
@@ -17,7 +18,7 @@
     margin: 0;
     padding: 0;
     user-select: none;
-    font-family: RampartOne, sans-serif;
+    font-family: PoetsenOne, sans-serif;
     font-weight: normal;
     color: var(--text-color);
     -webkit-tap-highlight-color: transparent;
@@ -29,6 +30,11 @@ body {
     height: 100dvh;
     display: flex;
     justify-content: center;
+    background: linear-gradient(295deg, var(--tile-color) 7em, transparent 7em) 3em 3em,
+    linear-gradient(115deg, var(--tile-color) 7em, transparent 7em) 4.25em 13.5em,
+    linear-gradient(295deg, var(--tile-color) 7em, transparent 7em) 12em 12em,
+    linear-gradient(115deg, var(--tile-color) 7em, transparent 7em) 13.25em 4.5em;
+    background-size: 18em 18em;
     background-color: var(--bg-color);
 
     & > div {
@@ -44,8 +50,9 @@ body {
     border: none;
     font-size: min(12vw, 4rem);
     padding: .25em .5em;
+    border-radius: .15em;
     background-color: var(--text-color);
-    color: var(--bg-color);
+    color: var(--tile-color);
 }
 .red { background-color: var(--red-color) }
 .blue { background-color: var(--blue-color) }
@@ -61,7 +68,7 @@ body > :not(.intro) {
 
 .intro {
     .title {
-        font-size: min(15vw, 7rem);
+        font-size: min(15vw, 6rem);
     }
     & div {
         display: flex;
@@ -181,12 +188,11 @@ body > :not(.intro) {
             cursor: pointer;
             font-size: 3rem;
             width: min(25vw, 8rem);
-            background-color: var(--bg-color);
             transition: .5s;
         }
         & input:checked + label {
             background-color: var(--text-color);
-            color: var(--bg-color);
+            color: var(--tile-color);
             & img { filter: none }
         }
     }
@@ -202,7 +208,7 @@ body > :not(.intro) {
         }
     }
     & .close-settings {
-        font-size: min(8vw, 3rem);
+        font-size: min(10vw, 3rem);
         padding: .25em 2em;
     }
 }
