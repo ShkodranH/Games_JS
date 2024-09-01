@@ -1,5 +1,7 @@
-const playerBtns = document.querySelectorAll('.players-btn button');
-const playerCars = document.querySelectorAll('.players-car img');
+const playerBtns = document.querySelectorAll('.players-controls button');
+const playerPointsElems = document.querySelectorAll('.players-controls span');
+const playerPaws = document.querySelectorAll('.players-paw img');
+const plateFishImg = document.querySelector('.food img');
 const playBtn = document.querySelector('.play-btn');
 const settingsBtn = document.querySelector('.settings-btn');
 const closeSettingsBtn = document.querySelector('.close-settings');
@@ -7,24 +9,28 @@ const finishBtn = document.querySelector('.finish-btn');
 const winnerElem = document.querySelector('.finish h1');
 const dashboardNameElem = document.querySelectorAll('.player-info .name');
 const dashboardResultElem = document.querySelectorAll('.player-info .result');
-const clickableElems = document.querySelectorAll(':not(.players-btn) > button, [type="radio"]');
+const clickableElems = document.querySelectorAll(':not(.players-controls div) > button, [type="radio"]');
 
-const startPos = 6, finishPos = 73;
-let numOfPlayer, interaction, startTime, players, carAnimation;
+const winPoints = 5;
+let numOfPlayer, interaction, players, fishTypes;
 
 // Resetting players data for new game
 function restartGame() {
     players = [
-        { name: 'green', distance: startPos, speed: 0, time: 0, finished: false, key: 'q' },
-        { name: 'blue', distance: startPos, speed: 0, time: 0, finished: false, key: 'p' },
-        { name: 'red', distance: startPos, speed: 0, time: 0, finished: false, key: 'x' },
-        { name: 'yellow', distance: startPos, speed: 0, time: 0, finished: false, key: 'm' },
+        { name: 'gray', points: 0, hidden: false, key: 'q' },
+        { name: 'brown', points: 0, hidden: false, key: 'p' },
+        { name: 'black', points: 0, hidden: false, key: 'x' },
+        { name: 'orange', points: 0, hidden: false, key: 'm' },
     ];
-    startTime = 0;
+    fishTypes = [
+        { src: './images/fish.png', points: 1 },
+        { src: './images/fish-2.png', points: 2 },
+        { src: './images/fishbone.png', points: -2 },
+    ];
     [dashboardNameElem, dashboardResultElem].forEach(e => e.forEach(i => i.innerText = ''));
     setNumOfPlayers();
     setUserInteraction();
-    updatePlayerPosition();
+    // updatePlayerPoints();
 }
 restartGame();
 
@@ -47,11 +53,11 @@ function setUserInteraction() {
 // Get the number of players and display their assets
 function hidePlayer(index) {
     [playerBtns, playerCars].forEach(e => e[index].style.visibility = 'hidden');
-    players[index] = { ...players[index], finished: true, time: 5000 };
+    players[index].hidden = true;
 }
 function setNumOfPlayers() {
-    [playerBtns, playerCars].forEach(e => e.forEach(i => i.style.visibility = 'visible'));
-    players.forEach(e => (e.distance = startPos, e.time = 0, e.finished = false));
+    [playerBtns, playerPointsElems, playerPaws].forEach(e => e.forEach(i => i.style.visibility = 'visible'));
+    players.forEach(e => e.hidden = false);
 
     numOfPlayer = document.querySelector('.num-of-players input:checked').value;
     if(numOfPlayer < 4) hidePlayer(0);
@@ -61,18 +67,16 @@ function setNumOfPlayers() {
 // Handling player inputs
 function touchInputs(e) {
     for(let i = 0; i < players.length; i++) {
-        if(e.target.className === players[i].name && !players[i].finished) {
-            players[i].speed = (players[i].speed + 0.05) * 1.15;
-            checkPlayerDistance(i);
+        if(e.target.className === players[i].name && !players[i].hidden) {
+            
         }
     }
 }
 function keyboardInputs(e) {
     if(e.repeat) return;
     for(let i = 0; i < players.length; i++) {
-        if(e.key.toLowerCase() === players[i].key && !players[i].finished) {
-            players[i].speed = (players[i].speed + 0.05) * 1.15;
-            checkPlayerDistance(i);
+        if(e.key.toLowerCase() === players[i].key && !players[i].hidden) {
+            
         }
     }
 }

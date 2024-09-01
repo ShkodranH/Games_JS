@@ -61,7 +61,7 @@ body {
 .intro {
     display: flex;
 }
-body > :not(.stage) {
+body > :not(.intro) {
     display: none;
 }
 
@@ -126,7 +126,9 @@ body > :not(.stage) {
             gap: .5rem;
             
             &:nth-of-type(-n + 2) span { order: 1 }
-            
+            & button { border-radius: 50% }
+            & span { scale: .8 }
+
             & * {
                 aspect-ratio: 1 / 1;
                 display: grid;
