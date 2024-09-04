@@ -61,7 +61,7 @@ body {
 .intro {
     display: flex;
 }
-body > :not(.intro) {
+body > :not(.stage) {
     display: none;
 }
 

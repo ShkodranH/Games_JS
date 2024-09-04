@@ -33,6 +33,7 @@ function restartGame() {
     // updatePlayerPoints();
 }
 restartGame();
+enableInputs();
 
 const clickAudio = new Audio("./sound-effects/click.ogg");
 const countdownAudio = new Audio('./sound-effects/countdown.wav');
@@ -52,7 +53,7 @@ function setUserInteraction() {
 }
 // Get the number of players and display their assets
 function hidePlayer(index) {
-    [playerBtns, playerCars].forEach(e => e[index].style.visibility = 'hidden');
+    [playerBtns, playerPointsElems, playerPaws].forEach(e => e[index].style.visibility = 'hidden');
     players[index].hidden = true;
 }
 function setNumOfPlayers() {
@@ -67,17 +68,14 @@ function setNumOfPlayers() {
 // Handling player inputs
 function touchInputs(e) {
     for(let i = 0; i < players.length; i++) {
-        if(e.target.className === players[i].name && !players[i].hidden) {
-            
-        }
+        if(e.target.className === players[i].name && !players[i].hidden)
+            catchFish(i);
     }
 }
 function keyboardInputs(e) {
-    if(e.repeat) return;
     for(let i = 0; i < players.length; i++) {
-        if(e.key.toLowerCase() === players[i].key && !players[i].hidden) {
-            
-        }
+        if(e.key.toLowerCase() === players[i].key && !players[i].hidden)
+            catchFish(i);
     }
 }
 function enableInputs() {
@@ -91,6 +89,10 @@ function disableInputs() {
     document.removeEventListener('keydown', keyboardInputs);
 }
 
+function generateFish() {
+    let fishIndex = Math.floor(Math.random() * fishTypes.length);
+    
+}
 // Check if player has reached the finish line
 function checkPlayerDistance(index) {
     if(players[index].distance >= finishPos) {
@@ -100,7 +102,7 @@ function checkPlayerDistance(index) {
     }
 }
 // Each player who has not pressed the button, increases their time by 1ms
-function updatePlayerPosition() {
+function updatePlayerPoints() {
     for(let i = 0; i < players.length; i++) {
         players[i].distance += players[i].speed;
         playerCars[i].style.marginLeft = `${players[i].distance}%`;
@@ -108,25 +110,23 @@ function updatePlayerPosition() {
     }
 }
 
-// Start the game and let player race
-async function startGame() {
-    countdownAudio.play();
-    await new Promise(resolve => setTimeout(resolve, 4000));
-    changeScene('.bg', '.stage');
-    enableInputs();
-    carAnimation = setInterval(() => {
-        updatePlayerPosition();
-        stopGame();
-        startTime += 2;
-    }, 20);
+async function catchFish(index) {
+    playerPaws[index].classList.add(`${players[index].name}-paw-anim`);
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    playerPaws[index].classList.remove(`${players[index].name}-paw-anim`);
+
 }
+// Start the game and let player race
+// async function playGame() {
+//     enableInputs();
+//     updatePlayerPosition();
+//     stopGame();
+// }
 // Stop the game if every player has arrived at the finish line or the time is up
 async function stopGame() {
-    if(players.every(e => e.finished) || startTime === 3000) {
+    if(players.some(e => e.result === 5)) {
         disableInputs();
-        players.forEach(e => e.time = (e.time === 0) ? 3000 : e.time);
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        clearInterval(carAnimation);
         drawScore();
         winAudio.play();
         changeScene('.stage', '.finish');
@@ -135,23 +135,21 @@ async function stopGame() {
 
 // Calculate the score and display it on the dashboard
 function showWinner() {
-    players.sort((a, b) => a.time - b.time);
+    players.sort((a, b) => a.result - b.result);
 
-    if(players[0].time == players[1].time)
-        winnerElem.innerText = `It's draw`;
-    else
+    // if(players[0].time == players[1].time)
+    //     winnerElem.innerText = `It's draw`;
+    // else
         winnerElem.innerText = `${players[0].name} wins`;
 }
 function drawScore() {
     showWinner();
     for(let i = 0; i < numOfPlayer; i++) {
         dashboardNameElem[i].innerText = players[i].name;
-        dashboardResultElem[i].innerText = `${(players[i].time / 100).toFixed(2)}`;
-        if(!players[i].finished) dashboardResultElem[i].innerText = 'DNF';
+        dashboardResultElem[i].innerText = players[i].result;
     }
 }
 playBtn.addEventListener('click', () => {
-    changeScene('.intro', '.bg');
     changeScene('.intro', '.stage');
     startGame();
 });
