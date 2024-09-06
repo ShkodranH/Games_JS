@@ -89,9 +89,18 @@ function disableInputs() {
     document.removeEventListener('keydown', keyboardInputs);
 }
 
-function generateFish() {
-    let fishIndex = Math.floor(Math.random() * fishTypes.length);
-    
+let displayFish = setInterval(generateFish, 4000);
+let fishIndex;
+// Generate a random fish every 1-5 seconds
+async function generateFish() {
+    fishIndex = Math.floor(Math.random() * fishTypes.length);
+    let timeInterval = Math.floor(Math.random() * 4000) + 1000;
+    plateFishImg.src = fishTypes[fishIndex].src;
+    plateFishImg.style.display = 'block';
+    await new Promise(resolve => setTimeout(resolve, 800));
+    plateFishImg.style.display = 'none';
+    clearInterval(displayFish);
+    displayFish = setInterval(generateFish, timeInterval);
 }
 // Check if player has reached the finish line
 function checkPlayerDistance(index) {
@@ -111,18 +120,27 @@ function updatePlayerPoints() {
 }
 
 async function catchFish(index) {
-    playerPaws[index].classList.add(`${players[index].name}-paw-anim`);
-
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    playerPaws[index].classList.remove(`${players[index].name}-paw-anim`);
-
+    let animClass = `${players[index].name}-anim`;
+    if(!playerPaws[index].classList.contains(animClass)) {
+        playerPaws[index].classList.add(animClass);
+        
+        if(plateFishImg.style.display === 'block') {
+            players[index].points += fishTypes[fishIndex].points;
+            plateFishImg.style.display = 'none';
+            playerPointsElems[index].innerText = players[index].points;
+        }
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        playerPaws[index].classList.remove(animClass);
+    }
 }
+
 // Start the game and let player race
 // async function playGame() {
 //     enableInputs();
 //     updatePlayerPosition();
 //     stopGame();
 // }
+
 // Stop the game if every player has arrived at the finish line or the time is up
 async function stopGame() {
     if(players.some(e => e.result === 5)) {
