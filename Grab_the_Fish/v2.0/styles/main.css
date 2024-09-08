@@ -8,9 +8,9 @@
     --text-color: #342a3b;
     --white-color: #ffffff;
     --black-color: #000000;
-    --gray-color: #6c6660;
-    --brown-color: #a37a47;
-    --orange-color: #f1930f;
+    --gray-color: #666666;
+    --brown-color: #784119;
+    --orange-color: #f15a24;
 }
 * {
     box-sizing: border-box;
@@ -141,6 +141,7 @@ body > :not(.intro) {
                 border-radius: .25em;
                 padding: 0;
                 color: var(--white-color);
+                box-shadow: 0 0 20px -5px var(--white-color);
             }
         }
     }
@@ -202,6 +203,7 @@ body > :not(.intro) {
             cursor: pointer;
             font-size: 3rem;
             width: min(25vw, 8rem);
+            border-radius: .15em;
             transition: .5s;
         }
         & input:checked + label {
