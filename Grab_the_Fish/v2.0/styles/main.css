@@ -61,7 +61,7 @@ body {
 .intro {
     display: flex;
 }
-body > :not(.stage) {
+body > :not(.intro) {
     display: none;
 }
 
@@ -109,7 +109,11 @@ body > :not(.stage) {
         place-items: center;
         background-image: url('../images/plate.png');
         background-size: contain;
-        & img { width: 80% }
+
+        & img { 
+            width: 80%;
+            display: none; 
+        }
     }
     & .players-controls {
         position: fixed;

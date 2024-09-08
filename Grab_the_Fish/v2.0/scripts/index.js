@@ -12,7 +12,13 @@ const dashboardResultElem = document.querySelectorAll('.player-info .result');
 const clickableElems = document.querySelectorAll(':not(.players-controls div) > button, [type="radio"]');
 
 const winPoints = 5;
-let numOfPlayer, interaction, players, fishTypes;
+let stopFishGeneration = true;
+let numOfPlayer, interaction, players, fishTypes, displayFish, fishIndex;
+
+const clickAudio = new Audio("./sound-effects/click.ogg");
+const correctAudio = new Audio('./sound-effects/correct.wav');
+const wrongAudio = new Audio("./sound-effects/wrong.wav");
+const winAudio = new Audio("./sound-effects/win.ogg");
 
 // Resetting players data for new game
 function restartGame() {
@@ -20,24 +26,19 @@ function restartGame() {
         { name: 'gray', points: 0, hidden: false, key: 'q' },
         { name: 'brown', points: 0, hidden: false, key: 'p' },
         { name: 'black', points: 0, hidden: false, key: 'x' },
-        { name: 'orange', points: 0, hidden: false, key: 'm' },
+        { name: 'orange', points: 0, hidden: false, key: 'm' }
     ];
     fishTypes = [
-        { src: './images/fish.png', points: 1 },
-        { src: './images/fish-2.png', points: 2 },
-        { src: './images/fishbone.png', points: -2 },
+        { src: './images/fish.png', points: 1, audio: correctAudio },
+        { src: './images/fish-2.png', points: 2, audio: correctAudio },
+        { src: './images/fishbone.png', points: -2, audio: wrongAudio }
     ];
     [dashboardNameElem, dashboardResultElem].forEach(e => e.forEach(i => i.innerText = ''));
+    playerPointsElems.forEach(e => e.innerText = 0);
     setNumOfPlayers();
     setUserInteraction();
-    // updatePlayerPoints();
 }
 restartGame();
-enableInputs();
-
-const clickAudio = new Audio("./sound-effects/click.ogg");
-const countdownAudio = new Audio('./sound-effects/countdown.wav');
-const winAudio = new Audio("./sound-effects/win.ogg");
 
 function changeScene(prev, next) {
     document.querySelector(prev).style.display = 'none';
@@ -54,11 +55,11 @@ function setUserInteraction() {
 // Get the number of players and display their assets
 function hidePlayer(index) {
     [playerBtns, playerPointsElems, playerPaws].forEach(e => e[index].style.visibility = 'hidden');
-    players[index].hidden = true;
+    players[index] = { ...players[index], points: -99, hidden: true };
 }
 function setNumOfPlayers() {
     [playerBtns, playerPointsElems, playerPaws].forEach(e => e.forEach(i => i.style.visibility = 'visible'));
-    players.forEach(e => e.hidden = false);
+    players.forEach(e => (e.points = 0, e.hidden = false));
 
     numOfPlayer = document.querySelector('.num-of-players input:checked').value;
     if(numOfPlayer < 4) hidePlayer(0);
@@ -89,84 +90,73 @@ function disableInputs() {
     document.removeEventListener('keydown', keyboardInputs);
 }
 
-let displayFish = setInterval(generateFish, 4000);
-let fishIndex;
-// Generate a random fish every 1-5 seconds
+// Generate a random fish every 2-5 seconds
 async function generateFish() {
+    if(stopFishGeneration) return;
+
     fishIndex = Math.floor(Math.random() * fishTypes.length);
-    let timeInterval = Math.floor(Math.random() * 4000) + 1000;
+    let timeInterval = Math.floor(Math.random() * 3000) + 2000;
+    
     plateFishImg.src = fishTypes[fishIndex].src;
     plateFishImg.style.display = 'block';
     await new Promise(resolve => setTimeout(resolve, 800));
     plateFishImg.style.display = 'none';
+
     clearInterval(displayFish);
     displayFish = setInterval(generateFish, timeInterval);
 }
-// Check if player has reached the finish line
-function checkPlayerDistance(index) {
-    if(players[index].distance >= finishPos) {
-        const finishAudio = new Audio("./sound-effects/finish.wav");
-        finishAudio.play();
-        players[index] = { ...players[index], finished: true, time: startTime };
-    }
-}
-// Each player who has not pressed the button, increases their time by 1ms
-function updatePlayerPoints() {
-    for(let i = 0; i < players.length; i++) {
-        players[i].distance += players[i].speed;
-        playerCars[i].style.marginLeft = `${players[i].distance}%`;
-        players[i].speed *= 0.97;
-    }
-}
+displayFish = setInterval(generateFish, 4000);
 
+// Add the animation of the paw and remove the fish if the player catches it
 async function catchFish(index) {
-    let animClass = `${players[index].name}-anim`;
+    let animClass = `${players[index].name}-paw-anim`;
+
     if(!playerPaws[index].classList.contains(animClass)) {
         playerPaws[index].classList.add(animClass);
-        
+
         if(plateFishImg.style.display === 'block') {
-            players[index].points += fishTypes[fishIndex].points;
             plateFishImg.style.display = 'none';
-            playerPointsElems[index].innerText = players[index].points;
+            updatePlayerPoints(index);
         }
         await new Promise(resolve => setTimeout(resolve, 1000));
         playerPaws[index].classList.remove(animClass);
     }
 }
+// Update player points and display them each time a fish is caught
+function updatePlayerPoints(i) {
+    players[i].points += fishTypes[fishIndex].points;
+    playerPointsElems[i].innerText = players[i].points;
+    fishTypes[fishIndex].audio.play();
+    stopGame();
+}
 
-// Start the game and let player race
-// async function playGame() {
-//     enableInputs();
-//     updatePlayerPosition();
-//     stopGame();
-// }
-
-// Stop the game if every player has arrived at the finish line or the time is up
+// Start the game and let player duel
+function startGame() {
+    enableInputs();
+    stopFishGeneration = false;
+}
+// Stop the game if any player has scored 5 points
 async function stopGame() {
-    if(players.some(e => e.result === 5)) {
+    if(players.some(e => e.points >= 5)) {
         disableInputs();
         drawScore();
+        stopFishGeneration = true;
+        await new Promise(resolve => setTimeout(resolve, 1000));
         winAudio.play();
         changeScene('.stage', '.finish');
     }
 }
-
 // Calculate the score and display it on the dashboard
-function showWinner() {
-    players.sort((a, b) => a.result - b.result);
-
-    // if(players[0].time == players[1].time)
-    //     winnerElem.innerText = `It's draw`;
-    // else
-        winnerElem.innerText = `${players[0].name} wins`;
-}
 function drawScore() {
-    showWinner();
+    players.sort((a, b) => b.points - a.points);
+    winnerElem.innerText = `${players[0].name} wins`;
+
     for(let i = 0; i < numOfPlayer; i++) {
         dashboardNameElem[i].innerText = players[i].name;
-        dashboardResultElem[i].innerText = players[i].result;
+        dashboardResultElem[i].innerText = players[i].points;
     }
 }
+
 playBtn.addEventListener('click', () => {
     changeScene('.intro', '.stage');
     startGame();
