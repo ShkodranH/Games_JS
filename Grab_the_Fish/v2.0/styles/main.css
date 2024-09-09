@@ -120,14 +120,13 @@ body > :not(.intro) {
         width: 100%;
         height: 100%;
         display: grid;
-        grid-template: repeat(2, min(40vw, 12.5rem)) / repeat(2, min(20vw, 6rem));
+        grid-template: repeat(2, min(40vw, 12rem)) / repeat(2, min(20vw, 6rem));
         place-content: space-between;
         padding: .5rem;
 
         & div {
             display: flex;
             flex-direction: column;
-            gap: .5rem;
             
             &:nth-of-type(-n + 2) span { order: 1 }
             & button { border-radius: 50% }

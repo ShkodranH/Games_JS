@@ -1,6 +1,6 @@
 @media screen and (max-aspect-ratio: 1 / 1) {
     .stage .players-controls {
-        grid-template: repeat(2, min(20vw, 6rem)) / repeat(2, min(40vw, 12.5rem));
+        grid-template: repeat(2, min(20vw, 6rem)) / repeat(2, min(40vw, 12rem));
 
         & div {
             flex-direction: row;
