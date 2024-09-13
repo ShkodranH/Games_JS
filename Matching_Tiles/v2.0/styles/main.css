@@ -1,6 +1,6 @@
 @font-face {
-    font-family: Staatliches;
-    src: url(../fonts/staatliches.ttf);
+    font-family: Lobster;
+    src: url(../fonts/lobster.ttf);
 }
 :root {
     --white-color: #fcf7d3;
@@ -15,7 +15,7 @@
     margin: 0;
     padding: 0;
     user-select: none;
-    font-family: Staatliches, sans-serif;
+    font-family: Lobster, sans-serif;
     font-weight: normal;
     color: var(--darker-color);
     -webkit-tap-highlight-color: transparent;
