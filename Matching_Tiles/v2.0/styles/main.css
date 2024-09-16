@@ -3,12 +3,12 @@
     src: url(../fonts/lobster.ttf);
 }
 :root {
-    --white-color: #fcf7d3;
-    --lighter-color: #f8cf99;
-    --light-color: #f1ac8c;
-    --medium-color: #e98d78;
-    --dark-color: #d56868;
-    --darker-color: #592d2d;
+    --orange-color: #fb8500;
+    --yellow-color: #ffb703;
+    --darkblue-color: #023047;
+    --skyblue-color: #219ebc;
+    --lightblue-color: #8ecae6;
+    --white-color: #ffffff;
 }
 * {
     box-sizing: border-box;
@@ -17,7 +17,7 @@
     user-select: none;
     font-family: Lobster, sans-serif;
     font-weight: normal;
-    color: var(--darker-color);
+    color: var(--white-color);
     -webkit-tap-highlight-color: transparent;
 }
 html {
@@ -27,7 +27,7 @@ body {
     height: 100dvh;
     display: flex;
     justify-content: center;
-    background-image: radial-gradient(circle, var(--lighter-color) 30%, var(--light-color), var(--dark-color));
+    background-image: radial-gradient(var(--skyblue-color), var(--darkblue-color) 150%);
 
     & > div {
         width: min(90%, 800px);
@@ -41,11 +41,9 @@ body {
     cursor: pointer;
     border: none;
     font-size: 3rem;
-    width: min(100%, 500px);
+    /* width: min(100%, 500px); */
     padding: .25em 0;
-    border-radius: .2em;
-    background-color: var(--white-color);
-    box-shadow: 0 0 .25em var(--medium-color);
+    background-color: var(--orange-color);
 }
 .intro {
     display: flex;
