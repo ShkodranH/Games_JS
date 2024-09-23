@@ -30,7 +30,7 @@ body {
     background-image: radial-gradient(var(--skyblue-color), var(--darkblue-color) 150%);
 
     & > div {
-        width: min(90%, 800px);
+        width: min(90%, 1200px);
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -56,40 +56,18 @@ body > :not(.intro) {
     justify-content: space-evenly;
 
     & .title {
-        position: relative;
-        width: 100%;
-        height: 30em;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: grid;
+        grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+        gap: 1em;
 
         & > div {
-            position: absolute;
-            z-index: -1;
-            background-color: var(--medium-color);
-            box-shadow: 0 0 0 .5em var(--white-color);
-            width: 18em;
-            aspect-ratio: 3 / 4;
-            border-radius: 1em;
+            background-color: var(--orange-color);
+            width: 8em;
+            aspect-ratio: 1 / 1;
+            border-radius: .25em;
             
-            &:first-of-type {
-                background-color: var(--dark-color);
-                transform-origin: bottom left;
-                animation: tiltCard 500ms forwards;
-            }
-        }
-        & h1 {
-            font-size: 7rem;
-            text-align: right;
-            color: var(--white-color);
-            text-shadow: .2rem .2rem .2rem var(--darker-color);
-            margin-left: 2rem;
-
-            &::first-line {
-                font-size: 5rem;
-            }
-            &::first-letter {
-                margin-left: -8rem;
+            &:nth-of-type(3n-2) {
+                background-color: var(--darkblue-color);
             }
         }
     }
