@@ -21,7 +21,7 @@
     -webkit-tap-highlight-color: transparent;
 }
 html {
-    font-size: 14px;
+    font-size: 16px;
 }
 body {
     height: 100dvh;
@@ -30,7 +30,7 @@ body {
     background-image: radial-gradient(var(--skyblue-color), var(--darkblue-color) 150%);
 
     & > div {
-        width: min(90%, 1200px);
+        width: min(90%, 800px);
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -45,10 +45,10 @@ body {
     padding: .25em 0;
     background-color: var(--orange-color);
 }
-.intro {
+.stage {
     display: flex;
 }
-body > :not(.intro) {
+body > :not(.stage) {
     display: none;
 }
 
@@ -56,15 +56,18 @@ body > :not(.intro) {
     justify-content: space-evenly;
 
     & .title {
+        font-size: 1.8rem;
         display: grid;
         grid-template: repeat(2, 1fr) / repeat(2, 1fr);
-        gap: 1em;
+        gap: .25em;
 
         & > div {
-            background-color: var(--orange-color);
-            width: 8em;
-            aspect-ratio: 1 / 1;
+            display: grid;
+            place-content: center;
+            width: 4.5em;
+            aspect-ratio: 4 / 3;
             border-radius: .25em;
+            background-color: var(--orange-color);
             
             &:nth-of-type(3n-2) {
                 background-color: var(--darkblue-color);
@@ -74,33 +77,24 @@ body > :not(.intro) {
 }
 
 .stage {
-    & .progress {
-        font-size: 2rem;
-        text-align: center;
-
-        & .level {
-            margin-bottom: .25em;
-        }
-    }
     & .cards-container {
         width: 100%;
-        display: flex;
+        display: grid;
+        grid-template: repeat(4, 1fr) / repeat(5, 1fr);
         justify-content: center;
-        flex-flow: row wrap;
         gap: .5em;
         perspective: 500px;
 
-        & > div {
+        & .card {
             display: flex;
-            width: min(calc((100% - 1em) / 3), 10em);
+            /* width: min(calc((100% - 1em) / 3), 6em); */
             background-color: var(--white-color);
-            border: .25em solid var(--white-color);
             border-radius: .25em;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 4 / 3;
 
-            &:empty {
+            /* &:empty {
                 display: none;
-            }
+            } */
             & img {
                 width: 100%;
                 height: 100%;

@@ -1,5 +1,5 @@
 @media screen and (min-width: 600px) {
-    .stage .cards-container > div {
+    .stage .cards-container .cards {
         width: min(calc((100% - 1.5em) / 4), 12em);
         aspect-ratio: unset;
     }
@@ -12,7 +12,7 @@
 }
 
 @media screen and (min-width: 1000px) {
-    .stage .cards-container > div {
+    .stage .cards-container .cards{
         width: min(calc((100% - 2.5em) / 6), 12em);
     }
 }
