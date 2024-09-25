@@ -30,7 +30,7 @@ body {
     background-image: radial-gradient(var(--skyblue-color), var(--darkblue-color) 150%);
 
     & > div {
-        width: min(90%, 800px);
+        width: min(90%, 1000px);
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -82,12 +82,11 @@ body > :not(.stage) {
         display: grid;
         grid-template: repeat(4, 1fr) / repeat(5, 1fr);
         justify-content: center;
-        gap: .5em;
+        gap: .75em;
         perspective: 500px;
 
         & .card {
             display: flex;
-            /* width: min(calc((100% - 1em) / 3), 6em); */
             background-color: var(--white-color);
             border-radius: .25em;
             aspect-ratio: 4 / 3;
