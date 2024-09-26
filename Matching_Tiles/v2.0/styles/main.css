@@ -40,15 +40,15 @@ body {
 & button {
     cursor: pointer;
     border: none;
-    font-size: 3rem;
-    /* width: min(100%, 500px); */
-    padding: .25em 0;
+    font-size: min(12vw, 4rem);
+    padding: .25em .5em;
+    border-radius: .5rem;
     background-color: var(--orange-color);
 }
-.stage {
+.intro {
     display: flex;
 }
-body > :not(.stage) {
+body > :not(.intro) {
     display: none;
 }
 
@@ -56,7 +56,7 @@ body > :not(.stage) {
     justify-content: space-evenly;
 
     & .title {
-        font-size: 1.8rem;
+        font-size: 3.5rem;
         display: grid;
         grid-template: repeat(2, 1fr) / repeat(2, 1fr);
         gap: .25em;
@@ -72,6 +72,16 @@ body > :not(.stage) {
             &:nth-of-type(3n-2) {
                 background-color: var(--darkblue-color);
             }
+        }
+    }
+    & > div {
+        display: flex;
+        align-items: stretch;
+        gap: 1em;
+        
+        & img {
+            display: block;
+            width: min(12vw, 4rem);
         }
     }
 }
