@@ -40,8 +40,9 @@ body {
 & button {
     cursor: pointer;
     border: none;
+    width: min(90%, 520px);
     font-size: min(12vw, 4rem);
-    padding: .25em .5em;
+    padding: .25em 0;
     border-radius: .5rem;
     background-color: var(--orange-color);
 }
@@ -72,16 +73,6 @@ body > :not(.intro) {
             &:nth-of-type(3n-2) {
                 background-color: var(--darkblue-color);
             }
-        }
-    }
-    & > div {
-        display: flex;
-        align-items: stretch;
-        gap: 1em;
-        
-        & img {
-            display: block;
-            width: min(12vw, 4rem);
         }
     }
 }
