@@ -46,10 +46,10 @@ body {
     border-radius: .5rem;
     background-color: var(--orange-color);
 }
-.intro {
+.stage {
     display: flex;
 }
-body > :not(.intro) {
+body > :not(.stage) {
     display: none;
 }
 
@@ -88,7 +88,7 @@ body > :not(.intro) {
 
         & .card {
             display: flex;
-            background-color: var(--white-color);
+            background-color: var(--darkblue-color);
             border-radius: .25em;
             aspect-ratio: 4 / 3;
 
