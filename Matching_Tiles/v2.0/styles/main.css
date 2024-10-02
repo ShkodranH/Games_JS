@@ -92,9 +92,6 @@ body > :not(.stage) {
             border-radius: .25em;
             aspect-ratio: 4 / 3;
 
-            /* &:empty {
-                display: none;
-            } */
             & img {
                 width: 100%;
                 height: 100%;
