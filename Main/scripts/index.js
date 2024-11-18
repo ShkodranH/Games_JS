@@ -71,7 +71,7 @@ let gamesData = [
     },
     {
         name: "Grab the Fish",
-        link: "../Grab_the_Fish/v1.0/index.html",
+        link: "../Grab_the_Fish/v2.0/index.html",
         image: "../Grab_the_Fish/v2.0/images/icon.png"
     },
     {
