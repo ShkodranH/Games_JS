@@ -46,10 +46,10 @@ body {
     border-radius: .5rem;
     background-color: var(--orange-color);
 }
-.stage {
+.intro {
     display: flex;
 }
-body > :not(.stage) {
+body > :not(.intro) {
     display: none;
 }
 
@@ -72,6 +72,10 @@ body > :not(.stage) {
             
             &:nth-of-type(3n-2) {
                 background-color: var(--darkblue-color);
+            }
+            & > img {
+                width: 60%;
+                filter: contrast(10) brightness(30);
             }
         }
     }
