@@ -44,12 +44,12 @@ body {
     font-size: min(12vw, 4rem);
     padding: .25em 0;
     border-radius: .5rem;
-    background-color: var(--orange-color);
+    background-color: var(--darkblue-color);
 }
-.intro {
+.stage {
     display: flex;
 }
-body > :not(.intro) {
+body > :not(.stage) {
     display: none;
 }
 
@@ -68,39 +68,40 @@ body > :not(.intro) {
             width: 4.5em;
             aspect-ratio: 4 / 3;
             border-radius: .25em;
-            background-color: var(--orange-color);
+            background-color: var(--darkblue-color);
             
             &:nth-of-type(3n-2) {
-                background-color: var(--darkblue-color);
+                background-color: var(--orange-color);
             }
             & > img {
                 width: 60%;
-                filter: contrast(10) brightness(30);
+                place-self: center;
             }
         }
     }
 }
 
 .stage {
+    flex-direction: row-reverse;
+    
     & .cards-container {
-        width: 100%;
         display: grid;
         grid-template: repeat(4, 1fr) / repeat(5, 1fr);
         justify-content: center;
         gap: .75em;
-        perspective: 500px;
+        /* perspective: 500px; */
 
         & .card {
             display: flex;
+            justify-content: center;
+            height: 20dvmin;
+            aspect-ratio: 1 / 1;
             background-color: var(--darkblue-color);
             border-radius: .25em;
-            aspect-ratio: 4 / 3;
 
             & img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                /* object-position: top; */
+                width: 80%;
+                object-fit: contain;
             }
         }
     }
