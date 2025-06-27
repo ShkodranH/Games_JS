@@ -6,22 +6,18 @@ const overallProgressElem = document.querySelector('.overall');
 const cardElems = document.querySelectorAll('.card');
 const playBtn = document.querySelector('.play-btn');
 const finishBtn = document.querySelector('.finish-btn');
-const finalScoreElem = document.querySelector('.final-score');
+const finalResult = document.querySelector('.finish .msg');
+const finalMessage = document.querySelector('.finish h1');
 
-let level, progressCount, overallProgress;
-let levelImages = [], currentGuesses = [];
+let progressCount;
+let currentGuess;
+let tilesImg;
 
-// Reseting variables for new level
-function levelUp(value, playAudio) {
-    level = value;
-    levelElem.innerText = `Level ${level}`;
-    generateCurrentProgress(0);
-    generateOverallProgress(level + 2);
-    generatelevelImages();
-    currentGuesses = [];
-    playAudio && levelupAudio.play();
+// Reseting variables for the new game
+function restartGame() {
+    generatetilesImages();
 }
-levelUp(1, false); 
+restartGame();
 
 const clickAudio = new Audio("./sound-effects/click.ogg");
 const levelupAudio = new Audio("./sound-effects/levelup.wav");
@@ -41,15 +37,15 @@ function generateOverallProgress(value) {
     overallProgressElem.innerText = overallProgress;
 }
 
-// Generate images elements for the level
-function generatelevelImages() {
+// Generate tiles images and shuffle them
+function generatetilesImages() {
     cardElems.forEach(e => e.innerHTML = '');
-    levelImages = imagesArray.sort(() => Math.random() - 0.5).slice(0, overallProgress);
+    tilesImg = [...imagesArray, ...imagesArray].sort(() => Math.random() - 0.5);
     displayCards();
 }
 function displayCards() {
-    for(let i = 0; i < levelImages.length; i++)
-        cardElems[i].innerHTML = `<img src="${levelImages[i]}">`;
+    for(let i = 0; i < tilesImg.length; i++)
+        cardElems[i].innerHTML = `<img src="${tilesImg[i]}">`;
 }
 
 // Handling player card clicks
@@ -85,10 +81,7 @@ async function newRound(image) {
     await new Promise(resolve => setTimeout(resolve, 700));
     cardElems.forEach(e => e.classList.remove('card-flip'));
 }
-function shuffleImages() {
-    levelImages.sort(() => Math.random() - 0.5);
-    displayCards();
-}
+
 // Check if the player has finished all the levels
 async function gameFinish() {
     await new Promise(resolve => setTimeout(resolve, 500));
@@ -98,8 +91,9 @@ async function gameFinish() {
         displayEnding(winAudio, true);
 }
 function displayEnding(audio, hasWin) {
+    [finalResult.innerText, finalMessage.innerText]
+        = hasWin ? ["Won", "Wow!"] : ["Lost", "Oh no!"];
     changeScene('.stage', '.finish');
-    finalScoreElem.innerText = (level === 1) ? 0 : (hasWin) ? 12 : level + 1;
     audio.play();
 }
 
@@ -110,6 +104,6 @@ playBtn.addEventListener('click', () => {
 finishBtn.addEventListener('click', () => {
     changeScene('.finish', '.intro');
     clickAudio.play();
-    levelUp(1, false);
+    restartGame();
 });
 cardElems.forEach(e => e.addEventListener('click', mouseClick));
