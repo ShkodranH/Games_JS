@@ -1,24 +1,21 @@
 import { imagesArray } from "./data.js";
 
-const levelElem = document.querySelector('.level');
-const currentProgressElem = document.querySelector('.current');
-const overallProgressElem = document.querySelector('.overall');
+const movesElem = document.querySelector(".num-moves");
 const cardElems = document.querySelectorAll('.card');
 const playBtn = document.querySelector('.play-btn');
 const finishBtn = document.querySelector('.finish-btn');
 const finalResult = document.querySelector('.finish .msg');
 const finalMessage = document.querySelector('.finish h1');
 
-let progressCount;
-let currentGuess;
-let tilesImg;
+let tilesImg, tilesPosition;
 
 // Reseting variables for the new game
 function restartGame() {
     generatetilesImages();
+    tilesPosition = new Array(tilesImg.length).fill(false);
 }
 restartGame();
-
+console.log(tilesPosition)
 const clickAudio = new Audio("./sound-effects/click.ogg");
 const levelupAudio = new Audio("./sound-effects/levelup.wav");
 const loseAudio = new Audio("./sound-effects/lose.ogg");
