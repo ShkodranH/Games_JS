@@ -2,20 +2,21 @@ import { imagesArray } from "./data.js";
 
 const movesElem = document.querySelector(".num-moves");
 const cardElems = document.querySelectorAll('.card');
+const cardElemsImg = document.querySelectorAll('.card .back');
 const playBtn = document.querySelector('.play-btn');
 const finishBtn = document.querySelector('.finish-btn');
 const finalResult = document.querySelector('.finish .msg');
 const finalMessage = document.querySelector('.finish h1');
 
-let tilesImg, tilesPosition;
+let tilesImg, tilesPosition, tilesOpen;
 
 // Reseting variables for the new game
 function restartGame() {
-    generatetilesImages();
-    tilesPosition = new Array(tilesImg.length).fill(false);
+    tilesOpen = [];
+    generateTiles();
 }
 restartGame();
-console.log(tilesPosition)
+
 const clickAudio = new Audio("./sound-effects/click.ogg");
 const levelupAudio = new Audio("./sound-effects/levelup.wav");
 const loseAudio = new Audio("./sound-effects/lose.ogg");
@@ -35,37 +36,42 @@ function generateOverallProgress(value) {
 }
 
 // Generate tiles images and shuffle them
-function generatetilesImages() {
-    cardElems.forEach(e => e.innerHTML = '');
+// Set all tiles to face-down position (false)
+function generateTiles() {
     tilesImg = [...imagesArray, ...imagesArray].sort(() => Math.random() - 0.5);
+    tilesPosition = new Array(tilesImg.length).fill(false);
     displayCards();
 }
 function displayCards() {
-    for(let i = 0; i < tilesImg.length; i++)
-        cardElems[i].innerHTML = `<img src="${tilesImg[i]}">`;
+    tilesImg.forEach((img, i) => cardElemsImg[i].src = img);
 }
 
 // Handling player card clicks
 function mouseClick(e) {
-    checkGuess(e.target.getAttribute('src'));
+    checkGuess(e.currentTarget.dataset.index);
+    tilesOpen.push(e.currentTarget.dataset.index);
 }
 
 // Check if the current guess is correct or not
-async function checkGuess(imageSrc) {
-    cardElems.forEach(e => e.removeEventListener('click', mouseClick));
+async function checkGuess(index) {
+    cardElems[index].removeEventListener('click', mouseClick);
+    cardElems[index].classList.add("card-flip");
+    tilesPosition[index] = true;
+    displayCards();
+    // cardElems.forEach(e => e.removeEventListener('click', mouseClick));
 
-    if(!currentGuesses.includes(imageSrc)) {
-        clickAudio.play();
-        await newRound(imageSrc);
+    // if(!currentGuesses.includes(imageSrc)) {
+    //     clickAudio.play();
+    //     await newRound(imageSrc);
         
-        if(currentGuesses.length === levelImages.length)
-            await gameFinish();
-    }
-    else {
-        await new Promise(resolve => setTimeout(resolve, 500));
-        await displayEnding(loseAudio, false);
-    }
-    cardElems.forEach(e => e.addEventListener('click', mouseClick));
+    //     if(currentGuesses.length === levelImages.length)
+    //         await gameFinish();
+    // }
+    // else {
+    //     await new Promise(resolve => setTimeout(resolve, 500));
+    //     await displayEnding(loseAudio, false);
+    // }
+    // cardElems.forEach(e => e.addEventListener('click', mouseClick));
 }
 // Shuffle the cards for the new round
 async function newRound(image) {
