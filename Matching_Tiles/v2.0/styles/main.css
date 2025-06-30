@@ -113,7 +113,7 @@ body > :not(.stage) {
                 }
                 &.back {
                     transform: rotateY(180deg);
-                    /* filter: drop-shadow(0 0 5px var(--gray-color)); */
+                    filter: drop-shadow(0 0 5px var(--gray-color));
                     
                 }
             }

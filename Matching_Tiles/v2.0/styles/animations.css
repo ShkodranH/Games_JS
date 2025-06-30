@@ -21,8 +21,8 @@
 }
 
 @keyframes flipCardRev {
-    0%   { rotate: y 0deg    }
-    100% { rotate: y -180deg }
+    0%   { rotate: y 180deg }
+    100% { rotate: y 0deg   }
 }
 
 /* @keyframes tiltCard {
