@@ -46,7 +46,7 @@ let gamesData = [
     },
     {
         name: "Matching Tiles",
-        link: "../Matching_Tiles/v1.0/index.html",
+        link: "../Matching_Tiles/v2.0/index.html",
         image: "../Matching_Tiles/v2.0/images/icon.png"
     },
     {
