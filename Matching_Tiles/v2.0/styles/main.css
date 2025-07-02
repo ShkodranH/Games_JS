@@ -46,10 +46,10 @@ body {
     border-radius: .5rem;
     background-color: var(--darkblue-color);
 }
-.stage {
+.intro {
     display: flex;
 }
-body > :not(.stage) {
+body > :not(.intro) {
     display: none;
 }
 

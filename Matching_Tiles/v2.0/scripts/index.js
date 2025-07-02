@@ -8,32 +8,25 @@ const finishBtn = document.querySelector('.finish-btn');
 const finalResult = document.querySelector('.finish .msg');
 const finalMessage = document.querySelector('.finish h1');
 
-let tilesImg, tilesPosition, tilesOpen;
-let moves = 25;
+let tilesImg, tilesPosition, tilesOpen, moves;
 
 // Reseting variables for the new game
 function restartGame() {
+    movesElem.innerText = moves = 25;
     tilesOpen = [];
     generateTiles();
+    cardElems.forEach(e => e.addEventListener('click', mouseClick));
 }
 restartGame();
 
 const clickAudio = new Audio("./sound-effects/click.ogg");
-const levelupAudio = new Audio("./sound-effects/levelup.wav");
+const correctAudio = new Audio("./sound-effects/correct.wav");
 const loseAudio = new Audio("./sound-effects/lose.ogg");
 const winAudio = new Audio("./sound-effects/win.ogg");
 
 function changeScene(prev, next) {
     document.querySelector(prev).style.display = 'none';
     document.querySelector(next).style.display = 'flex';
-}
-function generateCurrentProgress(value) {
-    progressCount = value;
-    currentProgressElem.innerText = progressCount;
-}
-function generateOverallProgress(value) {
-    overallProgress = value;
-    overallProgressElem.innerText = overallProgress;
 }
 
 // Generate tiles images and shuffle them
@@ -42,12 +35,11 @@ function generateTiles() {
     tilesImg = [...imagesArray, ...imagesArray].sort(() => Math.random() - 0.5);
     tilesPosition = new Array(tilesImg.length).fill(false);
     tilesImg.forEach((img, i) => cardElemsImg[i].src = img);
-    console.log(tilesImg)
+    cardElems.forEach(e => e.classList.remove("card-flip", "card-backflip"));
 }
-
 // Handling player tile clicks
 function mouseClick(e) {
-    let i = e.currentTarget.dataset.index;
+    let i = Number(e.currentTarget.dataset.index);
     if(!tilesPosition[i]) {
         flipTile(i);
         if(tilesOpen.length === 2) {
@@ -67,8 +59,8 @@ async function flipTile(index) {
 // Check if the current tiles match or not
 async function checkGuess() {
     cardElems.forEach(e => e.removeEventListener('click', mouseClick));
-    if(tilesImg[tilesOpen[0]] == tilesImg[tilesOpen[1]]) {
-        //matched
+    if(tilesImg[tilesOpen[0]] === tilesImg[tilesOpen[1]]) {
+        correctAudio.play();
         if(tilesPosition.every(e => e))
             gameFinish(true);
     }
@@ -91,10 +83,11 @@ function drawMoves() {
 }
 // Display the win/lose scene
 async function gameFinish(isWinner) {
-    await new Promise(resolve => setTimeout(resolve, 500));
+    cardElems.forEach(e => e.removeEventListener('click', mouseClick));
+    await new Promise(resolve => setTimeout(resolve, 2500));
     [finalResult.innerText, finalMessage.innerText] = isWinner ? ["Won", "Wow!"] : ["Lost", "Oh no!"];
+    isWinner ? winAudio.play() : loseAudio.play();
     changeScene('.stage', '.finish');
-    audio.play();
 }
 
 playBtn.addEventListener('click', () => {
@@ -106,4 +99,3 @@ finishBtn.addEventListener('click', () => {
     clickAudio.play();
     restartGame();
 });
-cardElems.forEach(e => e.addEventListener('click', mouseClick));
