@@ -1,5 +1,5 @@
 .card-flip {
-    animation: 1000ms flipCard forwards;
+    animation: 600ms flipCard forwards;
     transform-style: preserve-3d;
     
     & img {
@@ -7,7 +7,7 @@
     }
 }
 .card-backflip {
-    animation: 1000ms flipCardRev forwards;
+    animation: 600ms flipCardRev forwards;
     transform-style: preserve-3d;
     
     & img {

@@ -9,6 +9,7 @@ const finalResult = document.querySelector('.finish .msg');
 const finalMessage = document.querySelector('.finish h1');
 
 let tilesImg, tilesPosition, tilesOpen;
+let moves = 25;
 
 // Reseting variables for the new game
 function restartGame() {
@@ -44,74 +45,54 @@ function generateTiles() {
     console.log(tilesImg)
 }
 
-// Handling player card clicks
+// Handling player tile clicks
 function mouseClick(e) {
-    checkGuess(e.currentTarget.dataset.index);
+    let i = e.currentTarget.dataset.index;
+    if(!tilesPosition[i]) {
+        flipTile(i);
+        if(tilesOpen.length === 2) {
+            checkGuess();
+            drawMoves();
+        }
+    }
 }
 
-// Check if the current guess is correct or not
-async function checkGuess(index) {
+// Add flipping animation and mark the tile
+async function flipTile(index) {
+    clickAudio.play();
     tilesOpen.push(index);
-    cardElems[index].removeEventListener('click', mouseClick);
     cardElems[index].classList.add("card-flip");
     tilesPosition[index] = true;
-
-    if(tilesOpen.length == 2) {
-        if(tilesImg[tilesOpen[0]] == tilesImg[tilesOpen[1]]) {
-            console.log("match");
-        }
-        else {
-            tilesPosition[tilesOpen[0]] = false;
-            tilesPosition[tilesOpen[1]] = false;
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            cardElems[tilesOpen[0]].classList.add("card-backflip");
-            cardElems[tilesOpen[1]].classList.add("card-backflip");
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            cardElems[tilesOpen[0]].classList.remove("card-flip", "card-backflip");
-            cardElems[tilesOpen[1]].classList.remove("card-flip", "card-backflip");
-            cardElems[tilesOpen[0]].addEventListener('click', mouseClick);
-            cardElems[tilesOpen[1]].addEventListener('click', mouseClick);
-        }
-        tilesOpen.length = 0;
+}
+// Check if the current tiles match or not
+async function checkGuess() {
+    cardElems.forEach(e => e.removeEventListener('click', mouseClick));
+    if(tilesImg[tilesOpen[0]] == tilesImg[tilesOpen[1]]) {
+        //matched
+        if(tilesPosition.every(e => e))
+            gameFinish(true);
     }
-    // cardElems.forEach(e => e.removeEventListener('click', mouseClick));
-
-    // if(!currentGuesses.includes(imageSrc)) {
-    //     clickAudio.play();
-    //     await newRound(imageSrc);
-        
-    //     if(currentGuesses.length === levelImages.length)
-    //         await gameFinish();
-    // }
-    // else {
-    //     await new Promise(resolve => setTimeout(resolve, 500));
-    //     await displayEnding(loseAudio, false);
-    // }
-    // cardElems.forEach(e => e.addEventListener('click', mouseClick));
-}
-// Shuffle the cards for the new round
-async function newRound(image) {
-    currentGuesses.push(image);
-    generateCurrentProgress(++progressCount);
-
-    cardElems.forEach(e => e.classList.add('card-flip'));
-    await new Promise(resolve => setTimeout(resolve, 300));
-    shuffleImages();
-    await new Promise(resolve => setTimeout(resolve, 700));
-    cardElems.forEach(e => e.classList.remove('card-flip'));
+    else {
+        tilesPosition[tilesOpen[0]] = tilesPosition[tilesOpen[1]] = false;
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        tilesOpen.forEach(e => cardElems[e].classList.add("card-backflip"));
+        await new Promise(resolve => setTimeout(resolve, 600));
+        tilesOpen.forEach(e => cardElems[e].classList.remove("card-flip", "card-backflip"));
+    }
+    cardElems.forEach(e => e.addEventListener('click', mouseClick));
+    tilesOpen.length = 0;   
 }
 
-// Check if the player has finished all the levels
-async function gameFinish() {
+// Update the number of moves/flips and check if player has run out of moves
+function drawMoves() {
+    movesElem.innerText = --moves;
+    if(moves === 0 && tilesPosition.some(e => !e))
+        gameFinish(false);
+}
+// Display the win/lose scene
+async function gameFinish(isWinner) {
     await new Promise(resolve => setTimeout(resolve, 500));
-    if(level < 10) 
-        levelUp(++level, true);
-    else
-        displayEnding(winAudio, true);
-}
-function displayEnding(audio, hasWin) {
-    [finalResult.innerText, finalMessage.innerText]
-        = hasWin ? ["Won", "Wow!"] : ["Lost", "Oh no!"];
+    [finalResult.innerText, finalMessage.innerText] = isWinner ? ["Won", "Wow!"] : ["Lost", "Oh no!"];
     changeScene('.stage', '.finish');
     audio.play();
 }
