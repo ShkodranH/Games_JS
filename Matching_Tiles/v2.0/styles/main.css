@@ -21,7 +21,7 @@
     -webkit-tap-highlight-color: transparent;
 }
 html {
-    font-size: 16px;
+    font-size: 14px;
 }
 body {
     height: 100dvh;
@@ -57,16 +57,17 @@ body > :not(.intro) {
     justify-content: space-evenly;
 
     & .title {
-        font-size: 3.5rem;
+        font-size: 2.25rem;
         display: grid;
         grid-template: repeat(2, 1fr) / repeat(2, 1fr);
         gap: .25em;
+        perspective: 1500px;
 
         & > div {
             display: grid;
             place-content: center;
             width: 4.5em;
-            aspect-ratio: 4 / 3;
+            aspect-ratio: 1 / 1;
             border-radius: .25em;
             background-color: var(--darkblue-color);
             
@@ -82,18 +83,19 @@ body > :not(.intro) {
 }
 
 .stage {
-    flex-direction: row-reverse;
+    width: auto;
+    justify-content: center;
     gap: 3rem;
 
     & .cards-container {
         display: grid;
-        grid-template: repeat(4, 1fr) / repeat(5, 1fr);
+        grid-template: repeat(5, 1fr) / repeat(4, 1fr);
         justify-content: center;
-        gap: .75em;
+        gap: .25em;
         perspective: 1500px;
 
         & .card {
-            height: 20dvmin;
+            height: 22dvmin;
             aspect-ratio: 1 / 1;
             border-radius: .25em;
             background-color: var(--lightblue-color); 
@@ -121,9 +123,10 @@ body > :not(.intro) {
     }
     & .moves {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        font-size: 2rem;
+        gap: .5em;
+        font-size: 1.5rem;
         padding: .5em 1em;
         border: 2px solid var(--white-color);
         border-radius: .15em;
@@ -136,16 +139,18 @@ body > :not(.intro) {
 
 .finish {
     & h1 {
-        font-size: 6rem;
+        font-size: 7rem;
+        margin-bottom: -.5em;
     }
     & .title {
         display: flex;
         gap: .75em;
+        perspective: 1500px;
 
         & div {
             display: grid;
             place-content: center;
-            font-size: 3.5rem;
+            font-size: 3.25rem;
             width: 3em;
             aspect-ratio: 1 / 1;
             border-radius: .1em;

@@ -10,6 +10,11 @@
     animation-name: flipCardRev;
 }
 
+.spin {
+    animation: 5s fullFlip infinite linear;
+    transform-style: preserve-3d;
+}
+
 @keyframes flipCard {
     0%   { rotate: y 0deg   }
     100% { rotate: y 180deg }
@@ -20,7 +25,8 @@
     100% { rotate: y 0deg   }
 }
 
-/* @keyframes tiltCard {
-    0%   { rotate: 0deg  }
-    100% { rotate: 10deg }
-} */
+@keyframes fullFlip {
+    0%   { rotate: y 0deg   }
+    70%  { rotate: y 360deg }
+    100% { rotate: y 360deg }
+}

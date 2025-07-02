@@ -50,7 +50,7 @@ function mouseClick(e) {
 }
 
 // Add flipping animation and mark the tile
-async function flipTile(index) {
+function flipTile(index) {
     clickAudio.play();
     tilesOpen.push(index);
     cardElems[index].classList.add("card-flip");

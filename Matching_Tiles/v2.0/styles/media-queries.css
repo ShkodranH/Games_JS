@@ -1,7 +1,13 @@
 @media screen and (min-width: 600px) {
-    .stage .cards-container .cards {
-        width: min(calc((100% - 1.5em) / 4), 12em);
-        aspect-ratio: unset;
+    .intro .title {
+        font-size: 3.5rem;
+
+        & > div { 
+            aspect-ratio: 4 / 3 
+        }
+    }
+    .finish .title div {
+        font-size: 4rem 
     }
 }
 
@@ -9,16 +15,27 @@
     html {
         font-size: 16px;
     }
-}
-
-@media screen and (min-width: 1000px) {
-    .stage .cards-container .cards{
-        width: min(calc((100% - 2.5em) / 6), 12em);
+    .stage .cards-container {
+        grid-template: repeat(4, 1fr) / repeat(5, 1fr);
+        gap: .5em;
+        
+        & .card { 
+            height: 18dvmin 
+        }
     }
 }
 
-@media screen and (min-width: 1400px) {
-    body > div {
-        width: min(90%, 1000px);
+@media screen and (min-width: 1200px) {
+    .stage {
+        flex-direction: row-reverse;
+
+        & .cards-container .card { 
+            height: 22dvmin 
+        }
+        & .moves {
+            flex-direction: column;
+            font-size: 2rem;
+            gap: 0;
+        }
     }
 }
