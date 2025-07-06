@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+    <link rel="icon" href="images/icon.png" type="image/png">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/media-queries.css">
+    <link rel="stylesheet" href="font-awesome/css/all.min.css">
+</head>
+<body>
+    <div class="intro">
+        <h1 class="title">Snake</h1>
+        <div>
+            <button class="start-btn">Start</button>
+            <button class="settings-btn"><i class="fas fa-cog"></i></button>
+        </div>
+    </div>
+
+    <div class="stage">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <div class="finish">
+        <h1 class="title">Game Over!</h1>
+        <p class="final-score">Your score: 0</p>
+        <button class="finish-btn">Play Again</button>
+    </div>
+
+    <div class="settings">
+        <p>Settings</p>
+        <div class="game-speed">
+            <h3>Game Mode</h3>
+            <input type="radio" name="mode" id="classic" value="classic" checked>
+            <label for="classic">Classic</label>
+            <input type="radio" name="mode" id="no-walls" value="no-walls">
+            <label for="no-walls">No Walls</label>
+        </div>
+        <div class="game-speed">
+            <h3>Game Speed</h3>
+            <input type="radio" name="speed" id="slow" value="slow">
+            <label for="slow">x0.5</label>
+            <input type="radio" name="speed" id="medium" value="medium" checked>
+            <label for="medium">x1</label>
+            <input type="radio" name="speed" id="fast" value="fast">
+            <label for="fast">x2</label>
+        </div>
+        <button class="close-settings">Close</button>
+    </div>
+
+    <script src="scripts/index.js"></script>
+</body>
+</html>
