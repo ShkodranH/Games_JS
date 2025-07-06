@@ -6,7 +6,7 @@
     <title>Snake</title>
     <link rel="icon" href="images/icon.png" type="image/png">
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/media-queries.css">
+    <!-- <link rel="stylesheet" href="styles/media-queries.css"> -->
     <link rel="stylesheet" href="font-awesome/css/all.min.css">
 </head>
 <body>
@@ -24,13 +24,13 @@
 
     <div class="finish">
         <h1 class="title">Game Over!</h1>
-        <p class="final-score">Your score: 0</p>
+        <p class="final-score">Score: 0</p>
         <button class="finish-btn">Play Again</button>
     </div>
 
     <div class="settings">
-        <p>Settings</p>
-        <div class="game-speed">
+        <h1 class="title">Settings</h1>
+        <div class="game-mode">
             <h3>Game Mode</h3>
             <input type="radio" name="mode" id="classic" value="classic" checked>
             <label for="classic">Classic</label>
@@ -40,11 +40,11 @@
         <div class="game-speed">
             <h3>Game Speed</h3>
             <input type="radio" name="speed" id="slow" value="slow">
-            <label for="slow">x0.5</label>
-            <input type="radio" name="speed" id="medium" value="medium" checked>
-            <label for="medium">x1</label>
+            <label for="slow">slow</label>
+            <input type="radio" name="speed" id="normal" value="medium" checked>
+            <label for="normal">normal</label>
             <input type="radio" name="speed" id="fast" value="fast">
-            <label for="fast">x2</label>
+            <label for="fast">fast</label>
         </div>
         <button class="close-settings">Close</button>
     </div>
