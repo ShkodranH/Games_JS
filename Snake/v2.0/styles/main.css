@@ -61,9 +61,18 @@ body > :not(.stage) {
     margin-top: -5em;
 }
 
-.stage #canvas {
-    width: 100%;
-    border: 1rem solid var(--wall-color);
+.stage {
+    position: relative;
+    & .score {
+        font-size: 2rem;
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+    & #canvas {
+        width: 100%;
+        border: 1rem solid var(--wall-color);
+    }
 }
 
 .finish .final-score {

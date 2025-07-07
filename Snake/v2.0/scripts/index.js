@@ -4,39 +4,129 @@ const finalScoreElem = document.querySelector('.final-score');
 const finishBtn = document.querySelector('.finish-btn');
 const settingsBtn = document.querySelector('.settings-btn');
 const closeSettingsBtn = document.querySelector('.close-settings');
+const clickElems = document.querySelectorAll('button, input');
 const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = canvas.height = 500;
-let score;
+canvas.width = canvas.height = 450;
+let gameInterval, snake, head, food, direction, nextDirection, score, modeSelected, speedSelected;
+const gridNum = 18;
+const unitSize = canvas.width / gridNum;
+const foodPoint = 600;
+const modeSettings = { classic: true, noWalls: false };
+const speedSettings = { slow: 150, normal: 100, fast: 65 };
 
-const clickAudio = new Audio("./sound-effects/click.mp3");
-const winAudio = new Audio("./sound-effects/win.wav");
-const loseAudio = new Audio("./sound-effects/lose.wav");
+const clickAudio = new Audio("./sound-effects/click.ogg");
+// const winAudio = new Audio("./sound-effects/win.wav");
+// const loseAudio = new Audio("./sound-effects/lose.wav");
 
-// Check which level of difficulty has player selected
-function gameSettings() {
-    levelSelected = document.querySelector('.settings input:checked');
-    numOfQuestions = levelSelected.dataset.question;
-    timer = levelSelected.dataset.time;
+let appleImg = new Image(); appleImg.src = "./images/apple.png";
+
+function restartGame() {
+    gameInterval = setInterval(playGame, speedSettings[speedSelected]);
+    direction = nextDirection = '';
+    snake = [{
+        posX: Math.floor(gridNum / 2) * unitSize,
+        posY: Math.floor(gridNum / 2) * unitSize
+    }];
+    head = {...snake[0]};
+    score = 0;
+    scoreElem.innerHTML = "Score: " + score;
+    generateFood();
 }
+gameSettings();
+restartGame();
 
 function changeScene(prev, next) {
-    clickAudio.play();
     document.querySelector(prev).style.display = 'none';
     document.querySelector(next).style.display = 'flex';
 }
+function isSamePosition(a, b) {
+    return a.posX === b.posX && a.posY === b.posY;
+}
+
+// Check which level of difficulty has player selected
+function gameSettings() {
+    modeSelected = document.querySelector('.game-mode input:checked').value;
+    speedSelected = document.querySelector('.game-speed input:checked').value;
+}
+
+function drawSnake() {
+    for(let i = 0; i < snake.length; i++) {
+        ctx.fillStyle = (i === 0) ? "#629f13" : "#a2ef3d";
+        ctx.fillRect(snake[i].posX, snake[i].posY, unitSize, unitSize);
+    }
+}
+function moveSnake() {
+    direction = nextDirection;
+    switch (direction) {
+        case "left":  head.posX -= unitSize; break;
+        case "right": head.posX += unitSize; break;
+        case "up":    head.posY -= unitSize; break;
+        case "down":  head.posY += unitSize; break;
+    }
+    snake.unshift({ ...head });
+}
+
+function drawFood() {
+    ctx.drawImage(appleImg, food.posX, food.posY, unitSize, unitSize);
+}
+function generateFood() {
+    do { food = {
+            posX: Math.floor(Math.random() * gridNum) * unitSize,
+            posY: Math.floor(Math.random() * gridNum) * unitSize
+        };
+    } while (snake.some(e => isSamePosition(food, e)));
+}
+
+document.addEventListener("keydown", e => {
+    if(["ArrowLeft", "a", "A"].includes(e.key) && direction !== "right")
+        nextDirection = "left";
+    else if(["ArrowRight", "d", "D"].includes(e.key) && direction !== "left")
+        nextDirection = "right";
+    else if(["ArrowUp", "w", "W"].includes(e.key) && direction !== "down")
+        nextDirection = "up";
+    else if(["ArrowDown", "s", "S"].includes(e.key) && direction !== "up")
+        nextDirection = "down";
+});
+
+function collectFood() {
+    if(isSamePosition(head, food)) {
+        generateFood(); 
+        scoreBonus();
+    }
+    else { 
+        snake.pop(); 
+    }
+}
+function headCollision() {
+    return snake.slice(1).some(e => isSamePosition(head, e));
+}
+function wallCollision() {
+    return head.posX < 0 || head.posX > canvas.width - unitSize || 
+           head.posY < 0 || head.posY > canvas.height - unitSize
+}
 
 function scoreBonus() {
-    score += timer * levelSelected.dataset.bonus;
+    score += Math.floor(foodPoint / speedSettings[speedSelected]);
     scoreElem.innerHTML = "Score: " + score;
 }
 
-function gameEnd(message) {
+async function gameEnd() {
+    clearInterval(gameInterval);
+    await new Promise(resolve => setTimeout(resolve, 1000));
     changeScene('.stage', '.finish');
     finalScoreElem.innerHTML = "Score: " + score;
-    messageElem.innerHTML = message;
-    clearInterval(timeCount);
+}
+
+function playGame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawSnake();
+    moveSnake();
+    drawFood();
+    collectFood();
+    if(headCollision() || wallCollision())
+        gameEnd();
 }
 
 startBtn.addEventListener('click', () => {
@@ -51,138 +141,171 @@ settingsBtn.addEventListener('click', () => {
 });
 closeSettingsBtn.addEventListener('click', () => {
     changeScene('.settings', '.intro');
+    gameSettings();
 });
-document.addEventListener('click', () => clickAudio.play());
+clickElems.forEach(e => e.addEventListener('click', () => clickAudio.play()));
 
 
+/////////////////////////////////////////////////////////
 
+// let numOfPlayer, interaction, setTimer, time, players;
 
-// let size = 15;
-// let unit = canvas.width / size;
-// let score = 0;
-// let snake = [];
-// let direction;
-// let food;
+// function restartGame() {
+//     players = [
+//         { name: 'green', result: 0, margin: 0, stopedTimer: false, key: 'q' },
+//         { name: 'blue', result: 0, margin: 0, stopedTimer: false, key: 'p' },
+//         { name: 'red', result: 0, margin: 0, stopedTimer: false, key: 'x' },
+//         { name: 'yellow', result: 0, margin: 0, stopedTimer: false, key: 'm' },
+//     ];
+//     // Generate a random time between 5 and 25 seconds and round to 1/4 of a seconds
+//     time = Math.ceil(Math.random() * 2000 + 500);
+//     time -= time % 25;
+//     timeElem.forEach(e => displayTime(time, e));
+//     // Resetting players data
+//     playerClockBtns.forEach(e => e.classList.remove('pressed'));
+//     playerTimerElems.forEach(e => displayTime(0, e));
+//     [dashboardNameElem, dashboardTimeElem, dashboardResultElem, dashboardMarginElem]
+//         .forEach(e => e.forEach(i => i.innerText = ''));
+//     setNumOfPlayers();
+//     setUserInteraction();
+// }
+// restartGame();
 
-// snake[0] = {
-//     posX: Math.floor(size / 2) * unit,
-//     posY: Math.floor(size / 2) * unit
+// const clickAudio = new Audio("./sound-effects/click.ogg");
+// const revealAudio = new Audio("./sound-effects/reveal.wav");
+// const winAudio = new Audio("./sound-effects/win.ogg");
+
+// function changeScene(prev, next, action) {
+//     document.querySelector(prev).style.display = 'none';
+//     document.querySelector(next).style.display = action;
+// }
+// // Get player interaction type (touchscreen or keyboard) and adapt the game
+// function interactionSettings(displayVal, colorVal, rotateDeg) {
+//     timeElem[0].style.display = displayVal;
+//     playerBtns.forEach(e => e.style.color = colorVal);
+//     [playerClockElems[0], playerClockElems[1]].forEach(e => e.style.rotate = rotateDeg);
+// }
+// function setUserInteraction() {
+//     interaction = document.querySelector('.interaction input:checked').value;
+//     if(interaction === 'touchscreen') interactionSettings('block', 'transparent', '180deg');
+//     else interactionSettings('none', 'unset', '0deg');
+// }
+// // Get the number of players and display their assets
+// function hidePlayer(index) {
+//     playerElems[index].style.visibility = 'hidden';
+//     players[index] = { ...players[index], stopedTimer: true, margin: 3000 };
+// }
+// function setNumOfPlayers() {
+//     playerElems.forEach(e => e.style.visibility = 'visible');
+//     players.forEach(e => (e.result = 0, e.margin = 0, e.stopedTimer = false));
+
+//     numOfPlayer = document.querySelector('.num-of-players input:checked').value;
+//     if(numOfPlayer < 4) hidePlayer(0);
+//     if(numOfPlayer < 3) hidePlayer(3);
 // }
 
-// function generateFood() {
-//     food = {
-//         posX: Math.floor(Math.random() * size) * unit,
-//         posY: Math.floor(Math.random() * size) * unit
+// // Handling player inputs
+// function touchInputs(e) {
+//     for(let i = 0; i < players.length; i++) {
+//         if(e.target.className === players[i].name) {
+//             players[i].stopedTimer = true;
+//             playerClockBtns[i].classList.add('pressed');
+//         }
 //     }
 // }
-// generateFood();
+// function keyboardInputs(e) {
+//     for(let i = 0; i < players.length; i++) {
+//         if(e.key.toLowerCase() === players[i].key) {
+//             players[i].stopedTimer = true;
+//             playerClockBtns[i].classList.add('pressed');
+//         }
+//     }
+// }
+// function enableInputs() {
+//     if(interaction === 'touchscreen')
+//         playerBtns.forEach(e => e.addEventListener('touchstart', touchInputs));
+//     else
+//         document.addEventListener('keydown', keyboardInputs);
+// }
+// function disableInputs() {
+//     playerBtns.forEach(e => e.removeEventListener('touchstart', touchInputs));
+//     document.removeEventListener('keydown', keyboardInputs);
+// }
 
+// // Format time from numeric value to ss:SS format
+// function displayTime(timeVal, elem) {
+//     let sec = Math.floor(timeVal / 100).toString().padStart(2, '0');
+//     let micro = (timeVal % 100).toString().padStart(2, '0');
+//     elem.innerText = `${sec}:${micro}`;
+// }
+// // Each player who has not pressed the button, increases their time by 1ms
+// function updatePlayerTimer() {
+//     for(let i = 0; i < players.length; i++) {
+//         if(!players[i].stopedTimer)
+//             displayTime(++players[i].result, playerTimerElems[i]);
+//     }
+// }
 
-// const snakeImg = new Image();
-// snakeImg.src = "./images/snakeHead0.png";
+// // Start the game by starting the stopwatches and enabling the inputs
+// async function startGame() {
+//     await new Promise(resolve => setTimeout(resolve, 2000));
+//     playerTimerElems.forEach(e => e.classList.replace('fade-in', 'fade-out'));
+//     enableInputs();
+//     setTimer = setInterval(() => {
+//         updatePlayerTimer();
+//         stopGame();
+//     }, 10);
+// }
+// // Stop the game if every player has pressed the button
+// async function stopGame() {
+//     if(players.every(e => e.stopedTimer) || players.some(e => e.result == 3000)) {
+//         clearInterval(setTimer);
+//         disableInputs();
+//         playerTimerElems.forEach(e => e.classList.replace('fade-out' ,'fade-in'));
+//         drawScore();
+//         revealAudio.play();
+//         await new Promise(resolve => setTimeout(resolve, 2000));
+//         winAudio.play();
+//         changeScene('.stage', '.finish', 'flex');
+//     }
+// }
 
-// document.addEventListener("keydown", event => {
-//     if(event.key === "ArrowLeft" && direction !== "right") {
-//         direction = "left";
-//         snakeImg.src = "./images/snakeHead3.png";
+// // Calculate the margin and display the winner and the dashboard!
+// function calculateMargin() {
+//     for(let i of players)
+//         i.margin += Math.abs(i.result - time);
+//     players.sort((a, b) => a.margin - b.margin);
+// }
+// function showWinner() {
+//     if(players[0].margin == players[1].margin)
+//         winnerElem.innerText = `It's draw`;
+//     else
+//         winnerElem.innerText = `${players[0].name} wins`
+// }
+// function drawScore() {
+//     calculateMargin();
+//     showWinner();
+//     for(let i = 0; i < numOfPlayer; i++) {
+//         dashboardNameElem[i].innerText = players[i].name;
+//         displayTime(time, dashboardTimeElem[i]);
+//         displayTime(players[i].result, dashboardResultElem[i]);
+//         displayTime(players[i].margin, dashboardMarginElem[i]);
 //     }
-//     else if(event.key === "ArrowRight" && direction !== "left") {
-//         direction = "right";
-//         snakeImg.src = "./images/snakeHead1.png";
-//     }
-//     else if(event.key === "ArrowUp" && direction !== "down") {
-//         direction = "up";
-//         snakeImg.src = "./images/snakeHead2.png";
-//     }
-//     else if(event.key === "ArrowDown" && direction !== "up") {
-//         direction = "down";
-//         snakeImg.src = "./images/snakeHead0.png";
-//     }
+// }
+// playBtn.addEventListener('click', () => {
+//     changeScene('.intro', '.stage', 'grid');
+//     startGame();
 // });
-
-// function drawSnake() {
-//     for(let i = 0; i < snake.length; i++) {
-//         if(i === 0) {
-//             // rotate(90);
-//             ctx.drawImage(snakeImg, snake[0].posX, snake[0].posY, unit, unit);
-//         }
-//         else {
-//             ctx.fillStyle = "lightgreen";
-//             ctx.fillRect(snake[i].posX, snake[i].posY, unit, unit);
-//         }
-//     }
-// }
-
-// function rotate(degrees) {
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     ctx.save();
-//     ctx.translate(canvas.width / 2, canvas.height / 2);
-//     ctx.rotate(degrees * Math.PI / 180);
-//     ctx.drawImage(snakeImg, snake[0].posX, snake[0].posY, unit, unit);
-//     ctx.restore();
-// }
-
-// const appleImg = new Image();
-// appleImg.src = "./images/apple.png";
-
-// function drawFood() {
-//     ctx.drawImage(appleImg, food.posX, food.posY, unit, unit);
-// }
-
-// let snakeHeadPosX = snake[0].posX;
-// let snakeHeadPosY = snake[0].posY;
-
-// function moveSnake() {
-//     if(direction === "left") 
-//         snakeHeadPosX -= unit;
-//     else if(direction === "right") 
-//         snakeHeadPosX += unit;
-//     else if(direction === "up") 
-//         snakeHeadPosY -= unit;
-//     else if(direction === "down") 
-//         snakeHeadPosY += unit;
-    
-//     snake.unshift({
-//         posX: snakeHeadPosX,
-//         posY: snakeHeadPosY
-//     });
-// }
-
-// function collectFood() {
-//     if(snakeHeadPosX === food.posX && snakeHeadPosY === food.posY) {
-//         generateFood();
-//     } 
-//     else {
-//         snake.pop();
-//     }
-// }
-
-// function headCollision() {
-//     for(let i = 1; i < snake.length; i++) {
-//         if(snakeHeadPosX === snake[i].posX && snakeHeadPosY === snake[i].posY) {
-//             return true;
-//         }
-//     }
-//     return false;
-// }
-
-// function wallCollision() {
-//     if(snakeHeadPosX < 0 || snakeHeadPosX > canvas.width - unit || 
-//         snakeHeadPosY < 0 || snakeHeadPosY > canvas.height - unit) {
-//         return true;
-//     }
-//     return false;
-// }
-
-// function playGame() {
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-//     drawSnake();
-//     drawFood();
-//     moveSnake();
-//     collectFood();
-
-//     if(headCollision() || wallCollision())
-//         clearInterval(speed)
-// }
-
-// let speed = setInterval(playGame, 100);
+// settingsBtn.addEventListener('click', () => {
+//     changeScene('.intro', '.settings', 'flex');
+// });
+// closeSettingsBtn.addEventListener('click', () => {
+//     changeScene('.settings', '.intro', 'flex');
+//     setNumOfPlayers();
+//     setUserInteraction();
+// });
+// finishBtn.addEventListener('click', () => {
+//     changeScene('.finish', '.intro', 'flex');
+//     restartGame();
+// });
+// clickableElems.forEach(e => e.addEventListener('click', () => clickAudio.play()));
