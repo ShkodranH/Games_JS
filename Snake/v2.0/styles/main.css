@@ -48,10 +48,10 @@ button {
     color: var(--wall-color);
     background-color: var(--snake-color);
 }
-.intro {
+.stage {
     display: flex;
 }
-body > :not(.intro) {
+body > :not(.stage) {
     display: none;
 }
 
@@ -61,20 +61,9 @@ body > :not(.intro) {
     margin-top: -5em;
 }
 
-.stage {
-    & div {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-
-        & .time, .score {
-            font-size: 1.8rem;
-            width: 50%;
-        }
-        & .score {
-            text-align: right;
-        }
-    }
+.stage #canvas {
+    width: 100%;
+    border: 1rem solid var(--wall-color);
 }
 
 .finish .final-score {
