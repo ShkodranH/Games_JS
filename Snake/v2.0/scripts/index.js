@@ -22,7 +22,9 @@ const clickAudio = new Audio("./sound-effects/click.ogg");
 
 let appleImg = new Image(); appleImg.src = "./images/apple.png";
 
+// Reseting game components for a new game
 function restartGame() {
+    clearInterval(gameInterval);
     gameInterval = setInterval(playGame, speedSettings[speedSelected]);
     direction = nextDirection = '';
     snake = [{
@@ -34,8 +36,13 @@ function restartGame() {
     scoreElem.innerHTML = "Score: " + score;
     generateFood();
 }
+// Check game settings that player has selected
+function gameSettings() {
+    modeSelected = document.querySelector('.game-mode input:checked').value;
+    speedSelected = document.querySelector('.game-speed input:checked').value;
+    restartGame();
+}
 gameSettings();
-restartGame();
 
 function changeScene(prev, next) {
     document.querySelector(prev).style.display = 'none';
@@ -45,18 +52,14 @@ function isSamePosition(a, b) {
     return a.posX === b.posX && a.posY === b.posY;
 }
 
-// Check which level of difficulty has player selected
-function gameSettings() {
-    modeSelected = document.querySelector('.game-mode input:checked').value;
-    speedSelected = document.querySelector('.game-speed input:checked').value;
-}
-
+// Draw the snake segments on the canvas
 function drawSnake() {
     for(let i = 0; i < snake.length; i++) {
         ctx.fillStyle = (i === 0) ? "#629f13" : "#a2ef3d";
         ctx.fillRect(snake[i].posX, snake[i].posY, unitSize, unitSize);
     }
 }
+// Move the snake by one block depending on the direction
 function moveSnake() {
     direction = nextDirection;
     switch (direction) {
@@ -65,9 +68,11 @@ function moveSnake() {
         case "up":    head.posY -= unitSize; break;
         case "down":  head.posY += unitSize; break;
     }
+    if(!modeSettings[modeSelected]) wrapAround();
     snake.unshift({ ...head });
 }
 
+// Generate the food randomly on the canvas but not on top of the snake
 function drawFood() {
     ctx.drawImage(appleImg, food.posX, food.posY, unitSize, unitSize);
 }
@@ -79,6 +84,7 @@ function generateFood() {
     } while (snake.some(e => isSamePosition(food, e)));
 }
 
+// Listen to the keyboard inputs for changing the direction
 document.addEventListener("keydown", e => {
     if(["ArrowLeft", "a", "A"].includes(e.key) && direction !== "right")
         nextDirection = "left";
@@ -90,6 +96,7 @@ document.addEventListener("keydown", e => {
         nextDirection = "down";
 });
 
+// Grow the snake and add the score when collecting the food
 function collectFood() {
     if(isSamePosition(head, food)) {
         generateFood(); 
@@ -99,6 +106,13 @@ function collectFood() {
         snake.pop(); 
     }
 }
+// Add the score points depending on the difficulty
+function scoreBonus() {
+    score += Math.floor(foodPoint / speedSettings[speedSelected]);
+    scoreElem.innerHTML = "Score: " + score;
+}
+
+// Detect collision of snake with wall or with itself
 function headCollision() {
     return snake.slice(1).some(e => isSamePosition(head, e));
 }
@@ -106,26 +120,34 @@ function wallCollision() {
     return head.posX < 0 || head.posX > canvas.width - unitSize || 
            head.posY < 0 || head.posY > canvas.height - unitSize
 }
+// Wrap around the snake if no wall mode is selected
+function wrapAround() {
+    if(head.posX < 0) 
+        head.posX = canvas.width - unitSize;
+    else if(head.posX >= canvas.width) 
+        head.posX = 0;
 
-function scoreBonus() {
-    score += Math.floor(foodPoint / speedSettings[speedSelected]);
-    scoreElem.innerHTML = "Score: " + score;
+    if(head.posY < 0)
+        head.posY = canvas.height - unitSize;
+    else if(head.posY >= canvas.height) 
+        head.posY = 0;
 }
 
+// Stop the game and display the final result
 async function gameEnd() {
     clearInterval(gameInterval);
     await new Promise(resolve => setTimeout(resolve, 1000));
     changeScene('.stage', '.finish');
     finalScoreElem.innerHTML = "Score: " + score;
 }
-
+// Calling all the functions that should be executed during the game
 function playGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawSnake();
     moveSnake();
     drawFood();
     collectFood();
-    if(headCollision() || wallCollision())
+    drawSnake();
+    if(headCollision() || (wallCollision() && modeSettings[modeSelected]))
         gameEnd();
 }
 
