@@ -147,7 +147,7 @@ function playGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     moveSnake();
     drawFood();
-    collectFood();
+    collectFood(); 
     drawSnake();
     if(headCollision() || (wallCollision() && modeSettings[modeSelected]))
         gameEnd();
