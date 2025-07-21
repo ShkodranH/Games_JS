@@ -68,10 +68,10 @@ function moveSnake() {
         case "up":    head.posY -= unitSize; break;
         case "down":  head.posY += unitSize; break;
     }
-    if(!modeSettings[modeSelected]) wrapAround();
-    snake.unshift({ ...head });
-    if(headCollision() || (wallCollision() && modeSettings[modeSelected]))
-        console.log(head);gameEnd();
+    // if(!modeSettings[modeSelected]) wrapAround();
+    // snake.unshift({ ...head });
+    // if(headCollision() || (wallCollision() && modeSettings[modeSelected]))
+    //     gameEnd();
 }
 
 // Generate the food randomly on the canvas but not on top of the snake
@@ -145,10 +145,12 @@ async function gameEnd() {
 // Calling all the functions that should be executed during the game
 function playGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawSnake();
     moveSnake();
     drawFood();
     collectFood();
-    drawSnake();
+    if(!modeSettings[modeSelected]) wrapAround();
+    snake.unshift({ ...head });
     if(headCollision() || (wallCollision() && modeSettings[modeSelected]))
         gameEnd();
 }
