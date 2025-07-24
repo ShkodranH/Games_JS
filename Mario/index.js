@@ -145,8 +145,13 @@ function animate() {
     });
 
     if(scrollOffset > 3700) {
-        cancelAnimationFrame(animate);
-        alert('Yoy Win!');
+        ctx.font = "80px Fantasy";
+        ctx.fillStyle = "white";
+        ctx.textAlign = "center";
+        ctx.fillText("You Win!", canvas.width / 2, 130);
+        setTimeout(function() {
+            document.location.reload();
+        }, 1000);
     }
     if(player.position.y > canvas.height)
         init()
