@@ -1,11 +1,9 @@
 const canvas = document.querySelector('#canvas');
 const ctx = canvas.getContext('2d');
 
-// canvas.width = 576 / innerHeight * innerWidth;
 canvas.width = 1024;
 canvas.height = 576;
 const gravity = 0.7;
-ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 const background = new Sprite({
     position: { x: 0, y: 0 },
@@ -19,7 +17,7 @@ const shop = new Sprite({
 
 
 const player = new Fighter({
-    position: { x: 0, y: 0 }, 
+    position: { x: 200, y: 100 }, 
     velocity: { x: 0, y: 10 },
     imageSrc: './images/samuraiMack/Idle.png',
     scale: 2.5, framesMax: 8,
@@ -36,7 +34,7 @@ const player = new Fighter({
     attackBox: { offset: { x: 80, y: 50 }, width: 160, height: 50 }
 });
 const enemy = new Fighter({
-    position: { x: 400, y: 100 },
+    position: { x: 800, y: 100 },
     velocity: { x: 0, y: 10 },
     imageSrc: './images/kenji/Idle.png',
     scale: 2.5, framesMax: 4,
