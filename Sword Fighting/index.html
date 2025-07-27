@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            font-family: "Press Start 2P", fantasy;
+        }
         body { 
             margin: 0; 
             background-color: white;
@@ -16,10 +22,99 @@
         canvas {
             /* height: 100dvh; */
         }
+        .container {
+            position: relative;
+            display: inline-block;
+        }
+        .header {
+            width: 100%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+        }
+        .player {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            border: 4px solid white;
+            border-right: 0;
+        }
+        .enemy {
+            position: relative;
+            width: 100%;
+            border: 4px solid white;
+            border-left: 0;
+        }
+
+        .player-health-bar, .enemy-health-bar {
+            width: 100%;
+            height: 30px;
+            background-color: red;
+        }
+        .player-health {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #818cf8;
+        }
+        .enemy-health {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: #818cf8;
+        }
+        .timer {
+            width: 100px;
+            height: 50px;
+            background-color: black;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: white;
+            border: 4px solid white;
+        }
+        .win-msg {
+            color: white;
+            position: absolute;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            font-size: 40px;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <canvas id="canvas"></canvas>
-    <script src="index.js" type="module"></script>
+    <div class="container">
+        <div class="header">
+            <div class="player">
+                <div class="player-health-bar"></div>
+                <div class="player-health"></div>
+            </div>
+            <div class="timer">60</div>
+            <div class="enemy">
+                <div class="enemy-health-bar"></div>
+                <div class="enemy-health"></div>
+            </div>
+        </div>
+        <div class="win-msg"></div>
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="utils.js"></script>
+    <script src="classes.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
