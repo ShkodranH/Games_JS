@@ -108,6 +108,16 @@ let gamesData = [
         name: "Wordle",
         link: "../Wordle/v2.0/index.html",
         image: "../Wordle/v2.0/images/icon.png"
+    },
+    {
+        name: "Mario",
+        link: "../Mario/v1.0/index.html",
+        image: "../Mario/v1.0/images/icon.png"
+    },
+    {
+        name: "Sword Fight",
+        link: "../Sword_Fight/v1.0/index.html",
+        image: "../Sword_Fight/v1.0/images/icon.png"
     }
 ];
 
