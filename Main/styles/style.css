@@ -29,7 +29,7 @@ body {
     border: 5px solid white;
 }
 .item img {
-    max-width: 80%;
+    width: 80%;
 }
 .item p {
     display: none;
