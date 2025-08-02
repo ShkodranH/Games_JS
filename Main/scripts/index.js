@@ -118,6 +118,11 @@ let gamesData = [
         name: "Sword Fight",
         link: "../Sword_Fight/v1.0/index.html",
         image: "../Sword_Fight/v1.0/images/icon.png"
+    },
+    {
+        name: "Space Invaders",
+        link: "../Space_Invaders/v1.0/index.html",
+        image: "../Space_Invaders/v1.0/images/spaceship.png"
     }
 ];
 
