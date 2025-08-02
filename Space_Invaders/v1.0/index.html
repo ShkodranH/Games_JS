@@ -4,8 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Space Invaders</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100dvh;
+            background-color: black;
+        }
+        p {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 10;
+            color: white;
+            font-family: sans-serif;
+            margin: 0;
+        }
+        canvas {
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
+    <p><span>Score:</span> <span id="scoreEl">0</span></p>
     <canvas></canvas>
     <script src="index.js"></script>
 </body>
