@@ -123,6 +123,11 @@ let gamesData = [
         name: "Space Invaders",
         link: "../Space_Invaders/v1.0/index.html",
         image: "../Space_Invaders/v1.0/images/spaceship.png"
+    },
+    {
+        name: "Shooting Ball",
+        link: "../Shooting_Ball/v1.0/index.html",
+        image: "../Shooting_Ball/v1.0/images/icon.png"
     }
 ];
 
