@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacman</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            height: 100dvh;
+        }
+        p, div {
+            color: white;
+            position: fixed;
+            font-family: consolas;
+        }
+        p {
+            top: calc(5dvh + 15px);
+            margin: 0;
+            font-size: 20px;
+        }
+        div {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        canvas {
+            height: 90dvh;
+        }
+    </style>
+</head>
+<body>
+    <p> <span>Score: </span><span id="scoreEl">0</span> </p>
+    <div id="finalEl"></div>
+    <canvas></canvas>
+    <script src="index.js"></script>
+</body>
+</html>
