@@ -109,8 +109,9 @@ const keys = {
     left: { pressed: false }
 }
 
+let animateId;
 function animate() {
-    requestAnimationFrame(animate);
+    animateId = requestAnimationFrame(animate);
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     genericObjects.forEach(genericObject => genericObject.draw());
@@ -150,6 +151,7 @@ function animate() {
         ctx.textAlign = "center";
         ctx.fillText("You Win!", canvas.width / 2, 130);
         setTimeout(function() {
+            cancelAnimationFrame(animateId);
             document.location.reload();
         }, 1000);
     }

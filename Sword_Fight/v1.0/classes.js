@@ -87,10 +87,8 @@ class Fighter extends Sprite {
     }
     switchSprite(sprite) {
         if(this.image === this.sprites.death.image) {
-            if(this.frameCurrent === this.sprites.death.framesMax - 1) {
-                setTimeout(() => document.location.reload(), 2000);
+            if(this.frameCurrent === this.sprites.death.framesMax - 1)
                 this.dead = true;
-            }
             return;
         }
         //overriting all other animation during attack animation

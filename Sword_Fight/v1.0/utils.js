@@ -14,6 +14,10 @@ function determineWinner({ player, enemy, timerId }) {
         document.querySelector('.win-msg').innerHTML = 'Player 1 Wins';
     else if(player.health < enemy.health)
         document.querySelector('.win-msg').innerHTML = 'Player 2 Wins';  
+    setTimeout(() => {
+        cancelAnimationFrame(animateId);
+        document.location.reload();
+    }, 2000);
 }
 
 let timer = 60;

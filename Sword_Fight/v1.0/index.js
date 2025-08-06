@@ -62,8 +62,9 @@ const keys = {
 
 decreaseTimer();
 
+let animateId;
 function animate() {
-    requestAnimationFrame(animate);
+    animateId = requestAnimationFrame(animate);
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     background.update();
