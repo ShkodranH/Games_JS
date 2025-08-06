@@ -127,7 +127,12 @@ let gamesData = [
     {
         name: "Shooting Ball",
         link: "../Shooting_Ball/v1.0/index.html",
-        image: "../Shooting_Ball/v1.0/images/icon.png"
+        image: "../Shooting_Ball/v1.0/icon.png"
+    },
+    {
+        name: "Pacman",
+        link: "../Pacman/v1.0/index.html",
+        image: "../Pacman/v1.0/img/icon.png"
     }
 ];
 
