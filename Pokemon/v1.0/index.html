@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100dvh;
+            background-color: black;
+            font-family: "Press Start 2P", system-ui;
+        }
+        canvas {
+            height: 100dvh;
+        }
+        .container {
+            position: relative;
+            display: flex;
+        }
+        .area {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: black;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .attack {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            background-color: white;
+            height: 140px;
+            border-top: 4px solid black;
+        }
+        .type {
+            width: 60%;
+            display: flex;
+        }
+        .type button {
+            width: 50%;
+            font-family: "Press Start 2P", system-ui;
+            font-size: 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .type button:hover {
+            background-color: #dddddd;
+        }
+        .info {
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-left: 4px solid black;
+        }
+        h1 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: normal;
+        }
+        .health {
+            background-color: white;
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            width: 250px;
+            border: 4px solid black;
+            padding: 16px;
+        }
+        .health.emby {
+            top: 310px;
+            left: unset;
+            right: 40px;
+        }
+        .healthbar {
+            position: relative;
+            height: 5px;
+            margin: 10px 0;
+        }
+        .healthbar .status {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: green;
+        }
+        .healthbar .total {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #cccccc;
+        }
+        .dialogBox {
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            padding: 16px;
+            display: none;
+        }
+        .userInterface {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="area"></div>
+
+        <div class="userInterface">
+            <div class="health draggle">
+                <h1>Draggle</h1>
+                <div class="healthbar">
+                    <div class="total"></div>
+                    <div id="draggleHealth" class="status"></div>
+                </div>
+            </div>
+            <div class="health emby">
+                <h1>Emby</h1>
+                <div class="healthbar">
+                    <div class="total"></div>
+                    <div id="embyHealth" class="status"></div>
+                </div>
+            </div>
+            
+            <div class="attack">
+                <div class="dialogBox"></div>
+                <div class="type" id="attacksBox">
+                </div>
+                <div class="info"><h1>Attack Type</h1></div>
+            </div>
+        </div>
+
+        <canvas></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js" integrity="sha512-xi/RZRIF/S0hJ+yJJYuZ5yk6/8pCiRlEXZzoguSMl+vk2i3m6UjUO/WcZ11blRL/O+rnj94JRGwt/CHbc9+6EA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="data.js" type="module"></script>
+    <script src="index.js" type="module"></script>
+</body>
+</html>
