@@ -91,7 +91,7 @@ class Monster extends Sprite {
             case 'Fireball':
                 audio.InitFireball.play();
                 const fireballImg = new Image();
-                fireballImg.src = './assets/fireball.png';
+                fireballImg.src = './images/fireball.png';
 
                 const fireball = new Sprite({ position: {x: this.position.x, y: this.position.y }, 
                     image: fireballImg, frames: 4, animate: true, rotation });
@@ -146,34 +146,34 @@ battleZonesMap.forEach((row, i) => {
 });
 
 const audio = {
-    Map: new Howl({ src: './Audio/map.wav', volume: 0.1, html5: true }),
-    InitBattle: new Howl({ src: './Audio/initBattle.wav', volume: 0.1, html5: true }),
-    Battle: new Howl({ src: './Audio/battle.mp3', volume: 0.1, html5: true }),
-    TackleHit: new Howl({ src: './Audio/tackleHit.wav', volume: 0.1, html5: true }),
-    FireballHit: new Howl({ src: './Audio/fireballHit.wav', volume: 0.1, html5: true }),
-    InitFireball: new Howl({ src: './Audio/initFireball.wav', volume: 0.1, html5: true }),
-    Victory: new Howl({ src: './Audio/victory.wav', volume: 0.1, html5: true }),
+    Map: new Howl({ src: './audio/map.wav', volume: 0.1, html5: true }),
+    InitBattle: new Howl({ src: './audio/initBattle.wav', volume: 0.1, html5: true }),
+    Battle: new Howl({ src: './audio/battle.mp3', volume: 0.1, html5: true }),
+    TackleHit: new Howl({ src: './audio/tackleHit.wav', volume: 0.1, html5: true }),
+    FireballHit: new Howl({ src: './audio/fireballHit.wav', volume: 0.1, html5: true }),
+    InitFireball: new Howl({ src: './audio/initFireball.wav', volume: 0.1, html5: true }),
+    Victory: new Howl({ src: './audio/victory.wav', volume: 0.1, html5: true }),
 }
 
 const image = new Image();
-image.src = './assets/PelletTown.png';
+image.src = './images/PelletTown.png';
 const foregroundImg = new Image();
-foregroundImg.src = './assets/foreground.png';
+foregroundImg.src = './images/foreground.png';
 const playerImg = new Image();
-playerImg.src = './assets/playerDown.png';
+playerImg.src = './images/playerDown.png';
 const playerUpImg = new Image();
-playerUpImg.src = './assets/playerUp.png';
+playerUpImg.src = './images/playerUp.png';
 const playerLeftImg = new Image();
-playerLeftImg.src = './assets/playerLeft.png';
+playerLeftImg.src = './images/playerLeft.png';
 const playerRightImg = new Image();
-playerRightImg.src = './assets/playerRight.png';
+playerRightImg.src = './images/playerRight.png';
 
 const battleBg = new Image();
-battleBg.src = './assets/battleBackground.png';
+battleBg.src = './images/battleBackground.png';
 const draggleImg = new Image();
-draggleImg.src = './assets/draggleSprite.png';
+draggleImg.src = './images/draggleSprite.png';
 const embyImg = new Image();
-embyImg.src = './assets/embySprite.png';
+embyImg.src = './images/embySprite.png';
 
 const attacks = {
     Tackle: { name: 'Tackle', damage: 10, type: 'Normal', color: 'black' },
