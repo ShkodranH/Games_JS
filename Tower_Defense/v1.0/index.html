@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower Defense</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap');
+        body {
+            margin: 0;
+            height: 100dvh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+        canvas {
+            height: 100dvh;
+        }
+        .container {
+            position: relative;
+            display: flex;
+        }
+        .text {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 80px;
+            font-family: "Changa One", fantasy;
+            text-transform: uppercase;
+            color: white;
+            -webkit-text-stroke: 3px black;
+            pointer-events: none;
+        }
+        .resources {
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background-image: linear-gradient(235deg, rgba(0, 0, 0, .8), rgba(0, 0, 0, 0) 50%);
+        }
+        .hearts, .coins {
+            position: absolute;
+            top: 4px;
+            right: 8px;
+            font-size: 35px;
+            font-family: "Changa One", fantasy;
+            color: white;
+            -webkit-text-stroke: 3px black;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+        }
+        .heartSvg, .coinSvg {
+            width: 35px;
+            color: red;
+            margin-right: 5px;
+        }
+        .coins {
+            top: 50px;
+        }
+        .coinSvg {
+            color: gold
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <canvas></canvas>
+
+        <div class="text">Game Over</div>
+
+        <div class="resources"></div>
+
+        <div class="hearts">
+            <svg class="heartSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
+                <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+            </svg>
+            <div id="hearts">10</div>
+        </div>
+
+        <div class="coins">
+            <svg class="coinSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor">
+                <path d="M192 160L192 144C192 99.8 278 64 384 64C490 64 576 99.8 576 144L576 160C576 190.6 534.7 217.2 474 230.7C471.6 227.9 469.1 225.2 466.6 222.7C451.1 207.4 431.1 195.8 410.2 187.2C368.3 169.7 313.7 160.1 256 160.1C234.1 160.1 212.7 161.5 192.2 164.2C192 162.9 192 161.5 192 160.1zM496 417L496 370.8C511.1 366.9 525.3 362.3 538.2 356.9C551.4 351.4 564.3 344.7 576 336.6L576 352C576 378.8 544.5 402.5 496 417zM496 321L496 288C496 283.5 495.6 279.2 495 275C510.5 271.1 525 266.4 538.2 260.8C551.4 255.2 564.3 248.6 576 240.5L576 255.9C576 282.7 544.5 306.4 496 320.9zM64 304L64 288C64 243.8 150 208 256 208C362 208 448 243.8 448 288L448 304C448 348.2 362 384 256 384C150 384 64 348.2 64 304zM448 400C448 444.2 362 480 256 480C150 480 64 444.2 64 400L64 384.6C75.6 392.7 88.5 399.3 101.8 404.9C143.7 422.4 198.3 432 256 432C313.7 432 368.3 422.3 410.2 404.9C423.4 399.4 436.3 392.7 448 384.6L448 400zM448 480.6L448 496C448 540.2 362 576 256 576C150 576 64 540.2 64 496L64 480.6C75.6 488.7 88.5 495.3 101.8 500.9C143.7 518.4 198.3 528 256 528C313.7 528 368.3 518.3 410.2 500.9C423.4 495.4 436.3 488.7 448 480.6z"/>
+            </svg>
+            <div id="coins">100</div>
+        </div>
+    </div>
+
+    <script src="index.js" type="module"></script>
+</body>
+</html>
